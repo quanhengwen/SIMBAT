@@ -81,7 +81,7 @@ int main(void)
 	Flash_Read32BitDatas(FLASH_USER_START_ADDR,40,InFlashSave);
 //	MYDMA_Config();
 //    GPIO_ResetBits(GPIOC,GPIO_Pin_13);
-//    GPIO_SetBits(GPIOC,GPIO_Pin_13);//关闭电源输出继电器
+//    //GPIO_SetBits(GPIOC,GPIO_Pin_13);//关闭电源输出继电器
 	MainTask();
 }
 

@@ -59704,7 +59704,7 @@ N	Flash_Read32BitDatas(FLASH_USER_START_ADDR,40,InFlashSave);
 X	Flash_Read32BitDatas(((uint32_t)0x080E0000),40,InFlashSave);
 N//	MYDMA_Config();
 N//    GPIO_ResetBits(GPIOC,GPIO_Pin_13);
-N//    GPIO_SetBits(GPIOC,GPIO_Pin_13);//关闭电源输出继电器
+N//    //GPIO_SetBits(GPIOC,GPIO_Pin_13);//关闭电源输出继电器
 N	MainTask();
 N}
 N

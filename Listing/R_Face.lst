@@ -56532,8 +56532,7 @@ N        {
 N			
 N			GPIO_ResetBits(GPIOC,GPIO_Pin_1);//关闭电源输出
 X			GPIO_ResetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0800)),((uint16_t)0x0002));
-N			GPIO_SetBits(GPIOC,GPIO_Pin_13);//关闭电源输出继电器
-X			GPIO_SetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0800)),((uint16_t)0x2000));
+N			//GPIO_SetBits(GPIOC,GPIO_Pin_13);//关闭电源输出继电器
 N//                GPIO_ResetBits(GPIOC,GPIO_Pin_12);//CC
 N			flag_Load_CC = 1;
 X			(flagD . bit7) = 1;

@@ -1580,7 +1580,7 @@ void Key_Funtion(void)
                             {
                                 GPIO_ResetBits(GPIOC,GPIO_Pin_1);//πÿ±’µÁ‘¥ ‰≥ˆ
 								Delay_ms(1000);
-                                GPIO_SetBits(GPIOC,GPIO_Pin_13);//πÿ±’µÁ‘¥ ‰≥ˆºÃµÁ∆˜
+                                //GPIO_SetBits(GPIOC,GPIO_Pin_13);//πÿ±’µÁ‘¥ ‰≥ˆºÃµÁ∆˜
                                 mode_sw = 0;
                                 pow_sw = pow_off;
                             }
@@ -1613,7 +1613,7 @@ void Key_Funtion(void)
                                
                                GPIO_ResetBits(GPIOC,GPIO_Pin_1);//πÿ±’µÁ‘¥ ‰≥ˆ
 								Delay_ms(500);
-                               GPIO_SetBits(GPIOC,GPIO_Pin_13);//πÿ±’µÁ‘¥ ‰≥ˆºÃµÁ∆˜
+                               //GPIO_SetBits(GPIOC,GPIO_Pin_13);//πÿ±’µÁ‘¥ ‰≥ˆºÃµÁ∆˜
                                GPIO_SetBits(GPIOA,GPIO_Pin_15);//µÁ◊”∏∫‘ÿOFF
                                cdc_sw = cdc_off;
                                paused = 0;
@@ -1672,13 +1672,13 @@ void Key_Funtion(void)
                         {
                             if(at == 0)
                             {
-                                GPIO_SetBits(GPIOC,GPIO_Pin_13);//πÿ±’µÁ‘¥ ‰≥ˆºÃµÁ∆˜
+                                //GPIO_SetBits(GPIOC,GPIO_Pin_13);//πÿ±’µÁ‘¥ ‰≥ˆºÃµÁ∆˜
                                 GPIO_ResetBits(GPIOB,GPIO_Pin_13);//R_RALYµÕµµŒª                           
                                 at++;
                                 r_raly=0;
                                 manual = 1;// ÷∂Øªªµµ
                             }else if(at == 1){
-                                GPIO_SetBits(GPIOC,GPIO_Pin_13);//πÿ±’µÁ‘¥ ‰≥ˆºÃµÁ∆˜
+                                //GPIO_SetBits(GPIOC,GPIO_Pin_13);//πÿ±’µÁ‘¥ ‰≥ˆºÃµÁ∆˜
                                 GPIO_SetBits(GPIOB,GPIO_Pin_13);//R_RALY∏ﬂµµŒª
                                 r_raly=1;
                                 at++;
@@ -1737,20 +1737,20 @@ void Key_Funtion(void)
                 }break;
                 case KEY_Face1 :
                 {
-                    WM_DeleteWindow(hWinR);
-                    WM_DeleteWindow(hWinWind);
-                    WM_DeleteWindow(hWinG);
-                    WM_DeleteWindow(load_wind);
-                    WM_DeleteWindow(hWinsysinfo);
-                    WM_DeleteWindow(hWincdc);
-                    WM_DeleteWindow(hWinset);
-                    GPIO_SetBits(GPIOA,GPIO_Pin_15);//µÁ◊”∏∫‘ÿOFF
-                    GPIO_ResetBits(GPIOC,GPIO_Pin_1);//πÿ±’µÁ‘¥ ‰≥ˆ
-					Delay_ms(500);
-				    GPIO_SetBits(GPIOC,GPIO_Pin_13);//πÿ±’µÁ‘¥ ‰≥ˆºÃµÁ∆
-                    CreateR();
-                    KeyCounter = 0;
-                    BEEP_Tiggr();//
+//                    WM_DeleteWindow(hWinR);
+//                    WM_DeleteWindow(hWinWind);
+//                    WM_DeleteWindow(hWinG);
+//                    WM_DeleteWindow(load_wind);
+//                    WM_DeleteWindow(hWinsysinfo);
+//                    WM_DeleteWindow(hWincdc);
+//                    WM_DeleteWindow(hWinset);
+//                    GPIO_SetBits(GPIOA,GPIO_Pin_15);//µÁ◊”∏∫‘ÿOFF
+//                    GPIO_ResetBits(GPIOC,GPIO_Pin_1);//πÿ±’µÁ‘¥ ‰≥ˆ
+//					Delay_ms(500);
+//				    //GPIO_SetBits(GPIOC,GPIO_Pin_13);//πÿ±’µÁ‘¥ ‰≥ˆºÃµÁ∆
+//                    CreateR();
+//                    KeyCounter = 0;
+//                    BEEP_Tiggr();//
                 }
                 break;
                 case KEY_Face2 :
@@ -1766,7 +1766,7 @@ void Key_Funtion(void)
                     t_onoff = 0;
                     GPIO_ResetBits(GPIOC,GPIO_Pin_1);//πÿ±’µÁ‘¥ ‰≥ˆ
 					Delay_ms(500);
-				    GPIO_SetBits(GPIOC,GPIO_Pin_13);//πÿ±’µÁ‘¥ ‰≥ˆºÃµÁ∆
+				    //GPIO_SetBits(GPIOC,GPIO_Pin_13);//πÿ±’µÁ‘¥ ‰≥ˆºÃµÁ∆
                     KeyCounter = 0;
                     BEEP_Tiggr();//
                 }
@@ -1788,33 +1788,33 @@ void Key_Funtion(void)
                 break;
                 case KEY_Face4 :
                 {
-                    WM_DeleteWindow(hWinR);
-                    WM_DeleteWindow(hWinWind);
-                    WM_DeleteWindow(hWinG);
-                    WM_DeleteWindow(load_wind);
-                    WM_DeleteWindow(hWinsysinfo);
-                    WM_DeleteWindow(hWincdc);
-                    WM_DeleteWindow(hWinset);
-					GPIO_ResetBits(GPIOC,GPIO_Pin_1);//πÿ±’µÁ‘¥ ‰≥ˆ
-					Delay_ms(500);
-				    GPIO_SetBits(GPIOC,GPIO_Pin_13);//πÿ±’µÁ‘¥ ‰≥ˆºÃµÁ∆
-                    CreateCDC(); 
-                    KeyCounter = 0;
-                    BEEP_Tiggr();//
+//                    WM_DeleteWindow(hWinR);
+//                    WM_DeleteWindow(hWinWind);
+//                    WM_DeleteWindow(hWinG);
+//                    WM_DeleteWindow(load_wind);
+//                    WM_DeleteWindow(hWinsysinfo);
+//                    WM_DeleteWindow(hWincdc);
+//                    WM_DeleteWindow(hWinset);
+//					GPIO_ResetBits(GPIOC,GPIO_Pin_1);//πÿ±’µÁ‘¥ ‰≥ˆ
+//					Delay_ms(500);
+//				    //GPIO_SetBits(GPIOC,GPIO_Pin_13);//πÿ±’µÁ‘¥ ‰≥ˆºÃµÁ∆
+//                    CreateCDC(); 
+//                    KeyCounter = 0;
+//                    BEEP_Tiggr();//
                 }
                 break;
                 case KEY_Face5 :
                 {
-                    WM_DeleteWindow(hWinR);
-                    WM_DeleteWindow(hWinWind);
-                    WM_DeleteWindow(hWinG);
-                    WM_DeleteWindow(load_wind);
-                    WM_DeleteWindow(hWinsysinfo);
-                    WM_DeleteWindow(hWincdc);
-                    WM_DeleteWindow(hWinset);
-                    CreateG();
-                    KeyCounter = 0;
-                    BEEP_Tiggr();//
+//                    WM_DeleteWindow(hWinR);
+//                    WM_DeleteWindow(hWinWind);
+//                    WM_DeleteWindow(hWinG);
+//                    WM_DeleteWindow(load_wind);
+//                    WM_DeleteWindow(hWinsysinfo);
+//                    WM_DeleteWindow(hWincdc);
+//                    WM_DeleteWindow(hWinset);
+//                    CreateG();
+//                    KeyCounter = 0;
+//                    BEEP_Tiggr();//
                 }
                 break;
                 case KEY_BIAS :
@@ -1828,7 +1828,7 @@ void Key_Funtion(void)
                     WM_DeleteWindow(hWinset);
 					GPIO_ResetBits(GPIOC,GPIO_Pin_1);//πÿ±’µÁ‘¥ ‰≥ˆ
 					Delay_ms(500);
-				    GPIO_SetBits(GPIOC,GPIO_Pin_13);//πÿ±’µÁ‘¥ ‰≥ˆºÃµÁ∆
+				    //GPIO_SetBits(GPIOC,GPIO_Pin_13);//πÿ±’µÁ‘¥ ‰≥ˆºÃµÁ∆
                     Createsysinfo();
                     KeyCounter = 0;
                     BEEP_Tiggr();//Ëß¶ÂèëËúÇÈ∏£Âô?
@@ -1859,7 +1859,7 @@ void Key_Funtion(void)
 void setmode_r(void)
 {
     GPIO_ResetBits(GPIOC,GPIO_Pin_1);//πÿ±’µÁ‘¥ ‰≥ˆ
-    GPIO_SetBits(GPIOC,GPIO_Pin_13);//πÿ±’µÁ‘¥ ‰≥ˆºÃµÁ∆˜  
+    //GPIO_SetBits(GPIOC,GPIO_Pin_13);//πÿ±’µÁ‘¥ ‰≥ˆºÃµÁ∆˜  
     GPIO_SetBits(GPIOA,GPIO_Pin_15);//µÁ◊”∏∫‘ÿOFF  
     pow_sw = pow_off;
     load_sw = load_off;
@@ -1900,7 +1900,7 @@ void DrawLockc(void)
 void IO_OFF(void)
 {
     GPIO_ResetBits(GPIOC,GPIO_Pin_1);//πÿ±’µÁ‘¥ ‰≥ˆ
-    GPIO_SetBits(GPIOC,GPIO_Pin_13);//πÿ±’µÁ‘¥ ‰≥ˆºÃµÁ∆˜  
+    //GPIO_SetBits(GPIOC,GPIO_Pin_13);//πÿ±’µÁ‘¥ ‰≥ˆºÃµÁ∆˜  
     GPIO_SetBits(GPIOA,GPIO_Pin_15);//µÁ◊”∏∫‘ÿOFF  
     pow_sw = pow_off;
     load_sw = load_off;

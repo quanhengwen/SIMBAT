@@ -2764,7 +2764,7 @@ void OC_ADD(void){
         {
 			
 			GPIO_ResetBits(GPIOC,GPIO_Pin_1);//关闭电源输出
-			GPIO_SetBits(GPIOC,GPIO_Pin_13);//关闭电源输出继电器
+			//GPIO_SetBits(GPIOC,GPIO_Pin_13);//关闭电源输出继电器
 //                GPIO_ResetBits(GPIOC,GPIO_Pin_12);//CC
 			flag_Load_CC = 1;
 			GPIO_SetBits(GPIOC,GPIO_Pin_10);//CC

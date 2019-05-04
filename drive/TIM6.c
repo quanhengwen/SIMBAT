@@ -180,7 +180,7 @@ void TIM4_IRQHandler(void)
 				}else{
 					GPIO_ResetBits(GPIOC,GPIO_Pin_1);//¹Ø±ÕµçÔ´Êä³ö
 					Delay_ms(500);
-				    GPIO_SetBits(GPIOC,GPIO_Pin_13);//¹Ø±ÕµçÔ´Êä³ö¼ÌµçÆ÷				
+				    //GPIO_SetBits(GPIOC,GPIO_Pin_13);//¹Ø±ÕµçÔ´Êä³ö¼ÌµçÆ÷				
 					powcount = 0;
 					step = 3;
 //					IO_OFF();		
@@ -218,7 +218,7 @@ void TIM4_IRQHandler(void)
 				}else{
 					GPIO_ResetBits(GPIOC,GPIO_Pin_1);//¹Ø±ÕµçÔ´Êä³ö
 					Delay_ms(500);
-				    GPIO_SetBits(GPIOC,GPIO_Pin_13);//¹Ø±ÕµçÔ´Êä³ö¼ÌµçÆ÷				
+				    //GPIO_SetBits(GPIOC,GPIO_Pin_13);//¹Ø±ÕµçÔ´Êä³ö¼ÌµçÆ÷				
 					powcount = 0;
 					step = 6;
 //					IO_OFF();
@@ -255,7 +255,7 @@ void TIM4_IRQHandler(void)
 				}else{
 					GPIO_ResetBits(GPIOC,GPIO_Pin_1);//¹Ø±ÕµçÔ´Êä³ö
 					Delay_ms(500);
-				    GPIO_SetBits(GPIOC,GPIO_Pin_13);//¹Ø±ÕµçÔ´Êä³ö¼ÌµçÆ
+				    //GPIO_SetBits(GPIOC,GPIO_Pin_13);//¹Ø±ÕµçÔ´Êä³ö¼ÌµçÆ
 					powcount = 0;
 					step = 0;
 //					IO_OFF();                
@@ -327,7 +327,7 @@ void TIM4_IRQHandler(void)
                 powcount = 0;
                 powflag = 0;
                 GPIO_ResetBits(GPIOC,GPIO_Pin_1);//¹Ø±ÕµçÔ´Êä³ö
-                GPIO_SetBits(GPIOC,GPIO_Pin_13);//¹Ø±ÕµçÔ´Êä³ö¼ÌµçÆ÷ 
+                //GPIO_SetBits(GPIOC,GPIO_Pin_13);//¹Ø±ÕµçÔ´Êä³ö¼ÌµçÆ÷ 
                 usartshortflag = 1;
                 
             }

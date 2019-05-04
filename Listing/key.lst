@@ -53120,8 +53120,7 @@ N                                GPIO_ResetBits(GPIOC,GPIO_Pin_1);//¹Ø±ÕµçÔ´Êä³ö
 X                                GPIO_ResetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0800)),((uint16_t)0x0002));
 W "..\drive\key.c" 1582 9 function "Delay_ms" declared implicitly
 N								Delay_ms(1000);
-N                                GPIO_SetBits(GPIOC,GPIO_Pin_13);//¹Ø±ÕµçÔ´Êä³ö¼ÌµçÆ÷
-X                                GPIO_SetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0800)),((uint16_t)0x2000));
+N                                //GPIO_SetBits(GPIOC,GPIO_Pin_13);//¹Ø±ÕµçÔ´Êä³ö¼ÌµçÆ÷
 N                                mode_sw = 0;
 N                                pow_sw = pow_off;
 X                                pow_sw = 0;
@@ -53171,8 +53170,7 @@ N                               GPIO_ResetBits(GPIOC,GPIO_Pin_1);//¹Ø±ÕµçÔ´Êä³ö
 X                               GPIO_ResetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0800)),((uint16_t)0x0002));
 W "..\drive\key.c" 1615 9 function "Delay_ms" declared implicitly
 N								Delay_ms(500);
-N                               GPIO_SetBits(GPIOC,GPIO_Pin_13);//¹Ø±ÕµçÔ´Êä³ö¼ÌµçÆ÷
-X                               GPIO_SetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0800)),((uint16_t)0x2000));
+N                               //GPIO_SetBits(GPIOC,GPIO_Pin_13);//¹Ø±ÕµçÔ´Êä³ö¼ÌµçÆ÷
 N                               GPIO_SetBits(GPIOA,GPIO_Pin_15);//µç×Ó¸ºÔØOFF
 X                               GPIO_SetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0000)),((uint16_t)0x8000));
 N                               cdc_sw = cdc_off;
@@ -53249,16 +53247,14 @@ X                        case 3:
 N                        {
 N                            if(at == 0)
 N                            {
-N                                GPIO_SetBits(GPIOC,GPIO_Pin_13);//¹Ø±ÕµçÔ´Êä³ö¼ÌµçÆ÷
-X                                GPIO_SetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0800)),((uint16_t)0x2000));
+N                                //GPIO_SetBits(GPIOC,GPIO_Pin_13);//¹Ø±ÕµçÔ´Êä³ö¼ÌµçÆ÷
 N                                GPIO_ResetBits(GPIOB,GPIO_Pin_13);//R_RALYµÍµµÎ»                           
 X                                GPIO_ResetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0400)),((uint16_t)0x2000));
 N                                at++;
 N                                r_raly=0;
 N                                manual = 1;//ÊÖ¶¯»»µµ
 N                            }else if(at == 1){
-N                                GPIO_SetBits(GPIOC,GPIO_Pin_13);//¹Ø±ÕµçÔ´Êä³ö¼ÌµçÆ÷
-X                                GPIO_SetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0800)),((uint16_t)0x2000));
+N                                //GPIO_SetBits(GPIOC,GPIO_Pin_13);//¹Ø±ÕµçÔ´Êä³ö¼ÌµçÆ÷
 N                                GPIO_SetBits(GPIOB,GPIO_Pin_13);//R_RALY¸ßµµÎ»
 X                                GPIO_SetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0400)),((uint16_t)0x2000));
 N                                r_raly=1;
@@ -53332,24 +53328,20 @@ N                }break;
 N                case KEY_Face1 :
 X                case 0X64 :
 N                {
-N                    WM_DeleteWindow(hWinR);
-N                    WM_DeleteWindow(hWinWind);
-N                    WM_DeleteWindow(hWinG);
-N                    WM_DeleteWindow(load_wind);
-N                    WM_DeleteWindow(hWinsysinfo);
-N                    WM_DeleteWindow(hWincdc);
-N                    WM_DeleteWindow(hWinset);
-N                    GPIO_SetBits(GPIOA,GPIO_Pin_15);//µç×Ó¸ºÔØOFF
-X                    GPIO_SetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0000)),((uint16_t)0x8000));
-N                    GPIO_ResetBits(GPIOC,GPIO_Pin_1);//¹Ø±ÕµçÔ´Êä³ö
-X                    GPIO_ResetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0800)),((uint16_t)0x0002));
-W "..\drive\key.c" 1749 6 function "Delay_ms" declared implicitly
-N					Delay_ms(500);
-N				    GPIO_SetBits(GPIOC,GPIO_Pin_13);//¹Ø±ÕµçÔ´Êä³ö¼ÌµçÆ
-X				    GPIO_SetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0800)),((uint16_t)0x2000));
-N                    CreateR();
-N                    KeyCounter = 0;
-N                    BEEP_Tiggr();//
+N//                    WM_DeleteWindow(hWinR);
+N//                    WM_DeleteWindow(hWinWind);
+N//                    WM_DeleteWindow(hWinG);
+N//                    WM_DeleteWindow(load_wind);
+N//                    WM_DeleteWindow(hWinsysinfo);
+N//                    WM_DeleteWindow(hWincdc);
+N//                    WM_DeleteWindow(hWinset);
+N//                    GPIO_SetBits(GPIOA,GPIO_Pin_15);//µç×Ó¸ºÔØOFF
+N//                    GPIO_ResetBits(GPIOC,GPIO_Pin_1);//¹Ø±ÕµçÔ´Êä³ö
+N//					Delay_ms(500);
+N//				    //GPIO_SetBits(GPIOC,GPIO_Pin_13);//¹Ø±ÕµçÔ´Êä³ö¼ÌµçÆ
+N//                    CreateR();
+N//                    KeyCounter = 0;
+N//                    BEEP_Tiggr();//
 N                }
 N                break;
 N                case KEY_Face2 :
@@ -53368,8 +53360,7 @@ N                    GPIO_ResetBits(GPIOC,GPIO_Pin_1);//¹Ø±ÕµçÔ´Êä³ö
 X                    GPIO_ResetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0800)),((uint16_t)0x0002));
 W "..\drive\key.c" 1768 6 function "Delay_ms" declared implicitly
 N					Delay_ms(500);
-N				    GPIO_SetBits(GPIOC,GPIO_Pin_13);//¹Ø±ÕµçÔ´Êä³ö¼ÌµçÆ
-X				    GPIO_SetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0800)),((uint16_t)0x2000));
+N				    //GPIO_SetBits(GPIOC,GPIO_Pin_13);//¹Ø±ÕµçÔ´Êä³ö¼ÌµçÆ
 N                    KeyCounter = 0;
 N                    BEEP_Tiggr();//
 N                }
@@ -53394,38 +53385,34 @@ N                break;
 N                case KEY_Face4 :
 X                case 0X4c :
 N                {
-N                    WM_DeleteWindow(hWinR);
-N                    WM_DeleteWindow(hWinWind);
-N                    WM_DeleteWindow(hWinG);
-N                    WM_DeleteWindow(load_wind);
-N                    WM_DeleteWindow(hWinsysinfo);
-N                    WM_DeleteWindow(hWincdc);
-N                    WM_DeleteWindow(hWinset);
-N					GPIO_ResetBits(GPIOC,GPIO_Pin_1);//¹Ø±ÕµçÔ´Êä³ö
-X					GPIO_ResetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0800)),((uint16_t)0x0002));
-W "..\drive\key.c" 1799 6 function "Delay_ms" declared implicitly
-N					Delay_ms(500);
-N				    GPIO_SetBits(GPIOC,GPIO_Pin_13);//¹Ø±ÕµçÔ´Êä³ö¼ÌµçÆ
-X				    GPIO_SetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0800)),((uint16_t)0x2000));
-W "..\drive\key.c" 1801 21 function "CreateCDC" declared implicitly
-N                    CreateCDC(); 
-N                    KeyCounter = 0;
-N                    BEEP_Tiggr();//
+N//                    WM_DeleteWindow(hWinR);
+N//                    WM_DeleteWindow(hWinWind);
+N//                    WM_DeleteWindow(hWinG);
+N//                    WM_DeleteWindow(load_wind);
+N//                    WM_DeleteWindow(hWinsysinfo);
+N//                    WM_DeleteWindow(hWincdc);
+N//                    WM_DeleteWindow(hWinset);
+N//					GPIO_ResetBits(GPIOC,GPIO_Pin_1);//¹Ø±ÕµçÔ´Êä³ö
+N//					Delay_ms(500);
+N//				    //GPIO_SetBits(GPIOC,GPIO_Pin_13);//¹Ø±ÕµçÔ´Êä³ö¼ÌµçÆ
+N//                    CreateCDC(); 
+N//                    KeyCounter = 0;
+N//                    BEEP_Tiggr();//
 N                }
 N                break;
 N                case KEY_Face5 :
 X                case 0X44 :
 N                {
-N                    WM_DeleteWindow(hWinR);
-N                    WM_DeleteWindow(hWinWind);
-N                    WM_DeleteWindow(hWinG);
-N                    WM_DeleteWindow(load_wind);
-N                    WM_DeleteWindow(hWinsysinfo);
-N                    WM_DeleteWindow(hWincdc);
-N                    WM_DeleteWindow(hWinset);
-N                    CreateG();
-N                    KeyCounter = 0;
-N                    BEEP_Tiggr();//
+N//                    WM_DeleteWindow(hWinR);
+N//                    WM_DeleteWindow(hWinWind);
+N//                    WM_DeleteWindow(hWinG);
+N//                    WM_DeleteWindow(load_wind);
+N//                    WM_DeleteWindow(hWinsysinfo);
+N//                    WM_DeleteWindow(hWincdc);
+N//                    WM_DeleteWindow(hWinset);
+N//                    CreateG();
+N//                    KeyCounter = 0;
+N//                    BEEP_Tiggr();//
 N                }
 N                break;
 N                case KEY_BIAS :
@@ -53442,8 +53429,7 @@ N					GPIO_ResetBits(GPIOC,GPIO_Pin_1);//¹Ø±ÕµçÔ´Êä³ö
 X					GPIO_ResetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0800)),((uint16_t)0x0002));
 W "..\drive\key.c" 1830 6 function "Delay_ms" declared implicitly
 N					Delay_ms(500);
-N				    GPIO_SetBits(GPIOC,GPIO_Pin_13);//¹Ø±ÕµçÔ´Êä³ö¼ÌµçÆ
-X				    GPIO_SetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0800)),((uint16_t)0x2000));
+N				    //GPIO_SetBits(GPIOC,GPIO_Pin_13);//¹Ø±ÕµçÔ´Êä³ö¼ÌµçÆ
 W "..\drive\key.c" 1832 21 function "Createsysinfo" declared implicitly
 N                    Createsysinfo();
 N                    KeyCounter = 0;
@@ -53477,8 +53463,7 @@ Nvoid setmode_r(void)
 N{
 N    GPIO_ResetBits(GPIOC,GPIO_Pin_1);//¹Ø±ÕµçÔ´Êä³ö
 X    GPIO_ResetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0800)),((uint16_t)0x0002));
-N    GPIO_SetBits(GPIOC,GPIO_Pin_13);//¹Ø±ÕµçÔ´Êä³ö¼ÌµçÆ÷  
-X    GPIO_SetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0800)),((uint16_t)0x2000));
+N    //GPIO_SetBits(GPIOC,GPIO_Pin_13);//¹Ø±ÕµçÔ´Êä³ö¼ÌµçÆ÷  
 N    GPIO_SetBits(GPIOA,GPIO_Pin_15);//µç×Ó¸ºÔØOFF  
 X    GPIO_SetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0000)),((uint16_t)0x8000));
 N    pow_sw = pow_off;
@@ -53526,8 +53511,7 @@ Nvoid IO_OFF(void)
 N{
 N    GPIO_ResetBits(GPIOC,GPIO_Pin_1);//¹Ø±ÕµçÔ´Êä³ö
 X    GPIO_ResetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0800)),((uint16_t)0x0002));
-N    GPIO_SetBits(GPIOC,GPIO_Pin_13);//¹Ø±ÕµçÔ´Êä³ö¼ÌµçÆ÷  
-X    GPIO_SetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0800)),((uint16_t)0x2000));
+N    //GPIO_SetBits(GPIOC,GPIO_Pin_13);//¹Ø±ÕµçÔ´Êä³ö¼ÌµçÆ÷  
 N    GPIO_SetBits(GPIOA,GPIO_Pin_15);//µç×Ó¸ºÔØOFF  
 X    GPIO_SetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0000)),((uint16_t)0x8000));
 N    pow_sw = pow_off;

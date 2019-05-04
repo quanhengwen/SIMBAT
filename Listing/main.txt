@@ -64,7 +64,7 @@
 00006a  f7fffffe          BL       Flash_Read32BitDatas
 ;;;82     //	MYDMA_Config();
 ;;;83     //    GPIO_ResetBits(GPIOC,GPIO_Pin_13);
-;;;84     //    GPIO_SetBits(GPIOC,GPIO_Pin_13);//关闭电源输出继电器
+;;;84     //    //GPIO_SetBits(GPIOC,GPIO_Pin_13);//关闭电源输出继电器
 ;;;85     	MainTask();
 00006e  f7fffffe          BL       MainTask
 ;;;86     }

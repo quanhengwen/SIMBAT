@@ -53242,8 +53242,8 @@ N        if(starter == 0){
 N            starter = 1;
 N        }else{
 N            WM_DeleteWindow(hWinstarter);
-W "..\APP\STARTER.c" 95 13 function "CreateR" declared implicitly
-N            CreateR();
+W "..\APP\STARTER.c" 95 13 function "CreateWindow2" declared implicitly
+N            CreateWindow2();
 N        }
 N	}
 N	break;

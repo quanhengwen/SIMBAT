@@ -66,23 +66,26 @@ void MainTask(void)
 	WM_SetDesktopColor(GUI_BLUE);  
 	GUI_Clear();//清屏
 	WM_SetCreateFlags(WM_CF_MEMDEV);
+	
 	PROGBAR_SetDefaultSkin(PROGBAR_SKIN_FLEX);
 	FRAMEWIN_SetDefaultSkin(FRAMEWIN_SKIN_FLEX);
 	PROGBAR_SetDefaultSkin(PROGBAR_SKIN_FLEX);
-	BUTTON_SetDefaultSkin(BUTTON_SKIN_FLEX);
+	BUTTON_SetDefaultBkColor(GUI_LIGHTBLUE,BUTTON_CI_UNPRESSED);
+	BUTTON_SetDefaultBkColor(GUI_LIGHTGREEN,BUTTON_CI_PRESSED);
+//	BUTTON_SetDefaultSkin(BUTTON_SKIN_FLEX);
 	CHECKBOX_SetDefaultSkin(CHECKBOX_SKIN_FLEX);
 	DROPDOWN_SetDefaultSkin(DROPDOWN_SKIN_FLEX);
 	SCROLLBAR_SetDefaultSkin(SCROLLBAR_SKIN_FLEX);
 	SLIDER_SetDefaultSkin(SLIDER_SKIN_FLEX);
 	HEADER_SetDefaultSkin(HEADER_SKIN_FLEX);
 	RADIO_SetDefaultSkin(RADIO_SKIN_FLEX);
-	CreateR();//开机进入内阻测试界面
-	flag_Load_CC=1;//开机负载默认进入CC模式
-	GPIO_SetBits(GPIOC,GPIO_Pin_10);//CC
+//	CreateR();//开机进入内阻测试界面
+	flag_Load_CC=0;//开机负载默认进入CV模式
+	GPIO_ResetBits(GPIOC,GPIO_Pin_10);//CV
 	GPIO_SetBits(GPIOA,GPIO_Pin_15);//OFF
 	GPIO_SetBits(GPIOA,GPIO_Pin_11);//电流切换为高档
 	Flag_Swtich_ON=0;
-//    CreateSTARTER();
+    CreateSTARTER();
 ////	CreateR();//开机进入内阻测试界面
 //// 	flag_Load_CC=1;//开机负载默认进入CC模式
 //// 	GPIO_ResetBits(GPIOC,GPIO_Pin_10);//CC

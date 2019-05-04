@@ -53259,6 +53259,7 @@ N#define ID_TEXT_119     (GUI_ID_USER + 0x113)
 N#define ID_TEXT_127     (GUI_ID_USER + 0x114)
 N#define ID_TEXT_131     (GUI_ID_USER + 0x120)
 N#define ID_TEXT_135     (GUI_ID_USER + 0x124)
+N#define ID_TEXT_163     (GUI_ID_USER + 0x013E)
 N
 N#define ID_TimerTime4    5
 N
@@ -53283,8 +53284,7 @@ Nstatic const GUI_WIDGET_CREATE_INFO _aDialogCreate4[] = {
 N  { WINDOW_CreateIndirect, "G", ID_WINDOW_5, 0, 0, 480, 272, 0, 0x0, 0 },
 X  { WINDOW_CreateIndirect, "G", (0x800 + 0x2A), 0, 0, 480, 272, 0, 0x0, 0 },
 N//   { BUTTON_CreateIndirect, "Button", ID_BUTTON_24, 3, 226, 77, 45, 0, 0x0, 0 },
-N  { BUTTON_CreateIndirect, "Button", ID_BUTTON_25, 83, 226, 77, 45, 0, 0x0, 0 },
-X  { BUTTON_CreateIndirect, "Button", (0x800 + 0x2C), 83, 226, 77, 45, 0, 0x0, 0 },
+N//  { BUTTON_CreateIndirect, "Button", ID_BUTTON_25, 83, 226, 77, 45, 0, 0x0, 0 },
 N  { BUTTON_CreateIndirect, "Button", ID_BUTTON_26, 163, 226, 77, 45, 0, 0x0, 0 },
 X  { BUTTON_CreateIndirect, "Button", (0x800 + 0x2D), 163, 226, 77, 45, 0, 0x0, 0 },
 N  { BUTTON_CreateIndirect, "Button", ID_BUTTON_27, 243, 226, 77, 45, 0, 0x0, 0 },
@@ -53366,6 +53366,8 @@ N  { TEXT_CreateIndirect,   "Text",   ID_TEXT_127, 330+60, 4, 80, 20, 0, 0x0, 0 
 X  { TEXT_CreateIndirect,   "Text",   (0x800 + 0x114), 330+60, 4, 80, 20, 0, 0x0, 0 },
 N  { TEXT_CreateIndirect,   "Text",   ID_TEXT_131, 5, 225, 80, 30, 0, 0x0, 0 },
 X  { TEXT_CreateIndirect,   "Text",   (0x800 + 0x120), 5, 225, 80, 30, 0, 0x0, 0 },
+N  { TEXT_CreateIndirect, "Text", ID_TEXT_163, 380+80, 8, 20, 15, 0, 0x0, 0 },
+X  { TEXT_CreateIndirect, "Text", (0x800 + 0x013E), 380+80, 8, 20, 15, 0, 0x0, 0 },
 N
 N  // USER START (Optionally insert additional widgets)
 N  // USER END
@@ -53451,8 +53453,7 @@ N        GUI_SetFont(&GUI_Fontunit);
 N        GUI_DispStringAt("°",372+60, 2);
 N        GUI_SetFont(&GUI_Font24_1);
 N        GUI_DispStringAt("C",380+60, 2);       
-W "..\APP\c_dc.c" 248 9 function "DrawLockc" declared implicitly
-N        DrawLockc();
+N//        DrawLockc();
 N        
 N        GUI_SetColor(GUI_WHITE);
 X        GUI_SetColor(0x00FFFFFF);
@@ -53471,13 +53472,24 @@ X	case 0x0113:
 N	if(WM_GetTimerId(pMsg->Data.v) == ID_TimerTime4)
 X	if(WM_GetTimerId(pMsg->Data.v) == 5)
 N	{
-N        lockstat2 = lockstat1;
-N        lockstat1 = lock; 
-N        if(lockstat1 != lockstat2)
-N        {
-N            WM_InvalidateWindow(hWincdc);
-N        }
-N        
+N//        lockstat2 = lockstat1;
+N//        lockstat1 = lock; 
+N//        if(lockstat1 != lockstat2)
+N//        {
+N//            WM_InvalidateWindow(hWincdc);
+N//        }
+N//        
+N		if(lock == 1)
+N		{
+N			hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_163);
+X			hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x013E));
+N			TEXT_SetText(hItem,"锁");
+N		}else{
+N			hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_163);
+X			hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x013E));
+N			TEXT_SetText(hItem,"");
+N		}
+N		
 N        hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_74);
 X        hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x87));
 N        sprintf(buf,"%02d",hour);
@@ -53644,7 +53656,7 @@ N//                             start_time = GUI_GetTime()/500;//记录开始时
 N//                         }
 N//                         cutoff_flag = 0;
 N//                         GPIO_ResetBits(GPIOC,GPIO_Pin_1);//关闭电源输出
-N//                         GPIO_SetBits(GPIOC,GPIO_Pin_13);//关闭电源输出继电器                  
+N//                         //GPIO_SetBits(GPIOC,GPIO_Pin_13);//关闭电源输出继电器                  
 N//     //                     Mode_SW_CONT(0x02);//切换至负载模式
 N//     //                     GPIO_ResetBits(GPIOC,GPIO_Pin_1);//开启负载
 N//                         GPIO_ResetBits(GPIOC,GPIO_Pin_10);//CC
@@ -53663,7 +53675,7 @@ N//                             start_time = GUI_GetTime()/500;//记录开始时
 N//                         }
 N//                         cutoff_flag = 0;
 N//                         GPIO_ResetBits(GPIOC,GPIO_Pin_1);//关闭电源输出
-N//                         GPIO_SetBits(GPIOC,GPIO_Pin_13);//关闭电源输出继电器                   
+N//                         //GPIO_SetBits(GPIOC,GPIO_Pin_13);//关闭电源输出继电器                   
 N//     //                     Mode_SW_CONT(0x02);//切换至负载模式
 N//     //                     GPIO_ResetBits(GPIOC,GPIO_Pin_1);//开启负载
 N//                         GPIO_ResetBits(GPIOC,GPIO_Pin_10);//CC
@@ -53703,7 +53715,7 @@ N//                             start_time = GUI_GetTime()/500;//记录开始时
 N//                         }
 N//                         cutoff_flag = 0;
 N//                         GPIO_ResetBits(GPIOC,GPIO_Pin_1);//关闭电源输出
-N//                         GPIO_SetBits(GPIOC,GPIO_Pin_13);//关闭电源输出继电器
+N//                         //GPIO_SetBits(GPIOC,GPIO_Pin_13);//关闭电源输出继电器
 N//     //                     Mode_SW_CONT(0x02);//切换至负载模式
 N//     //                     GPIO_ResetBits(GPIOC,GPIO_Pin_1);//开启负载
 N//                         GPIO_ResetBits(GPIOC,GPIO_Pin_10);//CC
@@ -53722,7 +53734,7 @@ N//                             start_time = GUI_GetTime()/500;//记录开始时
 N//                         }
 N//                         cutoff_flag = 0;
 N//                         GPIO_ResetBits(GPIOC,GPIO_Pin_1);//关闭电源输出
-N//                         GPIO_SetBits(GPIOC,GPIO_Pin_13);//关闭电源输出继电器
+N//                         //GPIO_SetBits(GPIOC,GPIO_Pin_13);//关闭电源输出继电器
 N//     //                     Mode_SW_CONT(0x02);//切换至负载模式
 N//     //                     GPIO_ResetBits(GPIOC,GPIO_Pin_1);//开启负载
 N//                         GPIO_ResetBits(GPIOC,GPIO_Pin_12);//CC
@@ -53779,7 +53791,7 @@ N//                             start_time = GUI_GetTime()/500;//记录开始时
 N//                         }
 N//                         cutoff_flag = 0;
 N//                         GPIO_ResetBits(GPIOC,GPIO_Pin_1);//关闭电源输出
-N//                         GPIO_SetBits(GPIOC,GPIO_Pin_13);//关闭电源输出继电器
+N//                         //GPIO_SetBits(GPIOC,GPIO_Pin_13);//关闭电源输出继电器
 N//     //                     Mode_SW_CONT(0x02);//切换至负载模式
 N//     //                     GPIO_ResetBits(GPIOC,GPIO_Pin_1);//开启负载
 N//                         GPIO_ResetBits(GPIOC,GPIO_Pin_10);//CC
@@ -53798,7 +53810,7 @@ N//                             start_time = GUI_GetTime()/500;//记录开始时
 N//                         }
 N//                         cutoff_flag = 0;
 N//                         GPIO_ResetBits(GPIOC,GPIO_Pin_1);//关闭电源输出
-N//                         GPIO_SetBits(GPIOC,GPIO_Pin_13);//关闭电源输出继电器
+N//                         //GPIO_SetBits(GPIOC,GPIO_Pin_13);//关闭电源输出继电器
 N//     //                     Mode_SW_CONT(0x02);//切换至负载模式
 N//     //                     GPIO_ResetBits(GPIOC,GPIO_Pin_1);//开启负载
 N//                         GPIO_ResetBits(GPIOC,GPIO_Pin_10);//CC
@@ -53823,8 +53835,7 @@ X                if(DISS_POW_Current < ((float)coff[3]/1000))
 N                {
 N                    GPIO_ResetBits(GPIOC,GPIO_Pin_1);//关闭电源输出
 X                    GPIO_ResetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0800)),((uint16_t)0x0002));
-N                    GPIO_SetBits(GPIOC,GPIO_Pin_13);//关闭电源输出继电�?
-X                    GPIO_SetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0800)),((uint16_t)0x2000));
+N                    //GPIO_SetBits(GPIOC,GPIO_Pin_13);//关闭电源输出继电�?
 N					SET_Current_Laod = cdc_dc;
 X					Run_Control[4] = Run_Control[39];
 N//                     Mode_SW_CONT(0x02);//切换至负载模�?
@@ -53841,7 +53852,7 @@ N//			else if(charge_step == 3){
 N//                if((DISS_POW_Voltage >= (float)cov1/100 && cov1 != 0) && (DISS_POW_Current <= 8))//若测量电流小于截止电流
 N//                {
 N//                    GPIO_ResetBits(GPIOC,GPIO_Pin_1);//关闭电源输出
-N//                    GPIO_SetBits(GPIOC,GPIO_Pin_13);//关闭电源输出继电器
+N//                    //GPIO_SetBits(GPIOC,GPIO_Pin_13);//关闭电源输出继电器
 N////                     Mode_SW_CONT(0x02);//切换至负载模式
 N////                     GPIO_ResetBits(GPIOC,GPIO_Pin_1);//开启负载
 N//                    GPIO_ResetBits(GPIOC,GPIO_Pin_10);//CC
@@ -54095,13 +54106,18 @@ X        WINDOW_SetBkColor(hItem, 0x00000000);
 N		WM_CreateTimer(hItem,ID_TimerTime4,500,0);//ԴݨѾ԰ࠚ֨ʱǷ
 X		WM_CreateTimer(hItem,5,500,0);
 N
+N		hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_163);
+X		hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x013E));
+N		TEXT_SetTextColor(hItem, GUI_RED);//设置字体颜色
+X		TEXT_SetTextColor(hItem, 0x000000FF);
+N		TEXT_SetFont(hItem,&GUI_FontHZ14);
+N		TEXT_SetText(hItem,"");
 N
-N		hItem = WM_GetDialogItem(pMsg->hWin, ID_BUTTON_25);
-X		hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x2C));
-N//		BUTTON_SetTextColor(hItem,0,GUI_BLACK);//ʨ׃ؖͥҕɫΪۚɫ
-N		BUTTON_SetFont      (hItem,    &GUI_FontHZ16);//ʨ֨дťτѾؖͥ
-N		GUI_UC_SetEncodeUTF8();
-N		BUTTON_SetText(hItem,"内阻测试");
+N//		hItem = WM_GetDialogItem(pMsg->hWin, ID_BUTTON_25);
+N////		BUTTON_SetTextColor(hItem,0,GUI_BLACK);//ʨ׃ؖͥҕɫΪۚɫ
+N//		BUTTON_SetFont      (hItem,    &GUI_FontHZ16);//ʨ֨дťτѾؖͥ
+N//		GUI_UC_SetEncodeUTF8();
+N//		BUTTON_SetText(hItem,"内阻测试");
 N	
 N		hItem = WM_GetDialogItem(pMsg->hWin, ID_BUTTON_26);
 X		hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x2D));
@@ -54479,7 +54495,7 @@ X	  track = 1;
 N	  TM1650_SET_LED(0x68,0x70);
 N	  GPIO_ResetBits(GPIOD,GPIO_Pin_12);//İֆ+
 X	  GPIO_ResetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0C00)),((uint16_t)0x1000));
-W "..\APP\c_dc.c" 1103 4 function "IO_OFF" declared implicitly
+W "..\APP\c_dc.c" 1118 4 function "IO_OFF" declared implicitly
 N	  IO_OFF();//ȍ
 N	  GPIO_ResetBits(GPIOC,GPIO_Pin_10);//CC
 X	  GPIO_ResetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0800)),((uint16_t)0x0400));
@@ -56209,7 +56225,7 @@ N            break;
 N        }
 N        
 N    }    
-W "..\APP\c_dc.c" 2210 10 variable "loop_count"  was declared but never referenced
+W "..\APP\c_dc.c" 2225 10 variable "loop_count"  was declared but never referenced
 N}
 N
 Nint count_num(int data)

@@ -180,152 +180,152 @@
                   AD7689_Scan_CH PROC
 ;;;251    }
 ;;;252    void AD7689_Scan_CH(void)
-000000  b570              PUSH     {r4-r6,lr}
+000000  b530              PUSH     {r4,r5,lr}
 ;;;253    {
-000002  b088              SUB      sp,sp,#0x20
+000002  b089              SUB      sp,sp,#0x24
 ;;;254    	static vu8 I_cont,I1_cont,V_cont,R_cont,V1_cont;
 ;;;255    	vu8 i,f;
 ;;;256    	vu32 sum1;
 ;;;257    	vu16 var_chI,var_chI1,var_chV,var_chV1,var_chR;
 ;;;258    	for(i=0;i<8;i++)
 000004  2500              MOVS     r5,#0
-000006  9507              STR      r5,[sp,#0x1c]
+000006  9508              STR      r5,[sp,#0x20]
 ;;;259    	{
 ;;;260    		AD7689_Buffer[i]=SPI_AD7689_Read(1, i);
-000008  4c6a              LDR      r4,|L4.436|
+000008  4c59              LDR      r4,|L4.368|
 00000a  e016              B        |L4.58|
                   |L4.12|
-00000c  f89d101c          LDRB     r1,[sp,#0x1c]
+00000c  f89d1020          LDRB     r1,[sp,#0x20]
 000010  2001              MOVS     r0,#1
 000012  f7fffffe          BL       SPI_AD7689_Read
-000016  f89d101c          LDRB     r1,[sp,#0x1c]
+000016  f89d1020          LDRB     r1,[sp,#0x20]
 00001a  f8240011          STRH     r0,[r4,r1,LSL #1]
 ;;;261    		var_chV=AD7689_Buffer[2];
 00001e  88a0              LDRH     r0,[r4,#4]  ; AD7689_Buffer
-000020  9002              STR      r0,[sp,#8]
+000020  9003              STR      r0,[sp,#0xc]
 ;;;262    		var_chI=AD7689_Buffer[3];
 000022  88e0              LDRH     r0,[r4,#6]  ; AD7689_Buffer
-000024  9004              STR      r0,[sp,#0x10]
+000024  9005              STR      r0,[sp,#0x14]
 ;;;263    		var_chI1=AD7689_Buffer[5];
 000026  8960              LDRH     r0,[r4,#0xa]  ; AD7689_Buffer
-000028  9003              STR      r0,[sp,#0xc]
+000028  9004              STR      r0,[sp,#0x10]
 ;;;264    		var_chV1=AD7689_Buffer[6];
 00002a  89a0              LDRH     r0,[r4,#0xc]  ; AD7689_Buffer
-00002c  9001              STR      r0,[sp,#4]
+00002c  9002              STR      r0,[sp,#8]
 ;;;265    		var_chR=AD7689_Buffer[7];
 00002e  89e0              LDRH     r0,[r4,#0xe]  ; AD7689_Buffer
-000030  9000              STR      r0,[sp,#0]
-000032  f89d001c          LDRB     r0,[sp,#0x1c]         ;258
+000030  9001              STR      r0,[sp,#4]
+000032  f89d0020          LDRB     r0,[sp,#0x20]         ;258
 000036  1c40              ADDS     r0,r0,#1              ;258
-000038  9007              STR      r0,[sp,#0x1c]         ;258
+000038  9008              STR      r0,[sp,#0x20]         ;258
                   |L4.58|
-00003a  f89d001c          LDRB     r0,[sp,#0x1c]         ;258
+00003a  f89d0020          LDRB     r0,[sp,#0x20]         ;258
 00003e  2808              CMP      r0,#8                 ;258
 000040  d3e4              BCC      |L4.12|
 ;;;266    	}
 ;;;267    	Ad7689_Fit_Imon[I_cont++]=var_chI;
-000042  f8bd3010          LDRH     r3,[sp,#0x10]
-000046  4a5c              LDR      r2,|L4.440|
+000042  f8bd3014          LDRH     r3,[sp,#0x14]
+000046  4a4b              LDR      r2,|L4.372|
 000048  7810              LDRB     r0,[r2,#0]  ; I_cont
-00004a  1c41              ADDS     r1,r0,#1
-00004c  7011              STRB     r1,[r2,#0]
-00004e  0041              LSLS     r1,r0,#1
-000050  4858              LDR      r0,|L4.436|
+00004a  4601              MOV      r1,r0
+00004c  1c40              ADDS     r0,r0,#1
+00004e  7010              STRB     r0,[r2,#0]
+000050  4847              LDR      r0,|L4.368|
 000052  3010              ADDS     r0,r0,#0x10
-000054  5243              STRH     r3,[r0,r1]
+000054  f8203011          STRH     r3,[r0,r1,LSL #1]
 ;;;268    	if(I_cont==60)
-000056  7811              LDRB     r1,[r2,#0]  ; I_cont
-000058  293c              CMP      r1,#0x3c
-00005a  d118              BNE      |L4.142|
+000058  7811              LDRB     r1,[r2,#0]  ; I_cont
+00005a  293c              CMP      r1,#0x3c
+00005c  d118              BNE      |L4.144|
 ;;;269    	{
 ;;;270    		I_cont=0;
-00005c  7015              STRB     r5,[r2,#0]
+00005e  7015              STRB     r5,[r2,#0]
 ;;;271    		sum1=0;
-00005e  9505              STR      r5,[sp,#0x14]
-;;;272    		for(f=0;f<60;f++)
 000060  9506              STR      r5,[sp,#0x18]
-000062  e00a              B        |L4.122|
-                  |L4.100|
+;;;272    		for(f=0;f<60;f++)
+000062  9507              STR      r5,[sp,#0x1c]
+000064  e00a              B        |L4.124|
+                  |L4.102|
 ;;;273    		{
 ;;;274    			sum1 +=Ad7689_Fit_Imon[f];
-000064  f89d1018          LDRB     r1,[sp,#0x18]
-000068  f8301011          LDRH     r1,[r0,r1,LSL #1]
-00006c  9b05              LDR      r3,[sp,#0x14]
-00006e  4419              ADD      r1,r1,r3
-000070  9105              STR      r1,[sp,#0x14]
-000072  f89d1018          LDRB     r1,[sp,#0x18]         ;272
-000076  1c49              ADDS     r1,r1,#1              ;272
-000078  9106              STR      r1,[sp,#0x18]         ;272
-                  |L4.122|
-00007a  f89d1018          LDRB     r1,[sp,#0x18]         ;272
-00007e  293c              CMP      r1,#0x3c              ;272
-000080  d3f0              BCC      |L4.100|
+000066  f89d101c          LDRB     r1,[sp,#0x1c]
+00006a  f8301011          LDRH     r1,[r0,r1,LSL #1]
+00006e  9b06              LDR      r3,[sp,#0x18]
+000070  4419              ADD      r1,r1,r3
+000072  9106              STR      r1,[sp,#0x18]
+000074  f89d101c          LDRB     r1,[sp,#0x1c]         ;272
+000078  1c49              ADDS     r1,r1,#1              ;272
+00007a  9107              STR      r1,[sp,#0x1c]         ;272
+                  |L4.124|
+00007c  f89d101c          LDRB     r1,[sp,#0x1c]         ;272
+000080  293c              CMP      r1,#0x3c              ;272
+000082  d3f0              BCC      |L4.102|
 ;;;275    		}
 ;;;276    		Imon1_value=sum1/60;//负载电流
-000082  9805              LDR      r0,[sp,#0x14]
-000084  213c              MOVS     r1,#0x3c
-000086  fbb0f0f1          UDIV     r0,r0,r1
-00008a  494c              LDR      r1,|L4.444|
-00008c  6008              STR      r0,[r1,#0]  ; Imon1_value
-                  |L4.142|
+000084  9806              LDR      r0,[sp,#0x18]
+000086  213c              MOVS     r1,#0x3c
+000088  fbb0f0f1          UDIV     r0,r0,r1
+00008c  493a              LDR      r1,|L4.376|
+00008e  6008              STR      r0,[r1,#0]  ; Imon1_value
+                  |L4.144|
 ;;;277    	}
 ;;;278    	
 ;;;279    	Ad7689_Fit_Imon1[I1_cont++]=var_chI1;
-00008e  f8bd300c          LDRH     r3,[sp,#0xc]
-000092  7850              LDRB     r0,[r2,#1]  ; I1_cont
-000094  1c41              ADDS     r1,r0,#1
-000096  7051              STRB     r1,[r2,#1]
-000098  0041              LSLS     r1,r0,#1
-00009a  4846              LDR      r0,|L4.436|
-00009c  3088              ADDS     r0,r0,#0x88
-00009e  5243              STRH     r3,[r0,r1]
+000090  f8bd3010          LDRH     r3,[sp,#0x10]
+000094  7850              LDRB     r0,[r2,#1]  ; I1_cont
+000096  1c41              ADDS     r1,r0,#1
+000098  7051              STRB     r1,[r2,#1]
+00009a  0041              LSLS     r1,r0,#1
+00009c  4834              LDR      r0,|L4.368|
+00009e  3088              ADDS     r0,r0,#0x88
+0000a0  5243              STRH     r3,[r0,r1]
 ;;;280    	if(I1_cont==30)
-0000a0  7851              LDRB     r1,[r2,#1]  ; I1_cont
+0000a2  7851              LDRB     r1,[r2,#1]  ; I1_cont
+0000a4  291e              CMP      r1,#0x1e
+0000a6  d118              BNE      |L4.218|
 ;;;281    	{
 ;;;282    		I1_cont=0;
+0000a8  7055              STRB     r5,[r2,#1]
 ;;;283    		sum1=0;
+0000aa  9506              STR      r5,[sp,#0x18]
 ;;;284    		for(f=0;f<30;f++)
-;;;285    		{
-;;;286    			sum1 +=Ad7689_Fit_Imon1[f];
-;;;287    		}
-;;;288    		Imon_value=sum1/30;//电源电流
-0000a2  231e              MOVS     r3,#0x1e
-0000a4  291e              CMP      r1,#0x1e              ;280
-0000a6  d117              BNE      |L4.216|
-0000a8  7055              STRB     r5,[r2,#1]            ;282
-0000aa  9505              STR      r5,[sp,#0x14]         ;283
-0000ac  9506              STR      r5,[sp,#0x18]         ;284
+0000ac  9507              STR      r5,[sp,#0x1c]
 0000ae  e00a              B        |L4.198|
                   |L4.176|
-0000b0  f89d1018          LDRB     r1,[sp,#0x18]         ;286
-0000b4  f8301011          LDRH     r1,[r0,r1,LSL #1]     ;286
-0000b8  9c05              LDR      r4,[sp,#0x14]         ;286
-0000ba  4421              ADD      r1,r1,r4              ;286
-0000bc  9105              STR      r1,[sp,#0x14]         ;286
-0000be  f89d1018          LDRB     r1,[sp,#0x18]         ;284
+;;;285    		{
+;;;286    			sum1 +=Ad7689_Fit_Imon1[f];
+0000b0  f89d101c          LDRB     r1,[sp,#0x1c]
+0000b4  f8301011          LDRH     r1,[r0,r1,LSL #1]
+0000b8  9b06              LDR      r3,[sp,#0x18]
+0000ba  4419              ADD      r1,r1,r3
+0000bc  9106              STR      r1,[sp,#0x18]
+0000be  f89d101c          LDRB     r1,[sp,#0x1c]         ;284
 0000c2  1c49              ADDS     r1,r1,#1              ;284
-0000c4  9106              STR      r1,[sp,#0x18]         ;284
+0000c4  9107              STR      r1,[sp,#0x1c]         ;284
                   |L4.198|
-0000c6  f89d1018          LDRB     r1,[sp,#0x18]         ;284
+0000c6  f89d101c          LDRB     r1,[sp,#0x1c]         ;284
 0000ca  291e              CMP      r1,#0x1e              ;284
 0000cc  d3f0              BCC      |L4.176|
-0000ce  9805              LDR      r0,[sp,#0x14]
-0000d0  493b              LDR      r1,|L4.448|
-0000d2  fbb0f0f3          UDIV     r0,r0,r3
-0000d6  8008              STRH     r0,[r1,#0]
-                  |L4.216|
+;;;287    		}
+;;;288    		Imon_value=sum1/30;//电源电流
+0000ce  9806              LDR      r0,[sp,#0x18]
+0000d0  211e              MOVS     r1,#0x1e
+0000d2  fbb0f0f1          UDIV     r0,r0,r1
+0000d6  4929              LDR      r1,|L4.380|
+0000d8  8008              STRH     r0,[r1,#0]
+                  |L4.218|
 ;;;289    	}
 ;;;290    	
 ;;;291    	Ad7689_Fit_PVmon[V1_cont++]=var_chV1;
-0000d8  f8bd4004          LDRH     r4,[sp,#4]
-0000dc  7910              LDRB     r0,[r2,#4]  ; V1_cont
-0000de  1c41              ADDS     r1,r0,#1
-0000e0  7111              STRB     r1,[r2,#4]
-0000e2  0041              LSLS     r1,r0,#1
-0000e4  4837              LDR      r0,|L4.452|
-0000e6  5244              STRH     r4,[r0,r1]
+0000da  f8bd3008          LDRH     r3,[sp,#8]
+0000de  78d0              LDRB     r0,[r2,#3]  ; V1_cont
+0000e0  1c41              ADDS     r1,r0,#1
+0000e2  70d1              STRB     r1,[r2,#3]
+0000e4  0041              LSLS     r1,r0,#1
+0000e6  4826              LDR      r0,|L4.384|
+0000e8  5243              STRH     r3,[r0,r1]
 ;;;292    	if(V1_cont==100)
-0000e8  7911              LDRB     r1,[r2,#4]  ; V1_cont
+0000ea  78d1              LDRB     r1,[r2,#3]  ; V1_cont
 ;;;293    	{
 ;;;294    		V1_cont=0;
 ;;;295    		sum1=0;
@@ -334,146 +334,111 @@
 ;;;298    			sum1 +=Ad7689_Fit_PVmon[f];
 ;;;299    		}
 ;;;300    		Vmon_value=sum1/100;//电源电压
-0000ea  2464              MOVS     r4,#0x64
-0000ec  2964              CMP      r1,#0x64              ;292
-0000ee  d117              BNE      |L4.288|
-0000f0  7115              STRB     r5,[r2,#4]            ;294
-0000f2  9505              STR      r5,[sp,#0x14]         ;295
-0000f4  9506              STR      r5,[sp,#0x18]         ;296
-0000f6  e00a              B        |L4.270|
-                  |L4.248|
-0000f8  f89d1018          LDRB     r1,[sp,#0x18]         ;298
-0000fc  f8301011          LDRH     r1,[r0,r1,LSL #1]     ;298
-000100  9e05              LDR      r6,[sp,#0x14]         ;298
-000102  4431              ADD      r1,r1,r6              ;298
-000104  9105              STR      r1,[sp,#0x14]         ;298
-000106  f89d1018          LDRB     r1,[sp,#0x18]         ;296
-00010a  1c49              ADDS     r1,r1,#1              ;296
-00010c  9106              STR      r1,[sp,#0x18]         ;296
-                  |L4.270|
-00010e  f89d1018          LDRB     r1,[sp,#0x18]         ;296
-000112  2964              CMP      r1,#0x64              ;296
-000114  d3f0              BCC      |L4.248|
-000116  9805              LDR      r0,[sp,#0x14]
-000118  492b              LDR      r1,|L4.456|
-00011a  fbb0f0f4          UDIV     r0,r0,r4
-00011e  8008              STRH     r0,[r1,#0]
-                  |L4.288|
+0000ec  2464              MOVS     r4,#0x64
+0000ee  2964              CMP      r1,#0x64              ;292
+0000f0  d117              BNE      |L4.290|
+0000f2  70d5              STRB     r5,[r2,#3]            ;294
+0000f4  9506              STR      r5,[sp,#0x18]         ;295
+0000f6  9507              STR      r5,[sp,#0x1c]         ;296
+0000f8  e00a              B        |L4.272|
+                  |L4.250|
+0000fa  f89d101c          LDRB     r1,[sp,#0x1c]         ;298
+0000fe  f8303011          LDRH     r3,[r0,r1,LSL #1]     ;298
+000102  9906              LDR      r1,[sp,#0x18]         ;298
+000104  4419              ADD      r1,r1,r3              ;298
+000106  9106              STR      r1,[sp,#0x18]         ;298
+000108  f89d101c          LDRB     r1,[sp,#0x1c]         ;296
+00010c  1c49              ADDS     r1,r1,#1              ;296
+00010e  9107              STR      r1,[sp,#0x1c]         ;296
+                  |L4.272|
+000110  f89d101c          LDRB     r1,[sp,#0x1c]         ;296
+000114  2964              CMP      r1,#0x64              ;296
+000116  d3f0              BCC      |L4.250|
+000118  9806              LDR      r0,[sp,#0x18]
+00011a  491a              LDR      r1,|L4.388|
+00011c  fbb0f0f4          UDIV     r0,r0,r4
+000120  8008              STRH     r0,[r1,#0]
+                  |L4.290|
 ;;;301    	}
 ;;;302    	
 ;;;303    	Ad7689_Fit_Vmon[V_cont++]=var_chV;
-000120  f8bd6008          LDRH     r6,[sp,#8]
-000124  7890              LDRB     r0,[r2,#2]  ; V_cont
-000126  1c41              ADDS     r1,r0,#1
-000128  7091              STRB     r1,[r2,#2]
-00012a  0041              LSLS     r1,r0,#1
-00012c  4821              LDR      r0,|L4.436|
-00012e  30ec              ADDS     r0,r0,#0xec
-000130  5246              STRH     r6,[r0,r1]
+000122  f8bd300c          LDRH     r3,[sp,#0xc]
+000126  7890              LDRB     r0,[r2,#2]  ; V_cont
+000128  4601              MOV      r1,r0
+00012a  1c40              ADDS     r0,r0,#1
+00012c  7090              STRB     r0,[r2,#2]
+00012e  4814              LDR      r0,|L4.384|
+000130  38c8              SUBS     r0,r0,#0xc8
+000132  f8203011          STRH     r3,[r0,r1,LSL #1]
 ;;;304    	if(V_cont==100)
-000132  7891              LDRB     r1,[r2,#2]  ; V_cont
-000134  2964              CMP      r1,#0x64
-000136  d100              BNE      |L4.314|
+000136  7891              LDRB     r1,[r2,#2]  ; V_cont
+000138  2964              CMP      r1,#0x64
+00013a  d100              BNE      |L4.318|
 ;;;305    	{
 ;;;306    		V_cont=0;
-000138  7095              STRB     r5,[r2,#2]
-                  |L4.314|
+00013c  7095              STRB     r5,[r2,#2]
+                  |L4.318|
 ;;;307    		
 ;;;308    	}
 ;;;309    	sum1=0;
-00013a  9505              STR      r5,[sp,#0x14]
+00013e  9506              STR      r5,[sp,#0x18]
 ;;;310    //		Bubble_sort( Ad7689_Fit_Vmon,100);//����Ӵ�С
 ;;;311    		for(f=0;f<100;f++)
-00013c  9506              STR      r5,[sp,#0x18]
-00013e  e00a              B        |L4.342|
-                  |L4.320|
+000140  9507              STR      r5,[sp,#0x1c]
+000142  e00a              B        |L4.346|
+                  |L4.324|
 ;;;312    		{
 ;;;313    			sum1 +=Ad7689_Fit_Vmon[f];
-000140  f89d1018          LDRB     r1,[sp,#0x18]
-000144  f8301011          LDRH     r1,[r0,r1,LSL #1]
-000148  9e05              LDR      r6,[sp,#0x14]
-00014a  4431              ADD      r1,r1,r6
-00014c  9105              STR      r1,[sp,#0x14]
-00014e  f89d1018          LDRB     r1,[sp,#0x18]         ;311
-000152  1c49              ADDS     r1,r1,#1              ;311
-000154  9106              STR      r1,[sp,#0x18]         ;311
-                  |L4.342|
-000156  f89d1018          LDRB     r1,[sp,#0x18]         ;311
-00015a  2964              CMP      r1,#0x64              ;311
-00015c  d3f0              BCC      |L4.320|
+000144  f89d101c          LDRB     r1,[sp,#0x1c]
+000148  f8301011          LDRH     r1,[r0,r1,LSL #1]
+00014c  9a06              LDR      r2,[sp,#0x18]
+00014e  4411              ADD      r1,r1,r2
+000150  9106              STR      r1,[sp,#0x18]
+000152  f89d101c          LDRB     r1,[sp,#0x1c]         ;311
+000156  1c49              ADDS     r1,r1,#1              ;311
+000158  9107              STR      r1,[sp,#0x1c]         ;311
+                  |L4.346|
+00015a  f89d101c          LDRB     r1,[sp,#0x1c]         ;311
+00015e  2964              CMP      r1,#0x64              ;311
+000160  d3f0              BCC      |L4.324|
 ;;;314    		}
 ;;;315    		Vmon1_value=sum1/100;//负载电压
-00015e  9805              LDR      r0,[sp,#0x14]
-000160  491a              LDR      r1,|L4.460|
-000162  fbb0f0f4          UDIV     r0,r0,r4
-000166  6008              STR      r0,[r1,#0]  ; Vmon1_value
+000162  9806              LDR      r0,[sp,#0x18]
+000164  4908              LDR      r1,|L4.392|
+000166  fbb0f0f4          UDIV     r0,r0,r4
+00016a  6008              STR      r0,[r1,#0]  ; Vmon1_value
 ;;;316    
-;;;317    	Ad7689_Fit_Rmon[R_cont++]=var_chR;
-000168  f8bd4000          LDRH     r4,[sp,#0]
-00016c  78d0              LDRB     r0,[r2,#3]  ; R_cont
-00016e  1c41              ADDS     r1,r0,#1
-000170  70d1              STRB     r1,[r2,#3]
-000172  0041              LSLS     r1,r0,#1
-000174  4813              LDR      r0,|L4.452|
-000176  383c              SUBS     r0,r0,#0x3c
-000178  5244              STRH     r4,[r0,r1]
-;;;318    	if(R_cont==30)
-00017a  78d1              LDRB     r1,[r2,#3]  ; R_cont
-00017c  291e              CMP      r1,#0x1e
-00017e  d117              BNE      |L4.432|
-;;;319    	{
-;;;320    		R_cont=0;
-000180  70d5              STRB     r5,[r2,#3]
-;;;321    		sum1=0;
-000182  9505              STR      r5,[sp,#0x14]
-;;;322    		for(f=0;f<30;f++)
-000184  9506              STR      r5,[sp,#0x18]
-000186  e00a              B        |L4.414|
-                  |L4.392|
-;;;323    		{
-;;;324    			sum1 +=Ad7689_Fit_Rmon[f];
-000188  f89d1018          LDRB     r1,[sp,#0x18]
-00018c  f8301011          LDRH     r1,[r0,r1,LSL #1]
-000190  9a05              LDR      r2,[sp,#0x14]
-000192  4411              ADD      r1,r1,r2
-000194  9105              STR      r1,[sp,#0x14]
-000196  f89d1018          LDRB     r1,[sp,#0x18]         ;322
-00019a  1c49              ADDS     r1,r1,#1              ;322
-00019c  9106              STR      r1,[sp,#0x18]         ;322
-                  |L4.414|
-00019e  f89d1018          LDRB     r1,[sp,#0x18]         ;322
-0001a2  291e              CMP      r1,#0x1e              ;322
-0001a4  d3f0              BCC      |L4.392|
-;;;325    		}
-;;;326    		Rmon_value=sum1/30;//内阻
-0001a6  9805              LDR      r0,[sp,#0x14]
-0001a8  4909              LDR      r1,|L4.464|
-0001aa  fbb0f0f3          UDIV     r0,r0,r3
-0001ae  8008              STRH     r0,[r1,#0]
-                  |L4.432|
-;;;327    	}
+;;;317    //	Ad7689_Fit_Rmon[R_cont++]=var_chR;
+;;;318    //	if(R_cont==30)
+;;;319    //	{
+;;;320    //		R_cont=0;
+;;;321    //		sum1=0;
+;;;322    //		for(f=0;f<30;f++)
+;;;323    //		{
+;;;324    //			sum1 +=Ad7689_Fit_Rmon[f];
+;;;325    //		}
+;;;326    //		Rmon_value=sum1/30;//内阻
+;;;327    //	}
 ;;;328    }
-0001b0  b008              ADD      sp,sp,#0x20
-0001b2  bd70              POP      {r4-r6,pc}
+00016c  b009              ADD      sp,sp,#0x24
+00016e  bd30              POP      {r4,r5,pc}
 ;;;329    
                           ENDP
 
-                  |L4.436|
+                  |L4.368|
                           DCD      ||.bss||
-                  |L4.440|
+                  |L4.372|
                           DCD      ||.data||
-                  |L4.444|
+                  |L4.376|
                           DCD      Imon1_value
-                  |L4.448|
+                  |L4.380|
                           DCD      Imon_value
-                  |L4.452|
-                          DCD      ||.bss||+0x1f0
-                  |L4.456|
+                  |L4.384|
+                          DCD      ||.bss||+0x1b4
+                  |L4.388|
                           DCD      Vmon_value
-                  |L4.460|
+                  |L4.392|
                           DCD      Vmon1_value
-                  |L4.464|
-                          DCD      Rmon_value
 
                           AREA ||i.AD7689_TransferByte||, CODE, READONLY, ALIGN=2
 
@@ -971,8 +936,6 @@
                           %        100
                   Ad7689_Fit_Vmon
                           %        200
-                  Ad7689_Fit_Rmon
-                          %        60
                   Ad7689_Fit_PVmon
                           %        200
 
@@ -982,6 +945,12 @@
                   DMA_Buffer
                           %        16
 
+                          AREA ||area_number.15||, DATA, NOINIT, ALIGN=1
+
+                          EXPORTAS ||area_number.15||, ||.bss||
+                  Ad7689_Fit_Rmon
+                          %        60
+
                           AREA ||.data||, DATA, ALIGN=0
 
                   I_cont
@@ -990,10 +959,8 @@
 000001  00                DCB      0x00
                   V_cont
 000002  00                DCB      0x00
-                  R_cont
-000003  00                DCB      0x00
                   V1_cont
-000004  00                DCB      0x00
+000003  00                DCB      0x00
 
 ;*** Start embedded assembler ***
 

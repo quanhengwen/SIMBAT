@@ -48,16 +48,17 @@ float pow_cutoffc;
 #define ID_TEXT_125         (GUI_ID_USER + 0x10C)
 #define ID_TEXT_144         (GUI_ID_USER + 0x012E)
 #define ID_TEXT_159         (GUI_ID_USER + 0x013A)
+#define ID_TEXT_161         (GUI_ID_USER + 0x013C)
 #define ID_TimerTime2    3
 
 static const GUI_WIDGET_CREATE_INFO _aDialogCreate1[] = {
     { WINDOW_CreateIndirect, "Window", ID_WINDOW_0, 0, 0, 480, 272, 0, 0x0, 0 },
 //    { BUTTON_CreateIndirect, "Button", ID_BUTTON_0, 3, 226, 77, 45, 0, 0x0, 0 },
-    { BUTTON_CreateIndirect, "Button", ID_BUTTON_1, 83, 226, 77, 45, 0, 0x0, 0 },
+//    { BUTTON_CreateIndirect, "Button", ID_BUTTON_1, 83, 226, 77, 45, 0, 0x0, 0 },
     { BUTTON_CreateIndirect, "Button", ID_BUTTON_2, 163, 226, 77, 45, 0, 0x0, 0 },
     { BUTTON_CreateIndirect, "Button", ID_BUTTON_3, 243, 226, 77, 45, 0, 0x0, 0 },
-    { BUTTON_CreateIndirect, "Button", ID_BUTTON_4, 323, 226, 77, 45, 0, 0x0, 0 },
-    { BUTTON_CreateIndirect, "Button", ID_BUTTON_5, 403, 226, 77, 45, 0, 0x0, 0 },
+//    { BUTTON_CreateIndirect, "Button", ID_BUTTON_4, 323, 226, 77, 45, 0, 0x0, 0 },
+//    { BUTTON_CreateIndirect, "Button", ID_BUTTON_5, 403, 226, 77, 45, 0, 0x0, 0 },
     { TEXT_CreateIndirect,   "Text",   ID_TEXT_9,   28, 50, 64, 32, 0, 0x64, 0 },
     { TEXT_CreateIndirect,   "Text",   ID_TEXT_10,  28, 120, 64, 32, 0, 0x64, 0 },
     { TEXT_CreateIndirect,   "Text",   ID_TEXT_15,  240, 50, 32, 30, 0, 0x0, 0 },
@@ -73,6 +74,7 @@ static const GUI_WIDGET_CREATE_INFO _aDialogCreate1[] = {
     { TEXT_CreateIndirect,   "Text",   ID_TEXT_125, 300, 2, 80, 20, 0, 0x0, 0 },
     { TEXT_CreateIndirect,   "Text",   ID_TEXT_144, 370, 150, 65, 20, 0, 0x0, 0 },
 	{ TEXT_CreateIndirect,   "Text",   ID_TEXT_159, 290, 150, 80, 20, 0, 0x0, 0 },
+	{ TEXT_CreateIndirect, "Text", ID_TEXT_161, 380, 8, 20, 15, 0, 0x0, 0 },
   // USER START (Optionally insert additional widgets)
   // USER END
 };
@@ -131,7 +133,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
         GUI_DispStringAt("°",342, 2);
         GUI_SetFont(&GUI_Font24_1);
         GUI_DispStringAt("C",350, 2);
-        DrawLock();
+//        DrawLock();
 //        GUI_SetColor(GUI_WHITE);
 //        GUI_SetFont(&GUI_Fontset_font);
 //        GUI_DispStringAt("过充电压",290, 150);
@@ -140,14 +142,22 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 	case WM_TIMER://定时模块消息
 	if(WM_GetTimerId(pMsg->Data.v) == ID_TimerTime2)
 	{
-        lockstat2 = lockstat1;
-        lockstat1 = lock;
-        if(lockstat1 != lockstat2)
-        {
-            WM_InvalidateWindow(hWinWind);
-        }
+//        lockstat2 = lockstat1;
+//        lockstat1 = lock;
+//        if(lockstat1 != lockstat2)
+//        {
+//            WM_InvalidateWindow(hWinWind);
+//        }
 //         if(clear_flag2 == 1)
 //         {
+		if(lock == 1)
+		{
+			hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_161);
+			TEXT_SetText(hItem,"锁");
+		}else{
+			hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_161);
+			TEXT_SetText(hItem,"");
+		}
             if(DISS_POW_Voltage < 0.1)
             {
                 hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_86);
@@ -192,7 +202,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
            if(pow_cutoffc != 0 && DISS_POW_Current < pow_cutoffc && cdelay > 20)
            {
               GPIO_ResetBits(GPIOC,GPIO_Pin_1);
-              GPIO_SetBits(GPIOC,GPIO_Pin_13);
+              //GPIO_SetBits(GPIOC,GPIO_Pin_13);
               mode_sw = 0;
               pow_sw = pow_off;
               cdelay = 0;
@@ -238,11 +248,17 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
     //
     // Initialization of 'Button'
     //
-        hItem = WM_GetDialogItem(pMsg->hWin, ID_BUTTON_1);
-//		BUTTON_SetTextColor(hItem,0,GUI_BLACK);//设置字体颜色为黑色
-		BUTTON_SetFont      (hItem,    &GUI_FontHZ16);//设定按钮文本字体
-		GUI_UC_SetEncodeUTF8();
-        BUTTON_SetText(hItem, "内阻测试");
+		
+		hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_161);
+		TEXT_SetTextColor(hItem, GUI_RED);//设置字体颜色
+		TEXT_SetFont(hItem,&GUI_FontHZ14);
+		TEXT_SetText(hItem,"");
+		
+//        hItem = WM_GetDialogItem(pMsg->hWin, ID_BUTTON_1);
+////		BUTTON_SetTextColor(hItem,0,GUI_BLACK);//设置字体颜色为黑色
+//		BUTTON_SetFont      (hItem,    &GUI_FontHZ16);//设定按钮文本字体
+//		GUI_UC_SetEncodeUTF8();
+//        BUTTON_SetText(hItem, "内阻测试");
     //
     // Initialization of 'Button'
     //
@@ -263,19 +279,19 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
     //
     // Initialization of 'Button'
     //
-        hItem = WM_GetDialogItem(pMsg->hWin, ID_BUTTON_4);
-//        BUTTON_SetTextColor(hItem,0,GUI_BLACK);//设置字体颜色为黑色
-		BUTTON_SetFont      (hItem,    &GUI_FontHZ16);//设定按钮文本字体
-		GUI_UC_SetEncodeUTF8();
-        BUTTON_SetText(hItem, "充放电");
-    //
-    // Initialization of 'Button'
-    //
-        hItem = WM_GetDialogItem(pMsg->hWin, ID_BUTTON_5);
-//        BUTTON_SetTextColor(hItem,0,GUI_BLACK);//设置字体颜色为黑色
-		BUTTON_SetFont      (hItem,    &GUI_FontHZ16);//设定按钮文本字体
-		GUI_UC_SetEncodeUTF8();
-        BUTTON_SetText(hItem, "曲线");
+//        hItem = WM_GetDialogItem(pMsg->hWin, ID_BUTTON_4);
+////        BUTTON_SetTextColor(hItem,0,GUI_BLACK);//设置字体颜色为黑色
+//		BUTTON_SetFont      (hItem,    &GUI_FontHZ16);//设定按钮文本字体
+//		GUI_UC_SetEncodeUTF8();
+//        BUTTON_SetText(hItem, "充放电");
+//    //
+//    // Initialization of 'Button'
+//    //
+//        hItem = WM_GetDialogItem(pMsg->hWin, ID_BUTTON_5);
+////        BUTTON_SetTextColor(hItem,0,GUI_BLACK);//设置字体颜色为黑色
+//		BUTTON_SetFont      (hItem,    &GUI_FontHZ16);//设定按钮文本字体
+//		GUI_UC_SetEncodeUTF8();
+//        BUTTON_SetText(hItem, "曲线");
 		
 		
 		hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_9);
@@ -337,21 +353,21 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
         
         hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_86);
         sprintf(buf,"%.2f",0.00);
-		TEXT_SetTextColor(hItem, GUI_GREEN);//设置字体颜色
+		TEXT_SetTextColor(hItem, GUI_YELLOW);//设置字体颜色
         TEXT_SetFont(hItem,&GUI_FontD24x32);//设定文本字体
 		GUI_UC_SetEncodeUTF8();        
 		TEXT_SetText(hItem,buf);
         
         hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_87);
         sprintf(buf,"%.3f",0.000);
-		TEXT_SetTextColor(hItem, GUI_GREEN);//设置字体颜色
+		TEXT_SetTextColor(hItem, GUI_YELLOW);//设置字体颜色
         TEXT_SetFont(hItem,&GUI_FontD24x32);//设定文本字体
 		GUI_UC_SetEncodeUTF8();        
 		TEXT_SetText(hItem,buf);
         
         hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_115);
         sprintf(buf,"%05d",0);
-        TEXT_SetTextColor(hItem, GUI_GREEN);//设置字体颜色
+        TEXT_SetTextColor(hItem, GUI_YELLOW);//设置字体颜色
         TEXT_SetFont(hItem,&GUI_FontD24x32);//设定文本字体
         GUI_UC_SetEncodeUTF8();        
         TEXT_SetText(hItem,buf);
@@ -480,7 +496,7 @@ WM_HWIN CreateWindow(void) {
 	  GPIO_SetBits(GPIOA,GPIO_Pin_15);//µç×Ó¸ºÔØOFF
 	  GPIO_ResetBits(GPIOC,GPIO_Pin_1);//¹Ø±ÕµçÔ´Êä³ö
 	  Delay_ms(500);
-	  GPIO_SetBits(GPIOC,GPIO_Pin_13);//¹Ø±ÕµçÔ´Êä³ö¼ÌµçÆ
+	  //GPIO_SetBits(GPIOC,GPIO_Pin_13);//¹Ø±ÕµçÔ´Êä³ö¼ÌµçÆ
 //      IO_OFF();
 	  
   }
@@ -640,6 +656,7 @@ void MENU_SET(void)
 				pow_v = 6200;
 			}
             SET_Voltage = pow_v;
+			load_v = pow_v * 10;
             if(SET_Voltage/100 * SET_Current/1000 > 250)
             {
                 SET_Voltage = 0;

@@ -52034,14 +52034,18 @@ X	WM_SetDesktopColor(0x00FF0000);
 N	GUI_Clear();//清屏
 N	WM_SetCreateFlags(WM_CF_MEMDEV);
 X	WM_SetCreateFlags((1UL << 2));
+N	
 N	PROGBAR_SetDefaultSkin(PROGBAR_SKIN_FLEX);
 X	PROGBAR_SetDefaultSkin(PROGBAR_DrawSkinFlex);
 N	FRAMEWIN_SetDefaultSkin(FRAMEWIN_SKIN_FLEX);
 X	FRAMEWIN_SetDefaultSkin(FRAMEWIN_DrawSkinFlex);
 N	PROGBAR_SetDefaultSkin(PROGBAR_SKIN_FLEX);
 X	PROGBAR_SetDefaultSkin(PROGBAR_DrawSkinFlex);
-N	BUTTON_SetDefaultSkin(BUTTON_SKIN_FLEX);
-X	BUTTON_SetDefaultSkin(BUTTON_DrawSkinFlex);
+N	BUTTON_SetDefaultBkColor(GUI_LIGHTBLUE,BUTTON_CI_UNPRESSED);
+X	BUTTON_SetDefaultBkColor(0x00FF8080,0);
+N	BUTTON_SetDefaultBkColor(GUI_LIGHTGREEN,BUTTON_CI_PRESSED);
+X	BUTTON_SetDefaultBkColor(0x0080FF80,1);
+N//	BUTTON_SetDefaultSkin(BUTTON_SKIN_FLEX);
 N	CHECKBOX_SetDefaultSkin(CHECKBOX_SKIN_FLEX);
 X	CHECKBOX_SetDefaultSkin(CHECKBOX_DrawSkinFlex);
 N	DROPDOWN_SetDefaultSkin(DROPDOWN_SKIN_FLEX);
@@ -52054,18 +52058,19 @@ N	HEADER_SetDefaultSkin(HEADER_SKIN_FLEX);
 X	HEADER_SetDefaultSkin(HEADER_DrawSkinFlex);
 N	RADIO_SetDefaultSkin(RADIO_SKIN_FLEX);
 X	RADIO_SetDefaultSkin(RADIO_DrawSkinFlex);
-N	CreateR();//开机进入内阻测试界面
-N	flag_Load_CC=1;//开机负载默认进入CC模式
-X	(flagD . bit7)=1;
-N	GPIO_SetBits(GPIOC,GPIO_Pin_10);//CC
-X	GPIO_SetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0800)),((uint16_t)0x0400));
+N//	CreateR();//开机进入内阻测试界面
+N	flag_Load_CC=0;//开机负载默认进入CV模式
+X	(flagD . bit7)=0;
+N	GPIO_ResetBits(GPIOC,GPIO_Pin_10);//CV
+X	GPIO_ResetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0800)),((uint16_t)0x0400));
 N	GPIO_SetBits(GPIOA,GPIO_Pin_15);//OFF
 X	GPIO_SetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0000)),((uint16_t)0x8000));
 N	GPIO_SetBits(GPIOA,GPIO_Pin_11);//电流切换为高档
 X	GPIO_SetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0000)),((uint16_t)0x0800));
 N	Flag_Swtich_ON=0;
 X	(flagA . bit6)=0;
-N//    CreateSTARTER();
+W "..\STemWinLibrary522\emWinTask\MainTask.c" 88 5 function "CreateSTARTER" declared implicitly
+N    CreateSTARTER();
 N////	CreateR();//开机进入内阻测试界面
 N//// 	flag_Load_CC=1;//开机负载默认进入CC模式
 N//// 	GPIO_ResetBits(GPIOC,GPIO_Pin_10);//CC

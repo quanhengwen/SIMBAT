@@ -77,7 +77,7 @@
 ;;;92                 starter = 1;
 ;;;93             }else{
 ;;;94                 WM_DeleteWindow(hWinstarter);
-;;;95                 CreateR();
+;;;95                 CreateWindow2();
 ;;;96             }
 ;;;97     	}
 ;;;98     	break;
@@ -118,7 +118,7 @@
 000048  6840              LDR      r0,[r0,#4]            ;94  ; hWinstarter
 00004a  f7fffffe          BL       WM_DeleteWindow
 00004e  e8bd4010          POP      {r4,lr}               ;95
-000052  f7ffbffe          B.W      CreateR
+000052  f7ffbffe          B.W      CreateWindow2
                   |L2.86|
 000056  2101              MOVS     r1,#1                 ;92
 000058  7001              STRB     r1,[r0,#0]            ;92

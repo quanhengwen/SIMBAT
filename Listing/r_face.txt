@@ -1526,21 +1526,21 @@
 ;;;2732               SET_Current_Laod = set_init_c;
 ;;;2733               hItem = WM_GetDialogItem(hWinR, ID_TEXT_47);
 ;;;2734               change_sbs_c = (float)set_sbs_c/1000;
-00000a  eddf9a88          VLDR     s19,|L4.556|
+00000a  eddf9a85          VLDR     s19,|L4.544|
 ;;;2735               sprintf(sbs_c,"%.3f",change_sbs_c);
 ;;;2736               TEXT_SetText(hItem,sbs_c);
 ;;;2737               GPIO_SetBits(GPIOA,GPIO_Pin_15);//电子负载OFF   
 ;;;2738               t_onoff = 0;
-00000e  4f88              LDR      r7,|L4.560|
+00000e  4f85              LDR      r7,|L4.548|
 ;;;2739               stepcount = 0;
 ;;;2740               oct_sw = oct_off;
 ;;;2741               oc_test = 0;
 ;;;2742               finish = 1;
 ;;;2743               crec1 = 0;
-000010  ed9f9a88          VLDR     s18,|L4.564|
-000014  f8df9220          LDR      r9,|L4.568|
+000010  ed9f9a85          VLDR     s18,|L4.552|
+000014  f8df9214          LDR      r9,|L4.556|
 000018  2601              MOVS     r6,#1                 ;2742
-00001a  4c88              LDR      r4,|L4.572|
+00001a  4c85              LDR      r4,|L4.560|
 ;;;2744               crec2 = 0;
 ;;;2745               rpow = 1;
 ;;;2746   			step =5;
@@ -1550,11 +1550,11 @@
 000026  ed94aa0d          VLDR     s20,[r4,#0x34]        ;2726
 00002a  ee1a0a10          VMOV     r0,s20                ;2726
 00002e  f7fffffe          BL       __aeabi_f2d
-000032  ed9f1b83          VLDR     d1,|L4.576|
+000032  ed9f1b80          VLDR     d1,|L4.564|
 000036  ec532b11          VMOV     r2,r3,d1              ;2726
 00003a  f7fffffe          BL       __aeabi_dmul
 00003e  ec410b18          VMOV     d8,r0,r1              ;2726
-000042  4881              LDR      r0,|L4.584|
+000042  487e              LDR      r0,|L4.572|
 000044  ed900a00          VLDR     s0,[r0,#0]            ;2726
 000048  ee3a0a40          VSUB.F32 s0,s20,s0             ;2726
 00004c  ee100a10          VMOV     r0,s0                 ;2726
@@ -1589,7 +1589,7 @@
 ;;;2764           {
 ;;;2765   			
 ;;;2766   			GPIO_ResetBits(GPIOC,GPIO_Pin_1);//关闭电源输出
-;;;2767   			GPIO_SetBits(GPIOC,GPIO_Pin_13);//关闭电源输出继电器
+;;;2767   			//GPIO_SetBits(GPIOC,GPIO_Pin_13);//关闭电源输出继电器
 ;;;2768   //                GPIO_ResetBits(GPIOC,GPIO_Pin_12);//CC
 ;;;2769   			flag_Load_CC = 1;
 ;;;2770   			GPIO_SetBits(GPIOC,GPIO_Pin_10);//CC
@@ -1626,7 +1626,7 @@
 000074  ed940a0f          VLDR     s0,[r4,#0x3c]
 000078  ed840a10          VSTR     s0,[r4,#0x40]
 ;;;2797               crec1 = DISS_Current;
-00007c  4873              LDR      r0,|L4.588|
+00007c  4870              LDR      r0,|L4.576|
 00007e  edd00a00          VLDR     s1,[r0,#0]
 000082  edc40a0f          VSTR     s1,[r4,#0x3c]
 ;;;2798               if(crec1 < crec2)
@@ -1638,7 +1638,7 @@
 000090  ed840a0c          VSTR     s0,[r4,#0x30]
 ;;;2801                   GPIO_SetBits(GPIOA,GPIO_Pin_15);//电子负载OFF   
 000094  4659              MOV      r1,r11
-000096  486e              LDR      r0,|L4.592|
+000096  486b              LDR      r0,|L4.580|
 000098  f7fffffe          BL       GPIO_SetBits
 ;;;2802                   t_onoff = 0;
 00009c  703d              STRB     r5,[r7,#0]
@@ -1675,7 +1675,7 @@
 0000c8  ed940a10          VLDR     s0,[r4,#0x40]         ;2749
 0000cc  ed840a0c          VSTR     s0,[r4,#0x30]         ;2749
 0000d0  4659              MOV      r1,r11                ;2750
-0000d2  485f              LDR      r0,|L4.592|
+0000d2  485c              LDR      r0,|L4.580|
 0000d4  f7fffffe          BL       GPIO_SetBits
 0000d8  703d              STRB     r5,[r7,#0]            ;2751
 0000da  82e5              STRH     r5,[r4,#0x16]         ;2752
@@ -1704,7 +1704,7 @@
 00011e  ee100a10          VMOV     r0,s0                 ;2735
 000122  f7fffffe          BL       __aeabi_f2d
 000126  ec410b10          VMOV     d0,r0,r1              ;2735
-00012a  a14a              ADR      r1,|L4.596|
+00012a  a147              ADR      r1,|L4.584|
 00012c  ec532b10          VMOV     r2,r3,d0              ;2735
 000130  a801              ADD      r0,sp,#4              ;2735
 000132  f7fffffe          BL       __2sprintf
@@ -1712,7 +1712,7 @@
 000138  4650              MOV      r0,r10                ;2736
 00013a  f7fffffe          BL       TEXT_SetText
 00013e  4659              MOV      r1,r11                ;2737
-000140  4843              LDR      r0,|L4.592|
+000140  4840              LDR      r0,|L4.580|
 000142  f7fffffe          BL       GPIO_SetBits
 000146  703d              STRB     r5,[r7,#0]            ;2738
 000148  82e5              STRH     r5,[r4,#0x16]         ;2739
@@ -1726,103 +1726,99 @@
 00015e  e7a9              B        |L4.180|
 000160  e7ff              B        |L4.354|
                   |L4.354|
-000162  f8dfa0f8          LDR      r10,|L4.604|
+000162  f8dfa0ec          LDR      r10,|L4.592|
 000166  2102              MOVS     r1,#2                 ;2766
 000168  4650              MOV      r0,r10                ;2766
 00016a  f7fffffe          BL       GPIO_ResetBits
-00016e  f44f5100          MOV      r1,#0x2000            ;2767
-000172  4650              MOV      r0,r10                ;2767
-000174  f7fffffe          BL       GPIO_SetBits
-000178  4839              LDR      r0,|L4.608|
-00017a  6801              LDR      r1,[r0,#0]            ;2769  ; flagD
-00017c  f0410180          ORR      r1,r1,#0x80           ;2769
-000180  6001              STR      r1,[r0,#0]            ;2769  ; flagD
-000182  f44f6180          MOV      r1,#0x400             ;2770
-000186  4650              MOV      r0,r10                ;2770
-000188  f7fffffe          BL       GPIO_SetBits
-00018c  f8dfb0c0          LDR      r11,|L4.592|
-000190  f44f4100          MOV      r1,#0x8000            ;2771
-000194  4658              MOV      r0,r11                ;2771
-000196  f7fffffe          BL       GPIO_ResetBits
-00019a  4832              LDR      r0,|L4.612|
-00019c  7006              STRB     r6,[r0,#0]            ;2772
-00019e  f8d90010          LDR      r0,[r9,#0x10]         ;2773  ; Run_Control
-0001a2  f8d9105c          LDR      r1,[r9,#0x5c]         ;2773  ; Run_Control
-0001a6  4408              ADD      r0,r0,r1              ;2773
-0001a8  f8c90010          STR      r0,[r9,#0x10]         ;2773  ; Run_Control
-0001ac  edd40a0f          VLDR     s1,[r4,#0x3c]         ;2775
-0001b0  ed940a10          VLDR     s0,[r4,#0x40]         ;2775
-0001b4  eef40ac0          VCMPE.F32 s1,s0                 ;2775
-0001b8  eef1fa10          VMRS     APSR_nzcv,FPSCR       ;2775
-0001bc  d298              BCS      |L4.240|
-0001be  ed840a0c          VSTR     s0,[r4,#0x30]         ;2777
-0001c2  f8d90058          LDR      r0,[r9,#0x58]         ;2778  ; Run_Control
-0001c6  f8c90010          STR      r0,[r9,#0x10]         ;2778  ; Run_Control
-0001ca  f640016c          MOV      r1,#0x86c             ;2779
-0001ce  6a60              LDR      r0,[r4,#0x24]         ;2779  ; hWinR
-0001d0  f7fffffe          BL       WM_GetDialogItem
-0001d4  4682              MOV      r10,r0                ;2779
-0001d6  f8d9005c          LDR      r0,[r9,#0x5c]         ;2780  ; Run_Control
-0001da  ee000a10          VMOV     s0,r0                 ;2780
-0001de  eef80a40          VCVT.F32.U32 s1,s0                 ;2780
-0001e2  ee800aa9          VDIV.F32 s0,s1,s19             ;2780
-0001e6  ee100a10          VMOV     r0,s0                 ;2781
-0001ea  f7fffffe          BL       __aeabi_f2d
-0001ee  ec410b10          VMOV     d0,r0,r1              ;2781
-0001f2  a118              ADR      r1,|L4.596|
-0001f4  ec532b10          VMOV     r2,r3,d0              ;2781
-0001f8  a801              ADD      r0,sp,#4              ;2781
-0001fa  f7fffffe          BL       __2sprintf
-0001fe  a901              ADD      r1,sp,#4              ;2782
-000200  4650              MOV      r0,r10                ;2782
-000202  f7fffffe          BL       TEXT_SetText
-000206  f44f4100          MOV      r1,#0x8000            ;2783
-00020a  4658              MOV      r0,r11                ;2783
-00020c  f7fffffe          BL       GPIO_SetBits
-000210  703d              STRB     r5,[r7,#0]            ;2784
-000212  82e5              STRH     r5,[r4,#0x16]         ;2785
-000214  7265              STRB     r5,[r4,#9]            ;2786
-000216  7226              STRB     r6,[r4,#8]            ;2787
-000218  ed849a0f          VSTR     s18,[r4,#0x3c]        ;2788
-00021c  ed849a10          VSTR     s18,[r4,#0x40]        ;2789
-000220  72a5              STRB     r5,[r4,#0xa]          ;2790
-000222  73a6              STRB     r6,[r4,#0xe]          ;2791
-000224  f8848010          STRB     r8,[r4,#0x10]         ;2792
-000228  e744              B        |L4.180|
+00016e  4839              LDR      r0,|L4.596|
+000170  6801              LDR      r1,[r0,#0]            ;2769  ; flagD
+000172  f0410180          ORR      r1,r1,#0x80           ;2769
+000176  6001              STR      r1,[r0,#0]            ;2769  ; flagD
+000178  f44f6180          MOV      r1,#0x400             ;2770
+00017c  4650              MOV      r0,r10                ;2770
+00017e  f7fffffe          BL       GPIO_SetBits
+000182  f8dfb0c0          LDR      r11,|L4.580|
+000186  f44f4100          MOV      r1,#0x8000            ;2771
+00018a  4658              MOV      r0,r11                ;2771
+00018c  f7fffffe          BL       GPIO_ResetBits
+000190  4831              LDR      r0,|L4.600|
+000192  7006              STRB     r6,[r0,#0]            ;2772
+000194  f8d90010          LDR      r0,[r9,#0x10]         ;2773  ; Run_Control
+000198  f8d9105c          LDR      r1,[r9,#0x5c]         ;2773  ; Run_Control
+00019c  4408              ADD      r0,r0,r1              ;2773
+00019e  f8c90010          STR      r0,[r9,#0x10]         ;2773  ; Run_Control
+0001a2  edd40a0f          VLDR     s1,[r4,#0x3c]         ;2775
+0001a6  ed940a10          VLDR     s0,[r4,#0x40]         ;2775
+0001aa  eef40ac0          VCMPE.F32 s1,s0                 ;2775
+0001ae  eef1fa10          VMRS     APSR_nzcv,FPSCR       ;2775
+0001b2  d29d              BCS      |L4.240|
+0001b4  ed840a0c          VSTR     s0,[r4,#0x30]         ;2777
+0001b8  f8d90058          LDR      r0,[r9,#0x58]         ;2778  ; Run_Control
+0001bc  f8c90010          STR      r0,[r9,#0x10]         ;2778  ; Run_Control
+0001c0  f640016c          MOV      r1,#0x86c             ;2779
+0001c4  6a60              LDR      r0,[r4,#0x24]         ;2779  ; hWinR
+0001c6  f7fffffe          BL       WM_GetDialogItem
+0001ca  4682              MOV      r10,r0                ;2779
+0001cc  f8d9005c          LDR      r0,[r9,#0x5c]         ;2780  ; Run_Control
+0001d0  ee000a10          VMOV     s0,r0                 ;2780
+0001d4  eef80a40          VCVT.F32.U32 s1,s0                 ;2780
+0001d8  ee800aa9          VDIV.F32 s0,s1,s19             ;2780
+0001dc  ee100a10          VMOV     r0,s0                 ;2781
+0001e0  f7fffffe          BL       __aeabi_f2d
+0001e4  ec410b10          VMOV     d0,r0,r1              ;2781
+0001e8  a117              ADR      r1,|L4.584|
+0001ea  ec532b10          VMOV     r2,r3,d0              ;2781
+0001ee  a801              ADD      r0,sp,#4              ;2781
+0001f0  f7fffffe          BL       __2sprintf
+0001f4  a901              ADD      r1,sp,#4              ;2782
+0001f6  4650              MOV      r0,r10                ;2782
+0001f8  f7fffffe          BL       TEXT_SetText
+0001fc  f44f4100          MOV      r1,#0x8000            ;2783
+000200  4658              MOV      r0,r11                ;2783
+000202  f7fffffe          BL       GPIO_SetBits
+000206  703d              STRB     r5,[r7,#0]            ;2784
+000208  82e5              STRH     r5,[r4,#0x16]         ;2785
+00020a  7265              STRB     r5,[r4,#9]            ;2786
+00020c  7226              STRB     r6,[r4,#8]            ;2787
+00020e  ed849a0f          VSTR     s18,[r4,#0x3c]        ;2788
+000212  ed849a10          VSTR     s18,[r4,#0x40]        ;2789
+000216  72a5              STRB     r5,[r4,#0xa]          ;2790
+000218  73a6              STRB     r6,[r4,#0xe]          ;2791
+00021a  f8848010          STRB     r8,[r4,#0x10]         ;2792
+00021e  e749              B        |L4.180|
 ;;;2815   
                           ENDP
 
-00022a  0000              DCW      0x0000
-                  |L4.556|
-00022c  447a0000          DCFS     0x447a0000 ; 1000
-                  |L4.560|
+                  |L4.544|
+000220  447a0000          DCFS     0x447a0000 ; 1000
+                  |L4.548|
                           DCD      t_onoff
-                  |L4.564|
-000234  00000000          DCFS     0x00000000 ; 0
-                  |L4.568|
+                  |L4.552|
+000228  00000000          DCFS     0x00000000 ; 0
+                  |L4.556|
                           DCD      Run_Control
-                  |L4.572|
+                  |L4.560|
                           DCD      ||.data||
-                  |L4.576|
-000240  cccccccd          DCFD     0x3feccccccccccccd ; 0.90000000000000002
-000244  3feccccc
-                  |L4.584|
+                  |L4.564|
+000234  cccccccd          DCFD     0x3feccccccccccccd ; 0.90000000000000002
+000238  3feccccc
+                  |L4.572|
                           DCD      DISS_Voltage
-                  |L4.588|
+                  |L4.576|
                           DCD      DISS_Current
-                  |L4.592|
+                  |L4.580|
                           DCD      0x40020000
-                  |L4.596|
-000254  252e3366          DCB      "%.3f",0
-000258  00      
-000259  00                DCB      0
-00025a  00                DCB      0
-00025b  00                DCB      0
-                  |L4.604|
+                  |L4.584|
+000248  252e3366          DCB      "%.3f",0
+00024c  00      
+00024d  00                DCB      0
+00024e  00                DCB      0
+00024f  00                DCB      0
+                  |L4.592|
                           DCD      0x40020800
-                  |L4.608|
+                  |L4.596|
                           DCD      flagD
-                  |L4.612|
+                  |L4.600|
                           DCD      ocf
 
                           AREA ||i.OC_CHECK||, CODE, READONLY, ALIGN=2

@@ -314,17 +314,17 @@ void AD7689_Scan_CH(void)
 		}
 		Vmon1_value=sum1/100;//负载电压
 
-	Ad7689_Fit_Rmon[R_cont++]=var_chR;
-	if(R_cont==30)
-	{
-		R_cont=0;
-		sum1=0;
-		for(f=0;f<30;f++)
-		{
-			sum1 +=Ad7689_Fit_Rmon[f];
-		}
-		Rmon_value=sum1/30;//内阻
-	}
+//	Ad7689_Fit_Rmon[R_cont++]=var_chR;
+//	if(R_cont==30)
+//	{
+//		R_cont=0;
+//		sum1=0;
+//		for(f=0;f<30;f++)
+//		{
+//			sum1 +=Ad7689_Fit_Rmon[f];
+//		}
+//		Rmon_value=sum1/30;//内阻
+//	}
 }
 
 /*

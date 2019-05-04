@@ -90,11 +90,11 @@ vu8 test_mode;
 static const GUI_WIDGET_CREATE_INFO _aDialogCreate5[] = {
   { WINDOW_CreateIndirect, "SYSSET", ID_WINDOW_6, 0, 0, 480, 272, 0, 0x0, 0 },
 //   { BUTTON_CreateIndirect, "Button", ID_BUTTON_30, 3, 226, 77, 45, 0, 0x0, 0 },
-  { BUTTON_CreateIndirect, "Button", ID_BUTTON_31, 83, 226, 77, 45, 0, 0x0, 0 },
+//  { BUTTON_CreateIndirect, "Button", ID_BUTTON_31, 83, 226, 77, 45, 0, 0x0, 0 },
   { BUTTON_CreateIndirect, "Button", ID_BUTTON_32, 163, 226, 77, 45, 0, 0x0, 0 },
   { BUTTON_CreateIndirect, "Button", ID_BUTTON_33, 243, 226, 77, 45, 0, 0x0, 0 },
-  { BUTTON_CreateIndirect, "Button", ID_BUTTON_34, 323, 226, 77, 45, 0, 0x0, 0 },
-  { BUTTON_CreateIndirect, "Button", ID_BUTTON_35, 403, 226, 77, 45, 0, 0x0, 0 },
+//  { BUTTON_CreateIndirect, "Button", ID_BUTTON_34, 323, 226, 77, 45, 0, 0x0, 0 },
+//  { BUTTON_CreateIndirect, "Button", ID_BUTTON_35, 403, 226, 77, 45, 0, 0x0, 0 },
   { TEXT_CreateIndirect, "Text", ID_TEXT_21, 30, 50, 80, 20, 0, 0x0, 0 },
   { TEXT_CreateIndirect, "Text", ID_TEXT_22, 30, 75, 80, 20, 0, 0x0, 0 },
   { TEXT_CreateIndirect, "Text", ID_TEXT_23, 30, 100, 80, 20, 0, 0x0, 0 },
@@ -203,18 +203,18 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
     GUI_DispStringAt("°",342, 2);
     GUI_SetFont(&GUI_Font24_1);
     GUI_DispStringAt("C",350, 2);
-    DrawLock();
+//    DrawLock();
     
 	break;
 	case WM_TIMER://֨ʱģࠩлϢ
 	if(WM_GetTimerId(pMsg->Data.v) == ID_TimerTime5)
 	{
-        lockstat2 = lockstat1;
-        lockstat1 = lock; 
-        if(lockstat1 != lockstat2)
-        {
-            WM_InvalidateWindow(hWinset);
-        }
+//        lockstat2 = lockstat1;
+//        lockstat1 = lock; 
+//        if(lockstat1 != lockstat2)
+//        {
+//            WM_InvalidateWindow(hWinset);
+//        }
         
         hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_129);       
         sprintf(buf,"%.1f",temp);
@@ -244,11 +244,11 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 // 		BUTTON_SetText(hItem,"充放电");
 	
 	
-		hItem = WM_GetDialogItem(pMsg->hWin, ID_BUTTON_31);
-//		BUTTON_SetTextColor(hItem,0,GUI_BLACK);//ʨ׃ؖͥҕɫΪۚɫ
-		BUTTON_SetFont      (hItem,    &GUI_FontHZ16);//ʨ֨дťτѾؖͥ
-		GUI_UC_SetEncodeUTF8();
-		BUTTON_SetText(hItem,"内阻测试");
+//		hItem = WM_GetDialogItem(pMsg->hWin, ID_BUTTON_31);
+////		BUTTON_SetTextColor(hItem,0,GUI_BLACK);//ʨ׃ؖͥҕɫΪۚɫ
+//		BUTTON_SetFont      (hItem,    &GUI_FontHZ16);//ʨ֨дťτѾؖͥ
+//		GUI_UC_SetEncodeUTF8();
+//		BUTTON_SetText(hItem,"内阻测试");
 	
 		hItem = WM_GetDialogItem(pMsg->hWin, ID_BUTTON_32);
 //		BUTTON_SetTextColor(hItem,0,GUI_BLACK);//ʨ׃ؖͥҕɫΪۚɫ
@@ -262,17 +262,17 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 		GUI_UC_SetEncodeUTF8();
 		BUTTON_SetText(hItem,"程控电源");
 		
-		hItem = WM_GetDialogItem(pMsg->hWin, ID_BUTTON_34);
-//		BUTTON_SetTextColor(hItem,0,GUI_BLACK);//ʨ׃ؖͥҕɫΪۚɫ
-		BUTTON_SetFont      (hItem,    &GUI_FontHZ16);//ʨ֨дťτѾؖͥ
-		GUI_UC_SetEncodeUTF8();
-		BUTTON_SetText(hItem,"充放电"); 
-		
-		hItem = WM_GetDialogItem(pMsg->hWin, ID_BUTTON_35);
-//		BUTTON_SetTextColor(hItem,0,GUI_BLACK);//ʨ׃ؖͥҕɫΪۚɫ
-		BUTTON_SetFont      (hItem,&GUI_FontHZ16);//ʨ֨дťτѾؖͥ
-		GUI_UC_SetEncodeUTF8();
-		BUTTON_SetText(hItem,"曲线");
+//		hItem = WM_GetDialogItem(pMsg->hWin, ID_BUTTON_34);
+////		BUTTON_SetTextColor(hItem,0,GUI_BLACK);//ʨ׃ؖͥҕɫΪۚɫ
+//		BUTTON_SetFont      (hItem,    &GUI_FontHZ16);//ʨ֨дťτѾؖͥ
+//		GUI_UC_SetEncodeUTF8();
+//		BUTTON_SetText(hItem,"充放电"); 
+//		
+//		hItem = WM_GetDialogItem(pMsg->hWin, ID_BUTTON_35);
+////		BUTTON_SetTextColor(hItem,0,GUI_BLACK);//ʨ׃ؖͥҕɫΪۚɫ
+//		BUTTON_SetFont      (hItem,&GUI_FontHZ16);//ʨ֨дťτѾؖͥ
+//		GUI_UC_SetEncodeUTF8();
+//		BUTTON_SetText(hItem,"曲线");
         
         hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_21);
 		TEXT_SetTextColor(hItem, GUI_BLACK);//设置字体颜色

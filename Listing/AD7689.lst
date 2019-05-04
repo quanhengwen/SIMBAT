@@ -36142,17 +36142,17 @@ N			sum1 +=Ad7689_Fit_Vmon[f];
 N		}
 N		Vmon1_value=sum1/100;//负载电压
 N
-N	Ad7689_Fit_Rmon[R_cont++]=var_chR;
-N	if(R_cont==30)
-N	{
-N		R_cont=0;
-N		sum1=0;
-N		for(f=0;f<30;f++)
-N		{
-N			sum1 +=Ad7689_Fit_Rmon[f];
-N		}
-N		Rmon_value=sum1/30;//内阻
-N	}
+N//	Ad7689_Fit_Rmon[R_cont++]=var_chR;
+N//	if(R_cont==30)
+N//	{
+N//		R_cont=0;
+N//		sum1=0;
+N//		for(f=0;f<30;f++)
+N//		{
+N//			sum1 +=Ad7689_Fit_Rmon[f];
+N//		}
+N//		Rmon_value=sum1/30;//内阻
+N//	}
 N}
 N
 N/*
