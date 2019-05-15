@@ -52960,15 +52960,15 @@ N    // 					flag_Load_CC=0;//CV模式
 N    // 					GPIO_SetBits(GPIOC,GPIO_Pin_12);//CV
 N    // 				}
 N//                    WM_DeleteWindow(hWinR);
-N//                    WM_DeleteWindow(hWinWind);
+N                    WM_DeleteWindow(hWinWind);
 N//                    WM_DeleteWindow(hWinG);
 N//                    WM_DeleteWindow(load_wind);
 N//                    WM_DeleteWindow(hWinsysinfo);
 N//                    WM_DeleteWindow(hWincdc);
 N//                    WM_DeleteWindow(hWinset); 
-N//                    CreateSET();
-N//                    KeyCounter = 0;
-N//                    BEEP_Tiggr();//瑙﹀彂铚傞福鍣
+N                    CreateSET();
+N                    KeyCounter = 0;
+N                    BEEP_Tiggr();//瑙﹀彂铚傞福鍣
 N                }
 N                break;
 N                case KEY_TRIG://电子负载/电源ON/OFF

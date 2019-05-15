@@ -1443,15 +1443,15 @@ void Key_Funtion(void)
     // 					GPIO_SetBits(GPIOC,GPIO_Pin_12);//CV
     // 				}
 //                    WM_DeleteWindow(hWinR);
-//                    WM_DeleteWindow(hWinWind);
+                    WM_DeleteWindow(hWinWind);
 //                    WM_DeleteWindow(hWinG);
 //                    WM_DeleteWindow(load_wind);
 //                    WM_DeleteWindow(hWinsysinfo);
 //                    WM_DeleteWindow(hWincdc);
 //                    WM_DeleteWindow(hWinset); 
-//                    CreateSET();
-//                    KeyCounter = 0;
-//                    BEEP_Tiggr();//瑙﹀彂铚傞福鍣
+                    CreateSET();
+                    KeyCounter = 0;
+                    BEEP_Tiggr();//瑙﹀彂铚傞福鍣
                 }
                 break;
                 case KEY_TRIG://电子负载/电源ON/OFF
