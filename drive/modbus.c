@@ -1613,6 +1613,10 @@ void Transformation_ADC(void)
         DISS_POW_Voltage=POW_Voltage;
         DISS_POW_Voltage=DISS_POW_Voltage/100;//輪蹋袛示支压
     }
+	if(POW_Voltage > 6100)
+	{
+		DISS_POW_Voltage = 0;
+	}
 	var32 = 0;
 /*****************************稳压电源测量电流转换*******************************************/
 	var32 = Imon_value;

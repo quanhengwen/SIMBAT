@@ -49171,6 +49171,7 @@ N#define set_86          85
 N#define set_87          86
 N#define set_88          87
 N#define set_89          88
+N#define set_90          89
 N/*
 N************************************************************************
 N*						参数设置识别符
@@ -49757,6 +49758,7 @@ S#define set_86          85
 S#define set_87          86
 S#define set_88          87
 S#define set_89          88
+S#define set_90          89
 S/*
 S************************************************************************
 S*						参数设置识别符
@@ -52448,6 +52450,7 @@ S#define set_86          85
 S#define set_87          86
 S#define set_88          87
 S#define set_89          88
+S#define set_90          89
 S/*
 S************************************************************************
 S*						参数设置识别符
@@ -53242,8 +53245,8 @@ N        if(starter == 0){
 N            starter = 1;
 N        }else{
 N            WM_DeleteWindow(hWinstarter);
-W "..\APP\STARTER.c" 95 13 function "CreateWindow2" declared implicitly
-N            CreateWindow2();
+W "..\APP\STARTER.c" 95 13 function "CreateWindow" declared implicitly
+N            CreateWindow();
 N        }
 N	}
 N	break;

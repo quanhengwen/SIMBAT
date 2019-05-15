@@ -92,7 +92,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
             starter = 1;
         }else{
             WM_DeleteWindow(hWinstarter);
-            CreateWindow2();
+            CreateWindow();
         }
 	}
 	break;

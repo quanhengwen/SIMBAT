@@ -49169,6 +49169,7 @@ N#define set_86          85
 N#define set_87          86
 N#define set_88          87
 N#define set_89          88
+N#define set_90          89
 N/*
 N************************************************************************
 N*						��������ʶ���
@@ -49755,6 +49756,7 @@ S#define set_86          85
 S#define set_87          86
 S#define set_88          87
 S#define set_89          88
+S#define set_90          89
 S/*
 S************************************************************************
 S*						��������ʶ���
@@ -52446,6 +52448,7 @@ S#define set_86          85
 S#define set_87          86
 S#define set_88          87
 S#define set_89          88
+S#define set_90          89
 S/*
 S************************************************************************
 S*						��������ʶ���
@@ -53220,7 +53223,7 @@ N
 NWM_HWIN hWinWind;
 XGUI_HWIN hWinWind;
 Nvoid test_pow(void);
-N
+Nvoid DISP_POW(void);
 Nvu8 pow_sw = pow_off;
 Xvu8 pow_sw = 0;
 Nextern vu16 menu_time;
@@ -53228,7 +53231,7 @@ Nextern vu16 s_time;
 Nextern vu8 wait_flag;
 Nextern vu8 test_num;
 Nfloat pow_cutoffc;
-N
+Nextern float load_cutoffv;
 N#define ID_WINDOW_0      	(GUI_ID_USER + 0x00)
 N#define ID_BUTTON_0     	(GUI_ID_USER + 0x01)
 N#define ID_BUTTON_1     	(GUI_ID_USER + 0x02)
@@ -53258,43 +53261,43 @@ Nstatic const GUI_WIDGET_CREATE_INFO _aDialogCreate1[] = {
 N    { WINDOW_CreateIndirect, "Window", ID_WINDOW_0, 0, 0, 480, 272, 0, 0x0, 0 },
 X    { WINDOW_CreateIndirect, "Window", (0x800 + 0x00), 0, 0, 480, 272, 0, 0x0, 0 },
 N//    { BUTTON_CreateIndirect, "Button", ID_BUTTON_0, 3, 226, 77, 45, 0, 0x0, 0 },
-N//    { BUTTON_CreateIndirect, "Button", ID_BUTTON_1, 83, 226, 77, 45, 0, 0x0, 0 },
+N    { BUTTON_CreateIndirect, "Button", ID_BUTTON_1, 83, 226, 77, 45, 0, 0x0, 0 },
+X    { BUTTON_CreateIndirect, "Button", (0x800 + 0x02), 83, 226, 77, 45, 0, 0x0, 0 },
 N    { BUTTON_CreateIndirect, "Button", ID_BUTTON_2, 163, 226, 77, 45, 0, 0x0, 0 },
 X    { BUTTON_CreateIndirect, "Button", (0x800 + 0x03), 163, 226, 77, 45, 0, 0x0, 0 },
 N    { BUTTON_CreateIndirect, "Button", ID_BUTTON_3, 243, 226, 77, 45, 0, 0x0, 0 },
 X    { BUTTON_CreateIndirect, "Button", (0x800 + 0x04), 243, 226, 77, 45, 0, 0x0, 0 },
-N//    { BUTTON_CreateIndirect, "Button", ID_BUTTON_4, 323, 226, 77, 45, 0, 0x0, 0 },
-N//    { BUTTON_CreateIndirect, "Button", ID_BUTTON_5, 403, 226, 77, 45, 0, 0x0, 0 },
-N    { TEXT_CreateIndirect,   "Text",   ID_TEXT_9,   28, 50, 64, 32, 0, 0x64, 0 },
-X    { TEXT_CreateIndirect,   "Text",   (0x800 + 0x07),   28, 50, 64, 32, 0, 0x64, 0 },
-N    { TEXT_CreateIndirect,   "Text",   ID_TEXT_10,  28, 120, 64, 32, 0, 0x64, 0 },
-X    { TEXT_CreateIndirect,   "Text",   (0x800 + 0x08),  28, 120, 64, 32, 0, 0x64, 0 },
-N    { TEXT_CreateIndirect,   "Text",   ID_TEXT_15,  240, 50, 32, 30, 0, 0x0, 0 },
-X    { TEXT_CreateIndirect,   "Text",   (0x800 + 0x20),  240, 50, 32, 30, 0, 0x0, 0 },
-N    { TEXT_CreateIndirect,   "Text",   ID_TEXT_16,  240, 121, 32, 30, 0, 0x0, 0 },
-X    { TEXT_CreateIndirect,   "Text",   (0x800 + 0x21),  240, 121, 32, 30, 0, 0x0, 0 },
-N    { TEXT_CreateIndirect,   "Text",   ID_TEXT_33, 290, 75, 80, 20, 0, 0x0, 0 },
-X    { TEXT_CreateIndirect,   "Text",   (0x800 + 0x3D), 290, 75, 80, 20, 0, 0x0, 0 },
-N    { TEXT_CreateIndirect,   "Text",   ID_TEXT_34, 290, 100, 80, 20, 0, 0x0, 0 },
-X    { TEXT_CreateIndirect,   "Text",   (0x800 + 0x3E), 290, 100, 80, 20, 0, 0x0, 0 },
-N    { TEXT_CreateIndirect,   "Text",   ID_TEXT_41, 380, 75, 53, 20, 0, 0x0, 0 },
-X    { TEXT_CreateIndirect,   "Text",   (0x800 + 0x66), 380, 75, 53, 20, 0, 0x0, 0 },
-N    { TEXT_CreateIndirect,   "Text",   ID_TEXT_42, 370, 100, 65, 20, 0, 0x0, 0 },
-X    { TEXT_CreateIndirect,   "Text",   (0x800 + 0x67), 370, 100, 65, 20, 0, 0x0, 0 },
-N    { TEXT_CreateIndirect,   "Text",   ID_TEXT_86, 95, 48, 150, 40, 0, 0x0, 0 },
-X    { TEXT_CreateIndirect,   "Text",   (0x800 + 0x93), 95, 48, 150, 40, 0, 0x0, 0 },
-N    { TEXT_CreateIndirect,   "Text",   ID_TEXT_87, 95, 116, 150, 40, 0, 0x0, 0 },
-X    { TEXT_CreateIndirect,   "Text",   (0x800 + 0x94), 95, 116, 150, 40, 0, 0x0, 0 },
+N    { BUTTON_CreateIndirect, "Button", ID_BUTTON_4, 323, 226, 77, 45, 0, 0x0, 0 },
+X    { BUTTON_CreateIndirect, "Button", (0x800 + 0x05), 323, 226, 77, 45, 0, 0x0, 0 },
+N    { BUTTON_CreateIndirect, "Button", ID_BUTTON_5, 403, 226, 77, 45, 0, 0x0, 0 },
+X    { BUTTON_CreateIndirect, "Button", (0x800 + 0x06), 403, 226, 77, 45, 0, 0x0, 0 },
+N    { TEXT_CreateIndirect,   "Text",   ID_TEXT_9,   28, 50-10, 64, 32, 0, 0x64, 0 },
+X    { TEXT_CreateIndirect,   "Text",   (0x800 + 0x07),   28, 50-10, 64, 32, 0, 0x64, 0 },
+N    { TEXT_CreateIndirect,   "Text",   ID_TEXT_10,  28, 120-10, 64, 32, 0, 0x64, 0 },
+X    { TEXT_CreateIndirect,   "Text",   (0x800 + 0x08),  28, 120-10, 64, 32, 0, 0x64, 0 },
+N    { TEXT_CreateIndirect,   "Text",   ID_TEXT_15,  240, 50-10, 32, 30, 0, 0x0, 0 },
+X    { TEXT_CreateIndirect,   "Text",   (0x800 + 0x20),  240, 50-10, 32, 30, 0, 0x0, 0 },
+N    { TEXT_CreateIndirect,   "Text",   ID_TEXT_16,  240, 121-10, 32, 30, 0, 0x0, 0 },
+X    { TEXT_CreateIndirect,   "Text",   (0x800 + 0x21),  240, 121-10, 32, 30, 0, 0x0, 0 },
+N//    { TEXT_CreateIndirect,   "Text",   ID_TEXT_33, 290, 75, 80, 20, 0, 0x0, 0 },
+N//    { TEXT_CreateIndirect,   "Text",   ID_TEXT_34, 290, 100, 80, 20, 0, 0x0, 0 },
+N    { TEXT_CreateIndirect,   "Text",   ID_TEXT_41, 380, 50-10, 53, 20, 0, 0x0, 0 },
+X    { TEXT_CreateIndirect,   "Text",   (0x800 + 0x66), 380, 50-10, 53, 20, 0, 0x0, 0 },
+N    { TEXT_CreateIndirect,   "Text",   ID_TEXT_42, 370, 100-10, 65, 20, 0, 0x0, 0 },
+X    { TEXT_CreateIndirect,   "Text",   (0x800 + 0x67), 370, 100-10, 65, 20, 0, 0x0, 0 },
+N    { TEXT_CreateIndirect,   "Text",   ID_TEXT_86, 95, 48-10, 150, 40, 0, 0x0, 0 },
+X    { TEXT_CreateIndirect,   "Text",   (0x800 + 0x93), 95, 48-10, 150, 40, 0, 0x0, 0 },
+N    { TEXT_CreateIndirect,   "Text",   ID_TEXT_87, 95, 116-10, 150, 40, 0, 0x0, 0 },
+X    { TEXT_CreateIndirect,   "Text",   (0x800 + 0x94), 95, 116-10, 150, 40, 0, 0x0, 0 },
 N    { TEXT_CreateIndirect,   "Text",   ID_TEXT_88, 400, 4, 50, 20, 0, 0x0, 0 },
 X    { TEXT_CreateIndirect,   "Text",   (0x800 + 0x95), 400, 4, 50, 20, 0, 0x0, 0 },
-N    { TEXT_CreateIndirect,   "Text",   ID_TEXT_115, 95, 184, 150, 40, 0, 0x0, 0 },
-X    { TEXT_CreateIndirect,   "Text",   (0x800 + 0x10B), 95, 184, 150, 40, 0, 0x0, 0 },
+N//    { TEXT_CreateIndirect,   "Text",   ID_TEXT_115, 95, 184, 150, 40, 0, 0x0, 0 },
 N    { TEXT_CreateIndirect,   "Text",   ID_TEXT_125, 300, 2, 80, 20, 0, 0x0, 0 },
 X    { TEXT_CreateIndirect,   "Text",   (0x800 + 0x10C), 300, 2, 80, 20, 0, 0x0, 0 },
-N    { TEXT_CreateIndirect,   "Text",   ID_TEXT_144, 370, 150, 65, 20, 0, 0x0, 0 },
-X    { TEXT_CreateIndirect,   "Text",   (0x800 + 0x012E), 370, 150, 65, 20, 0, 0x0, 0 },
-N	{ TEXT_CreateIndirect,   "Text",   ID_TEXT_159, 290, 150, 80, 20, 0, 0x0, 0 },
-X	{ TEXT_CreateIndirect,   "Text",   (0x800 + 0x013A), 290, 150, 80, 20, 0, 0x0, 0 },
+N    { TEXT_CreateIndirect,   "Text",   ID_TEXT_144, 370, 150-10, 65, 20, 0, 0x0, 0 },
+X    { TEXT_CreateIndirect,   "Text",   (0x800 + 0x012E), 370, 150-10, 65, 20, 0, 0x0, 0 },
+N	{ TEXT_CreateIndirect,   "Text",   ID_TEXT_159, 370, 190, 65, 20, 0, 0x0, 0 },
+X	{ TEXT_CreateIndirect,   "Text",   (0x800 + 0x013A), 370, 190, 65, 20, 0, 0x0, 0 },
 N	{ TEXT_CreateIndirect, "Text", ID_TEXT_161, 380, 8, 20, 15, 0, 0x0, 0 },
 X	{ TEXT_CreateIndirect, "Text", (0x800 + 0x013C), 380, 8, 20, 15, 0, 0x0, 0 },
 N  // USER START (Optionally insert additional widgets)
@@ -53327,6 +53330,8 @@ X	case 0x000F:
 N		GUI_SetColor(GUI_WHITE);//设置画笔颜色
 X		GUI_SetColor(0x00FFFFFF);
 N        GUI_FillRect(0,25,480,26);//画一条实线
+N	    GUI_FillRect(280,26,281,215);//画一条实线
+N		GUI_FillRect(0,215,480,216);//画一条实线
 N        GUI_SetColor(GUI_ORANGE);
 X        GUI_SetColor(0x0000A5FF);
 N        GUI_SetFont(&GUI_Fontsymbol);
@@ -53341,26 +53346,34 @@ N        GUI_UC_SetEncodeUTF8();
 N        GUI_SetTextMode(GUI_TM_TRANS);//设置文本模式为底色透明       
 X        GUI_SetTextMode((1<<1));
 N        GUI_DispStringAt("测量显示", 130, 3);//SET
-N        GUI_SetColor(GUI_WHITE);//设置前景色为白色
-X        GUI_SetColor(0x00FFFFFF);
+N		GUI_SetColor(GUI_LIGHTBLUE);
+X		GUI_SetColor(0x00FF8080);
+N        GUI_SetFont(&GUI_FontHZ16);
+N        GUI_DispStringAt("电压",290, 50-10);
+N        GUI_DispStringAt("电流",290, 100-10);
+N        GUI_SetColor(GUI_GREEN);//设置前景色为白色
+X        GUI_SetColor(0x0000FF00);
 N//      GUI_SetFont(&GUI_FontD24x32);//
 N// 		GUI_GotoXY(95,72);//设置显示坐标
 N// 		GUI_DispFloatFix(DISS_POW_Voltage,5,2);//显示电压值
 N// 		GUI_GotoXY(95,140);//设置显示坐标
 N// 		GUI_DispFloatFix(DISS_POW_Current,5,2);//显示电流值
 N        GUI_SetFont(&GUI_Font24_1);
-N        GUI_DispStringAt("V",435,75);
-N        GUI_DispStringAt("A",435,100);
-N        GUI_DispStringAt("A",435,150);
-N        
-N        GUI_SetFont(&GUI_FontEN40);
-N        GUI_SetColor(GUI_LIGHTGRAY);
-X        GUI_SetColor(0x00D3D3D3);
-N        GUI_DispStringAt("C:", 28, 190);
-N        GUI_SetColor(GUI_LIGHTGRAY);
-X        GUI_SetColor(0x00D3D3D3);
-N        GUI_DispStringAt("m", 217, 196);
-N        GUI_DispStringAt("AH", 238, 187);
+N        GUI_DispStringAt("V",435,50-10);
+N        GUI_DispStringAt("A",435,100-10);
+N        GUI_DispStringAt("V",435,150-10);
+N        GUI_DispStringAt("A",435,200-10);
+N		GUI_SetColor(GUI_LIGHTBLUE);
+X		GUI_SetColor(0x00FF8080);
+N		GUI_DispStringAt("OVP",290,150-10);
+N        GUI_DispStringAt("OCP",290,200-10);
+N
+N//        GUI_SetFont(&GUI_FontEN40);
+N//        GUI_SetColor(GUI_LIGHTGRAY);
+N//        GUI_DispStringAt("C:", 28, 190);
+N//        GUI_SetColor(GUI_LIGHTGRAY);
+N//        GUI_DispStringAt("m", 217, 196);
+N//        GUI_DispStringAt("AH", 238, 187);
 N        
 N        GUI_SetColor(GUI_GREEN);
 X        GUI_SetColor(0x0000FF00);
@@ -53368,6 +53381,8 @@ N        GUI_SetFont(&GUI_Fontunit);
 N        GUI_DispStringAt("°",342, 2);
 N        GUI_SetFont(&GUI_Font24_1);
 N        GUI_DispStringAt("C",350, 2);
+N		
+N		
 N//        DrawLock();
 N//        GUI_SetColor(GUI_WHITE);
 N//        GUI_SetFont(&GUI_Fontset_font);
@@ -53397,7 +53412,7 @@ N			hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_161);
 X			hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x013C));
 N			TEXT_SetText(hItem,"");
 N		}
-W "..\APP\menu.c" 161 16 single-precision operand implicitly converted to double-precision
+W "..\APP\menu.c" 173 16 single-precision operand implicitly converted to double-precision
 N            if(DISS_POW_Voltage < 0.1)
 N            {
 N                hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_86);
@@ -53423,11 +53438,6 @@ N//        test_pow();
 N        if(pow_sw == pow_on)
 X        if(pow_sw == 1)
 N        {
-N            battery_c = (int)bc_raw;
-N            hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_115);
-X            hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x10B));
-N            sprintf(buf,"%05d",battery_c);      
-N            TEXT_SetText(hItem,buf);
 N             hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_87);
 X             hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x94));
 N            sprintf(buf,"%.3f",DISS_POW_Current);        
@@ -53447,7 +53457,7 @@ X                hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x95));
 N                TEXT_SetText(hItem,"");
 N                status_flash = 0;
 N           }
-N           if(pow_cutoffc != 0 && DISS_POW_Current < pow_cutoffc && cdelay > 20)
+N           if(((load_cutoffv != 0 && DISS_POW_Voltage < load_cutoffv) ||(load_cutoffv != 0 && DISS_Voltage < load_cutoffv)) && cdelay > 20)
 N           {
 N              GPIO_ResetBits(GPIOC,GPIO_Pin_1);
 X              GPIO_ResetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0800)),((uint16_t)0x0002));
@@ -53512,11 +53522,13 @@ X		TEXT_SetTextColor(hItem, 0x000000FF);
 N		TEXT_SetFont(hItem,&GUI_FontHZ14);
 N		TEXT_SetText(hItem,"");
 N		
-N//        hItem = WM_GetDialogItem(pMsg->hWin, ID_BUTTON_1);
-N////		BUTTON_SetTextColor(hItem,0,GUI_BLACK);//设置字体颜色为黑色
-N//		BUTTON_SetFont      (hItem,    &GUI_FontHZ16);//设定按钮文本字体
-N//		GUI_UC_SetEncodeUTF8();
-N//        BUTTON_SetText(hItem, "内阻测试");
+N        hItem = WM_GetDialogItem(pMsg->hWin, ID_BUTTON_1);
+X        hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x02));
+N		BUTTON_SetPressed(hItem,1);
+N//		BUTTON_SetTextColor(hItem,0,GUI_BLACK);//设置字体颜色为黑色
+N		BUTTON_SetFont      (hItem,    &GUI_FontHZ16);//设定按钮文本字体
+N		GUI_UC_SetEncodeUTF8();
+N        BUTTON_SetText(hItem, "电压设置");
 N    //
 N    // Initialization of 'Button'
 N    //
@@ -53525,33 +53537,35 @@ X        hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x03));
 N//        BUTTON_SetTextColor(hItem,0,GUI_BLACK);//设置字体颜色为黑色
 N		BUTTON_SetFont      (hItem,    &GUI_FontHZ16);//设定按钮文本字体
 N		GUI_UC_SetEncodeUTF8();
-N        BUTTON_SetText(hItem, "程控负载");
+N        BUTTON_SetText(hItem, "电流设置");
 N    //
 N    // Initialization of 'Button'
 N    //
 N        hItem = WM_GetDialogItem(pMsg->hWin, ID_BUTTON_3);
 X        hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x04));
-N        BUTTON_SetPressed(hItem,1);
+N        
 N//        BUTTON_SetTextColor(hItem,0,GUI_BLACK);//设置字体颜色为黑色
-N		BUTTON_SetFont      (hItem,    &GUI_FontHZ16);//设定按钮文本字体
+N		BUTTON_SetFont      (hItem,    &GUI_Font24_1);//设定按钮文本字体
 N		GUI_UC_SetEncodeUTF8();
-N        BUTTON_SetText(hItem, "程控电源");
+N        BUTTON_SetText(hItem, "OVP");
 N    //
 N    // Initialization of 'Button'
 N    //
-N//        hItem = WM_GetDialogItem(pMsg->hWin, ID_BUTTON_4);
-N////        BUTTON_SetTextColor(hItem,0,GUI_BLACK);//设置字体颜色为黑色
-N//		BUTTON_SetFont      (hItem,    &GUI_FontHZ16);//设定按钮文本字体
-N//		GUI_UC_SetEncodeUTF8();
-N//        BUTTON_SetText(hItem, "充放电");
-N//    //
-N//    // Initialization of 'Button'
-N//    //
-N//        hItem = WM_GetDialogItem(pMsg->hWin, ID_BUTTON_5);
-N////        BUTTON_SetTextColor(hItem,0,GUI_BLACK);//设置字体颜色为黑色
-N//		BUTTON_SetFont      (hItem,    &GUI_FontHZ16);//设定按钮文本字体
-N//		GUI_UC_SetEncodeUTF8();
-N//        BUTTON_SetText(hItem, "曲线");
+N        hItem = WM_GetDialogItem(pMsg->hWin, ID_BUTTON_4);
+X        hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x05));
+N//        BUTTON_SetTextColor(hItem,0,GUI_BLACK);//设置字体颜色为黑色
+N		BUTTON_SetFont      (hItem,    &GUI_Font24_1);//设定按钮文本字体
+N		GUI_UC_SetEncodeUTF8();
+N        BUTTON_SetText(hItem, "OCP");
+N    //
+N    // Initialization of 'Button'
+N    //
+N        hItem = WM_GetDialogItem(pMsg->hWin, ID_BUTTON_5);
+X        hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x06));
+N//        BUTTON_SetTextColor(hItem,0,GUI_BLACK);//设置字体颜色为黑色
+N		BUTTON_SetFont      (hItem,    &GUI_FontHZ16);//设定按钮文本字体
+N		GUI_UC_SetEncodeUTF8();
+N        BUTTON_SetText(hItem, "系统设置");
 N		
 N		
 N		hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_9);
@@ -53586,36 +53600,35 @@ N        TEXT_SetFont(hItem,&GUI_FontEN40);//设定文本字体
 N		GUI_UC_SetEncodeUTF8();
 N		TEXT_SetText(hItem,"A");
 N        
-N        hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_33);
-X        hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x3D));
-N		TEXT_SetTextColor(hItem, GUI_BLACK);//设置字体颜色
-X		TEXT_SetTextColor(hItem, 0x00000000);
-N        TEXT_SetBkColor(hItem,0x00BFFFFF);
-N        TEXT_SetFont(hItem,&GUI_Fontset_font);//设定文本字体
-N		GUI_UC_SetEncodeUTF8();
-N		TEXT_SetText(hItem,"输出电压");        
-N        
-N        hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_34);
-X        hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x3E));
-N		TEXT_SetTextColor(hItem, GUI_WHITE);//设置字体颜色
-X		TEXT_SetTextColor(hItem, 0x00FFFFFF);
-N        TEXT_SetFont(hItem,&GUI_Fontset_font);//设定文本字体
-N		GUI_UC_SetEncodeUTF8();
-N		TEXT_SetText(hItem,"限制电流");
-N		
-N		hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_159);
-X		hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x013A));
-N		TEXT_SetTextColor(hItem, GUI_WHITE);//设置字体颜色
-X		TEXT_SetTextColor(hItem, 0x00FFFFFF);
-N        TEXT_SetFont(hItem,&GUI_Fontset_font);//设定文本字体
-N		GUI_UC_SetEncodeUTF8();
-N		TEXT_SetText(hItem,"截止电流");
+N//        hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_33);
+N//		TEXT_SetTextColor(hItem, GUI_BLACK);//设置字体颜色
+N//        TEXT_SetBkColor(hItem,0x00BFFFFF);
+N//        TEXT_SetFont(hItem,&GUI_Fontset_font);//设定文本字体
+N//		GUI_UC_SetEncodeUTF8();
+N//		TEXT_SetText(hItem,"输出电压");        
+N//        
+N//        hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_34);
+N//		TEXT_SetTextColor(hItem, GUI_WHITE);//设置字体颜色
+N//        TEXT_SetFont(hItem,&GUI_Fontset_font);//设定文本字体
+N//		GUI_UC_SetEncodeUTF8();
+N//		TEXT_SetText(hItem,"限制电流");
+N//		
+N		hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_144);
+X		hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x012E));
+N        sprintf(buf,"%.3f",pow_cutoffc);
+N		TEXT_SetTextColor(hItem, GUI_GREEN);//设置字体颜色
+X		TEXT_SetTextColor(hItem, 0x0000FF00);
+N        TEXT_SetFont(hItem,&GUI_Font24_1);//设定文本字体
+N		GUI_UC_SetEncodeUTF8();     
+N		TEXT_SetText(hItem,buf);
 N        
 N        hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_41);
 X        hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x66));
+N		TEXT_SetBkColor(hItem,GUI_BLUE);
+X		TEXT_SetBkColor(hItem,0x00FF0000);
 N        sprintf(buf,"%.2f",dis_output_v);
-N		TEXT_SetTextColor(hItem, GUI_WHITE);//设置字体颜色
-X		TEXT_SetTextColor(hItem, 0x00FFFFFF);
+N		TEXT_SetTextColor(hItem, GUI_GREEN);//设置字体颜色
+X		TEXT_SetTextColor(hItem, 0x0000FF00);
 N        TEXT_SetFont(hItem,&GUI_Font24_1);//设定文本字体
 N		GUI_UC_SetEncodeUTF8();        
 N		TEXT_SetText(hItem,buf);
@@ -53623,8 +53636,8 @@ N
 N        hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_42);
 X        hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x67));
 N        sprintf(buf,"%.3f",dis_output_c);
-N		TEXT_SetTextColor(hItem, GUI_WHITE);//设置字体颜色
-X		TEXT_SetTextColor(hItem, 0x00FFFFFF);
+N		TEXT_SetTextColor(hItem, GUI_GREEN);//设置字体颜色
+X		TEXT_SetTextColor(hItem, 0x0000FF00);
 N        TEXT_SetFont(hItem,&GUI_Font24_1);//设定文本字体
 N		GUI_UC_SetEncodeUTF8();        
 N		TEXT_SetText(hItem,buf);
@@ -53647,14 +53660,12 @@ N        TEXT_SetFont(hItem,&GUI_FontD24x32);//设定文本字体
 N		GUI_UC_SetEncodeUTF8();        
 N		TEXT_SetText(hItem,buf);
 N        
-N        hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_115);
-X        hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x10B));
-N        sprintf(buf,"%05d",0);
-N        TEXT_SetTextColor(hItem, GUI_YELLOW);//设置字体颜色
-X        TEXT_SetTextColor(hItem, 0x0000FFFF);
-N        TEXT_SetFont(hItem,&GUI_FontD24x32);//设定文本字体
-N        GUI_UC_SetEncodeUTF8();        
-N        TEXT_SetText(hItem,buf);
+N//        hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_115);
+N//        sprintf(buf,"%05d",0);
+N//        TEXT_SetTextColor(hItem, GUI_YELLOW);//设置字体颜色
+N//        TEXT_SetFont(hItem,&GUI_FontD24x32);//设定文本字体
+N//        GUI_UC_SetEncodeUTF8();        
+N//        TEXT_SetText(hItem,buf);
 N        
 N        hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_125);
 X        hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x10C));
@@ -53666,12 +53677,21 @@ N        TEXT_SetText(hItem,buf);
 N        
 N        hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_144);
 X        hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x012E));
-N        sprintf(buf,"%.3f",pow_cutoffc);
-N		TEXT_SetTextColor(hItem, GUI_WHITE);//设置字体颜色
-X		TEXT_SetTextColor(hItem, 0x00FFFFFF);
+N        sprintf(buf,"%.3f",load_cutoffv);
+N		TEXT_SetTextColor(hItem, GUI_GREEN);//设置字体颜色
+X		TEXT_SetTextColor(hItem, 0x0000FF00);
 N        TEXT_SetFont(hItem,&GUI_Font24_1);//设定文本字体
 N		GUI_UC_SetEncodeUTF8();     
 N		TEXT_SetText(hItem,buf);
+N		hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_159);
+X		hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x013A));
+N        sprintf(buf,"%.3f",pow_cutoffc);
+N		TEXT_SetTextColor(hItem, GUI_GREEN);//设置字体颜色
+X		TEXT_SetTextColor(hItem, 0x0000FF00);
+N        TEXT_SetFont(hItem,&GUI_Font24_1);//设定文本字体
+N		GUI_UC_SetEncodeUTF8();     
+N		TEXT_SetText(hItem,buf);
+N		
 N        
 N    // USER START (Optionally insert additional code for further widget initialization)
 N    // USER END
@@ -53806,7 +53826,7 @@ N	  GPIO_SetBits(GPIOA,GPIO_Pin_15);//µç×Ó¸ºÔØOFF
 X	  GPIO_SetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0000)),((uint16_t)0x8000));
 N	  GPIO_ResetBits(GPIOC,GPIO_Pin_1);//¹Ø±ÕµçÔ´Êä³ö
 X	  GPIO_ResetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0800)),((uint16_t)0x0002));
-W "..\APP\menu.c" 498 4 function "Delay_ms" declared implicitly
+W "..\APP\menu.c" 516 4 function "Delay_ms" declared implicitly
 N	  Delay_ms(500);
 N	  //GPIO_SetBits(GPIOC,GPIO_Pin_13);//¹Ø±ÕµçÔ´Êä³ö¼ÌµçÆ
 N//      IO_OFF();
@@ -53816,14 +53836,18 @@ N  page_sw = face_menu;
 X  page_sw = 2;
 N  track = face_menu;
 X  track = 2;
-N  set_sw = set_10;
-X  set_sw = 9;
+N  set_sw = set_18;
+X  set_sw = 17;
 N  SET_Voltage = pow_v;
 X  Run_Control[1] = Run_Control[38];
+N  SET_Voltage_Laod = pow_v * 10 +20;
+X  Run_Control[3] = Run_Control[38] * 10 +20;
 N  SET_Current = pow_c;
 X  Run_Control[2] = Run_Control[40];
 N  pow_cutoffc = (float)set_pow_cutoffc/1000;
 X  pow_cutoffc = (float)InFlashSave[5]/1000;
+N  load_cutoffv = (float)set_load_cutoffv/1000;
+X  load_cutoffv = (float)InFlashSave[4]/1000;
 N  pass = 0;
 N  mode_sw = mode_pow;
 X  mode_sw = 3;
@@ -53845,113 +53869,98 @@ N    return hWinWind;
 N}
 N
 N
-Nvoid MENU_OP_DOWN(void);
-Nvoid MENU_OP_DOWN(void)
+Nvoid DISP_POW(void)
 N{
-N    switch(set_sw)
-N    {
-N        case set_10:
-X        case 9:
-N        {
-N            WM_HWIN hItem;
-X            GUI_HWIN hItem;
-N            hItem = WM_GetDialogItem(hWinWind, ID_TEXT_33);
-X            hItem = WM_GetDialogItem(hWinWind, (0x800 + 0x3D));
-N            TEXT_SetBkColor(hItem,GUI_INVALID_COLOR);//选项背景色设为透明
-X            TEXT_SetBkColor(hItem,0xFFFFFFF);
-N            TEXT_SetTextColor(hItem, GUI_WHITE);
-X            TEXT_SetTextColor(hItem, 0x00FFFFFF);
-N            
-N            hItem = WM_GetDialogItem(hWinWind, ID_TEXT_34);
-X            hItem = WM_GetDialogItem(hWinWind, (0x800 + 0x3E));
-N            TEXT_SetBkColor(hItem,0x00BFFFFF);//选项背景色设为米色
-N            TEXT_SetTextColor(hItem, GUI_BLACK);
-X            TEXT_SetTextColor(hItem, 0x00000000);
+N	WM_HWIN hItem;
+X	GUI_HWIN hItem;
+N	hItem = WM_GetDialogItem(hWinWind, ID_TEXT_41);
+X	hItem = WM_GetDialogItem(hWinWind, (0x800 + 0x66));
+N	if(set_sw == set_18)
+X	if(set_sw == 17)
+N	{
+N		 TEXT_SetBkColor(hItem, GUI_BLUE);
+X		 TEXT_SetBkColor(hItem, 0x00FF0000);
+N	}else{
+N		TEXT_SetBkColor(hItem, GUI_INVALID_COLOR);
+X		TEXT_SetBkColor(hItem, 0xFFFFFFF);
+N	}
+N	
+N	hItem = WM_GetDialogItem(hWinWind, ID_TEXT_42);
+X	hItem = WM_GetDialogItem(hWinWind, (0x800 + 0x67));
+N	if(set_sw == set_19)
+X	if(set_sw == 18)
+N	{
+N		 TEXT_SetBkColor(hItem, GUI_BLUE);
+X		 TEXT_SetBkColor(hItem, 0x00FF0000);
+N	}else{
+N		TEXT_SetBkColor(hItem, GUI_INVALID_COLOR);
+X		TEXT_SetBkColor(hItem, 0xFFFFFFF);
+N	}
+N	
+N	hItem = WM_GetDialogItem(hWinWind, ID_TEXT_144);
+X	hItem = WM_GetDialogItem(hWinWind, (0x800 + 0x012E));
+N	if(set_sw == set_89)
+X	if(set_sw == 88)
+N	{
+N		 TEXT_SetBkColor(hItem, GUI_BLUE);
+X		 TEXT_SetBkColor(hItem, 0x00FF0000);
+N	}else{
+N		TEXT_SetBkColor(hItem, GUI_INVALID_COLOR);
+X		TEXT_SetBkColor(hItem, 0xFFFFFFF);
+N	}
+N	
+N	hItem = WM_GetDialogItem(hWinWind, ID_TEXT_159);
+X	hItem = WM_GetDialogItem(hWinWind, (0x800 + 0x013A));
+N	if(set_sw == set_90)
+X	if(set_sw == 89)
+N	{
+N		 TEXT_SetBkColor(hItem, GUI_BLUE);
+X		 TEXT_SetBkColor(hItem, 0x00FF0000);
+N	}else{
+N		TEXT_SetBkColor(hItem, GUI_INVALID_COLOR);
+X		TEXT_SetBkColor(hItem, 0xFFFFFFF);
+N	}
+N	
+N	hItem = WM_GetDialogItem(hWinWind, ID_BUTTON_1);
+X	hItem = WM_GetDialogItem(hWinWind, (0x800 + 0x02));
+N	if(set_sw == set_18)
+X	if(set_sw == 17)
+N	{
+N		 BUTTON_SetPressed(hItem,1);
+N	}else{
+N		 BUTTON_SetPressed(hItem,0);
+N	}
 N
-N            set_sw = set_11;
-X            set_sw = 10;
-N            break;
-N        }
-N        case set_11:
-X        case 10:
-N        {
-N            WM_HWIN hItem;
-X            GUI_HWIN hItem;
-N//            WM_InvalidateWindow(hWinWind);
-N            hItem = WM_GetDialogItem(hWinWind, ID_TEXT_34);
-X            hItem = WM_GetDialogItem(hWinWind, (0x800 + 0x3E));
-N            TEXT_SetBkColor(hItem,GUI_INVALID_COLOR);//选项背景色设为透明
-X            TEXT_SetBkColor(hItem,0xFFFFFFF);
-N            TEXT_SetTextColor(hItem, GUI_WHITE);
-X            TEXT_SetTextColor(hItem, 0x00FFFFFF);
-N            
-N            hItem = WM_GetDialogItem(hWinWind, ID_TEXT_159);
-X            hItem = WM_GetDialogItem(hWinWind, (0x800 + 0x013A));
-N            TEXT_SetBkColor(hItem,0x00BFFFFF);//选项背景色设为米色
-N            TEXT_SetTextColor(hItem, GUI_BLACK);
-X            TEXT_SetTextColor(hItem, 0x00000000);
+N	
+N    hItem = WM_GetDialogItem(hWinWind, ID_BUTTON_2);
+X    hItem = WM_GetDialogItem(hWinWind, (0x800 + 0x03));
+N    if(set_sw == set_19)
+X    if(set_sw == 18)
+N	{
+N		BUTTON_SetPressed(hItem,1);
+N	}else{
+N		BUTTON_SetPressed(hItem,0);
+N	}
 N
-N            set_sw = set_88;
-X            set_sw = 87;
-N            break;
-N        }                     
-N        default: break;
-N    }
-N}
-N
-Nvoid MENU_OP_UP(void);
-Nvoid MENU_OP_UP(void)
-N{
-N    switch(set_sw)
-N    {
-N        case set_11:
-X        case 10:
-N		{
-N			 WM_HWIN hItem;
-X			 GUI_HWIN hItem;
-N//                 WM_InvalidateWindow(hWinWind);
-N			 hItem = WM_GetDialogItem(hWinWind, ID_TEXT_34);
-X			 hItem = WM_GetDialogItem(hWinWind, (0x800 + 0x3E));
-N			 TEXT_SetBkColor(hItem,GUI_INVALID_COLOR);//选项背景色设为透明
-X			 TEXT_SetBkColor(hItem,0xFFFFFFF);
-N			 TEXT_SetTextColor(hItem, GUI_WHITE);
-X			 TEXT_SetTextColor(hItem, 0x00FFFFFF);
-N		   
-N			 hItem = WM_GetDialogItem(hWinWind, ID_TEXT_33);
-X			 hItem = WM_GetDialogItem(hWinWind, (0x800 + 0x3D));
-N			 TEXT_SetBkColor(hItem,0x00BFFFFF);//选项背景色设为米色
-N			 TEXT_SetTextColor(hItem, GUI_BLACK);
-X			 TEXT_SetTextColor(hItem, 0x00000000);
-N
-N			 set_sw = set_10;
-X			 set_sw = 9;
-N			 break;
-N		 } 
-N		case set_88:
-X		case 87:
-N		{
-N			 WM_HWIN hItem;
-X			 GUI_HWIN hItem;
-N//                 WM_InvalidateWindow(hWinWind);
-N			 hItem = WM_GetDialogItem(hWinWind, ID_TEXT_159);
-X			 hItem = WM_GetDialogItem(hWinWind, (0x800 + 0x013A));
-N			 TEXT_SetBkColor(hItem,GUI_INVALID_COLOR);//选项背景色设为透明
-X			 TEXT_SetBkColor(hItem,0xFFFFFFF);
-N			 TEXT_SetTextColor(hItem, GUI_WHITE);
-X			 TEXT_SetTextColor(hItem, 0x00FFFFFF);
-N		   
-N			 hItem = WM_GetDialogItem(hWinWind, ID_TEXT_34);
-X			 hItem = WM_GetDialogItem(hWinWind, (0x800 + 0x3E));
-N			 TEXT_SetBkColor(hItem,0x00BFFFFF);//选项背景色设为米色
-N			 TEXT_SetTextColor(hItem, GUI_BLACK);
-X			 TEXT_SetTextColor(hItem, 0x00000000);
-N
-N			 set_sw = set_11;
-X			 set_sw = 10;
-N			 break;
-N		 }                     
-N		 default: break;
-N    }
+N	hItem = WM_GetDialogItem(hWinWind, ID_BUTTON_3);
+X	hItem = WM_GetDialogItem(hWinWind, (0x800 + 0x04));
+N	if(set_sw == set_89)
+X	if(set_sw == 88)
+N	{
+N		 BUTTON_SetPressed(hItem,1);
+N	}else{
+N		BUTTON_SetPressed(hItem,0);
+N	}
+N	
+N	hItem = WM_GetDialogItem(hWinWind, ID_BUTTON_4);
+X	hItem = WM_GetDialogItem(hWinWind, (0x800 + 0x05));
+N	if(set_sw == set_90)
+X	if(set_sw == 89)
+N	{
+N		 BUTTON_SetPressed(hItem,1);
+N	}else{
+N		BUTTON_SetPressed(hItem,0);
+N	}
 N}
 N
 N//电源界面设置确认
@@ -53977,33 +53986,7 @@ N      SET_Current = 10000;
 X      Run_Control[2] = 10000;
 N    }
 N    switch(set_sw){
-N        case set_10:
-X        case 9:
-N        {
-N            WM_HWIN hItem;
-X            GUI_HWIN hItem;
-N//            WM_InvalidateWindow(hWinWind);
-N            hItem = WM_GetDialogItem(hWinWind, ID_TEXT_33);
-X            hItem = WM_GetDialogItem(hWinWind, (0x800 + 0x3D));
-N            TEXT_SetBkColor(hItem,GUI_INVALID_COLOR);//选项背景色设为透明
-X            TEXT_SetBkColor(hItem,0xFFFFFFF);
-N            TEXT_SetTextColor(hItem, GUI_WHITE);
-X            TEXT_SetTextColor(hItem, 0x00FFFFFF);
-N                   
-N            hItem = WM_GetDialogItem(hWinWind, ID_TEXT_41);
-X            hItem = WM_GetDialogItem(hWinWind, (0x800 + 0x66));
-N            TEXT_SetBkColor(hItem,0x00BFFFFF);//选项背景色设为米色
-N            TEXT_SetTextColor(hItem, GUI_BLACK);
-X            TEXT_SetTextColor(hItem, 0x00000000);
-N            for(i=0;i<6;i++)
-N            {
-N                set_limit[i] = '\0';
-N            }
 N
-N            set_sw = set_18;
-X            set_sw = 17;
-N            break;                        
-N        }
 N        case set_18:
 X        case 17:
 N        {           
@@ -54012,10 +53995,6 @@ X            GUI_HWIN hItem;
 N//            WM_InvalidateWindow(hWinWind);
 N            hItem = WM_GetDialogItem(hWinWind, ID_TEXT_41);
 X            hItem = WM_GetDialogItem(hWinWind, (0x800 + 0x66));
-N            TEXT_SetBkColor(hItem,GUI_INVALID_COLOR);//选项背景色设为透明
-X            TEXT_SetBkColor(hItem,0xFFFFFFF);
-N            TEXT_SetTextColor(hItem, GUI_WHITE);
-X            TEXT_SetTextColor(hItem, 0x00FFFFFF);
 N			if(dot_flag == 0){
 N				pow_v = atoi(set_limit)*100;					
 X				Run_Control[38] = atoi(set_limit)*100;					
@@ -54025,22 +54004,22 @@ N				strncpy(buf,set_limit,dot_flag + 2);
 N				pow_v = atof(buf)*100;
 X				Run_Control[38] = atof(buf)*100;
 N			}
-N			if(pow_v > 6200)
-X			if(Run_Control[38] > 6200)
+N			if(pow_v > 6000)
+X			if(Run_Control[38] > 6000)
 N			{
-N				pow_v = 6200;
-X				Run_Control[38] = 6200;
+N				pow_v = 6000;
+X				Run_Control[38] = 6000;
 N			}
 N            SET_Voltage = pow_v;
 X            Run_Control[1] = Run_Control[38];
-N			load_v = pow_v * 10;
-X			Run_Control[41] = Run_Control[38] * 10;
 N            if(SET_Voltage/100 * SET_Current/1000 > 250)
 X            if(Run_Control[1]/100 * Run_Control[2]/1000 > 250)
 N            {
 N                SET_Voltage = 0;
 X                Run_Control[1] = 0;
 N            }
+N			SET_Voltage_Laod = SET_Voltage * 10 +10;
+X			Run_Control[3] = Run_Control[1] * 10 +10;
 N            dis_output_v = (float)SET_Voltage/100;
 X            dis_output_v = (float)Run_Control[1]/100;
 N            
@@ -54048,45 +54027,12 @@ N            sprintf(buf,"%.2f",dis_output_v);
 N            TEXT_SetText(hItem,buf);
 N            
 N                                                                     
-N            hItem = WM_GetDialogItem(hWinWind, ID_TEXT_33);
-X            hItem = WM_GetDialogItem(hWinWind, (0x800 + 0x3D));
-N            TEXT_SetBkColor(hItem,0x00BFFFFF);//选项背景色设为米色
-N            TEXT_SetTextColor(hItem, GUI_BLACK);
-X            TEXT_SetTextColor(hItem, 0x00000000);
 N                            
 N            Write_Limits();
-N            set_sw = set_10;
-X            set_sw = 9;
 N            bit = 1;
 N            dot_flag = 0;
+N			memset(set_limit, '\0', sizeof(set_limit));
 N            break; 
-N         }
-N         case set_11:
-X         case 10:
-N         {
-N            WM_HWIN hItem;
-X            GUI_HWIN hItem;
-N//            WM_InvalidateWindow(hWinWind);
-N            hItem = WM_GetDialogItem(hWinWind, ID_TEXT_34);
-X            hItem = WM_GetDialogItem(hWinWind, (0x800 + 0x3E));
-N            TEXT_SetBkColor(hItem,GUI_INVALID_COLOR);//选项背景色设为透明
-X            TEXT_SetBkColor(hItem,0xFFFFFFF);
-N            TEXT_SetTextColor(hItem, GUI_WHITE);
-X            TEXT_SetTextColor(hItem, 0x00FFFFFF);
-N                                
-N            hItem = WM_GetDialogItem(hWinWind, ID_TEXT_42);
-X            hItem = WM_GetDialogItem(hWinWind, (0x800 + 0x67));
-N            TEXT_SetBkColor(hItem,0x00BFFFFF);//选项背景色设为米色
-N            TEXT_SetTextColor(hItem, GUI_BLACK);
-X            TEXT_SetTextColor(hItem, 0x00000000);
-N            for(i=0;i<6;i++)
-N            {
-N                set_limit[i] = '\0';
-N            }
-N
-N            set_sw = set_19;
-X            set_sw = 18;
-N            break;                        
 N         }
 N         case set_19:
 X         case 18:
@@ -54096,10 +54042,6 @@ X            GUI_HWIN hItem;
 N//            WM_InvalidateWindow(hWinWind);
 N            hItem = WM_GetDialogItem(hWinWind, ID_TEXT_42);
 X            hItem = WM_GetDialogItem(hWinWind, (0x800 + 0x67));
-N            TEXT_SetBkColor(hItem,GUI_INVALID_COLOR);//选项背景色设为透明
-X            TEXT_SetBkColor(hItem,0xFFFFFFF);
-N            TEXT_SetTextColor(hItem, GUI_WHITE);
-X            TEXT_SetTextColor(hItem, 0x00FFFFFF);
 N			if(dot_flag == 0){
 N				pow_c = atoi(set_limit)*1000;					
 X				Run_Control[40] = atoi(set_limit)*1000;					
@@ -54131,43 +54073,12 @@ N            TEXT_SetText(hItem,buf);
 N                   
 N            hItem = WM_GetDialogItem(hWinWind, ID_TEXT_34);
 X            hItem = WM_GetDialogItem(hWinWind, (0x800 + 0x3E));
-N            TEXT_SetBkColor(hItem,0x00BFFFFF);//选项背景色设为米色
-N            TEXT_SetTextColor(hItem, GUI_BLACK);
-X            TEXT_SetTextColor(hItem, 0x00000000);
 N                                                 
 N            Write_Limits();
-N            set_sw = set_11;
-X            set_sw = 10;
 N            bit = 1;
 N            dot_flag = 0;
+N			memset(set_limit, '\0', sizeof(set_limit));
 N            break; 
-N         }
-N		 case set_88:
-X		 case 87:
-N         {
-N            WM_HWIN hItem;
-X            GUI_HWIN hItem;
-N//            WM_InvalidateWindow(hWinWind);
-N            hItem = WM_GetDialogItem(hWinWind, ID_TEXT_159);
-X            hItem = WM_GetDialogItem(hWinWind, (0x800 + 0x013A));
-N            TEXT_SetBkColor(hItem,GUI_INVALID_COLOR);//选项背景色设为透明
-X            TEXT_SetBkColor(hItem,0xFFFFFFF);
-N            TEXT_SetTextColor(hItem, GUI_WHITE);
-X            TEXT_SetTextColor(hItem, 0x00FFFFFF);
-N                                
-N            hItem = WM_GetDialogItem(hWinWind, ID_TEXT_144);
-X            hItem = WM_GetDialogItem(hWinWind, (0x800 + 0x012E));
-N            TEXT_SetBkColor(hItem,0x00BFFFFF);//选项背景色设为米色
-N            TEXT_SetTextColor(hItem, GUI_BLACK);
-X            TEXT_SetTextColor(hItem, 0x00000000);
-N            for(i=0;i<6;i++)
-N            {
-N                set_limit[i] = '\0';
-N            }
-N
-N            set_sw = set_89;
-X            set_sw = 88;
-N            break;                        
 N         }
 N         case set_89:
 X         case 88:
@@ -54177,10 +54088,41 @@ X            GUI_HWIN hItem;
 N//            WM_InvalidateWindow(hWinWind);
 N            hItem = WM_GetDialogItem(hWinWind, ID_TEXT_144);
 X            hItem = WM_GetDialogItem(hWinWind, (0x800 + 0x012E));
-N            TEXT_SetBkColor(hItem,GUI_INVALID_COLOR);//选项背景色设为透明
-X            TEXT_SetBkColor(hItem,0xFFFFFFF);
-N            TEXT_SetTextColor(hItem, GUI_WHITE);
-X            TEXT_SetTextColor(hItem, 0x00FFFFFF);
+N			if(dot_flag == 0){
+N				set_load_cutoffv = atoi(set_limit)*1000;					
+X				InFlashSave[4] = atoi(set_limit)*1000;					
+N			}else if(dot_flag != 0){
+N				memset(buf, '\0', sizeof(buf));
+N				strncpy(buf,set_limit,dot_flag + 3);
+N				set_load_cutoffv = atof(buf)*1000;
+X				InFlashSave[4] = atof(buf)*1000;
+N			}
+N            if(set_load_cutoffv > 60000)
+X            if(InFlashSave[4] > 60000)
+N            {
+N                set_load_cutoffv = 60000;               
+X                InFlashSave[4] = 60000;               
+N            }
+N            load_cutoffv = (float)set_load_cutoffv/1000;
+X            load_cutoffv = (float)InFlashSave[4]/1000;
+N            sprintf(buf,"%.3f",load_cutoffv);
+N            TEXT_SetText(hItem,buf);            
+N                                                 
+N            Flash_Write32BitDatas(FLASH_USER_START_ADDR,40, InFlashSave);
+X            Flash_Write32BitDatas(((uint32_t)0x080E0000),40, InFlashSave);
+N            bit = 1;
+N            dot_flag = 0;
+N			memset(set_limit, '\0', sizeof(set_limit));
+N            break; 
+N         }
+N		 case set_90:
+X		 case 89:
+N         {           
+N            WM_HWIN hItem;
+X            GUI_HWIN hItem;
+N//            WM_InvalidateWindow(hWinWind);
+N            hItem = WM_GetDialogItem(hWinWind, ID_TEXT_159);
+X            hItem = WM_GetDialogItem(hWinWind, (0x800 + 0x013A));
 N			if(dot_flag == 0){
 N				set_pow_cutoffc = atoi(set_limit)*1000;					
 X				InFlashSave[5] = atoi(set_limit)*1000;					
@@ -54190,29 +54132,27 @@ N				strncpy(buf,set_limit,dot_flag + 3);
 N				set_pow_cutoffc = atof(buf)*1000;
 X				InFlashSave[5] = atof(buf)*1000;
 N			}
+N              
 N            if(set_pow_cutoffc > 10000)
 X            if(InFlashSave[5] > 10000)
 N            {
 N                set_pow_cutoffc = 10000;               
 X                InFlashSave[5] = 10000;               
 N            }
+N
 N            pow_cutoffc = (float)set_pow_cutoffc/1000;
 X            pow_cutoffc = (float)InFlashSave[5]/1000;
 N            sprintf(buf,"%.3f",pow_cutoffc);
 N            TEXT_SetText(hItem,buf);            
 N                   
-N            hItem = WM_GetDialogItem(hWinWind, ID_TEXT_159);
-X            hItem = WM_GetDialogItem(hWinWind, (0x800 + 0x013A));
-N            TEXT_SetBkColor(hItem,0x00BFFFFF);//选项背景色设为米色
-N            TEXT_SetTextColor(hItem, GUI_BLACK);
-X            TEXT_SetTextColor(hItem, 0x00000000);
+N            hItem = WM_GetDialogItem(hWinWind, ID_TEXT_34);
+X            hItem = WM_GetDialogItem(hWinWind, (0x800 + 0x3E));
 N                                                 
 N            Flash_Write32BitDatas(FLASH_USER_START_ADDR,40, InFlashSave);
 X            Flash_Write32BitDatas(((uint32_t)0x080E0000),40, InFlashSave);
-N            set_sw = set_88;
-X            set_sw = 87;
 N            bit = 1;
 N            dot_flag = 0;
+N			memset(set_limit, '\0', sizeof(set_limit));
 N            break; 
 N         }
 N         default:break;
@@ -54652,8 +54592,33 @@ N//                }
 N//            }
 N        }
 N        break;
+N		case set_90:
+X		case 89:
+N        {
+N            WM_HWIN hItem;
+X            GUI_HWIN hItem;
+N//            WM_InvalidateWindow(hWinWind);
+N            hItem = WM_GetDialogItem(hWinWind, ID_TEXT_159);
+X            hItem = WM_GetDialogItem(hWinWind, (0x800 + 0x013A));
+N			if(bit < 7)
+N			{
+N				strcat(set_limit,num);
+N			}
+N			if(dot_flag != 0 && strcmp(num,".") == 0)
+N			{
+N				
+N			}else{			
+N				
+N				if(dot_flag == 0 && strcmp(num,".") == 0)
+N				{
+N					dot_flag = bit;
+N				}
+N				bit ++;
+N			}
+N			TEXT_SetText(hItem,set_limit);			
+N		}
 N    }    
-W "..\APP\menu.c" 849 5 variable "i"  was declared but never referenced
+W "..\APP\menu.c" 820 5 variable "i"  was declared but never referenced
 N}
 N
 Nvoid test_pow(void)

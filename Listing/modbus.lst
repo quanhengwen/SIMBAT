@@ -35303,6 +35303,7 @@ N#define set_86          85
 N#define set_87          86
 N#define set_88          87
 N#define set_89          88
+N#define set_90          89
 N/*
 N************************************************************************
 N*						参数设置识别符
@@ -35944,6 +35945,7 @@ S#define set_86          85
 S#define set_87          86
 S#define set_88          87
 S#define set_89          88
+S#define set_90          89
 S/*
 S************************************************************************
 S*						参数设置识别符
@@ -38078,6 +38080,11 @@ N        DISS_POW_Voltage=POW_Voltage;
 X        DISS_POW_Voltage=Run_Control[9];
 N        DISS_POW_Voltage=DISS_POW_Voltage/100;//輪蹋袛示支压
 N    }
+N	if(POW_Voltage > 6100)
+X	if(Run_Control[9] > 6100)
+N	{
+N		DISS_POW_Voltage = 0;
+N	}
 N	var32 = 0;
 N/*****************************稳压电源测量电流转换*******************************************/
 N	var32 = Imon_value;
