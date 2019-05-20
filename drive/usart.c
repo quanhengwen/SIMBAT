@@ -86,7 +86,7 @@ void USART_Configuration(void)//???????
 	GPIO_Init(GPIOA, &GPIO_InitStructure);
 	
 	/* USART1 mode config */
-	USART_InitStructure.USART_BaudRate = setbaud[set_baud];
+	USART_InitStructure.USART_BaudRate = 9600;
 	USART_InitStructure.USART_WordLength = USART_WordLength_8b;
 	USART_InitStructure.USART_StopBits = USART_StopBits_1;
 	USART_InitStructure.USART_Parity = USART_Parity_No ;

@@ -52077,6 +52077,7 @@ N	Flag_Swtich_ON=0;
 X	(flagA . bit6)=0;
 W "..\STemWinLibrary522\emWinTask\MainTask.c" 89 5 function "CreateSTARTER" declared implicitly
 N    CreateSTARTER();
+N	C_SW(1);
 N////	CreateR();//开机进入内阻测试界面
 N//// 	flag_Load_CC=1;//开机负载默认进入CC模式
 N//// 	GPIO_ResetBits(GPIOC,GPIO_Pin_10);//CC

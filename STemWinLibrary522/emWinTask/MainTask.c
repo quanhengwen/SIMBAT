@@ -87,6 +87,7 @@ void MainTask(void)
 	GPIO_SetBits(GPIOA,GPIO_Pin_11);//电流切换为高档
 	Flag_Swtich_ON=0;
     CreateSTARTER();
+	C_SW(1);
 ////	CreateR();//开机进入内阻测试界面
 //// 	flag_Load_CC=1;//开机负载默认进入CC模式
 //// 	GPIO_ResetBits(GPIOC,GPIO_Pin_10);//CC

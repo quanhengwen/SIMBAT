@@ -1331,24 +1331,7 @@ void Transformation_ADC(void)
 		Laod_Current = var32;
 		DISS_Current=Laod_Current;
 		DISS_Current=DISS_Current/1000;//輪蹋袛示支路
-//		if(DISS_Current > 10)
-//		{
-//			var32 = Imon1_value;
-//		var32 = var32 * REG_Load_AH1;  
-//		if ((Polar1 & 0x01) == 0x01)		  
-//		{
-//			if (var32 < REG_LoadA_OffsetH1) 
-//			{
-//				var32 = 0;
-//			}
-//			else var32 = var32 - REG_LoadA_OffsetH1;
-//		}
-//		else var32 = var32 + REG_LoadA_OffsetH1;
-//		var32 = var32 >> 12;
-//		Laod_Current = var32;
-//		DISS_Current=Laod_Current;
-//		DISS_Current=DISS_Current/1000;//輪蹋袛示支路
-//		}
+
 	}
 	var32 = 0;	
 	/*************************负载电压和电流控制转换**************************************/

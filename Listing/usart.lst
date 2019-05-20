@@ -35552,8 +35552,7 @@ N	GPIO_Init(GPIOA, &GPIO_InitStructure);
 X	GPIO_Init(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0000)), &GPIO_InitStructure);
 N	
 N	/* USART1 mode config */
-N	USART_InitStructure.USART_BaudRate = setbaud[set_baud];
-X	USART_InitStructure.USART_BaudRate = setbaud[Run_Control[31]];
+N	USART_InitStructure.USART_BaudRate = 9600;
 N	USART_InitStructure.USART_WordLength = USART_WordLength_8b;
 X	USART_InitStructure.USART_WordLength = ((uint16_t)0x0000);
 N	USART_InitStructure.USART_StopBits = USART_StopBits_1;

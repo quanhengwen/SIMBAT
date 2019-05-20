@@ -3,7 +3,7 @@
 <title>Static Call Graph - [..\Output\JK_BTSET.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\Output\JK_BTSET.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Mon May 20 14:28:23 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Mon May 20 16:57:03 2019
 <BR><P>
 <H3>Maximum Stack Usage =        688 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1463,10 +1463,10 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[1d8]"></a>BUTTON_SetPressed</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, button.o(i.BUTTON_SetPressed))
-<BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = BUTTON_SetPressed &rArr; WIDGET_AndState &rArr; WM_InvalidateWindow &rArr; WM_InvalidateRect &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = BUTTON_SetPressed &rArr; WIDGET_OrState &rArr; WM_InvalidateWindow &rArr; WM_InvalidateRect &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WIDGET_AndState
-<LI><a href="#[1e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WIDGET_OrState
+<BR>[Calls]<UL><LI><a href="#[1e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WIDGET_OrState
+<LI><a href="#[1e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WIDGET_AndState
 </UL>
 <BR>[Called By]<UL><LI><a href="#[210]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DISP_POW
 <LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_cbDialog
@@ -1629,7 +1629,8 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[1b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
 <LI><a href="#[1ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
 </UL>
-<BR>[Called By]<UL><LI><a href="#[374]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LOAD_SET
+<BR>[Called By]<UL><LI><a href="#[3a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MainTask
+<LI><a href="#[374]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LOAD_SET
 <LI><a href="#[360]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Key_Funtion
 </UL>
 
@@ -2892,7 +2893,6 @@ Global Symbols
 <LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DROPDOWN_DrawSkinFlex
 <LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CHECKBOX_DrawSkinFlex
 <LI><a href="#[29e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM__InitIVRSearch
-<LI><a href="#[1e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WIDGET_AndState
 <LI><a href="#[1e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI__SetText
 <LI><a href="#[1da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BUTTON_CreateUser
 <LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BUTTON_Callback
@@ -3003,6 +3003,7 @@ Global Symbols
 <LI><a href="#[41a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WIDGET_SetState
 <LI><a href="#[1e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WIDGET_OrState
 <LI><a href="#[1d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WIDGET_HandleActive
+<LI><a href="#[1e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WIDGET_AndState
 <LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_TIMER_Exec
 <LI><a href="#[322]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_Unlink
 <LI><a href="#[321]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_RemoveFromLinList
@@ -3122,7 +3123,6 @@ Global Symbols
 <LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DROPDOWN_DrawSkinFlex
 <LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CHECKBOX_DrawSkinFlex
 <LI><a href="#[29e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM__InitIVRSearch
-<LI><a href="#[1e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WIDGET_AndState
 <LI><a href="#[1e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI__SetText
 <LI><a href="#[1da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BUTTON_CreateUser
 <LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BUTTON_Callback
@@ -3232,6 +3232,7 @@ Global Symbols
 <LI><a href="#[41a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WIDGET_SetState
 <LI><a href="#[1e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WIDGET_OrState
 <LI><a href="#[1d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WIDGET_HandleActive
+<LI><a href="#[1e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WIDGET_AndState
 <LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_TIMER_Exec
 <LI><a href="#[322]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_Unlink
 <LI><a href="#[321]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_RemoveFromLinList
@@ -5912,7 +5913,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_IRQHandler
 </UL>
 
-<P><STRONG><a name="[3a3]"></a>MainTask</STRONG> (Thumb, 518 bytes, Stack size 0 bytes, maintask.o(i.MainTask))
+<P><STRONG><a name="[3a3]"></a>MainTask</STRONG> (Thumb, 524 bytes, Stack size 0 bytes, maintask.o(i.MainTask))
 <BR><BR>[Stack]<UL><LI>Max Depth = 680 + Unknown Stack Size
 <LI>Call Chain = MainTask &rArr; GUI_Delay &rArr; GUI_Exec &rArr; GUI_Exec1 &rArr; WM_Exec &rArr; _DrawNext &rArr; WM__Paint &rArr; GUI_MEMDEV_Draw &rArr; GUI_MEMDEV_CopyToLCD &rArr; GUI_MEMDEV_CopyToLCDAt &rArr; GUI_MEMDEV__WriteToActiveOpaque &rArr; _WriteToActiveOpaque_8 &rArr; GUI_ALLOC_AllocNoInit &rArr; _Alloc &rArr; _InitOnce &rArr; _EnlargeBlocks &rArr;  _Alloc (Cycle)
 </UL>
@@ -5927,6 +5928,7 @@ Global Symbols
 <LI><a href="#[398]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sLCD_WR_REG
 <LI><a href="#[396]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sLCD_Read_Data
 <LI><a href="#[3b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Transformation_ADC
+<LI><a href="#[1ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;C_SW
 <LI><a href="#[360]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Key_Funtion
 <LI><a href="#[3b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ee_Delay
 <LI><a href="#[1bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AD7689_Scan_CH
@@ -7125,7 +7127,7 @@ Global Symbols
 <LI><a href="#[40b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART3_Configuration
 </UL>
 
-<P><STRONG><a name="[3e5]"></a>USART_Configuration</STRONG> (Thumb, 158 bytes, Stack size 40 bytes, usart.o(i.USART_Configuration))
+<P><STRONG><a name="[3e5]"></a>USART_Configuration</STRONG> (Thumb, 152 bytes, Stack size 40 bytes, usart.o(i.USART_Configuration))
 <BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = USART_Configuration &rArr; USART_Init &rArr; RCC_GetClocksFreq
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_PinAFConfig
@@ -8044,7 +8046,6 @@ Global Symbols
 <LI><a href="#[1db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BUTTON_SetText
 <LI><a href="#[1de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BUTTON_SetFont
 <LI><a href="#[2ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_Init
-<LI><a href="#[1e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WIDGET_AndState
 <LI><a href="#[46b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_SetDesktopColorEx
 <LI><a href="#[3ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_ClrHasTrans
 <LI><a href="#[3d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCROLLBAR_SetValue
@@ -8054,6 +8055,7 @@ Global Symbols
 <LI><a href="#[41a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WIDGET_SetState
 <LI><a href="#[1e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WIDGET_OrState
 <LI><a href="#[1d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WIDGET_HandleActive
+<LI><a href="#[1e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WIDGET_AndState
 <LI><a href="#[3d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCROLLBAR__InvalidatePartner
 <LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCROLLBAR_Callback
 <LI><a href="#[45c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_InvalidateWindowAndDescs
@@ -9648,7 +9650,7 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[3a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MainTask
 </UL>
 
-<P><STRONG><a name="[91]"></a>_cbDialog</STRONG> (Thumb, 2358 bytes, Stack size 64 bytes, menu.o(i._cbDialog))
+<P><STRONG><a name="[91]"></a>_cbDialog</STRONG> (Thumb, 2366 bytes, Stack size 64 bytes, menu.o(i._cbDialog))
 <BR><BR>[Stack]<UL><LI>Max Depth = 264 + Unknown Stack Size
 <LI>Call Chain = _cbDialog &rArr; WM_CreateTimer &rArr; GUI_TIMER_Create &rArr; GUI_ALLOC_AllocZero &rArr; GUI_ALLOC_AllocNoInit &rArr; _Alloc &rArr; _InitOnce &rArr; _EnlargeBlocks &rArr;  _Alloc (Cycle)
 </UL>
@@ -10548,9 +10550,9 @@ Local Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_UnlockH
 <LI><a href="#[1d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_LockH
-<LI><a href="#[1e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WIDGET_AndState
 <LI><a href="#[31b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_StoreKey
 <LI><a href="#[3d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_NotifyParent
+<LI><a href="#[1e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WIDGET_AndState
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BUTTON_Callback
 <LI><a href="#[7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_OnTouchDefault
@@ -11757,11 +11759,11 @@ Local Symbols
 <BR>[Calls]<UL><LI><a href="#[434]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_CreateTimer
 <LI><a href="#[1d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_UnlockH
 <LI><a href="#[1d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_LockH
-<LI><a href="#[1e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WIDGET_AndState
 <LI><a href="#[48c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI__DivideRound32
 <LI><a href="#[3d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCROLLBAR_SetValue
 <LI><a href="#[3d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_NotifyParent
 <LI><a href="#[1e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WIDGET_OrState
+<LI><a href="#[1e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WIDGET_AndState
 <LI><a href="#[492]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DeleteTimer
 <LI><a href="#[468]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_SetCapture
 </UL>

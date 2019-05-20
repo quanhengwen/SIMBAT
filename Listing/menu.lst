@@ -53447,7 +53447,7 @@ N                TEXT_SetText(hItem,buf);
 N            }else{
 N                hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_86);
 X                hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x93));
-N                sprintf(buf,"%.2f",DISS_POW_Voltage);       
+N                sprintf(buf,"%.3f",DISS_Voltage);       
 N                TEXT_SetText(hItem,buf);
 N            }
 N//         }else{
@@ -54067,8 +54067,8 @@ N            {
 N                SET_Voltage = 0;
 X                Run_Control[1] = 0;
 N            }
-N			SET_Voltage_Laod = SET_Voltage * 10 +10;
-X			Run_Control[3] = Run_Control[1] * 10 +10;
+N			SET_Voltage_Laod = SET_Voltage * 10 + 50;
+X			Run_Control[3] = Run_Control[1] * 10 + 50;
 N            dis_output_v = (float)SET_Voltage/100;
 X            dis_output_v = (float)Run_Control[1]/100;
 N            

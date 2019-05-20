@@ -198,7 +198,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
                 TEXT_SetText(hItem,buf);
             }else{
                 hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_86);
-                sprintf(buf,"%.2f",DISS_POW_Voltage);       
+                sprintf(buf,"%.3f",DISS_Voltage);       
                 TEXT_SetText(hItem,buf);
             }
 //         }else{
@@ -690,7 +690,7 @@ void MENU_SET(void)
             {
                 SET_Voltage = 0;
             }
-			SET_Voltage_Laod = SET_Voltage * 10 +10;
+			SET_Voltage_Laod = SET_Voltage * 10 + 50;
             dis_output_v = (float)SET_Voltage/100;
             
             sprintf(buf,"%.2f",dis_output_v);

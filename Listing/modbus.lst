@@ -37741,24 +37741,7 @@ X		Run_Control[12] = var32;
 N		DISS_Current=Laod_Current;
 X		DISS_Current=Run_Control[12];
 N		DISS_Current=DISS_Current/1000;//輪蹋袛示支路
-N//		if(DISS_Current > 10)
-N//		{
-N//			var32 = Imon1_value;
-N//		var32 = var32 * REG_Load_AH1;  
-N//		if ((Polar1 & 0x01) == 0x01)		  
-N//		{
-N//			if (var32 < REG_LoadA_OffsetH1) 
-N//			{
-N//				var32 = 0;
-N//			}
-N//			else var32 = var32 - REG_LoadA_OffsetH1;
-N//		}
-N//		else var32 = var32 + REG_LoadA_OffsetH1;
-N//		var32 = var32 >> 12;
-N//		Laod_Current = var32;
-N//		DISS_Current=Laod_Current;
-N//		DISS_Current=DISS_Current/1000;//輪蹋袛示支路
-N//		}
+N
 N	}
 N	var32 = 0;	
 N	/*************************负载电压和电流控制转换**************************************/
