@@ -25,7 +25,9 @@ extern vu16 s_time;
 extern vu8 wait_flag;
 extern vu8 test_num;
 float pow_cutoffc;
+extern vu8 load_sw;
 extern float load_cutoffv;
+float DIS_POW,DIS_R;
 #define ID_WINDOW_0      	(GUI_ID_USER + 0x00)
 #define ID_BUTTON_0     	(GUI_ID_USER + 0x01)
 #define ID_BUTTON_1     	(GUI_ID_USER + 0x02)
@@ -60,17 +62,17 @@ static const GUI_WIDGET_CREATE_INFO _aDialogCreate1[] = {
     { BUTTON_CreateIndirect, "Button", ID_BUTTON_4, 323, 226, 77, 45, 0, 0x0, 0 },
     { BUTTON_CreateIndirect, "Button", ID_BUTTON_5, 403, 226, 77, 45, 0, 0x0, 0 },
     { TEXT_CreateIndirect,   "Text",   ID_TEXT_9,   28, 50-10, 64, 32, 0, 0x64, 0 },
-    { TEXT_CreateIndirect,   "Text",   ID_TEXT_10,  28, 120-10, 64, 32, 0, 0x64, 0 },
+    { TEXT_CreateIndirect,   "Text",   ID_TEXT_10,  28, 120-15, 64, 32, 0, 0x64, 0 },
     { TEXT_CreateIndirect,   "Text",   ID_TEXT_15,  240, 50-10, 32, 30, 0, 0x0, 0 },
-    { TEXT_CreateIndirect,   "Text",   ID_TEXT_16,  240, 121-10, 32, 30, 0, 0x0, 0 },
+    { TEXT_CreateIndirect,   "Text",   ID_TEXT_16,  240, 121-15, 32, 30, 0, 0x0, 0 },
 //    { TEXT_CreateIndirect,   "Text",   ID_TEXT_33, 290, 75, 80, 20, 0, 0x0, 0 },
 //    { TEXT_CreateIndirect,   "Text",   ID_TEXT_34, 290, 100, 80, 20, 0, 0x0, 0 },
     { TEXT_CreateIndirect,   "Text",   ID_TEXT_41, 380, 50-10, 53, 20, 0, 0x0, 0 },
     { TEXT_CreateIndirect,   "Text",   ID_TEXT_42, 370, 100-10, 65, 20, 0, 0x0, 0 },
-    { TEXT_CreateIndirect,   "Text",   ID_TEXT_86, 95, 48-10, 150, 40, 0, 0x0, 0 },
-    { TEXT_CreateIndirect,   "Text",   ID_TEXT_87, 95, 116-10, 150, 40, 0, 0x0, 0 },
+    { TEXT_CreateIndirect,   "Text",   ID_TEXT_86, 95, 38, 150, 40, 0, 0x0, 0 },
+    { TEXT_CreateIndirect,   "Text",   ID_TEXT_87, 95, 103, 150, 40, 0, 0x0, 0 },
     { TEXT_CreateIndirect,   "Text",   ID_TEXT_88, 400, 4, 50, 20, 0, 0x0, 0 },
-//    { TEXT_CreateIndirect,   "Text",   ID_TEXT_115, 95, 184, 150, 40, 0, 0x0, 0 },
+    { TEXT_CreateIndirect,   "Text",   ID_TEXT_115, 95, 168, 150, 40, 0, 0x0, 0 },
     { TEXT_CreateIndirect,   "Text",   ID_TEXT_125, 300, 2, 80, 20, 0, 0x0, 0 },
     { TEXT_CreateIndirect,   "Text",   ID_TEXT_144, 370, 150-10, 65, 20, 0, 0x0, 0 },
 	{ TEXT_CreateIndirect,   "Text",   ID_TEXT_159, 370, 190, 65, 20, 0, 0x0, 0 },
@@ -130,6 +132,23 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 		GUI_SetColor(GUI_LIGHTBLUE);
 		GUI_DispStringAt("OVP",290,150-10);
         GUI_DispStringAt("OCP",290,200-10);
+		
+		
+		
+		if(set_disp == 0)
+		{
+			GUI_SetColor(GUI_LIGHTGRAY);
+			GUI_SetFont(&GUI_FontEN40);
+			GUI_DispStringAt("P:",28,190-20);
+			GUI_DispStringAt("W",240,190-20);
+		}else{
+			GUI_SetColor(GUI_LIGHTGRAY);
+			GUI_SetFont(&GUI_FontEN40);
+			GUI_DispStringAt("R:",28,190-20);
+			GUI_SetFont(&GUI_FontHZ32);
+			GUI_DispStringAt("Ω",240,190-20);
+		}
+		
 
 //        GUI_SetFont(&GUI_FontEN40);
 //        GUI_SetColor(GUI_LIGHTGRAY);
@@ -162,6 +181,8 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 //        }
 //         if(clear_flag2 == 1)
 //         {
+		DIS_POW = DISS_POW_Voltage * DISS_POW_Current;
+		DIS_R = DISS_POW_Voltage / DISS_POW_Current;
 		if(lock == 1)
 		{
 			hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_161);
@@ -193,8 +214,19 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
         if(pow_sw == pow_on)
         {
              hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_87);
-            sprintf(buf,"%.3f",DISS_POW_Current);        
-            TEXT_SetText(hItem,buf);
+            sprintf(buf,"%.3f",DISS_POW_Current); 
+			TEXT_SetText(hItem,buf);
+			
+			hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_115);
+			if(set_disp == 0)
+			{
+				sprintf(buf,"%.3f",DIS_POW);
+			}else{
+				sprintf(buf,"%.3f",DIS_R);
+			}
+			        
+            TEXT_SetText(hItem,buf);			
+            
             if(status_flash == 0){
                 hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_88);
                 TEXT_SetTextColor(hItem, GUI_RED);//设置字体颜色
@@ -207,12 +239,14 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
                 TEXT_SetText(hItem,"");
                 status_flash = 0;
            }
-           if(((load_cutoffv != 0 && DISS_POW_Voltage < load_cutoffv) ||(load_cutoffv != 0 && DISS_Voltage < load_cutoffv)) && cdelay > 20)
+           if(((load_cutoffv != 0 && DISS_POW_Voltage > load_cutoffv) ||(pow_cutoffc != 0 && DISS_POW_Current > pow_cutoffc)) && cdelay > 20)
            {
               GPIO_ResetBits(GPIOC,GPIO_Pin_1);
+			  GPIO_SetBits(GPIOA,GPIO_Pin_15);//电子负载OFF
               //GPIO_SetBits(GPIOC,GPIO_Pin_13);
               mode_sw = 0;
               pow_sw = pow_off;
+			  load_sw=load_off;
               cdelay = 0;
            }else{
                cdelay++;
@@ -225,6 +259,10 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
             sprintf(buf,"%.3f",0.000);        
             TEXT_SetText(hItem,buf);
             
+			hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_115);
+			sprintf(buf,"%.3f",0.000);        
+            TEXT_SetText(hItem,buf);
+			
             cdelay = 0;
         }
 //        hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_144);       
@@ -235,7 +273,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
         sprintf(buf,"%.1f",temp);
         TEXT_SetText(hItem,buf);
         
-		WM_RestartTimer(pMsg->Data.v, 50);//复位定时器数值越大刷新时间越短
+		WM_RestartTimer(pMsg->Data.v, 20);//复位定时器数值越大刷新时间越短
 	}
 	break;
   case WM_INIT_DIALOG://重绘外观
@@ -244,7 +282,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
     //
         hItem = pMsg->hWin;
         WINDOW_SetBkColor(hItem, GUI_BLACK);
-        WM_CreateTimer(hItem,ID_TimerTime2,1000,0);//创建本窗口定时器
+        WM_CreateTimer(hItem,ID_TimerTime2,500,0);//创建本窗口定时器
     //
     // Initialization of 'Button'
     //
@@ -376,12 +414,12 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 		GUI_UC_SetEncodeUTF8();        
 		TEXT_SetText(hItem,buf);
         
-//        hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_115);
-//        sprintf(buf,"%05d",0);
-//        TEXT_SetTextColor(hItem, GUI_YELLOW);//设置字体颜色
-//        TEXT_SetFont(hItem,&GUI_FontD24x32);//设定文本字体
-//        GUI_UC_SetEncodeUTF8();        
-//        TEXT_SetText(hItem,buf);
+        hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_115);
+        sprintf(buf,"%.3f",0.000);
+        TEXT_SetTextColor(hItem, GUI_YELLOW);//设置字体颜色
+        TEXT_SetFont(hItem,&GUI_FontD24x32);//设定文本字体
+        GUI_UC_SetEncodeUTF8();        
+        TEXT_SetText(hItem,buf);
         
         hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_125);
         TEXT_SetTextColor(hItem, GUI_GREEN);//设置字体颜色
@@ -621,13 +659,13 @@ void MENU_SET(void)
     float dis_output_v;
     float dis_output_c; 
     
-    if(SET_Voltage > /*3000*/ 6200)
+    if(SET_Voltage > /*3000*/ 6000)
     {
-      SET_Voltage = /*3000*/ 6200;
+      SET_Voltage = /*3000*/ 6000;
     }
-    if(SET_Current > 10000)
+    if(SET_Current > 5000)
     {
-      SET_Current = 10000;
+      SET_Current = 5000;
     }
     switch(set_sw){
 
@@ -643,9 +681,9 @@ void MENU_SET(void)
 				strncpy(buf,set_limit,dot_flag + 2);
 				pow_v = atof(buf)*100;
 			}
-			if(pow_v > 6000)
+			if(pow_v > set_max_v)
 			{
-				pow_v = 6000;
+				pow_v = set_max_v;
 			}
             SET_Voltage = pow_v;
             if(SET_Voltage/100 * SET_Current/1000 > 250)
@@ -679,9 +717,9 @@ void MENU_SET(void)
 				pow_c = atof(buf)*1000;
 			}
               
-            if(pow_c > 10000)
+            if(pow_c > set_max_c)
             {
-                pow_c = 10000;               
+                pow_c = set_max_c;               
             }
 			SET_Current = pow_c;
             if(SET_Voltage/100 * SET_Current/1000 > 250)
@@ -739,9 +777,9 @@ void MENU_SET(void)
 				set_pow_cutoffc = atof(buf)*1000;
 			}
               
-            if(set_pow_cutoffc > 10000)
+            if(set_pow_cutoffc > 5000)
             {
-                set_pow_cutoffc = 10000;               
+                set_pow_cutoffc = 5000;               
             }
 
             pow_cutoffc = (float)set_pow_cutoffc/1000;
@@ -1200,27 +1238,27 @@ void INPUT_POW(char* num){
     }    
 }
 
-void test_pow(void)
-{
+//void test_pow(void)
+//{
 
-    if(pow_sw == pow_on && para_set1 == set_1_on)
-    {
-        if(DISS_POW_Voltage*100 > set_max_v || DISS_POW_Voltage*100 < set_min_v || DISS_POW_Current * 100 > set_max_c || DISS_POW_Current * 100 < set_min_c)
-        {
-            if(para_set4 == set_4_on){
-                BEEP_Tiggr();
-            }
-            TM1650_SET_LED(0x68,0x70);//FAIL灯
-            GPIO_SetBits(GPIOD,GPIO_Pin_12);//            
-        }else{
-            GPIO_ResetBits(GPIOD,GPIO_Pin_12);
-            TM1650_SET_LED(0x48,0x71);
-            TM1650_SET_LED(0x68,0xF2);//PASS灯
-        }        
-    }else
-    {
-        TM1650_SET_LED(0x68,0x70);
-        GPIO_ResetBits(GPIOD,GPIO_Pin_12);//灭灯
-    }
-}
+//    if(pow_sw == pow_on && para_set1 == set_1_on)
+//    {
+//        if(DISS_POW_Voltage*100 > set_max_v || DISS_POW_Voltage*100 < set_min_v || DISS_POW_Current * 100 > set_max_c || DISS_POW_Current * 100 < set_min_c)
+//        {
+//            if(para_set4 == set_4_on){
+//                BEEP_Tiggr();
+//            }
+//            TM1650_SET_LED(0x68,0x70);//FAIL灯
+//            GPIO_SetBits(GPIOD,GPIO_Pin_12);//            
+//        }else{
+//            GPIO_ResetBits(GPIOD,GPIO_Pin_12);
+//            TM1650_SET_LED(0x48,0x71);
+//            TM1650_SET_LED(0x68,0xF2);//PASS灯
+//        }        
+//    }else
+//    {
+//        TM1650_SET_LED(0x68,0x70);
+//        GPIO_ResetBits(GPIOD,GPIO_Pin_12);//灭灯
+//    }
+//}
 

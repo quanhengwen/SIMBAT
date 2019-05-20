@@ -142,7 +142,6 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>DLGUARM</Key>
-          <Name>猬hwd|?d|?趏&gt;n</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -186,7 +185,7 @@
           <Type>0</Type>
           <LineNumber>2777</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134283260</Address>
+          <Address>134283580</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -202,7 +201,7 @@
           <Type>0</Type>
           <LineNumber>2770</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134283200</Address>
+          <Address>134283520</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -218,7 +217,7 @@
           <Type>0</Type>
           <LineNumber>2736</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134283134</Address>
+          <Address>134283454</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -234,7 +233,7 @@
           <Type>0</Type>
           <LineNumber>2734</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134282834</Address>
+          <Address>134283154</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -250,7 +249,7 @@
           <Type>0</Type>
           <LineNumber>2733</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134283082</Address>
+          <Address>134283402</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -266,7 +265,7 @@
           <Type>0</Type>
           <LineNumber>2709</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134283728</Address>
+          <Address>134284048</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -282,7 +281,7 @@
           <Type>0</Type>
           <LineNumber>2707</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134283724</Address>
+          <Address>134284044</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -298,7 +297,7 @@
           <Type>0</Type>
           <LineNumber>2706</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134283722</Address>
+          <Address>134284042</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -314,7 +313,7 @@
           <Type>0</Type>
           <LineNumber>2703</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134283704</Address>
+          <Address>134284024</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -330,7 +329,7 @@
           <Type>0</Type>
           <LineNumber>2700</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134283858</Address>
+          <Address>134284178</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -346,7 +345,7 @@
           <Type>0</Type>
           <LineNumber>2382</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134267020</Address>
+          <Address>134266972</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -362,7 +361,7 @@
           <Type>0</Type>
           <LineNumber>649</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134372672</Address>
+          <Address>134367552</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -378,7 +377,7 @@
           <Type>0</Type>
           <LineNumber>647</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134372664</Address>
+          <Address>134367544</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -394,7 +393,7 @@
           <Type>0</Type>
           <LineNumber>646</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134372660</Address>
+          <Address>134367540</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -410,7 +409,7 @@
           <Type>0</Type>
           <LineNumber>2772</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134283224</Address>
+          <Address>134283544</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -426,7 +425,7 @@
           <Type>0</Type>
           <LineNumber>2769</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134283190</Address>
+          <Address>134283510</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -442,7 +441,7 @@
           <Type>0</Type>
           <LineNumber>2731</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134283066</Address>
+          <Address>134283386</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -458,7 +457,7 @@
           <Type>0</Type>
           <LineNumber>2704</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134283712</Address>
+          <Address>134284032</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -474,7 +473,7 @@
           <Type>0</Type>
           <LineNumber>2702</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134283698</Address>
+          <Address>134284018</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -490,7 +489,7 @@
           <Type>0</Type>
           <LineNumber>2701</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134283860</Address>
+          <Address>134284180</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -506,7 +505,7 @@
           <Type>0</Type>
           <LineNumber>2699</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134283854</Address>
+          <Address>134284174</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -522,7 +521,7 @@
           <Type>0</Type>
           <LineNumber>2698</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134283850</Address>
+          <Address>134284170</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -538,7 +537,7 @@
           <Type>0</Type>
           <LineNumber>2696</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134283846</Address>
+          <Address>134284166</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -554,7 +553,7 @@
           <Type>0</Type>
           <LineNumber>2695</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134283844</Address>
+          <Address>134284164</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -570,7 +569,7 @@
           <Type>0</Type>
           <LineNumber>2693</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134283840</Address>
+          <Address>134284160</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -586,7 +585,7 @@
           <Type>0</Type>
           <LineNumber>641</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134372632</Address>
+          <Address>134367512</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -602,7 +601,7 @@
           <Type>0</Type>
           <LineNumber>343</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134370384</Address>
+          <Address>134365264</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -618,7 +617,7 @@
           <Type>0</Type>
           <LineNumber>2383</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134267030</Address>
+          <Address>134266982</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -634,7 +633,7 @@
           <Type>0</Type>
           <LineNumber>2385</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134267036</Address>
+          <Address>134266988</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -650,7 +649,7 @@
           <Type>0</Type>
           <LineNumber>2387</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134267046</Address>
+          <Address>134266998</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -666,7 +665,7 @@
           <Type>0</Type>
           <LineNumber>2392</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134267060</Address>
+          <Address>134267012</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -682,7 +681,7 @@
           <Type>0</Type>
           <LineNumber>2394</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134267074</Address>
+          <Address>134267026</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -698,7 +697,7 @@
           <Type>0</Type>
           <LineNumber>2694</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134283842</Address>
+          <Address>134284162</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -714,7 +713,7 @@
           <Type>0</Type>
           <LineNumber>2697</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134283848</Address>
+          <Address>134284168</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -730,7 +729,7 @@
           <Type>0</Type>
           <LineNumber>2705</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134283720</Address>
+          <Address>134284040</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -746,7 +745,7 @@
           <Type>0</Type>
           <LineNumber>2708</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134283726</Address>
+          <Address>134284046</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -762,7 +761,7 @@
           <Type>0</Type>
           <LineNumber>2710</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134283730</Address>
+          <Address>134284050</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -778,7 +777,7 @@
           <Type>0</Type>
           <LineNumber>2732</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134282844</Address>
+          <Address>134283164</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -794,7 +793,7 @@
           <Type>0</Type>
           <LineNumber>2735</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134283110</Address>
+          <Address>134283430</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -810,7 +809,7 @@
           <Type>0</Type>
           <LineNumber>2737</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134282856</Address>
+          <Address>134283176</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -826,7 +825,7 @@
           <Type>0</Type>
           <LineNumber>2766</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134283178</Address>
+          <Address>134283498</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -842,7 +841,7 @@
           <Type>0</Type>
           <LineNumber>2771</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134283210</Address>
+          <Address>134283530</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -858,7 +857,7 @@
           <Type>0</Type>
           <LineNumber>2773</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134283228</Address>
+          <Address>134283548</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -874,7 +873,7 @@
           <Type>0</Type>
           <LineNumber>2775</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134283242</Address>
+          <Address>134283562</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -890,7 +889,7 @@
           <Type>0</Type>
           <LineNumber>2778</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134283264</Address>
+          <Address>134283584</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -1097,6 +1096,21 @@
           <count>38</count>
           <WinNumber>1</WinNumber>
           <ItemText>Run_Control[3],0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>39</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>DISS_Current</ItemText>
+        </Ww>
+        <Ww>
+          <count>40</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>NTC_value,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>41</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>set_sw</ItemText>
         </Ww>
       </WatchWindow1>
       <Tracepoint>

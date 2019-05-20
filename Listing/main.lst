@@ -35166,9 +35166,9 @@ N#define set_dc_cutoff_v					Run_Control[27]
 N#define set_dc_cutoff_c					Run_Control[28]
 N#define start_time					    Run_Control[29]
 N#define end_time					    Run_Control[30]
-N#define opv1    					    Run_Control[31]
-N#define opv2    					    Run_Control[32]
-N#define opv3    					    Run_Control[33]
+N#define set_baud    					Run_Control[31]
+N#define set_beep    					Run_Control[32]
+N#define set_disp    					Run_Control[33]
 N#define opc1    					    Run_Control[34]
 N#define opc2    					    Run_Control[35]
 N#define opc3    					    Run_Control[36]
@@ -35864,9 +35864,9 @@ S#define set_dc_cutoff_v					Run_Control[27]
 S#define set_dc_cutoff_c					Run_Control[28]
 S#define start_time					    Run_Control[29]
 S#define end_time					    Run_Control[30]
-S#define opv1    					    Run_Control[31]
-S#define opv2    					    Run_Control[32]
-S#define opv3    					    Run_Control[33]
+S#define set_baud    					Run_Control[31]
+S#define set_beep    					Run_Control[32]
+S#define set_disp    					Run_Control[33]
 S#define opc1    					    Run_Control[34]
 S#define opc2    					    Run_Control[35]
 S#define opc3    					    Run_Control[36]
@@ -36483,9 +36483,9 @@ S#define set_dc_cutoff_v					Run_Control[27]
 S#define set_dc_cutoff_c					Run_Control[28]
 S#define start_time					    Run_Control[29]
 S#define end_time					    Run_Control[30]
-S#define opv1    					    Run_Control[31]
-S#define opv2    					    Run_Control[32]
-S#define opv3    					    Run_Control[33]
+S#define set_baud    					Run_Control[31]
+S#define set_beep    					Run_Control[32]
+S#define set_disp    					Run_Control[33]
 S#define opc1    					    Run_Control[34]
 S#define opc2    					    Run_Control[35]
 S#define opc3    					    Run_Control[36]
@@ -50975,9 +50975,9 @@ S#define set_dc_cutoff_v					Run_Control[27]
 S#define set_dc_cutoff_c					Run_Control[28]
 S#define start_time					    Run_Control[29]
 S#define end_time					    Run_Control[30]
-S#define opv1    					    Run_Control[31]
-S#define opv2    					    Run_Control[32]
-S#define opv3    					    Run_Control[33]
+S#define set_baud    					Run_Control[31]
+S#define set_beep    					Run_Control[32]
+S#define set_disp    					Run_Control[33]
 S#define opc1    					    Run_Control[34]
 S#define opc2    					    Run_Control[35]
 S#define opc3    					    Run_Control[36]
@@ -51579,9 +51579,9 @@ S#define set_dc_cutoff_v					Run_Control[27]
 S#define set_dc_cutoff_c					Run_Control[28]
 S#define start_time					    Run_Control[29]
 S#define end_time					    Run_Control[30]
-S#define opv1    					    Run_Control[31]
-S#define opv2    					    Run_Control[32]
-S#define opv3    					    Run_Control[33]
+S#define set_baud    					Run_Control[31]
+S#define set_beep    					Run_Control[32]
+S#define set_disp    					Run_Control[33]
 S#define opc1    					    Run_Control[34]
 S#define opc2    					    Run_Control[35]
 S#define opc3    					    Run_Control[36]
@@ -52195,9 +52195,9 @@ S#define set_dc_cutoff_v					Run_Control[27]
 S#define set_dc_cutoff_c					Run_Control[28]
 S#define start_time					    Run_Control[29]
 S#define end_time					    Run_Control[30]
-S#define opv1    					    Run_Control[31]
-S#define opv2    					    Run_Control[32]
-S#define opv3    					    Run_Control[33]
+S#define set_baud    					Run_Control[31]
+S#define set_beep    					Run_Control[32]
+S#define set_disp    					Run_Control[33]
 S#define opc1    					    Run_Control[34]
 S#define opc2    					    Run_Control[35]
 S#define opc3    					    Run_Control[36]
@@ -52801,9 +52801,9 @@ S#define set_dc_cutoff_v					Run_Control[27]
 S#define set_dc_cutoff_c					Run_Control[28]
 S#define start_time					    Run_Control[29]
 S#define end_time					    Run_Control[30]
-S#define opv1    					    Run_Control[31]
-S#define opv2    					    Run_Control[32]
-S#define opv3    					    Run_Control[33]
+S#define set_baud    					Run_Control[31]
+S#define set_beep    					Run_Control[32]
+S#define set_disp    					Run_Control[33]
 S#define opc1    					    Run_Control[34]
 S#define opc2    					    Run_Control[35]
 S#define opc3    					    Run_Control[36]
@@ -59696,16 +59696,17 @@ W "..\User\main.c" 69 5 function "TIM5_Int_Init" declared implicitly
 N    TIM5_Int_Init(90-1,8400-1);
 N	TIM6_Config();
 N	ADC1_DMA_Init();
-N	USART_Configuration();
-W "..\User\main.c" 73 5 function "USART3_Configuration" declared implicitly
-N    USART3_Configuration();
+N	
 N	i2c_CfgGpio();//24C01引脚初始化
 N	TM1650_GPIO_INT();		/*TM1650引脚初始化 */  
 N	DAC8531_GPIOCoing();//DAC初始化
-W "..\User\main.c" 77 2 function "AD7689_InitializeSPI1" declared implicitly
+W "..\User\main.c" 76 2 function "AD7689_InitializeSPI1" declared implicitly
 N	AD7689_InitializeSPI1();//AD7689初始化
 N	LCD_Initializtion();//液晶屏初始化	
 N	EEPROM_READ_Coeff();//读取校准参数
+N	USART_Configuration();
+W "..\User\main.c" 80 5 function "USART3_Configuration" declared implicitly
+N    USART3_Configuration();
 N	//IWDG_Inte();
 N	Flash_Read32BitDatas(FLASH_USER_START_ADDR,40,InFlashSave);
 X	Flash_Read32BitDatas(((uint32_t)0x080E0000),40,InFlashSave);

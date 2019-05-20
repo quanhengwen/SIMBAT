@@ -1765,45 +1765,45 @@
 000c34  8028              STRH     r0,[r5,#0]
 ;;;788        
 ;;;789        
-;;;790        opv1=EEPROM_READ_Byte(0x8E);
+;;;790        set_baud=EEPROM_READ_Byte(0x8E);
 000c36  208e              MOVS     r0,#0x8e
 000c38  f7fffffe          BL       EEPROM_READ_Byte
 000c3c  6460              STR      r0,[r4,#0x44]  ; Run_Control
-;;;791    	opv1=opv1<<8;
+;;;791    	set_baud=set_baud<<8;
 000c3e  6c60              LDR      r0,[r4,#0x44]  ; Run_Control
 000c40  0200              LSLS     r0,r0,#8
 000c42  6460              STR      r0,[r4,#0x44]  ; Run_Control
-;;;792    	opv1=opv1+EEPROM_READ_Byte(0x8F);
+;;;792    	set_baud=set_baud+EEPROM_READ_Byte(0x8F);
 000c44  208f              MOVS     r0,#0x8f
 000c46  f7fffffe          BL       EEPROM_READ_Byte
 000c4a  6c61              LDR      r1,[r4,#0x44]  ; Run_Control
 000c4c  4408              ADD      r0,r0,r1
 000c4e  6460              STR      r0,[r4,#0x44]  ; Run_Control
 ;;;793        
-;;;794        opv2=EEPROM_READ_Byte(0x90);
+;;;794        set_beep=EEPROM_READ_Byte(0x90);
 000c50  2090              MOVS     r0,#0x90
 000c52  f7fffffe          BL       EEPROM_READ_Byte
 000c56  64a0              STR      r0,[r4,#0x48]  ; Run_Control
-;;;795    	opv2=opv2<<8;
+;;;795    	set_beep=set_beep<<8;
 000c58  6ca0              LDR      r0,[r4,#0x48]  ; Run_Control
 000c5a  0200              LSLS     r0,r0,#8
 000c5c  64a0              STR      r0,[r4,#0x48]  ; Run_Control
-;;;796    	opv2=opv2+EEPROM_READ_Byte(0x91);
+;;;796    	set_beep=set_beep+EEPROM_READ_Byte(0x91);
 000c5e  2091              MOVS     r0,#0x91
 000c60  f7fffffe          BL       EEPROM_READ_Byte
 000c64  6ca1              LDR      r1,[r4,#0x48]  ; Run_Control
 000c66  4408              ADD      r0,r0,r1
 000c68  64a0              STR      r0,[r4,#0x48]  ; Run_Control
 ;;;797        
-;;;798        opv3=EEPROM_READ_Byte(0x92);
+;;;798        set_disp=EEPROM_READ_Byte(0x92);
 000c6a  2092              MOVS     r0,#0x92
 000c6c  f7fffffe          BL       EEPROM_READ_Byte
 000c70  64e0              STR      r0,[r4,#0x4c]  ; Run_Control
-;;;799    	opv3=opv3<<8;
+;;;799    	set_disp=set_disp<<8;
 000c72  6ce0              LDR      r0,[r4,#0x4c]  ; Run_Control
 000c74  0200              LSLS     r0,r0,#8
 000c76  64e0              STR      r0,[r4,#0x4c]  ; Run_Control
-;;;800    	opv3=opv3+EEPROM_READ_Byte(0x93);
+;;;800    	set_disp=set_disp+EEPROM_READ_Byte(0x93);
 000c78  2093              MOVS     r0,#0x93
 000c7a  f7fffffe          BL       EEPROM_READ_Byte
 000c7e  6ce1              LDR      r1,[r4,#0x4c]  ; Run_Control
@@ -3441,7 +3441,7 @@
 ;;;914    
 ;;;915    
 ;;;916    
-;;;917        data_8bit = opv1 >> 8;
+;;;917        data_8bit = set_baud >> 8;
 000122  6c60              LDR      r0,[r4,#0x44]  ; Run_Control
 000124  0a00              LSRS     r0,r0,#8
 000126  9000              STR      r0,[sp,#0]
@@ -3449,13 +3449,13 @@
 000128  f89d1000          LDRB     r1,[sp,#0]
 00012c  208e              MOVS     r0,#0x8e
 00012e  f7fffffe          BL       EEPROM_WriteByte
-;;;919    	EEPROM_WriteByte(0x8F, opv1);
+;;;919    	EEPROM_WriteByte(0x8F, set_baud);
 000132  6c60              LDR      r0,[r4,#0x44]  ; Run_Control
 000134  b2c1              UXTB     r1,r0
 000136  208f              MOVS     r0,#0x8f
 000138  f7fffffe          BL       EEPROM_WriteByte
 ;;;920        
-;;;921        data_8bit = opv2 >> 8;
+;;;921        data_8bit = set_beep >> 8;
 00013c  6ca0              LDR      r0,[r4,#0x48]  ; Run_Control
 00013e  0a00              LSRS     r0,r0,#8
 000140  9000              STR      r0,[sp,#0]
@@ -3463,13 +3463,13 @@
 000142  f89d1000          LDRB     r1,[sp,#0]
 000146  2090              MOVS     r0,#0x90
 000148  f7fffffe          BL       EEPROM_WriteByte
-;;;923    	EEPROM_WriteByte(0x91, opv2);
+;;;923    	EEPROM_WriteByte(0x91, set_beep);
 00014c  6ca0              LDR      r0,[r4,#0x48]  ; Run_Control
 00014e  b2c1              UXTB     r1,r0
 000150  2091              MOVS     r0,#0x91
 000152  f7fffffe          BL       EEPROM_WriteByte
 ;;;924        
-;;;925        data_8bit = opv3 >> 8;
+;;;925        data_8bit = set_disp >> 8;
 000156  6ce0              LDR      r0,[r4,#0x4c]  ; Run_Control
 000158  0a00              LSRS     r0,r0,#8
 00015a  9000              STR      r0,[sp,#0]
@@ -3477,7 +3477,7 @@
 00015c  f89d1000          LDRB     r1,[sp,#0]
 000160  2092              MOVS     r0,#0x92
 000162  f7fffffe          BL       EEPROM_WriteByte
-;;;927    	EEPROM_WriteByte(0x93, opv3);
+;;;927    	EEPROM_WriteByte(0x93, set_disp);
 000166  6ce0              LDR      r0,[r4,#0x4c]  ; Run_Control
 000168  b2c1              UXTB     r1,r0
 00016a  2093              MOVS     r0,#0x93

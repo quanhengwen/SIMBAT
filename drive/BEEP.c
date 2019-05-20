@@ -54,7 +54,10 @@ void BEEP_Ring(void)//蜂鸣器控制
 /***************************************************************/
 void BEEP_Tiggr(void)//蜂鸣器触发
 {
-	Flag_BEEP=1;
-	t_0_5S=0;
-	Flag_0_5S=0;
+	if(set_beep == 0)
+	{
+		Flag_BEEP=1;
+		t_0_5S=0;
+		Flag_0_5S=0;
+	}
 }

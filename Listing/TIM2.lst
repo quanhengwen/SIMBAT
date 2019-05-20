@@ -35269,9 +35269,9 @@ N#define set_dc_cutoff_v					Run_Control[27]
 N#define set_dc_cutoff_c					Run_Control[28]
 N#define start_time					    Run_Control[29]
 N#define end_time					    Run_Control[30]
-N#define opv1    					    Run_Control[31]
-N#define opv2    					    Run_Control[32]
-N#define opv3    					    Run_Control[33]
+N#define set_baud    					Run_Control[31]
+N#define set_beep    					Run_Control[32]
+N#define set_disp    					Run_Control[33]
 N#define opc1    					    Run_Control[34]
 N#define opc2    					    Run_Control[35]
 N#define opc3    					    Run_Control[36]
@@ -35644,14 +35644,14 @@ N}
 N/**************************************************************************************/
 Nvoid Temp_Comapre(void)	  //温度来控制风扇
 N{
-N	if(NTC_value<=1500)
+N	if(NTC_value<=1500 || NTC_value>3200)
 N	{
 N		GPIO_SetBits(GPIOE,GPIO_Pin_6);//开启风扇
 X		GPIO_SetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x1000)),((uint16_t)0x0040));
 N		flag_FAN_ON=1;
 X		(flagG . bit5)=1;
 N	}
-N	else if(NTC_value>=1600)
+N	else if(NTC_value>=1600 && NTC_value<=3200)
 N	{
 N		GPIO_ResetBits(GPIOE,GPIO_Pin_6);//关闭风扇
 X		GPIO_ResetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x1000)),((uint16_t)0x0040));

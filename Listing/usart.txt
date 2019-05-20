@@ -345,7 +345,7 @@
 000006  2010              MOVS     r0,#0x10
 000008  f7fffffe          BL       RCC_APB2PeriphClockCmd
 ;;;74     	GPIO_PinAFConfig(GPIOA,GPIO_PinSource9,GPIO_AF_USART1);
-00000c  4e22              LDR      r6,|L6.152|
+00000c  4e24              LDR      r6,|L6.160|
 00000e  2207              MOVS     r2,#7
 000010  2109              MOVS     r1,#9
 000012  4630              MOV      r0,r6
@@ -384,52 +384,60 @@
 00004a  f7fffffe          BL       GPIO_Init
 ;;;87     	
 ;;;88     	/* USART1 mode config */
-;;;89     	USART_InitStructure.USART_BaudRate = 9600;
-00004e  f44f5016          MOV      r0,#0x2580
-000052  9000              STR      r0,[sp,#0]
+;;;89     	USART_InitStructure.USART_BaudRate = setbaud[set_baud];
+00004e  4815              LDR      r0,|L6.164|
+000050  6fc0              LDR      r0,[r0,#0x7c]  ; Run_Control
+000052  4915              LDR      r1,|L6.168|
+000054  f8510020          LDR      r0,[r1,r0,LSL #2]
+000058  9000              STR      r0,[sp,#0]
 ;;;90     	USART_InitStructure.USART_WordLength = USART_WordLength_8b;
-000054  f8ad4004          STRH     r4,[sp,#4]
+00005a  f8ad4004          STRH     r4,[sp,#4]
 ;;;91     	USART_InitStructure.USART_StopBits = USART_StopBits_1;
-000058  f8ad4006          STRH     r4,[sp,#6]
+00005e  f8ad4006          STRH     r4,[sp,#6]
 ;;;92     	USART_InitStructure.USART_Parity = USART_Parity_No ;
-00005c  f8ad4008          STRH     r4,[sp,#8]
+000062  f8ad4008          STRH     r4,[sp,#8]
 ;;;93     	USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
-000060  f8ad400c          STRH     r4,[sp,#0xc]
+000066  f8ad400c          STRH     r4,[sp,#0xc]
 ;;;94     	USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
-000064  200c              MOVS     r0,#0xc
-000066  f8ad000a          STRH     r0,[sp,#0xa]
+00006a  200c              MOVS     r0,#0xc
+00006c  f8ad000a          STRH     r0,[sp,#0xa]
 ;;;95     	USART_Init(USART1, &USART_InitStructure);
-00006a  4c0c              LDR      r4,|L6.156|
-00006c  4669              MOV      r1,sp
-00006e  4620              MOV      r0,r4
-000070  f7fffffe          BL       USART_Init
+000070  4c0e              LDR      r4,|L6.172|
+000072  4669              MOV      r1,sp
+000074  4620              MOV      r0,r4
+000076  f7fffffe          BL       USART_Init
 ;;;96     	
 ;;;97     	/******????????******************/
 ;;;98     	USART_ITConfig(USART1, USART_IT_RXNE, ENABLE);	
-000074  2201              MOVS     r2,#1
-000076  f2405125          MOV      r1,#0x525
-00007a  4620              MOV      r0,r4
-00007c  f7fffffe          BL       USART_ITConfig
+00007a  2201              MOVS     r2,#1
+00007c  f2405125          MOV      r1,#0x525
+000080  4620              MOV      r0,r4
+000082  f7fffffe          BL       USART_ITConfig
 ;;;99     	USART_Cmd(USART1, ENABLE);//????1
-000080  2101              MOVS     r1,#1
-000082  4620              MOV      r0,r4
-000084  f7fffffe          BL       USART_Cmd
+000086  2101              MOVS     r1,#1
+000088  4620              MOV      r0,r4
+00008a  f7fffffe          BL       USART_Cmd
 ;;;100      USART_ClearFlag(USART1, USART_FLAG_TC);
-000088  2140              MOVS     r1,#0x40
-00008a  4620              MOV      r0,r4
-00008c  f7fffffe          BL       USART_ClearFlag
+00008e  2140              MOVS     r1,#0x40
+000090  4620              MOV      r0,r4
+000092  f7fffffe          BL       USART_ClearFlag
 ;;;101      
 ;;;102      USART1_NVIC_Config();//??????
-000090  f7fffffe          BL       USART1_NVIC_Config
+000096  f7fffffe          BL       USART1_NVIC_Config
 ;;;103    }				
-000094  b006              ADD      sp,sp,#0x18
-000096  bd70              POP      {r4-r6,pc}
+00009a  b006              ADD      sp,sp,#0x18
+00009c  bd70              POP      {r4-r6,pc}
 ;;;104    
                           ENDP
 
-                  |L6.152|
+00009e  0000              DCW      0x0000
+                  |L6.160|
                           DCD      0x40020000
-                  |L6.156|
+                  |L6.164|
+                          DCD      Run_Control
+                  |L6.168|
+                          DCD      ||area_number.14||+0x4
+                  |L6.172|
                           DCD      0x40011000
 
                           AREA ||.bss||, DATA, NOINIT, ALIGN=0
@@ -460,7 +468,7 @@
                   USART_RX_CNT
                           DCD      0x00000000
 
-                          AREA ||area_number.14||, DATA, ALIGN=0
+                          AREA ||area_number.14||, DATA, ALIGN=2
 
                           EXPORTAS ||area_number.14||, ||.data||
                   UART_Buffer_Send_pointer
@@ -468,7 +476,16 @@
                   |symbol_number.28|
 000001  00                DCB      0x00
                   Transmit_BUFFERsize
-000002  00                DCB      0x00
+000002  0000              DCB      0x00,0x00
+                  setbaud
+                          DCD      0x000004b0
+                          DCD      0x00000960
+                          DCD      0x000012c0
+                          DCD      0x00002580
+                          DCD      0x00004718
+                          DCD      0x00009600
+                          DCD      0x0000e100
+                          DCD      0x0001c200
 
                           AREA ||area_number.15||, DATA, ALIGN=0
 

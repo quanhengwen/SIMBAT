@@ -35167,9 +35167,9 @@ N#define set_dc_cutoff_v					Run_Control[27]
 N#define set_dc_cutoff_c					Run_Control[28]
 N#define start_time					    Run_Control[29]
 N#define end_time					    Run_Control[30]
-N#define opv1    					    Run_Control[31]
-N#define opv2    					    Run_Control[32]
-N#define opv3    					    Run_Control[33]
+N#define set_baud    					Run_Control[31]
+N#define set_beep    					Run_Control[32]
+N#define set_disp    					Run_Control[33]
 N#define opc1    					    Run_Control[34]
 N#define opc2    					    Run_Control[35]
 N#define opc3    					    Run_Control[36]
@@ -35776,9 +35776,9 @@ S#define set_dc_cutoff_v					Run_Control[27]
 S#define set_dc_cutoff_c					Run_Control[28]
 S#define start_time					    Run_Control[29]
 S#define end_time					    Run_Control[30]
-S#define opv1    					    Run_Control[31]
-S#define opv2    					    Run_Control[32]
-S#define opv3    					    Run_Control[33]
+S#define set_baud    					Run_Control[31]
+S#define set_beep    					Run_Control[32]
+S#define set_disp    					Run_Control[33]
 S#define opc1    					    Run_Control[34]
 S#define opc2    					    Run_Control[35]
 S#define opc3    					    Run_Control[36]
@@ -36407,9 +36407,9 @@ S#define set_dc_cutoff_v					Run_Control[27]
 S#define set_dc_cutoff_c					Run_Control[28]
 S#define start_time					    Run_Control[29]
 S#define end_time					    Run_Control[30]
-S#define opv1    					    Run_Control[31]
-S#define opv2    					    Run_Control[32]
-S#define opv3    					    Run_Control[33]
+S#define set_baud    					Run_Control[31]
+S#define set_beep    					Run_Control[32]
+S#define set_disp    					Run_Control[33]
 S#define opc1    					    Run_Control[34]
 S#define opc2    					    Run_Control[35]
 S#define opc3    					    Run_Control[36]
@@ -37007,9 +37007,9 @@ S#define set_dc_cutoff_v					Run_Control[27]
 S#define set_dc_cutoff_c					Run_Control[28]
 S#define start_time					    Run_Control[29]
 S#define end_time					    Run_Control[30]
-S#define opv1    					    Run_Control[31]
-S#define opv2    					    Run_Control[32]
-S#define opv3    					    Run_Control[33]
+S#define set_baud    					Run_Control[31]
+S#define set_beep    					Run_Control[32]
+S#define set_disp    					Run_Control[33]
 S#define opc1    					    Run_Control[34]
 S#define opc2    					    Run_Control[35]
 S#define opc3    					    Run_Control[36]
@@ -52696,7 +52696,7 @@ N                        }
 N                        case face_set:
 X                        case 5:
 N                        {
-N                            SET_OP_UP();  //ËÆæÁΩÆÈÄâÈ°πÂàáÊç¢
+N							SET_OP_UP();
 N                            KeyCounter = 0;
 N                            BEEP_Tiggr();//Ëß¶ÂèëËúÇÈ∏£Âô?
 N                            break;
@@ -52762,7 +52762,7 @@ N                        }
 N                        case face_set:  //Á≥ªÁªüËÆæÁΩÆ
 X                        case 5:  
 N                        {
-N                            SET_OP_DOWN();  //ËÆæÁΩÆÈÄâÈ°πÂàáÊç¢
+N							SET_OP_DOWN();
 N                            KeyCounter = 0;
 N                            BEEP_Tiggr();//Ëß¶ÂèëËúÇÈ∏£Âô?
 N                            break;
@@ -52959,13 +52959,13 @@ N    // 				{
 N    // 					flag_Load_CC=0;//CVƒ£ Ω
 N    // 					GPIO_SetBits(GPIOC,GPIO_Pin_12);//CV
 N    // 				}
-N//                    WM_DeleteWindow(hWinR);
+N                    WM_DeleteWindow(hWinR);
 N                    WM_DeleteWindow(hWinWind);
-N//                    WM_DeleteWindow(hWinG);
-N//                    WM_DeleteWindow(load_wind);
-N//                    WM_DeleteWindow(hWinsysinfo);
-N//                    WM_DeleteWindow(hWincdc);
-N//                    WM_DeleteWindow(hWinset); 
+N                    WM_DeleteWindow(hWinG);
+N                    WM_DeleteWindow(load_wind);
+N                    WM_DeleteWindow(hWinsysinfo);
+N                    WM_DeleteWindow(hWincdc);
+N                    WM_DeleteWindow(hWinset); 
 N                    CreateSET();
 N                    KeyCounter = 0;
 N                    BEEP_Tiggr();//Ëß¶ÂèëËúÇÈ∏£Âô
@@ -53120,41 +53120,29 @@ N                        }break;
 N                         case face_cdc:
 X                         case 1:
 N                        {
-N                            if(cdc_sw == cdc_off)
-X                            if(cdc_sw == 0)
-N                            {
-N                               SET_Voltage = opv1;
-X                               Run_Control[1] = Run_Control[31];
-N                               SET_Current = opc1;
-X                               Run_Control[2] = Run_Control[34];
-N                               cutoff_flag = 0;
-N    //                           Mode_SW_CONT(0x03);
-N                               
-N                               charge_step = 1;
-N                               GPIO_ResetBits(GPIOC,GPIO_Pin_13);//¥Úø™µÁ‘¥ ‰≥ˆºÃµÁ∆˜
-X                               GPIO_ResetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0800)),((uint16_t)0x2000));
-W "..\drive\key.c" 1583 11 function "Delay_ms" declared implicitly
-N							   Delay_ms(500);
-N                               GPIO_SetBits(GPIOC,GPIO_Pin_1);//¥Úø™µÁ‘¥ ‰≥ˆ
-X                               GPIO_SetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0800)),((uint16_t)0x0002));
-N                               mode_sw = mode_pow;
-X                               mode_sw = 3;
-N                               cdc_sw = cdc_on;
-X                               cdc_sw = 1;
-N                            }else{
-N                               
-N                               GPIO_ResetBits(GPIOC,GPIO_Pin_1);//πÿ±’µÁ‘¥ ‰≥ˆ
-X                               GPIO_ResetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0800)),((uint16_t)0x0002));
-W "..\drive\key.c" 1590 9 function "Delay_ms" declared implicitly
-N								Delay_ms(500);
-N                               //GPIO_SetBits(GPIOC,GPIO_Pin_13);//πÿ±’µÁ‘¥ ‰≥ˆºÃµÁ∆˜
-N                               GPIO_SetBits(GPIOA,GPIO_Pin_15);//µÁ◊”∏∫‘ÿOFF
-X                               GPIO_SetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0000)),((uint16_t)0x8000));
-N                               cdc_sw = cdc_off;
-X                               cdc_sw = 0;
-N                               paused = 0;
-N                               mode_sw = 0;
-N                            }
+N//                            if(cdc_sw == cdc_off)
+N//                            {
+N//                               SET_Voltage = opv1;
+N//                               SET_Current = opc1;
+N//                               cutoff_flag = 0;
+N//    //                           Mode_SW_CONT(0x03);
+N//                               
+N//                               charge_step = 1;
+N//                               GPIO_ResetBits(GPIOC,GPIO_Pin_13);//¥Úø™µÁ‘¥ ‰≥ˆºÃµÁ∆˜
+N//							   Delay_ms(500);
+N//                               GPIO_SetBits(GPIOC,GPIO_Pin_1);//¥Úø™µÁ‘¥ ‰≥ˆ
+N//                               mode_sw = mode_pow;
+N//                               cdc_sw = cdc_on;
+N//                            }else{
+N//                               
+N//                               GPIO_ResetBits(GPIOC,GPIO_Pin_1);//πÿ±’µÁ‘¥ ‰≥ˆ
+N//								Delay_ms(500);
+N//                               //GPIO_SetBits(GPIOC,GPIO_Pin_13);//πÿ±’µÁ‘¥ ‰≥ˆºÃµÁ∆˜
+N//                               GPIO_SetBits(GPIOA,GPIO_Pin_15);//µÁ◊”∏∫‘ÿOFF
+N//                               cdc_sw = cdc_off;
+N//                               paused = 0;
+N//                               mode_sw = 0;
+N//                            }
 N                            KeyCounter = 0;
 N                            BEEP_Tiggr();//Ëß¶ÂèëËúÇÈ∏£Âô?
 N                           
@@ -53298,48 +53286,64 @@ N    // 			break;
 N                case KEY_Lock :
 X                case 0X6C :
 N                {
-N                    lock = 1;
-N                    KeyCounter = 0;
-N                    BEEP_Tiggr();//
+N						lock = 1;
+N						KeyCounter = 0;
+N						BEEP_Tiggr();//
 N                }break;
 N                case KEY_Face1 :
 X                case 0X64 :
 N                {
-N					set_sw = set_18;
-X					set_sw = 17;
-N					DISP_POW();
-N                    KeyCounter = 0;
-N                    BEEP_Tiggr();//
+N					if(page_sw == face_menu)
+X					if(page_sw == 2)
+N					{
+N						set_sw = set_18;
+X						set_sw = 17;
+N						DISP_POW();
+N						KeyCounter = 0;
+N						BEEP_Tiggr();//
+N					}
 N                }
 N                break;
 N                case KEY_Face2 :
 X                case 0X5c :
 N                {
-N                    set_sw = set_19;
-X                    set_sw = 18;
-N					DISP_POW();
-N                    KeyCounter = 0;
-N                    BEEP_Tiggr();//
+N					if(page_sw == face_menu)
+X					if(page_sw == 2)
+N					{
+N						set_sw = set_19;
+X						set_sw = 18;
+N						DISP_POW();
+N						KeyCounter = 0;
+N						BEEP_Tiggr();//
+N					}
 N                }
 N                break;
 N                case KEY_Face3 :
 X                case 0X54 :
 N                {
-N                    set_sw = set_89;
-X                    set_sw = 88;
-N					DISP_POW();
-N                    KeyCounter = 0;
-N                    BEEP_Tiggr();//
+N					if(page_sw == face_menu)
+X					if(page_sw == 2)
+N					{
+N						set_sw = set_89;
+X						set_sw = 88;
+N						DISP_POW();
+N						KeyCounter = 0;
+N						BEEP_Tiggr();//
+N					}
 N                }
 N                break;
 N                case KEY_Face4 :
 X                case 0X4c :
 N                {
-N					set_sw = set_90;
-X					set_sw = 89;
-N					DISP_POW();
-N                    KeyCounter = 0;
-N                    BEEP_Tiggr();//
+N					if(page_sw == face_menu)
+X					if(page_sw == 2)
+N					{
+N						set_sw = set_90;
+X						set_sw = 89;
+N						DISP_POW();
+N						KeyCounter = 0;
+N						BEEP_Tiggr();//
+N					}
 N//                    WM_DeleteWindow(hWinR);
 N//                    WM_DeleteWindow(hWinWind);
 N//                    WM_DeleteWindow(hWinG);
@@ -53358,6 +53362,20 @@ N                break;
 N                case KEY_Face5 :
 X                case 0X44 :
 N                {
+N					if(page_sw == face_menu)
+X					if(page_sw == 2)
+N					{
+N						WM_DeleteWindow(hWinR);
+N						WM_DeleteWindow(hWinWind);
+N						WM_DeleteWindow(hWinG);
+N						WM_DeleteWindow(load_wind);
+N						WM_DeleteWindow(hWinsysinfo);
+N						WM_DeleteWindow(hWincdc);
+N						WM_DeleteWindow(hWinset); 
+N						CreateSET();
+N						KeyCounter = 0;
+N						BEEP_Tiggr();//Ëß¶ÂèëËúÇÈ∏£
+N					}
 N//                    WM_DeleteWindow(hWinR);
 N//                    WM_DeleteWindow(hWinWind);
 N//                    WM_DeleteWindow(hWinG);
@@ -53382,10 +53400,10 @@ N                    WM_DeleteWindow(hWincdc);
 N                    WM_DeleteWindow(hWinset);
 N					GPIO_ResetBits(GPIOC,GPIO_Pin_1);//πÿ±’µÁ‘¥ ‰≥ˆ
 X					GPIO_ResetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0800)),((uint16_t)0x0002));
-W "..\drive\key.c" 1782 6 function "Delay_ms" declared implicitly
+W "..\drive\key.c" 1807 6 function "Delay_ms" declared implicitly
 N					Delay_ms(500);
 N				    //GPIO_SetBits(GPIOC,GPIO_Pin_13);//πÿ±’µÁ‘¥ ‰≥ˆºÃµÁ∆
-W "..\drive\key.c" 1784 21 function "Createsysinfo" declared implicitly
+W "..\drive\key.c" 1809 21 function "Createsysinfo" declared implicitly
 N                    Createsysinfo();
 N                    KeyCounter = 0;
 N                    BEEP_Tiggr();//Ëß¶ÂèëËúÇÈ∏£Âô?

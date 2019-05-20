@@ -30,6 +30,7 @@ extern struct bitDefine
     unsigned bit7: 1;
 } flagA, flagB,flagC,flagD,flagE,flagF,flagG;
 void Slow_Start(void);
+void set_init(void);
 extern vu8 resetflag;
 extern vu8 resdone;
 extern GUI_CONST_STORAGE GUI_FONT GUI_FontHZ16;
@@ -61,7 +62,7 @@ void MainTask(void)
     static int read1963;
     static int scancount;
 
-    
+    set_init();
 	GUI_Init();
 	WM_SetDesktopColor(GUI_BLUE);  
 	GUI_Clear();//ÇåÆÁ
@@ -204,7 +205,17 @@ void MainTask(void)
 	}
   
 }
-
+void set_init(void)
+{
+	if(set_beep > 1)
+	{
+		set_beep = 0;
+	}
+	if(set_disp > 1)
+	{
+		set_disp = 0;
+	}
+}
 void V_SW(u8 i)
 {
 	if(i == 0)

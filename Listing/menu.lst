@@ -49033,9 +49033,9 @@ N#define set_dc_cutoff_v					Run_Control[27]
 N#define set_dc_cutoff_c					Run_Control[28]
 N#define start_time					    Run_Control[29]
 N#define end_time					    Run_Control[30]
-N#define opv1    					    Run_Control[31]
-N#define opv2    					    Run_Control[32]
-N#define opv3    					    Run_Control[33]
+N#define set_baud    					Run_Control[31]
+N#define set_beep    					Run_Control[32]
+N#define set_disp    					Run_Control[33]
 N#define opc1    					    Run_Control[34]
 N#define opc2    					    Run_Control[35]
 N#define opc3    					    Run_Control[36]
@@ -49620,9 +49620,9 @@ S#define set_dc_cutoff_v					Run_Control[27]
 S#define set_dc_cutoff_c					Run_Control[28]
 S#define start_time					    Run_Control[29]
 S#define end_time					    Run_Control[30]
-S#define opv1    					    Run_Control[31]
-S#define opv2    					    Run_Control[32]
-S#define opv3    					    Run_Control[33]
+S#define set_baud    					Run_Control[31]
+S#define set_beep    					Run_Control[32]
+S#define set_disp    					Run_Control[33]
 S#define opc1    					    Run_Control[34]
 S#define opc2    					    Run_Control[35]
 S#define opc3    					    Run_Control[36]
@@ -52312,9 +52312,9 @@ S#define set_dc_cutoff_v					Run_Control[27]
 S#define set_dc_cutoff_c					Run_Control[28]
 S#define start_time					    Run_Control[29]
 S#define end_time					    Run_Control[30]
-S#define opv1    					    Run_Control[31]
-S#define opv2    					    Run_Control[32]
-S#define opv3    					    Run_Control[33]
+S#define set_baud    					Run_Control[31]
+S#define set_beep    					Run_Control[32]
+S#define set_disp    					Run_Control[33]
 S#define opc1    					    Run_Control[34]
 S#define opc2    					    Run_Control[35]
 S#define opc3    					    Run_Control[36]
@@ -53231,7 +53231,9 @@ Nextern vu16 s_time;
 Nextern vu8 wait_flag;
 Nextern vu8 test_num;
 Nfloat pow_cutoffc;
+Nextern vu8 load_sw;
 Nextern float load_cutoffv;
+Nfloat DIS_POW,DIS_R;
 N#define ID_WINDOW_0      	(GUI_ID_USER + 0x00)
 N#define ID_BUTTON_0     	(GUI_ID_USER + 0x01)
 N#define ID_BUTTON_1     	(GUI_ID_USER + 0x02)
@@ -53273,25 +53275,26 @@ N    { BUTTON_CreateIndirect, "Button", ID_BUTTON_5, 403, 226, 77, 45, 0, 0x0, 0
 X    { BUTTON_CreateIndirect, "Button", (0x800 + 0x06), 403, 226, 77, 45, 0, 0x0, 0 },
 N    { TEXT_CreateIndirect,   "Text",   ID_TEXT_9,   28, 50-10, 64, 32, 0, 0x64, 0 },
 X    { TEXT_CreateIndirect,   "Text",   (0x800 + 0x07),   28, 50-10, 64, 32, 0, 0x64, 0 },
-N    { TEXT_CreateIndirect,   "Text",   ID_TEXT_10,  28, 120-10, 64, 32, 0, 0x64, 0 },
-X    { TEXT_CreateIndirect,   "Text",   (0x800 + 0x08),  28, 120-10, 64, 32, 0, 0x64, 0 },
+N    { TEXT_CreateIndirect,   "Text",   ID_TEXT_10,  28, 120-15, 64, 32, 0, 0x64, 0 },
+X    { TEXT_CreateIndirect,   "Text",   (0x800 + 0x08),  28, 120-15, 64, 32, 0, 0x64, 0 },
 N    { TEXT_CreateIndirect,   "Text",   ID_TEXT_15,  240, 50-10, 32, 30, 0, 0x0, 0 },
 X    { TEXT_CreateIndirect,   "Text",   (0x800 + 0x20),  240, 50-10, 32, 30, 0, 0x0, 0 },
-N    { TEXT_CreateIndirect,   "Text",   ID_TEXT_16,  240, 121-10, 32, 30, 0, 0x0, 0 },
-X    { TEXT_CreateIndirect,   "Text",   (0x800 + 0x21),  240, 121-10, 32, 30, 0, 0x0, 0 },
+N    { TEXT_CreateIndirect,   "Text",   ID_TEXT_16,  240, 121-15, 32, 30, 0, 0x0, 0 },
+X    { TEXT_CreateIndirect,   "Text",   (0x800 + 0x21),  240, 121-15, 32, 30, 0, 0x0, 0 },
 N//    { TEXT_CreateIndirect,   "Text",   ID_TEXT_33, 290, 75, 80, 20, 0, 0x0, 0 },
 N//    { TEXT_CreateIndirect,   "Text",   ID_TEXT_34, 290, 100, 80, 20, 0, 0x0, 0 },
 N    { TEXT_CreateIndirect,   "Text",   ID_TEXT_41, 380, 50-10, 53, 20, 0, 0x0, 0 },
 X    { TEXT_CreateIndirect,   "Text",   (0x800 + 0x66), 380, 50-10, 53, 20, 0, 0x0, 0 },
 N    { TEXT_CreateIndirect,   "Text",   ID_TEXT_42, 370, 100-10, 65, 20, 0, 0x0, 0 },
 X    { TEXT_CreateIndirect,   "Text",   (0x800 + 0x67), 370, 100-10, 65, 20, 0, 0x0, 0 },
-N    { TEXT_CreateIndirect,   "Text",   ID_TEXT_86, 95, 48-10, 150, 40, 0, 0x0, 0 },
-X    { TEXT_CreateIndirect,   "Text",   (0x800 + 0x93), 95, 48-10, 150, 40, 0, 0x0, 0 },
-N    { TEXT_CreateIndirect,   "Text",   ID_TEXT_87, 95, 116-10, 150, 40, 0, 0x0, 0 },
-X    { TEXT_CreateIndirect,   "Text",   (0x800 + 0x94), 95, 116-10, 150, 40, 0, 0x0, 0 },
+N    { TEXT_CreateIndirect,   "Text",   ID_TEXT_86, 95, 38, 150, 40, 0, 0x0, 0 },
+X    { TEXT_CreateIndirect,   "Text",   (0x800 + 0x93), 95, 38, 150, 40, 0, 0x0, 0 },
+N    { TEXT_CreateIndirect,   "Text",   ID_TEXT_87, 95, 103, 150, 40, 0, 0x0, 0 },
+X    { TEXT_CreateIndirect,   "Text",   (0x800 + 0x94), 95, 103, 150, 40, 0, 0x0, 0 },
 N    { TEXT_CreateIndirect,   "Text",   ID_TEXT_88, 400, 4, 50, 20, 0, 0x0, 0 },
 X    { TEXT_CreateIndirect,   "Text",   (0x800 + 0x95), 400, 4, 50, 20, 0, 0x0, 0 },
-N//    { TEXT_CreateIndirect,   "Text",   ID_TEXT_115, 95, 184, 150, 40, 0, 0x0, 0 },
+N    { TEXT_CreateIndirect,   "Text",   ID_TEXT_115, 95, 168, 150, 40, 0, 0x0, 0 },
+X    { TEXT_CreateIndirect,   "Text",   (0x800 + 0x10B), 95, 168, 150, 40, 0, 0x0, 0 },
 N    { TEXT_CreateIndirect,   "Text",   ID_TEXT_125, 300, 2, 80, 20, 0, 0x0, 0 },
 X    { TEXT_CreateIndirect,   "Text",   (0x800 + 0x10C), 300, 2, 80, 20, 0, 0x0, 0 },
 N    { TEXT_CreateIndirect,   "Text",   ID_TEXT_144, 370, 150-10, 65, 20, 0, 0x0, 0 },
@@ -53367,6 +53370,26 @@ N		GUI_SetColor(GUI_LIGHTBLUE);
 X		GUI_SetColor(0x00FF8080);
 N		GUI_DispStringAt("OVP",290,150-10);
 N        GUI_DispStringAt("OCP",290,200-10);
+N		
+N		
+N		
+N		if(set_disp == 0)
+X		if(Run_Control[33] == 0)
+N		{
+N			GUI_SetColor(GUI_LIGHTGRAY);
+X			GUI_SetColor(0x00D3D3D3);
+N			GUI_SetFont(&GUI_FontEN40);
+N			GUI_DispStringAt("P:",28,190-20);
+N			GUI_DispStringAt("W",240,190-20);
+N		}else{
+N			GUI_SetColor(GUI_LIGHTGRAY);
+X			GUI_SetColor(0x00D3D3D3);
+N			GUI_SetFont(&GUI_FontEN40);
+N			GUI_DispStringAt("R:",28,190-20);
+N			GUI_SetFont(&GUI_FontHZ32);
+N			GUI_DispStringAt("Ω",240,190-20);
+N		}
+N		
 N
 N//        GUI_SetFont(&GUI_FontEN40);
 N//        GUI_SetColor(GUI_LIGHTGRAY);
@@ -53402,6 +53425,8 @@ N//            WM_InvalidateWindow(hWinWind);
 N//        }
 N//         if(clear_flag2 == 1)
 N//         {
+N		DIS_POW = DISS_POW_Voltage * DISS_POW_Current;
+N		DIS_R = DISS_POW_Voltage / DISS_POW_Current;
 N		if(lock == 1)
 N		{
 N			hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_161);
@@ -53412,7 +53437,7 @@ N			hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_161);
 X			hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x013C));
 N			TEXT_SetText(hItem,"");
 N		}
-W "..\APP\menu.c" 173 16 single-precision operand implicitly converted to double-precision
+W "..\APP\menu.c" 194 16 single-precision operand implicitly converted to double-precision
 N            if(DISS_POW_Voltage < 0.1)
 N            {
 N                hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_86);
@@ -53440,8 +53465,21 @@ X        if(pow_sw == 1)
 N        {
 N             hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_87);
 X             hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x94));
-N            sprintf(buf,"%.3f",DISS_POW_Current);        
-N            TEXT_SetText(hItem,buf);
+N            sprintf(buf,"%.3f",DISS_POW_Current); 
+N			TEXT_SetText(hItem,buf);
+N			
+N			hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_115);
+X			hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x10B));
+N			if(set_disp == 0)
+X			if(Run_Control[33] == 0)
+N			{
+N				sprintf(buf,"%.3f",DIS_POW);
+N			}else{
+N				sprintf(buf,"%.3f",DIS_R);
+N			}
+N			        
+N            TEXT_SetText(hItem,buf);			
+N            
 N            if(status_flash == 0){
 N                hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_88);
 X                hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x95));
@@ -53457,14 +53495,18 @@ X                hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x95));
 N                TEXT_SetText(hItem,"");
 N                status_flash = 0;
 N           }
-N           if(((load_cutoffv != 0 && DISS_POW_Voltage < load_cutoffv) ||(load_cutoffv != 0 && DISS_Voltage < load_cutoffv)) && cdelay > 20)
+N           if(((load_cutoffv != 0 && DISS_POW_Voltage > load_cutoffv) ||(pow_cutoffc != 0 && DISS_POW_Current > pow_cutoffc)) && cdelay > 20)
 N           {
 N              GPIO_ResetBits(GPIOC,GPIO_Pin_1);
 X              GPIO_ResetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0800)),((uint16_t)0x0002));
+N			  GPIO_SetBits(GPIOA,GPIO_Pin_15);//电子负载OFF
+X			  GPIO_SetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0000)),((uint16_t)0x8000));
 N              //GPIO_SetBits(GPIOC,GPIO_Pin_13);
 N              mode_sw = 0;
 N              pow_sw = pow_off;
 X              pow_sw = 0;
+N			  load_sw=load_off;
+X			  load_sw=0;
 N              cdelay = 0;
 N           }else{
 N               cdelay++;
@@ -53479,6 +53521,11 @@ X            hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x94));
 N            sprintf(buf,"%.3f",0.000);        
 N            TEXT_SetText(hItem,buf);
 N            
+N			hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_115);
+X			hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x10B));
+N			sprintf(buf,"%.3f",0.000);        
+N            TEXT_SetText(hItem,buf);
+N			
 N            cdelay = 0;
 N        }
 N//        hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_144);       
@@ -53490,7 +53537,7 @@ X        hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x10C));
 N        sprintf(buf,"%.1f",temp);
 N        TEXT_SetText(hItem,buf);
 N        
-N		WM_RestartTimer(pMsg->Data.v, 50);//复位定时器数值越大刷新时间越短
+N		WM_RestartTimer(pMsg->Data.v, 20);//复位定时器数值越大刷新时间越短
 N	}
 N	break;
 N  case WM_INIT_DIALOG://重绘外观
@@ -53501,8 +53548,8 @@ N    //
 N        hItem = pMsg->hWin;
 N        WINDOW_SetBkColor(hItem, GUI_BLACK);
 X        WINDOW_SetBkColor(hItem, 0x00000000);
-N        WM_CreateTimer(hItem,ID_TimerTime2,1000,0);//创建本窗口定时器
-X        WM_CreateTimer(hItem,3,1000,0);
+N        WM_CreateTimer(hItem,ID_TimerTime2,500,0);//创建本窗口定时器
+X        WM_CreateTimer(hItem,3,500,0);
 N    //
 N    // Initialization of 'Button'
 N    //
@@ -53660,12 +53707,14 @@ N        TEXT_SetFont(hItem,&GUI_FontD24x32);//设定文本字体
 N		GUI_UC_SetEncodeUTF8();        
 N		TEXT_SetText(hItem,buf);
 N        
-N//        hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_115);
-N//        sprintf(buf,"%05d",0);
-N//        TEXT_SetTextColor(hItem, GUI_YELLOW);//设置字体颜色
-N//        TEXT_SetFont(hItem,&GUI_FontD24x32);//设定文本字体
-N//        GUI_UC_SetEncodeUTF8();        
-N//        TEXT_SetText(hItem,buf);
+N        hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_115);
+X        hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x10B));
+N        sprintf(buf,"%.3f",0.000);
+N        TEXT_SetTextColor(hItem, GUI_YELLOW);//设置字体颜色
+X        TEXT_SetTextColor(hItem, 0x0000FFFF);
+N        TEXT_SetFont(hItem,&GUI_FontD24x32);//设定文本字体
+N        GUI_UC_SetEncodeUTF8();        
+N        TEXT_SetText(hItem,buf);
 N        
 N        hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_125);
 X        hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x10C));
@@ -53826,7 +53875,7 @@ N	  GPIO_SetBits(GPIOA,GPIO_Pin_15);//µç×Ó¸ºÔØOFF
 X	  GPIO_SetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0000)),((uint16_t)0x8000));
 N	  GPIO_ResetBits(GPIOC,GPIO_Pin_1);//¹Ø±ÕµçÔ´Êä³ö
 X	  GPIO_ResetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0800)),((uint16_t)0x0002));
-W "..\APP\menu.c" 516 4 function "Delay_ms" declared implicitly
+W "..\APP\menu.c" 554 4 function "Delay_ms" declared implicitly
 N	  Delay_ms(500);
 N	  //GPIO_SetBits(GPIOC,GPIO_Pin_13);//¹Ø±ÕµçÔ´Êä³ö¼ÌµçÆ
 N//      IO_OFF();
@@ -53973,17 +54022,17 @@ N
 N    float dis_output_v;
 N    float dis_output_c; 
 N    
-N    if(SET_Voltage > /*3000*/ 6200)
-X    if(Run_Control[1] >   6200)
+N    if(SET_Voltage > /*3000*/ 6000)
+X    if(Run_Control[1] >   6000)
 N    {
-N      SET_Voltage = /*3000*/ 6200;
-X      Run_Control[1] =   6200;
+N      SET_Voltage = /*3000*/ 6000;
+X      Run_Control[1] =   6000;
 N    }
-N    if(SET_Current > 10000)
-X    if(Run_Control[2] > 10000)
+N    if(SET_Current > 5000)
+X    if(Run_Control[2] > 5000)
 N    {
-N      SET_Current = 10000;
-X      Run_Control[2] = 10000;
+N      SET_Current = 5000;
+X      Run_Control[2] = 5000;
 N    }
 N    switch(set_sw){
 N
@@ -54004,11 +54053,11 @@ N				strncpy(buf,set_limit,dot_flag + 2);
 N				pow_v = atof(buf)*100;
 X				Run_Control[38] = atof(buf)*100;
 N			}
-N			if(pow_v > 6000)
-X			if(Run_Control[38] > 6000)
+N			if(pow_v > set_max_v)
+X			if(Run_Control[38] > Run_Control[14])
 N			{
-N				pow_v = 6000;
-X				Run_Control[38] = 6000;
+N				pow_v = set_max_v;
+X				Run_Control[38] = Run_Control[14];
 N			}
 N            SET_Voltage = pow_v;
 X            Run_Control[1] = Run_Control[38];
@@ -54052,11 +54101,11 @@ N				pow_c = atof(buf)*1000;
 X				Run_Control[40] = atof(buf)*1000;
 N			}
 N              
-N            if(pow_c > 10000)
-X            if(Run_Control[40] > 10000)
+N            if(pow_c > set_max_c)
+X            if(Run_Control[40] > Run_Control[18])
 N            {
-N                pow_c = 10000;               
-X                Run_Control[40] = 10000;               
+N                pow_c = set_max_c;               
+X                Run_Control[40] = Run_Control[18];               
 N            }
 N			SET_Current = pow_c;
 X			Run_Control[2] = Run_Control[40];
@@ -54133,11 +54182,11 @@ N				set_pow_cutoffc = atof(buf)*1000;
 X				InFlashSave[5] = atof(buf)*1000;
 N			}
 N              
-N            if(set_pow_cutoffc > 10000)
-X            if(InFlashSave[5] > 10000)
+N            if(set_pow_cutoffc > 5000)
+X            if(InFlashSave[5] > 5000)
 N            {
-N                set_pow_cutoffc = 10000;               
-X                InFlashSave[5] = 10000;               
+N                set_pow_cutoffc = 5000;               
+X                InFlashSave[5] = 5000;               
 N            }
 N
 N            pow_cutoffc = (float)set_pow_cutoffc/1000;
@@ -54618,36 +54667,30 @@ N			}
 N			TEXT_SetText(hItem,set_limit);			
 N		}
 N    }    
-W "..\APP\menu.c" 820 5 variable "i"  was declared but never referenced
+W "..\APP\menu.c" 858 5 variable "i"  was declared but never referenced
 N}
 N
-Nvoid test_pow(void)
-N{
+N//void test_pow(void)
+N//{
 N
-N    if(pow_sw == pow_on && para_set1 == set_1_on)
-X    if(pow_sw == 1 && para_set1 == 0xff)
-N    {
-N        if(DISS_POW_Voltage*100 > set_max_v || DISS_POW_Voltage*100 < set_min_v || DISS_POW_Current * 100 > set_max_c || DISS_POW_Current * 100 < set_min_c)
-X        if(DISS_POW_Voltage*100 > Run_Control[14] || DISS_POW_Voltage*100 < Run_Control[15] || DISS_POW_Current * 100 > Run_Control[18] || DISS_POW_Current * 100 < Run_Control[19])
-N        {
-N            if(para_set4 == set_4_on){
-X            if(para_set4 == 0xff){
-N                BEEP_Tiggr();
-N            }
-N            TM1650_SET_LED(0x68,0x70);//FAIL灯
-N            GPIO_SetBits(GPIOD,GPIO_Pin_12);//            
-X            GPIO_SetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0C00)),((uint16_t)0x1000));
-N        }else{
-N            GPIO_ResetBits(GPIOD,GPIO_Pin_12);
-X            GPIO_ResetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0C00)),((uint16_t)0x1000));
-N            TM1650_SET_LED(0x48,0x71);
-N            TM1650_SET_LED(0x68,0xF2);//PASS灯
-N        }        
-N    }else
-N    {
-N        TM1650_SET_LED(0x68,0x70);
-N        GPIO_ResetBits(GPIOD,GPIO_Pin_12);//灭灯
-X        GPIO_ResetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0C00)),((uint16_t)0x1000));
-N    }
-N}
+N//    if(pow_sw == pow_on && para_set1 == set_1_on)
+N//    {
+N//        if(DISS_POW_Voltage*100 > set_max_v || DISS_POW_Voltage*100 < set_min_v || DISS_POW_Current * 100 > set_max_c || DISS_POW_Current * 100 < set_min_c)
+N//        {
+N//            if(para_set4 == set_4_on){
+N//                BEEP_Tiggr();
+N//            }
+N//            TM1650_SET_LED(0x68,0x70);//FAIL灯
+N//            GPIO_SetBits(GPIOD,GPIO_Pin_12);//            
+N//        }else{
+N//            GPIO_ResetBits(GPIOD,GPIO_Pin_12);
+N//            TM1650_SET_LED(0x48,0x71);
+N//            TM1650_SET_LED(0x68,0xF2);//PASS灯
+N//        }        
+N//    }else
+N//    {
+N//        TM1650_SET_LED(0x68,0x70);
+N//        GPIO_ResetBits(GPIOD,GPIO_Pin_12);//灭灯
+N//    }
+N//}
 N

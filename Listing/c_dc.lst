@@ -49035,9 +49035,9 @@ N#define set_dc_cutoff_v					Run_Control[27]
 N#define set_dc_cutoff_c					Run_Control[28]
 N#define start_time					    Run_Control[29]
 N#define end_time					    Run_Control[30]
-N#define opv1    					    Run_Control[31]
-N#define opv2    					    Run_Control[32]
-N#define opv3    					    Run_Control[33]
+N#define set_baud    					Run_Control[31]
+N#define set_beep    					Run_Control[32]
+N#define set_disp    					Run_Control[33]
 N#define opc1    					    Run_Control[34]
 N#define opc2    					    Run_Control[35]
 N#define opc3    					    Run_Control[36]
@@ -49622,9 +49622,9 @@ S#define set_dc_cutoff_v					Run_Control[27]
 S#define set_dc_cutoff_c					Run_Control[28]
 S#define start_time					    Run_Control[29]
 S#define end_time					    Run_Control[30]
-S#define opv1    					    Run_Control[31]
-S#define opv2    					    Run_Control[32]
-S#define opv3    					    Run_Control[33]
+S#define set_baud    					Run_Control[31]
+S#define set_beep    					Run_Control[32]
+S#define set_disp    					Run_Control[33]
 S#define opc1    					    Run_Control[34]
 S#define opc2    					    Run_Control[35]
 S#define opc3    					    Run_Control[36]
@@ -52314,9 +52314,9 @@ S#define set_dc_cutoff_v					Run_Control[27]
 S#define set_dc_cutoff_c					Run_Control[28]
 S#define start_time					    Run_Control[29]
 S#define end_time					    Run_Control[30]
-S#define opv1    					    Run_Control[31]
-S#define opv2    					    Run_Control[32]
-S#define opv3    					    Run_Control[33]
+S#define set_baud    					Run_Control[31]
+S#define set_beep    					Run_Control[32]
+S#define set_disp    					Run_Control[33]
 S#define opc1    					    Run_Control[34]
 S#define opc2    					    Run_Control[35]
 S#define opc3    					    Run_Control[36]
@@ -54018,8 +54018,7 @@ N                     hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_68);
 X                     hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x81));
 N                     sprintf(buf,"%05d",battery_c);
 N                     TEXT_SetText(hItem,buf);
-N					SET_Voltage = opv1;
-X					Run_Control[1] = Run_Control[31];
+N//					SET_Voltage = opv1;
 N					 SET_Current = opc1;
 X					 Run_Control[2] = Run_Control[34];
 N                   GPIO_ResetBits(GPIOC,GPIO_Pin_13);//打开电源输出继电器
@@ -54487,8 +54486,7 @@ X  if(page_sw == 0)
 N  {  
 N	  
 N  }else{
-N	  SET_Voltage = opv1;
-X	  Run_Control[1] = Run_Control[31];
+N//	  SET_Voltage = opv1;
 N	  SET_Current = opc1;
 X	  Run_Control[2] = Run_Control[34];
 N	  SET_Current_Laod = cdc_dc;
@@ -54903,34 +54901,24 @@ N        case set_26:
 X        case 25:
 N        {
 N            
-N            if(pow_step == step2)
-X            if(pow_step == 1)
-N            {
-N                buffer = (float)opv1/100;
-X                buffer = (float)Run_Control[31]/100;
-N                hItem = WM_GetDialogItem(hWincdc, ID_TEXT_50);
-X                hItem = WM_GetDialogItem(hWincdc, (0x800 + 0x6F));
-N                TEXT_SetText(hItem,"输出电压1");
-N                hItem = WM_GetDialogItem(hWincdc, ID_TEXT_54);
-X                hItem = WM_GetDialogItem(hWincdc, (0x800 + 0x73));
-N                sprintf(buf,"%.2f",buffer);
-N                TEXT_SetText(hItem,buf);
-N                pow_step = step1;
-X                pow_step = 0;
-N            }else if(pow_step == step3){
-X            }else if(pow_step == 2){
-N                buffer = (float)opv2/100;
-X                buffer = (float)Run_Control[32]/100;
-N                hItem = WM_GetDialogItem(hWincdc, ID_TEXT_50);
-X                hItem = WM_GetDialogItem(hWincdc, (0x800 + 0x6F));
-N                TEXT_SetText(hItem,"输出电压2");
-N                hItem = WM_GetDialogItem(hWincdc, ID_TEXT_54);
-X                hItem = WM_GetDialogItem(hWincdc, (0x800 + 0x73));
-N                sprintf(buf,"%.2f",buffer);
-N                TEXT_SetText(hItem,buf);
-N                pow_step = step2;
-X                pow_step = 1;
-N            }
+N//            if(pow_step == step2)
+N//            {
+N////                buffer = (float)opv1/100;
+N//                hItem = WM_GetDialogItem(hWincdc, ID_TEXT_50);
+N//                TEXT_SetText(hItem,"输出电压1");
+N//                hItem = WM_GetDialogItem(hWincdc, ID_TEXT_54);
+N//                sprintf(buf,"%.2f",buffer);
+N//                TEXT_SetText(hItem,buf);
+N//                pow_step = step1;
+N//            }else if(pow_step == step3){
+N//                buffer = (float)opv2/100;
+N//                hItem = WM_GetDialogItem(hWincdc, ID_TEXT_50);
+N//                TEXT_SetText(hItem,"输出电压2");
+N//                hItem = WM_GetDialogItem(hWincdc, ID_TEXT_54);
+N//                sprintf(buf,"%.2f",buffer);
+N//                TEXT_SetText(hItem,buf);
+N//                pow_step = step2;
+N//            }
 N        }break;
 N        case set_27:
 X        case 26:
@@ -55047,34 +55035,24 @@ N        case set_26:
 X        case 25:
 N        {
 N            
-N            if(pow_step == step1)
-X            if(pow_step == 0)
-N            {
-N                buffer = (float)opv2/100;
-X                buffer = (float)Run_Control[32]/100;
-N                hItem = WM_GetDialogItem(hWincdc, ID_TEXT_50);
-X                hItem = WM_GetDialogItem(hWincdc, (0x800 + 0x6F));
-N                TEXT_SetText(hItem,"输出电压2");
-N                hItem = WM_GetDialogItem(hWincdc, ID_TEXT_54);
-X                hItem = WM_GetDialogItem(hWincdc, (0x800 + 0x73));
-N                sprintf(buf,"%.2f",buffer);
-N                TEXT_SetText(hItem,buf);
-N                pow_step = step2;
-X                pow_step = 1;
-N            }else if(pow_step == step2){
-X            }else if(pow_step == 1){
-N                buffer = (float)opv3/100;
-X                buffer = (float)Run_Control[33]/100;
-N                hItem = WM_GetDialogItem(hWincdc, ID_TEXT_50);
-X                hItem = WM_GetDialogItem(hWincdc, (0x800 + 0x6F));
-N                TEXT_SetText(hItem,"输出电压3");
-N                hItem = WM_GetDialogItem(hWincdc, ID_TEXT_54);
-X                hItem = WM_GetDialogItem(hWincdc, (0x800 + 0x73));
-N                sprintf(buf,"%.2f",buffer);
-N                TEXT_SetText(hItem,buf);
-N                pow_step = step3;
-X                pow_step = 2;
-N            }
+N//            if(pow_step == step1)
+N//            {
+N//                buffer = (float)opv2/100;
+N//                hItem = WM_GetDialogItem(hWincdc, ID_TEXT_50);
+N//                TEXT_SetText(hItem,"输出电压2");
+N//                hItem = WM_GetDialogItem(hWincdc, ID_TEXT_54);
+N//                sprintf(buf,"%.2f",buffer);
+N//                TEXT_SetText(hItem,buf);
+N//                pow_step = step2;
+N//            }else if(pow_step == step2){
+N//                buffer = (float)opv3/100;
+N//                hItem = WM_GetDialogItem(hWincdc, ID_TEXT_50);
+N//                TEXT_SetText(hItem,"输出电压3");
+N//                hItem = WM_GetDialogItem(hWincdc, ID_TEXT_54);
+N//                sprintf(buf,"%.2f",buffer);
+N//                TEXT_SetText(hItem,buf);
+N//                pow_step = step3;
+N//            }
 N        }break;
 N        case set_27:
 X        case 26:
@@ -55247,23 +55225,18 @@ N//                SET_Voltage = opv2;
 N//            }else if(pow_step == step3){
 N//                SET_Voltage = opv3;
 N//            }
-N            if(dot_flag == 0){
-N				opv1 = atoi(set_limit)*100;					
-X				Run_Control[31] = atoi(set_limit)*100;					
-N			}else if(dot_flag != 0){
-N				memset(buf, '\0', sizeof(buf));
-N				strncpy(buf,set_limit,dot_flag + 2);
-N				opv1 = atof(buf)*100;
-X				Run_Control[31] = atof(buf)*100;
-N			}
-N			if(opv1 > 6200)
-X			if(Run_Control[31] > 6200)
-N			{
-N				opv1 = 6200;
-X				Run_Control[31] = 6200;
-N			}
-N            SET_Voltage = opv1;
-X            Run_Control[1] = Run_Control[31];
+N//            if(dot_flag == 0){
+N//				opv1 = atoi(set_limit)*100;					
+N//			}else if(dot_flag != 0){
+N//				memset(buf, '\0', sizeof(buf));
+N//				strncpy(buf,set_limit,dot_flag + 2);
+N//				opv1 = atof(buf)*100;
+N//			}
+N//			if(opv1 > 6200)
+N//			{
+N//				opv1 = 6200;
+N//			}
+N//            SET_Voltage = opv1;
 N            if(SET_Voltage/100 * SET_Current/1000 > 250)
 X            if(Run_Control[1]/100 * Run_Control[2]/1000 > 250)
 N            {

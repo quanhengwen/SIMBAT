@@ -35167,9 +35167,9 @@ N#define set_dc_cutoff_v					Run_Control[27]
 N#define set_dc_cutoff_c					Run_Control[28]
 N#define start_time					    Run_Control[29]
 N#define end_time					    Run_Control[30]
-N#define opv1    					    Run_Control[31]
-N#define opv2    					    Run_Control[32]
-N#define opv3    					    Run_Control[33]
+N#define set_baud    					Run_Control[31]
+N#define set_beep    					Run_Control[32]
+N#define set_disp    					Run_Control[33]
 N#define opc1    					    Run_Control[34]
 N#define opc2    					    Run_Control[35]
 N#define opc3    					    Run_Control[36]
@@ -35753,9 +35753,9 @@ S#define set_dc_cutoff_v					Run_Control[27]
 S#define set_dc_cutoff_c					Run_Control[28]
 S#define start_time					    Run_Control[29]
 S#define end_time					    Run_Control[30]
-S#define opv1    					    Run_Control[31]
-S#define opv2    					    Run_Control[32]
-S#define opv3    					    Run_Control[33]
+S#define set_baud    					Run_Control[31]
+S#define set_beep    					Run_Control[32]
+S#define set_disp    					Run_Control[33]
 S#define opc1    					    Run_Control[34]
 S#define opc2    					    Run_Control[35]
 S#define opc3    					    Run_Control[36]
@@ -37300,25 +37300,25 @@ N	dis_gate_v=dis_gate_v<<8;
 N	dis_gate_v=dis_gate_v+EEPROM_READ_Byte(0xF8);
 N    
 N    
-N    opv1=EEPROM_READ_Byte(0x8E);
+N    set_baud=EEPROM_READ_Byte(0x8E);
 X    Run_Control[31]=EEPROM_READ_Byte(0x8E);
-N	opv1=opv1<<8;
+N	set_baud=set_baud<<8;
 X	Run_Control[31]=Run_Control[31]<<8;
-N	opv1=opv1+EEPROM_READ_Byte(0x8F);
+N	set_baud=set_baud+EEPROM_READ_Byte(0x8F);
 X	Run_Control[31]=Run_Control[31]+EEPROM_READ_Byte(0x8F);
 N    
-N    opv2=EEPROM_READ_Byte(0x90);
+N    set_beep=EEPROM_READ_Byte(0x90);
 X    Run_Control[32]=EEPROM_READ_Byte(0x90);
-N	opv2=opv2<<8;
+N	set_beep=set_beep<<8;
 X	Run_Control[32]=Run_Control[32]<<8;
-N	opv2=opv2+EEPROM_READ_Byte(0x91);
+N	set_beep=set_beep+EEPROM_READ_Byte(0x91);
 X	Run_Control[32]=Run_Control[32]+EEPROM_READ_Byte(0x91);
 N    
-N    opv3=EEPROM_READ_Byte(0x92);
+N    set_disp=EEPROM_READ_Byte(0x92);
 X    Run_Control[33]=EEPROM_READ_Byte(0x92);
-N	opv3=opv3<<8;
+N	set_disp=set_disp<<8;
 X	Run_Control[33]=Run_Control[33]<<8;
-N	opv3=opv3+EEPROM_READ_Byte(0x93);
+N	set_disp=set_disp+EEPROM_READ_Byte(0x93);
 X	Run_Control[33]=Run_Control[33]+EEPROM_READ_Byte(0x93);
 N    
 N    cov1=EEPROM_READ_Byte(0x94);
@@ -37491,22 +37491,22 @@ X	EEPROM_WriteByte(0x77, Run_Control[23]);
 N
 N
 N
-N    data_8bit = opv1 >> 8;
+N    data_8bit = set_baud >> 8;
 X    data_8bit = Run_Control[31] >> 8;
 N	EEPROM_WriteByte(0x8E, data_8bit);
-N	EEPROM_WriteByte(0x8F, opv1);
+N	EEPROM_WriteByte(0x8F, set_baud);
 X	EEPROM_WriteByte(0x8F, Run_Control[31]);
 N    
-N    data_8bit = opv2 >> 8;
+N    data_8bit = set_beep >> 8;
 X    data_8bit = Run_Control[32] >> 8;
 N	EEPROM_WriteByte(0x90, data_8bit);
-N	EEPROM_WriteByte(0x91, opv2);
+N	EEPROM_WriteByte(0x91, set_beep);
 X	EEPROM_WriteByte(0x91, Run_Control[32]);
 N    
-N    data_8bit = opv3 >> 8;
+N    data_8bit = set_disp >> 8;
 X    data_8bit = Run_Control[33] >> 8;
 N	EEPROM_WriteByte(0x92, data_8bit);
-N	EEPROM_WriteByte(0x93, opv3);
+N	EEPROM_WriteByte(0x93, set_disp);
 X	EEPROM_WriteByte(0x93, Run_Control[33]);
 N    
 N    data_8bit = cov1 >> 8;

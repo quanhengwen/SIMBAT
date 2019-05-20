@@ -32,7 +32,7 @@ vu8 t_USART;
 u16 USART_RX_STA=0; //?????? 
 u32 USART_RX_CNT=0;  //?????? 
 u8 USART_RX_BUF[USART_REC_LEN];// __attribute__ ((at(0X20001000)));//接收缓冲,最大USART_REC_LEN个字节,起始地址为0X20001000. 
-
+u32 setbaud[8] = {1200,2400,4800,9600,18200,38400,57600,115200};
 /*****************************************************************/
 
 
@@ -86,7 +86,7 @@ void USART_Configuration(void)//???????
 	GPIO_Init(GPIOA, &GPIO_InitStructure);
 	
 	/* USART1 mode config */
-	USART_InitStructure.USART_BaudRate = 9600;
+	USART_InitStructure.USART_BaudRate = setbaud[set_baud];
 	USART_InitStructure.USART_WordLength = USART_WordLength_8b;
 	USART_InitStructure.USART_StopBits = USART_StopBits_1;
 	USART_InitStructure.USART_Parity = USART_Parity_No ;

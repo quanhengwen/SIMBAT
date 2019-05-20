@@ -49083,9 +49083,9 @@ N#define set_dc_cutoff_v					Run_Control[27]
 N#define set_dc_cutoff_c					Run_Control[28]
 N#define start_time					    Run_Control[29]
 N#define end_time					    Run_Control[30]
-N#define opv1    					    Run_Control[31]
-N#define opv2    					    Run_Control[32]
-N#define opv3    					    Run_Control[33]
+N#define set_baud    					Run_Control[31]
+N#define set_beep    					Run_Control[32]
+N#define set_disp    					Run_Control[33]
 N#define opc1    					    Run_Control[34]
 N#define opc2    					    Run_Control[35]
 N#define opc3    					    Run_Control[36]
@@ -49699,9 +49699,9 @@ S#define set_dc_cutoff_v					Run_Control[27]
 S#define set_dc_cutoff_c					Run_Control[28]
 S#define start_time					    Run_Control[29]
 S#define end_time					    Run_Control[30]
-S#define opv1    					    Run_Control[31]
-S#define opv2    					    Run_Control[32]
-S#define opv3    					    Run_Control[33]
+S#define set_baud    					Run_Control[31]
+S#define set_beep    					Run_Control[32]
+S#define set_disp    					Run_Control[33]
 S#define opc1    					    Run_Control[34]
 S#define opc2    					    Run_Control[35]
 S#define opc3    					    Run_Control[36]
@@ -50302,9 +50302,9 @@ S#define set_dc_cutoff_v					Run_Control[27]
 S#define set_dc_cutoff_c					Run_Control[28]
 S#define start_time					    Run_Control[29]
 S#define end_time					    Run_Control[30]
-S#define opv1    					    Run_Control[31]
-S#define opv2    					    Run_Control[32]
-S#define opv3    					    Run_Control[33]
+S#define set_baud    					Run_Control[31]
+S#define set_beep    					Run_Control[32]
+S#define set_disp    					Run_Control[33]
 S#define opc1    					    Run_Control[34]
 S#define opc2    					    Run_Control[35]
 S#define opc3    					    Run_Control[36]
@@ -50908,9 +50908,9 @@ S#define set_dc_cutoff_v					Run_Control[27]
 S#define set_dc_cutoff_c					Run_Control[28]
 S#define start_time					    Run_Control[29]
 S#define end_time					    Run_Control[30]
-S#define opv1    					    Run_Control[31]
-S#define opv2    					    Run_Control[32]
-S#define opv3    					    Run_Control[33]
+S#define set_baud    					Run_Control[31]
+S#define set_beep    					Run_Control[32]
+S#define set_disp    					Run_Control[33]
 S#define opc1    					    Run_Control[34]
 S#define opc2    					    Run_Control[35]
 S#define opc3    					    Run_Control[36]
@@ -51514,9 +51514,9 @@ S#define set_dc_cutoff_v					Run_Control[27]
 S#define set_dc_cutoff_c					Run_Control[28]
 S#define start_time					    Run_Control[29]
 S#define end_time					    Run_Control[30]
-S#define opv1    					    Run_Control[31]
-S#define opv2    					    Run_Control[32]
-S#define opv3    					    Run_Control[33]
+S#define set_baud    					Run_Control[31]
+S#define set_beep    					Run_Control[32]
+S#define set_disp    					Run_Control[33]
 S#define opc1    					    Run_Control[34]
 S#define opc2    					    Run_Control[35]
 S#define opc3    					    Run_Control[36]
@@ -51998,6 +51998,7 @@ N    unsigned bit6: 1;
 N    unsigned bit7: 1;
 N} flagA, flagB,flagC,flagD,flagE,flagF,flagG;
 Nvoid Slow_Start(void);
+Nvoid set_init(void);
 Nextern vu8 resetflag;
 Nextern vu8 resdone;
 Nextern GUI_CONST_STORAGE GUI_FONT GUI_FontHZ16;
@@ -52032,7 +52033,7 @@ N//	unsigned char  ucKeyCode;
 N    static int read1963;
 N    static int scancount;
 N
-N    
+N    set_init();
 N	GUI_Init();
 N	WM_SetDesktopColor(GUI_BLUE);  
 X	WM_SetDesktopColor(0x00FF0000);  
@@ -52074,7 +52075,7 @@ N	GPIO_SetBits(GPIOA,GPIO_Pin_11);//电流切换为高档
 X	GPIO_SetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0000)),((uint16_t)0x0800));
 N	Flag_Swtich_ON=0;
 X	(flagA . bit6)=0;
-W "..\STemWinLibrary522\emWinTask\MainTask.c" 88 5 function "CreateSTARTER" declared implicitly
+W "..\STemWinLibrary522\emWinTask\MainTask.c" 89 5 function "CreateSTARTER" declared implicitly
 N    CreateSTARTER();
 N////	CreateR();//开机进入内阻测试界面
 N//// 	flag_Load_CC=1;//开机负载默认进入CC模式
@@ -52205,7 +52206,21 @@ N		GUI_Delay(2);//GUI刷新
 N	}
 N  
 N}
-N
+Nvoid set_init(void)
+N{
+N	if(set_beep > 1)
+X	if(Run_Control[32] > 1)
+N	{
+N		set_beep = 0;
+X		Run_Control[32] = 0;
+N	}
+N	if(set_disp > 1)
+X	if(Run_Control[33] > 1)
+N	{
+N		set_disp = 0;
+X		Run_Control[33] = 0;
+N	}
+N}
 Nvoid V_SW(u8 i)
 N{
 N	if(i == 0)

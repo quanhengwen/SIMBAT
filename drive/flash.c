@@ -787,17 +787,17 @@ void EEPROM_READ_Coeff(void)
 	dis_gate_v=dis_gate_v+EEPROM_READ_Byte(0xF8);
     
     
-    opv1=EEPROM_READ_Byte(0x8E);
-	opv1=opv1<<8;
-	opv1=opv1+EEPROM_READ_Byte(0x8F);
+    set_baud=EEPROM_READ_Byte(0x8E);
+	set_baud=set_baud<<8;
+	set_baud=set_baud+EEPROM_READ_Byte(0x8F);
     
-    opv2=EEPROM_READ_Byte(0x90);
-	opv2=opv2<<8;
-	opv2=opv2+EEPROM_READ_Byte(0x91);
+    set_beep=EEPROM_READ_Byte(0x90);
+	set_beep=set_beep<<8;
+	set_beep=set_beep+EEPROM_READ_Byte(0x91);
     
-    opv3=EEPROM_READ_Byte(0x92);
-	opv3=opv3<<8;
-	opv3=opv3+EEPROM_READ_Byte(0x93);
+    set_disp=EEPROM_READ_Byte(0x92);
+	set_disp=set_disp<<8;
+	set_disp=set_disp+EEPROM_READ_Byte(0x93);
     
     cov1=EEPROM_READ_Byte(0x94);
 	cov1=cov1<<8;
@@ -914,17 +914,17 @@ void Write_Limits(void)
 
 
 
-    data_8bit = opv1 >> 8;
+    data_8bit = set_baud >> 8;
 	EEPROM_WriteByte(0x8E, data_8bit);
-	EEPROM_WriteByte(0x8F, opv1);
+	EEPROM_WriteByte(0x8F, set_baud);
     
-    data_8bit = opv2 >> 8;
+    data_8bit = set_beep >> 8;
 	EEPROM_WriteByte(0x90, data_8bit);
-	EEPROM_WriteByte(0x91, opv2);
+	EEPROM_WriteByte(0x91, set_beep);
     
-    data_8bit = opv3 >> 8;
+    data_8bit = set_disp >> 8;
 	EEPROM_WriteByte(0x92, data_8bit);
-	EEPROM_WriteByte(0x93, opv3);
+	EEPROM_WriteByte(0x93, set_disp);
     
     data_8bit = cov1 >> 8;
 	EEPROM_WriteByte(0x94, data_8bit);

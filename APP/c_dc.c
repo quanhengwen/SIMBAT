@@ -742,7 +742,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
                      hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_68);
                      sprintf(buf,"%05d",battery_c);
                      TEXT_SetText(hItem,buf);
-					SET_Voltage = opv1;
+//					SET_Voltage = opv1;
 					 SET_Current = opc1;
                    GPIO_ResetBits(GPIOC,GPIO_Pin_13);//打开电源输出继电器
                     GPIO_SetBits(GPIOC,GPIO_Pin_1);//打开电源输出
@@ -1109,7 +1109,7 @@ WM_HWIN CreateCDC(void) {
   {  
 	  
   }else{
-	  SET_Voltage = opv1;
+//	  SET_Voltage = opv1;
 	  SET_Current = opc1;
 	  SET_Current_Laod = cdc_dc;
 	  track = face_cdc;
@@ -1398,24 +1398,24 @@ void CDC_OP_LEFT(void)
         case set_26:
         {
             
-            if(pow_step == step2)
-            {
-                buffer = (float)opv1/100;
-                hItem = WM_GetDialogItem(hWincdc, ID_TEXT_50);
-                TEXT_SetText(hItem,"输出电压1");
-                hItem = WM_GetDialogItem(hWincdc, ID_TEXT_54);
-                sprintf(buf,"%.2f",buffer);
-                TEXT_SetText(hItem,buf);
-                pow_step = step1;
-            }else if(pow_step == step3){
-                buffer = (float)opv2/100;
-                hItem = WM_GetDialogItem(hWincdc, ID_TEXT_50);
-                TEXT_SetText(hItem,"输出电压2");
-                hItem = WM_GetDialogItem(hWincdc, ID_TEXT_54);
-                sprintf(buf,"%.2f",buffer);
-                TEXT_SetText(hItem,buf);
-                pow_step = step2;
-            }
+//            if(pow_step == step2)
+//            {
+////                buffer = (float)opv1/100;
+//                hItem = WM_GetDialogItem(hWincdc, ID_TEXT_50);
+//                TEXT_SetText(hItem,"输出电压1");
+//                hItem = WM_GetDialogItem(hWincdc, ID_TEXT_54);
+//                sprintf(buf,"%.2f",buffer);
+//                TEXT_SetText(hItem,buf);
+//                pow_step = step1;
+//            }else if(pow_step == step3){
+//                buffer = (float)opv2/100;
+//                hItem = WM_GetDialogItem(hWincdc, ID_TEXT_50);
+//                TEXT_SetText(hItem,"输出电压2");
+//                hItem = WM_GetDialogItem(hWincdc, ID_TEXT_54);
+//                sprintf(buf,"%.2f",buffer);
+//                TEXT_SetText(hItem,buf);
+//                pow_step = step2;
+//            }
         }break;
         case set_27:
         {
@@ -1497,24 +1497,24 @@ void CDC_OP_RIGHT(void)
         case set_26:
         {
             
-            if(pow_step == step1)
-            {
-                buffer = (float)opv2/100;
-                hItem = WM_GetDialogItem(hWincdc, ID_TEXT_50);
-                TEXT_SetText(hItem,"输出电压2");
-                hItem = WM_GetDialogItem(hWincdc, ID_TEXT_54);
-                sprintf(buf,"%.2f",buffer);
-                TEXT_SetText(hItem,buf);
-                pow_step = step2;
-            }else if(pow_step == step2){
-                buffer = (float)opv3/100;
-                hItem = WM_GetDialogItem(hWincdc, ID_TEXT_50);
-                TEXT_SetText(hItem,"输出电压3");
-                hItem = WM_GetDialogItem(hWincdc, ID_TEXT_54);
-                sprintf(buf,"%.2f",buffer);
-                TEXT_SetText(hItem,buf);
-                pow_step = step3;
-            }
+//            if(pow_step == step1)
+//            {
+//                buffer = (float)opv2/100;
+//                hItem = WM_GetDialogItem(hWincdc, ID_TEXT_50);
+//                TEXT_SetText(hItem,"输出电压2");
+//                hItem = WM_GetDialogItem(hWincdc, ID_TEXT_54);
+//                sprintf(buf,"%.2f",buffer);
+//                TEXT_SetText(hItem,buf);
+//                pow_step = step2;
+//            }else if(pow_step == step2){
+//                buffer = (float)opv3/100;
+//                hItem = WM_GetDialogItem(hWincdc, ID_TEXT_50);
+//                TEXT_SetText(hItem,"输出电压3");
+//                hItem = WM_GetDialogItem(hWincdc, ID_TEXT_54);
+//                sprintf(buf,"%.2f",buffer);
+//                TEXT_SetText(hItem,buf);
+//                pow_step = step3;
+//            }
         }break;
         case set_27:
         {
@@ -1637,18 +1637,18 @@ void CDC_SET(void)
 //            }else if(pow_step == step3){
 //                SET_Voltage = opv3;
 //            }
-            if(dot_flag == 0){
-				opv1 = atoi(set_limit)*100;					
-			}else if(dot_flag != 0){
-				memset(buf, '\0', sizeof(buf));
-				strncpy(buf,set_limit,dot_flag + 2);
-				opv1 = atof(buf)*100;
-			}
-			if(opv1 > 6200)
-			{
-				opv1 = 6200;
-			}
-            SET_Voltage = opv1;
+//            if(dot_flag == 0){
+//				opv1 = atoi(set_limit)*100;					
+//			}else if(dot_flag != 0){
+//				memset(buf, '\0', sizeof(buf));
+//				strncpy(buf,set_limit,dot_flag + 2);
+//				opv1 = atof(buf)*100;
+//			}
+//			if(opv1 > 6200)
+//			{
+//				opv1 = 6200;
+//			}
+//            SET_Voltage = opv1;
             if(SET_Voltage/100 * SET_Current/1000 > 250)
             {
                 SET_Voltage = 0;

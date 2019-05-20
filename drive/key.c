@@ -1219,7 +1219,7 @@ void Key_Funtion(void)
                         }
                         case face_set:
                         {
-                            SET_OP_UP();  //璁剧疆閫夐」鍒囨崲
+							SET_OP_UP();
                             KeyCounter = 0;
                             BEEP_Tiggr();//瑙﹀彂铚傞福鍣?
                             break;
@@ -1275,7 +1275,7 @@ void Key_Funtion(void)
                         }
                         case face_set:  //绯荤粺璁剧疆
                         {
-                            SET_OP_DOWN();  //璁剧疆閫夐」鍒囨崲
+							SET_OP_DOWN();
                             KeyCounter = 0;
                             BEEP_Tiggr();//瑙﹀彂铚傞福鍣?
                             break;
@@ -1442,13 +1442,13 @@ void Key_Funtion(void)
     // 					flag_Load_CC=0;//CV模式
     // 					GPIO_SetBits(GPIOC,GPIO_Pin_12);//CV
     // 				}
-//                    WM_DeleteWindow(hWinR);
+                    WM_DeleteWindow(hWinR);
                     WM_DeleteWindow(hWinWind);
-//                    WM_DeleteWindow(hWinG);
-//                    WM_DeleteWindow(load_wind);
-//                    WM_DeleteWindow(hWinsysinfo);
-//                    WM_DeleteWindow(hWincdc);
-//                    WM_DeleteWindow(hWinset); 
+                    WM_DeleteWindow(hWinG);
+                    WM_DeleteWindow(load_wind);
+                    WM_DeleteWindow(hWinsysinfo);
+                    WM_DeleteWindow(hWincdc);
+                    WM_DeleteWindow(hWinset); 
                     CreateSET();
                     KeyCounter = 0;
                     BEEP_Tiggr();//瑙﹀彂铚傞福鍣
@@ -1571,29 +1571,29 @@ void Key_Funtion(void)
                         }break;
                          case face_cdc:
                         {
-                            if(cdc_sw == cdc_off)
-                            {
-                               SET_Voltage = opv1;
-                               SET_Current = opc1;
-                               cutoff_flag = 0;
-    //                           Mode_SW_CONT(0x03);
-                               
-                               charge_step = 1;
-                               GPIO_ResetBits(GPIOC,GPIO_Pin_13);//打开电源输出继电器
-							   Delay_ms(500);
-                               GPIO_SetBits(GPIOC,GPIO_Pin_1);//打开电源输出
-                               mode_sw = mode_pow;
-                               cdc_sw = cdc_on;
-                            }else{
-                               
-                               GPIO_ResetBits(GPIOC,GPIO_Pin_1);//关闭电源输出
-								Delay_ms(500);
-                               //GPIO_SetBits(GPIOC,GPIO_Pin_13);//关闭电源输出继电器
-                               GPIO_SetBits(GPIOA,GPIO_Pin_15);//电子负载OFF
-                               cdc_sw = cdc_off;
-                               paused = 0;
-                               mode_sw = 0;
-                            }
+//                            if(cdc_sw == cdc_off)
+//                            {
+//                               SET_Voltage = opv1;
+//                               SET_Current = opc1;
+//                               cutoff_flag = 0;
+//    //                           Mode_SW_CONT(0x03);
+//                               
+//                               charge_step = 1;
+//                               GPIO_ResetBits(GPIOC,GPIO_Pin_13);//打开电源输出继电器
+//							   Delay_ms(500);
+//                               GPIO_SetBits(GPIOC,GPIO_Pin_1);//打开电源输出
+//                               mode_sw = mode_pow;
+//                               cdc_sw = cdc_on;
+//                            }else{
+//                               
+//                               GPIO_ResetBits(GPIOC,GPIO_Pin_1);//关闭电源输出
+//								Delay_ms(500);
+//                               //GPIO_SetBits(GPIOC,GPIO_Pin_13);//关闭电源输出继电器
+//                               GPIO_SetBits(GPIOA,GPIO_Pin_15);//电子负载OFF
+//                               cdc_sw = cdc_off;
+//                               paused = 0;
+//                               mode_sw = 0;
+//                            }
                             KeyCounter = 0;
                             BEEP_Tiggr();//瑙﹀彂铚傞福鍣?
                            
@@ -1706,40 +1706,52 @@ void Key_Funtion(void)
     // 			break;
                 case KEY_Lock :
                 {
-                    lock = 1;
-                    KeyCounter = 0;
-                    BEEP_Tiggr();//
+						lock = 1;
+						KeyCounter = 0;
+						BEEP_Tiggr();//
                 }break;
                 case KEY_Face1 :
                 {
-					set_sw = set_18;
-					DISP_POW();
-                    KeyCounter = 0;
-                    BEEP_Tiggr();//
+					if(page_sw == face_menu)
+					{
+						set_sw = set_18;
+						DISP_POW();
+						KeyCounter = 0;
+						BEEP_Tiggr();//
+					}
                 }
                 break;
                 case KEY_Face2 :
                 {
-                    set_sw = set_19;
-					DISP_POW();
-                    KeyCounter = 0;
-                    BEEP_Tiggr();//
+					if(page_sw == face_menu)
+					{
+						set_sw = set_19;
+						DISP_POW();
+						KeyCounter = 0;
+						BEEP_Tiggr();//
+					}
                 }
                 break;
                 case KEY_Face3 :
                 {
-                    set_sw = set_89;
-					DISP_POW();
-                    KeyCounter = 0;
-                    BEEP_Tiggr();//
+					if(page_sw == face_menu)
+					{
+						set_sw = set_89;
+						DISP_POW();
+						KeyCounter = 0;
+						BEEP_Tiggr();//
+					}
                 }
                 break;
                 case KEY_Face4 :
                 {
-					set_sw = set_90;
-					DISP_POW();
-                    KeyCounter = 0;
-                    BEEP_Tiggr();//
+					if(page_sw == face_menu)
+					{
+						set_sw = set_90;
+						DISP_POW();
+						KeyCounter = 0;
+						BEEP_Tiggr();//
+					}
 //                    WM_DeleteWindow(hWinR);
 //                    WM_DeleteWindow(hWinWind);
 //                    WM_DeleteWindow(hWinG);
@@ -1757,6 +1769,19 @@ void Key_Funtion(void)
                 break;
                 case KEY_Face5 :
                 {
+					if(page_sw == face_menu)
+					{
+						WM_DeleteWindow(hWinR);
+						WM_DeleteWindow(hWinWind);
+						WM_DeleteWindow(hWinG);
+						WM_DeleteWindow(load_wind);
+						WM_DeleteWindow(hWinsysinfo);
+						WM_DeleteWindow(hWincdc);
+						WM_DeleteWindow(hWinset); 
+						CreateSET();
+						KeyCounter = 0;
+						BEEP_Tiggr();//瑙﹀彂铚傞福
+					}
 //                    WM_DeleteWindow(hWinR);
 //                    WM_DeleteWindow(hWinWind);
 //                    WM_DeleteWindow(hWinG);

@@ -90,3 +90,4 @@
 ..\output\settings.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 ..\output\settings.o: ..\Include\beep.h
 ..\output\settings.o: ..\Include\internalflash.h
+..\output\settings.o: ..\Include\usart.h
