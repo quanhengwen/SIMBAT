@@ -53463,6 +53463,19 @@ N//        test_pow();
 N        if(pow_sw == pow_on)
 X        if(pow_sw == 1)
 N        {
+N			if(DISS_Current > 10)
+N			{
+N				GPIO_ResetBits(GPIOC,GPIO_Pin_1);
+X				GPIO_ResetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0800)),((uint16_t)0x0002));
+N				  GPIO_SetBits(GPIOA,GPIO_Pin_15);//电子负载OFF
+X				  GPIO_SetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0000)),((uint16_t)0x8000));
+N				  //GPIO_SetBits(GPIOC,GPIO_Pin_13);
+N				  mode_sw = 0;
+N				  pow_sw = pow_off;
+X				  pow_sw = 0;
+N				  load_sw=load_off;
+X				  load_sw=0;
+N			}
 N             hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_87);
 X             hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x94));
 N            sprintf(buf,"%.3f",DISS_POW_Current); 
@@ -53875,7 +53888,7 @@ N	  GPIO_SetBits(GPIOA,GPIO_Pin_15);//µç×Ó¸ºÔØOFF
 X	  GPIO_SetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0000)),((uint16_t)0x8000));
 N	  GPIO_ResetBits(GPIOC,GPIO_Pin_1);//¹Ø±ÕµçÔ´Êä³ö
 X	  GPIO_ResetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0800)),((uint16_t)0x0002));
-W "..\APP\menu.c" 554 4 function "Delay_ms" declared implicitly
+W "..\APP\menu.c" 563 4 function "Delay_ms" declared implicitly
 N	  Delay_ms(500);
 N	  //GPIO_SetBits(GPIOC,GPIO_Pin_13);//¹Ø±ÕµçÔ´Êä³ö¼ÌµçÆ
 N//      IO_OFF();
@@ -54667,7 +54680,7 @@ N			}
 N			TEXT_SetText(hItem,set_limit);			
 N		}
 N    }    
-W "..\APP\menu.c" 858 5 variable "i"  was declared but never referenced
+W "..\APP\menu.c" 867 5 variable "i"  was declared but never referenced
 N}
 N
 N//void test_pow(void)

@@ -213,6 +213,15 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 //        test_pow();
         if(pow_sw == pow_on)
         {
+			if(DISS_Current > 10)
+			{
+				GPIO_ResetBits(GPIOC,GPIO_Pin_1);
+				  GPIO_SetBits(GPIOA,GPIO_Pin_15);//电子负载OFF
+				  //GPIO_SetBits(GPIOC,GPIO_Pin_13);
+				  mode_sw = 0;
+				  pow_sw = pow_off;
+				  load_sw=load_off;
+			}
              hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_87);
             sprintf(buf,"%.3f",DISS_POW_Current); 
 			TEXT_SetText(hItem,buf);
