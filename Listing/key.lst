@@ -53094,12 +53094,12 @@ N                            }
 N                            else if(load_sw==load_off)
 X                            else if(load_sw==0)
 N                            {
-N								GPIO_SetBits(GPIOC,GPIO_Pin_1);//打开电源输出 
-X								GPIO_SetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0800)),((uint16_t)0x0002));
-N                                Flag_Swtich_ON=1;
-X                                (flagA . bit6)=1;
+N								Flag_Swtich_ON=1;
+X								(flagA . bit6)=1;
 N                                GPIO_ResetBits(GPIOA,GPIO_Pin_15);//电子负载On
 X                                GPIO_ResetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0000)),((uint16_t)0x8000));
+N								GPIO_SetBits(GPIOC,GPIO_Pin_1);//打开电源输出                                 
+X								GPIO_SetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0800)),((uint16_t)0x0002));
 N                                if(flag_Load_CC == 0)
 X                                if((flagD . bit7) == 0)
 N                                {

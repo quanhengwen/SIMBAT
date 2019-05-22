@@ -213,7 +213,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 //        test_pow();
         if(pow_sw == pow_on)
         {
-			if(DISS_Current > 10)
+			if(DISS_Current > 10 || (DISS_Voltage * DISS_Current > 100))
 			{
 				GPIO_ResetBits(GPIOC,GPIO_Pin_1);
 				  GPIO_SetBits(GPIOA,GPIO_Pin_15);//电子负载OFF
@@ -248,7 +248,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
                 TEXT_SetText(hItem,"");
                 status_flash = 0;
            }
-           if(((load_cutoffv != 0 && DISS_POW_Voltage > load_cutoffv) ||(pow_cutoffc != 0 && DISS_POW_Current > pow_cutoffc)) && cdelay > 20)
+           if(((load_cutoffv != 0 && DISS_Voltage > load_cutoffv) ||(pow_cutoffc != 0 && DISS_POW_Current > pow_cutoffc)) && cdelay > 20)
            {
               GPIO_ResetBits(GPIOC,GPIO_Pin_1);
 			  GPIO_SetBits(GPIOA,GPIO_Pin_15);//电子负载OFF
@@ -569,7 +569,7 @@ WM_HWIN CreateWindow(void) {
   track = face_menu;
   set_sw = set_18;
   SET_Voltage = pow_v;
-  SET_Voltage_Laod = pow_v * 10 +20;
+  SET_Voltage_Laod = pow_v * 10 +100;
   SET_Current = pow_c;
   pow_cutoffc = (float)set_pow_cutoffc/1000;
   load_cutoffv = (float)set_load_cutoffv/1000;
@@ -695,11 +695,11 @@ void MENU_SET(void)
 				pow_v = set_max_v;
 			}
             SET_Voltage = pow_v;
-            if(SET_Voltage/100 * SET_Current/1000 > 250)
+            if(SET_Voltage/100 * SET_Current/1000 > 100)
             {
                 SET_Voltage = 0;
             }
-			SET_Voltage_Laod = SET_Voltage * 10 + 50;
+			SET_Voltage_Laod = SET_Voltage * 10 + 100;
             dis_output_v = (float)SET_Voltage/100;
             
             sprintf(buf,"%.2f",dis_output_v);
@@ -731,7 +731,7 @@ void MENU_SET(void)
                 pow_c = set_max_c;               
             }
 			SET_Current = pow_c;
-            if(SET_Voltage/100 * SET_Current/1000 > 250)
+            if(SET_Voltage/100 * SET_Current/1000 > 100)
             {
                 SET_Current = 0;
             }

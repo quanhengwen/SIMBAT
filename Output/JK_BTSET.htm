@@ -3,7 +3,7 @@
 <title>Static Call Graph - [..\Output\JK_BTSET.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\Output\JK_BTSET.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Tue May 21 09:16:30 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Wed May 22 08:45:05 2019
 <BR><P>
 <H3>Maximum Stack Usage =        688 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -2321,7 +2321,6 @@ Global Symbols
 <LI><a href="#[3b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OC_CHECK
 <LI><a href="#[3b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OC_ADD
 <LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_IRQHandler
-<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_IRQHandler
 <LI><a href="#[3b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Temp_Comapre
 <LI><a href="#[377]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;V_SW
 <LI><a href="#[205]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CreateWindow
@@ -2615,8 +2614,8 @@ Global Symbols
 <LI> symbol.o(.constdata)
 <LI> unit.o(.constdata)
 <LI> en40.o(.constdata)
-<LI> hz14.o(.constdata)
 <LI> hz32.o(.constdata)
+<LI> hz14.o(.constdata)
 <LI> set_font.o(.constdata)
 </UL>
 <P><STRONG><a name="[ee]"></a>GUIPROP_EXT_GetCharDistX</STRONG> (Thumb, 66 bytes, Stack size 12 bytes, gui_charpext.o(i.GUIPROP_EXT_GetCharDistX))
@@ -2628,8 +2627,8 @@ Global Symbols
 <LI> symbol.o(.constdata)
 <LI> unit.o(.constdata)
 <LI> en40.o(.constdata)
-<LI> hz14.o(.constdata)
 <LI> hz32.o(.constdata)
+<LI> hz14.o(.constdata)
 <LI> set_font.o(.constdata)
 </UL>
 <P><STRONG><a name="[f1]"></a>GUIPROP_EXT_GetCharInfo</STRONG> (Thumb, 56 bytes, Stack size 8 bytes, gui_charpext.o(i.GUIPROP_EXT_GetCharInfo))
@@ -2641,8 +2640,8 @@ Global Symbols
 <LI> symbol.o(.constdata)
 <LI> unit.o(.constdata)
 <LI> en40.o(.constdata)
-<LI> hz14.o(.constdata)
 <LI> hz32.o(.constdata)
+<LI> hz14.o(.constdata)
 <LI> set_font.o(.constdata)
 </UL>
 <P><STRONG><a name="[ef]"></a>GUIPROP_EXT_GetFontInfo</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, gui_charpext.o(i.GUIPROP_EXT_GetFontInfo))
@@ -2650,8 +2649,8 @@ Global Symbols
 <LI> symbol.o(.constdata)
 <LI> unit.o(.constdata)
 <LI> en40.o(.constdata)
-<LI> hz14.o(.constdata)
 <LI> hz32.o(.constdata)
+<LI> hz14.o(.constdata)
 <LI> set_font.o(.constdata)
 </UL>
 <P><STRONG><a name="[f0]"></a>GUIPROP_EXT_IsInFont</STRONG> (Thumb, 16 bytes, Stack size 4 bytes, gui_charpext.o(i.GUIPROP_EXT_IsInFont))
@@ -2663,8 +2662,8 @@ Global Symbols
 <LI> symbol.o(.constdata)
 <LI> unit.o(.constdata)
 <LI> en40.o(.constdata)
-<LI> hz14.o(.constdata)
 <LI> hz32.o(.constdata)
+<LI> hz14.o(.constdata)
 <LI> set_font.o(.constdata)
 </UL>
 <P><STRONG><a name="[4]"></a>GUIPROP_EXT__ClearLine</STRONG> (Thumb, 184 bytes, Stack size 48 bytes, gui_encext.o(i.GUIPROP_EXT__ClearLine))
@@ -5874,7 +5873,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[360]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Key_Funtion
 </UL>
 
-<P><STRONG><a name="[372]"></a>MENU_SET</STRONG> (Thumb, 872 bytes, Stack size 64 bytes, menu.o(i.MENU_SET))
+<P><STRONG><a name="[372]"></a>MENU_SET</STRONG> (Thumb, 870 bytes, Stack size 64 bytes, menu.o(i.MENU_SET))
 <BR><BR>[Stack]<UL><LI>Max Depth = 524 + Unknown Stack Size
 <LI>Call Chain = MENU_SET &rArr; __hardfp_atof &rArr; __strtod_int &rArr; _local_sscanf &rArr; _scanf_real &rArr; _scanf_really_real &rArr; _fp_value &rArr; _btod_etento &rArr; _btod_emul &rArr; _e2e
 </UL>
@@ -6824,11 +6823,10 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[173]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[51]"></a>TIM3_IRQHandler</STRONG> (Thumb, 594 bytes, Stack size 40 bytes, tim6.o(i.TIM3_IRQHandler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = TIM3_IRQHandler
+<P><STRONG><a name="[51]"></a>TIM3_IRQHandler</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, tim6.o(i.TIM3_IRQHandler))
+<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = TIM3_IRQHandler
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
-<LI><a href="#[3fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_GetITStatus
+<BR>[Calls]<UL><LI><a href="#[3fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_GetITStatus
 <LI><a href="#[3fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ClearITPendingBit
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f40_41xxx.o(RESET)
@@ -9650,7 +9648,7 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[3a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MainTask
 </UL>
 
-<P><STRONG><a name="[91]"></a>_cbDialog</STRONG> (Thumb, 2424 bytes, Stack size 64 bytes, menu.o(i._cbDialog))
+<P><STRONG><a name="[91]"></a>_cbDialog</STRONG> (Thumb, 2456 bytes, Stack size 64 bytes, menu.o(i._cbDialog))
 <BR><BR>[Stack]<UL><LI>Max Depth = 264 + Unknown Stack Size
 <LI>Call Chain = _cbDialog &rArr; WM_CreateTimer &rArr; GUI_TIMER_Create &rArr; GUI_ALLOC_AllocZero &rArr; GUI_ALLOC_AllocNoInit &rArr; _Alloc &rArr; _InitOnce &rArr; _EnlargeBlocks &rArr;  _Alloc (Cycle)
 </UL>

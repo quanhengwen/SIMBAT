@@ -1481,9 +1481,9 @@
 ;;;1553                               }
 ;;;1554                               else if(load_sw==load_off)
 ;;;1555                               {
-;;;1556   								GPIO_SetBits(GPIOC,GPIO_Pin_1);//打开电源输出 
-;;;1557                                   Flag_Swtich_ON=1;
-;;;1558                                   GPIO_ResetBits(GPIOA,GPIO_Pin_15);//电子负载On
+;;;1556   								Flag_Swtich_ON=1;
+;;;1557                                   GPIO_ResetBits(GPIOA,GPIO_Pin_15);//电子负载On
+;;;1558   								GPIO_SetBits(GPIOC,GPIO_Pin_1);//打开电源输出                                 
 ;;;1559                                   if(flag_Load_CC == 0)
 ;;;1560                                   {
 ;;;1561                                       c_rec = 1;
@@ -3397,15 +3397,15 @@
 000f7a  7005              STRB     r5,[r0,#0]            ;1552
 000f7c  e01b              B        |L4.4022|
                   |L4.3966|
-000f7e  2102              MOVS     r1,#2                 ;1556
-000f80  4630              MOV      r0,r6                 ;1556
-000f82  f7fffffe          BL       GPIO_SetBits
-000f86  f8d80000          LDR      r0,[r8,#0]            ;1557  ; flagA
-000f8a  f0400040          ORR      r0,r0,#0x40           ;1557
-000f8e  f8c80000          STR      r0,[r8,#0]            ;1557  ; flagA
-000f92  f44f4100          MOV      r1,#0x8000            ;1558
-000f96  485d              LDR      r0,|L4.4364|
-000f98  f7fffffe          BL       GPIO_ResetBits
+000f7e  f8d80000          LDR      r0,[r8,#0]            ;1556  ; flagA
+000f82  f0400040          ORR      r0,r0,#0x40           ;1556
+000f86  f8c80000          STR      r0,[r8,#0]            ;1556  ; flagA
+000f8a  f44f4100          MOV      r1,#0x8000            ;1557
+000f8e  485f              LDR      r0,|L4.4364|
+000f90  f7fffffe          BL       GPIO_ResetBits
+000f94  2102              MOVS     r1,#2                 ;1558
+000f96  4630              MOV      r0,r6                 ;1558
+000f98  f7fffffe          BL       GPIO_SetBits
 000f9c  f8990000          LDRB     r0,[r9,#0]            ;1559  ; flagD
 000fa0  0600              LSLS     r0,r0,#24             ;1559
 000fa2  d401              BMI      |L4.4008|
@@ -3599,12 +3599,12 @@
 00111c  f44f5100          MOV      r1,#0x2000            ;1657
 001120  4869              LDR      r0,|L4.4808|
 001122  f7fffffe          BL       GPIO_SetBits
-001126  2101              MOVS     r1,#1                 ;1658
-001128  70a1              STRB     r1,[r4,#2]            ;1658
-00112a  79a0              LDRB     r0,[r4,#6]            ;1659  ; at
-00112c  1c40              ADDS     r0,r0,#1              ;1659
-00112e  71a0              STRB     r0,[r4,#6]            ;1659
-001130  7031              STRB     r1,[r6,#0]            ;1660
+001126  2001              MOVS     r0,#1                 ;1658
+001128  70a0              STRB     r0,[r4,#2]            ;1658
+00112a  79a1              LDRB     r1,[r4,#6]            ;1659  ; at
+00112c  1c49              ADDS     r1,r1,#1              ;1659
+00112e  71a1              STRB     r1,[r4,#6]            ;1659
+001130  7030              STRB     r0,[r6,#0]            ;1660
 001132  e001              B        |L4.4408|
                   |L4.4404|
 001134  71a5              STRB     r5,[r4,#6]            ;1662

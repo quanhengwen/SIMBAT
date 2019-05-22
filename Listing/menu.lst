@@ -53463,7 +53463,7 @@ N//        test_pow();
 N        if(pow_sw == pow_on)
 X        if(pow_sw == 1)
 N        {
-N			if(DISS_Current > 10)
+N			if(DISS_Current > 10 || (DISS_Voltage * DISS_Current > 100))
 N			{
 N				GPIO_ResetBits(GPIOC,GPIO_Pin_1);
 X				GPIO_ResetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0800)),((uint16_t)0x0002));
@@ -53508,7 +53508,7 @@ X                hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x95));
 N                TEXT_SetText(hItem,"");
 N                status_flash = 0;
 N           }
-N           if(((load_cutoffv != 0 && DISS_POW_Voltage > load_cutoffv) ||(pow_cutoffc != 0 && DISS_POW_Current > pow_cutoffc)) && cdelay > 20)
+N           if(((load_cutoffv != 0 && DISS_Voltage > load_cutoffv) ||(pow_cutoffc != 0 && DISS_POW_Current > pow_cutoffc)) && cdelay > 20)
 N           {
 N              GPIO_ResetBits(GPIOC,GPIO_Pin_1);
 X              GPIO_ResetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0800)),((uint16_t)0x0002));
@@ -53902,8 +53902,8 @@ N  set_sw = set_18;
 X  set_sw = 17;
 N  SET_Voltage = pow_v;
 X  Run_Control[1] = Run_Control[38];
-N  SET_Voltage_Laod = pow_v * 10 +20;
-X  Run_Control[3] = Run_Control[38] * 10 +20;
+N  SET_Voltage_Laod = pow_v * 10 +100;
+X  Run_Control[3] = Run_Control[38] * 10 +100;
 N  SET_Current = pow_c;
 X  Run_Control[2] = Run_Control[40];
 N  pow_cutoffc = (float)set_pow_cutoffc/1000;
@@ -54074,14 +54074,14 @@ X				Run_Control[38] = Run_Control[14];
 N			}
 N            SET_Voltage = pow_v;
 X            Run_Control[1] = Run_Control[38];
-N            if(SET_Voltage/100 * SET_Current/1000 > 250)
-X            if(Run_Control[1]/100 * Run_Control[2]/1000 > 250)
+N            if(SET_Voltage/100 * SET_Current/1000 > 100)
+X            if(Run_Control[1]/100 * Run_Control[2]/1000 > 100)
 N            {
 N                SET_Voltage = 0;
 X                Run_Control[1] = 0;
 N            }
-N			SET_Voltage_Laod = SET_Voltage * 10 + 50;
-X			Run_Control[3] = Run_Control[1] * 10 + 50;
+N			SET_Voltage_Laod = SET_Voltage * 10 + 100;
+X			Run_Control[3] = Run_Control[1] * 10 + 100;
 N            dis_output_v = (float)SET_Voltage/100;
 X            dis_output_v = (float)Run_Control[1]/100;
 N            
@@ -54122,8 +54122,8 @@ X                Run_Control[40] = Run_Control[18];
 N            }
 N			SET_Current = pow_c;
 X			Run_Control[2] = Run_Control[40];
-N            if(SET_Voltage/100 * SET_Current/1000 > 250)
-X            if(Run_Control[1]/100 * Run_Control[2]/1000 > 250)
+N            if(SET_Voltage/100 * SET_Current/1000 > 100)
+X            if(Run_Control[1]/100 * Run_Control[2]/1000 > 100)
 N            {
 N                SET_Current = 0;
 X                Run_Control[2] = 0;

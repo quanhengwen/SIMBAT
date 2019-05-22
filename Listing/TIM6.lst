@@ -50559,122 +50559,104 @@ N//              }
 N//          }
 N        switch(page_sw)
 N        {
-N            case face_menu:
-X            case 2:
-N            {
-N                if(pow_sw == pow_on)
-X                if(pow_sw == 1)
-N                {
-N                    bc_raw += DISS_POW_Current * 1000 * 1/3600;
-N                }else{
-N                    bc_raw = 0;
-N                }
-N            }break;
-N            case face_cdc:
-X            case 1:
-N            {
-N                if(mode_sw == mode_pow && cdc_sw == cdc_on)
-X                if(mode_sw == 3 && cdc_sw == 1)
-N                {
-N                    ctime++;
-N                    second = ctime%60;//秒
-N                    minute = (ctime/60)%60;//分
-N                    hour   = ctime/3600;//时
-N                    cbc_raw += DISS_POW_Current * 1000 * 1/3600;
-N                    bc_raw = 0;
+N//            case face_menu:
+N//            {
+N//                if(pow_sw == pow_on)
+N//                {
 N//                    bc_raw += DISS_POW_Current * 1000 * 1/3600;
-N                }else if(mode_sw == mode_load && cdc_sw == cdc_on){
-X                }else if(mode_sw == 2 && cdc_sw == 1){
-N                    dctime++;
-N                    second1 = dctime%60;//秒
-N                    minute1 = (dctime/60)%60;//分
-N                    hour1   = dctime/3600;//时
-N                    bc_raw += DISS_Current * 1000 * 1/3600;
-N//                    c_sum += DISS_Current * 1000 * 1/3600;
-N                    cbc_raw = 0;
-N                }else if(cdc_sw == cdc_off){
-X                }else if(cdc_sw == 0){
-N                    bc_raw = 0;
-N                    cbc_raw = 0;
-N                    c_sum = 0;
-N                    ctime=0;
-N                    dctime=0;
-N                }
-N            }break;
-N            case face_load:
-X            case 4:
-N            {
-N                if(load_sw == load_on)
-X                if(load_sw == 1)
-N                {
-N                    if(alert_flag == 1)
-N                    {
-N                        calert ++;
-N                        if(calert == 3)
-N                        {
-N                            t_onoff = 0;
-N                            GPIO_SetBits(GPIOA,GPIO_Pin_15);//????OFF
-X                            GPIO_SetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0000)),((uint16_t)0x8000));
-N                            mode_sw = 0;
-N                            load_sw = load_off;
-X                            load_sw = 0;
-N                            calert = 0;                                
-N                        }
-N                    }
-N                    bc_raw += DISS_Current * 1000 * 1/3600;
-N                }else{
-N                    bc_raw = 0;
-N                }
-N            }break;
-N            case face_graph:
-X            case 0:
-N            {
-N                if(mode_sw == mode_pow)
-X                if(mode_sw == 3)
-N                {
-N                    if(pow_sw == pow_on)
-X                    if(pow_sw == 1)
-N                    {
-N                        bc_raw += DISS_POW_Current * 1000 * 1/3600;
-N                    }else if(mode_sw == mode_pow && cdc_sw == cdc_on)
-X                    }else if(mode_sw == 3 && cdc_sw == 1)
-N                    {
-N                        bc_raw += DISS_POW_Current * 1000 * 1/3600;
-N                    }
-N                    else{
-N                        bc_raw = 0;
-N                    }
-N                }               
-N                
-N                if(mode_sw == mode_load)
-X                if(mode_sw == 2)
-N                {
-N                    if(load_sw == load_on)
-X                    if(load_sw == 1)
-N                    {
-N                        bc_raw += DISS_Current * 1000 * 1/3600;
-N                    }else{
-N                        bc_raw = 0;
-N                    }
-N                }
-N            }break;
-N            case face_r:
-X            case 3:
-N            {
-N                if(oct_sw == oct_on)
-X                if(oct_sw == 1)
-N                {
-N                    if(alert_flag == 1)
-N                    {
-N                        calert ++;
-N                        if(calert == 3)
-N                        {
-N                            ocstop = 1;
-N                            calert = 0;
-N                        }
-N                    }
-N                }
-N            }break;
+N//                }else{
+N//                    bc_raw = 0;
+N//                }
+N//            }break;
+N//            case face_cdc:
+N//            {
+N//                if(mode_sw == mode_pow && cdc_sw == cdc_on)
+N//                {
+N//                    ctime++;
+N//                    second = ctime%60;//秒
+N//                    minute = (ctime/60)%60;//分
+N//                    hour   = ctime/3600;//时
+N//                    cbc_raw += DISS_POW_Current * 1000 * 1/3600;
+N//                    bc_raw = 0;
+N////                    bc_raw += DISS_POW_Current * 1000 * 1/3600;
+N//                }else if(mode_sw == mode_load && cdc_sw == cdc_on){
+N//                    dctime++;
+N//                    second1 = dctime%60;//秒
+N//                    minute1 = (dctime/60)%60;//分
+N//                    hour1   = dctime/3600;//时
+N//                    bc_raw += DISS_Current * 1000 * 1/3600;
+N////                    c_sum += DISS_Current * 1000 * 1/3600;
+N//                    cbc_raw = 0;
+N//                }else if(cdc_sw == cdc_off){
+N//                    bc_raw = 0;
+N//                    cbc_raw = 0;
+N//                    c_sum = 0;
+N//                    ctime=0;
+N//                    dctime=0;
+N//                }
+N//            }break;
+N//            case face_load:
+N//            {
+N//                if(load_sw == load_on)
+N//                {
+N//                    if(alert_flag == 1)
+N//                    {
+N//                        calert ++;
+N//                        if(calert == 3)
+N//                        {
+N//                            t_onoff = 0;
+N//                            GPIO_SetBits(GPIOA,GPIO_Pin_15);//????OFF
+N//                            mode_sw = 0;
+N//                            load_sw = load_off;
+N//                            calert = 0;                                
+N//                        }
+N//                    }
+N//                    bc_raw += DISS_Current * 1000 * 1/3600;
+N//                }else{
+N//                    bc_raw = 0;
+N//                }
+N//            }break;
+N//            case face_graph:
+N//            {
+N//                if(mode_sw == mode_pow)
+N//                {
+N//                    if(pow_sw == pow_on)
+N//                    {
+N//                        bc_raw += DISS_POW_Current * 1000 * 1/3600;
+N//                    }else if(mode_sw == mode_pow && cdc_sw == cdc_on)
+N//                    {
+N//                        bc_raw += DISS_POW_Current * 1000 * 1/3600;
+N//                    }
+N//                    else{
+N//                        bc_raw = 0;
+N//                    }
+N//                }               
+N//                
+N//                if(mode_sw == mode_load)
+N//                {
+N//                    if(load_sw == load_on)
+N//                    {
+N//                        bc_raw += DISS_Current * 1000 * 1/3600;
+N//                    }else{
+N//                        bc_raw = 0;
+N//                    }
+N//                }
+N//            }break;
+N//            case face_r:
+N//            {
+N//                if(oct_sw == oct_on)
+N//                {
+N//                    if(alert_flag == 1)
+N//                    {
+N//                        calert ++;
+N//                        if(calert == 3)
+N//                        {
+N//                            ocstop = 1;
+N//                            calert = 0;
+N//                        }
+N//                    }
+N//                }
+N//            }break;
 N        }
 N//         GPIO_ResetBits(GPIOD,GPIO_Pin_12);
 N//         TM1650_SET_LED(0x48,0x71);

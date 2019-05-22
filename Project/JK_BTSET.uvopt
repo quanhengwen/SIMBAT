@@ -142,7 +142,6 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>DLGUARM</Key>
-          <Name>猬??趏ol</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -362,7 +361,7 @@
           <Type>0</Type>
           <LineNumber>649</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134366828</Address>
+          <Address>134366860</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -378,7 +377,7 @@
           <Type>0</Type>
           <LineNumber>647</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134366820</Address>
+          <Address>134366852</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -394,7 +393,7 @@
           <Type>0</Type>
           <LineNumber>646</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134366816</Address>
+          <Address>134366848</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -586,7 +585,7 @@
           <Type>0</Type>
           <LineNumber>641</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134366788</Address>
+          <Address>134366820</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -602,7 +601,7 @@
           <Type>0</Type>
           <LineNumber>343</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134364540</Address>
+          <Address>134364572</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -1112,6 +1111,11 @@
           <count>41</count>
           <WinNumber>1</WinNumber>
           <ItemText>set_sw</ItemText>
+        </Ww>
+        <Ww>
+          <count>42</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>DISS_POW_Voltage</ItemText>
         </Ww>
       </WatchWindow1>
       <Tracepoint>

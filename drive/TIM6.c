@@ -525,104 +525,104 @@ void TIM3_IRQHandler(void)
 //          }
         switch(page_sw)
         {
-            case face_menu:
-            {
-                if(pow_sw == pow_on)
-                {
-                    bc_raw += DISS_POW_Current * 1000 * 1/3600;
-                }else{
-                    bc_raw = 0;
-                }
-            }break;
-            case face_cdc:
-            {
-                if(mode_sw == mode_pow && cdc_sw == cdc_on)
-                {
-                    ctime++;
-                    second = ctime%60;//秒
-                    minute = (ctime/60)%60;//分
-                    hour   = ctime/3600;//时
-                    cbc_raw += DISS_POW_Current * 1000 * 1/3600;
-                    bc_raw = 0;
+//            case face_menu:
+//            {
+//                if(pow_sw == pow_on)
+//                {
 //                    bc_raw += DISS_POW_Current * 1000 * 1/3600;
-                }else if(mode_sw == mode_load && cdc_sw == cdc_on){
-                    dctime++;
-                    second1 = dctime%60;//秒
-                    minute1 = (dctime/60)%60;//分
-                    hour1   = dctime/3600;//时
-                    bc_raw += DISS_Current * 1000 * 1/3600;
-//                    c_sum += DISS_Current * 1000 * 1/3600;
-                    cbc_raw = 0;
-                }else if(cdc_sw == cdc_off){
-                    bc_raw = 0;
-                    cbc_raw = 0;
-                    c_sum = 0;
-                    ctime=0;
-                    dctime=0;
-                }
-            }break;
-            case face_load:
-            {
-                if(load_sw == load_on)
-                {
-                    if(alert_flag == 1)
-                    {
-                        calert ++;
-                        if(calert == 3)
-                        {
-                            t_onoff = 0;
-                            GPIO_SetBits(GPIOA,GPIO_Pin_15);//????OFF
-                            mode_sw = 0;
-                            load_sw = load_off;
-                            calert = 0;                                
-                        }
-                    }
-                    bc_raw += DISS_Current * 1000 * 1/3600;
-                }else{
-                    bc_raw = 0;
-                }
-            }break;
-            case face_graph:
-            {
-                if(mode_sw == mode_pow)
-                {
-                    if(pow_sw == pow_on)
-                    {
-                        bc_raw += DISS_POW_Current * 1000 * 1/3600;
-                    }else if(mode_sw == mode_pow && cdc_sw == cdc_on)
-                    {
-                        bc_raw += DISS_POW_Current * 1000 * 1/3600;
-                    }
-                    else{
-                        bc_raw = 0;
-                    }
-                }               
-                
-                if(mode_sw == mode_load)
-                {
-                    if(load_sw == load_on)
-                    {
-                        bc_raw += DISS_Current * 1000 * 1/3600;
-                    }else{
-                        bc_raw = 0;
-                    }
-                }
-            }break;
-            case face_r:
-            {
-                if(oct_sw == oct_on)
-                {
-                    if(alert_flag == 1)
-                    {
-                        calert ++;
-                        if(calert == 3)
-                        {
-                            ocstop = 1;
-                            calert = 0;
-                        }
-                    }
-                }
-            }break;
+//                }else{
+//                    bc_raw = 0;
+//                }
+//            }break;
+//            case face_cdc:
+//            {
+//                if(mode_sw == mode_pow && cdc_sw == cdc_on)
+//                {
+//                    ctime++;
+//                    second = ctime%60;//秒
+//                    minute = (ctime/60)%60;//分
+//                    hour   = ctime/3600;//时
+//                    cbc_raw += DISS_POW_Current * 1000 * 1/3600;
+//                    bc_raw = 0;
+////                    bc_raw += DISS_POW_Current * 1000 * 1/3600;
+//                }else if(mode_sw == mode_load && cdc_sw == cdc_on){
+//                    dctime++;
+//                    second1 = dctime%60;//秒
+//                    minute1 = (dctime/60)%60;//分
+//                    hour1   = dctime/3600;//时
+//                    bc_raw += DISS_Current * 1000 * 1/3600;
+////                    c_sum += DISS_Current * 1000 * 1/3600;
+//                    cbc_raw = 0;
+//                }else if(cdc_sw == cdc_off){
+//                    bc_raw = 0;
+//                    cbc_raw = 0;
+//                    c_sum = 0;
+//                    ctime=0;
+//                    dctime=0;
+//                }
+//            }break;
+//            case face_load:
+//            {
+//                if(load_sw == load_on)
+//                {
+//                    if(alert_flag == 1)
+//                    {
+//                        calert ++;
+//                        if(calert == 3)
+//                        {
+//                            t_onoff = 0;
+//                            GPIO_SetBits(GPIOA,GPIO_Pin_15);//????OFF
+//                            mode_sw = 0;
+//                            load_sw = load_off;
+//                            calert = 0;                                
+//                        }
+//                    }
+//                    bc_raw += DISS_Current * 1000 * 1/3600;
+//                }else{
+//                    bc_raw = 0;
+//                }
+//            }break;
+//            case face_graph:
+//            {
+//                if(mode_sw == mode_pow)
+//                {
+//                    if(pow_sw == pow_on)
+//                    {
+//                        bc_raw += DISS_POW_Current * 1000 * 1/3600;
+//                    }else if(mode_sw == mode_pow && cdc_sw == cdc_on)
+//                    {
+//                        bc_raw += DISS_POW_Current * 1000 * 1/3600;
+//                    }
+//                    else{
+//                        bc_raw = 0;
+//                    }
+//                }               
+//                
+//                if(mode_sw == mode_load)
+//                {
+//                    if(load_sw == load_on)
+//                    {
+//                        bc_raw += DISS_Current * 1000 * 1/3600;
+//                    }else{
+//                        bc_raw = 0;
+//                    }
+//                }
+//            }break;
+//            case face_r:
+//            {
+//                if(oct_sw == oct_on)
+//                {
+//                    if(alert_flag == 1)
+//                    {
+//                        calert ++;
+//                        if(calert == 3)
+//                        {
+//                            ocstop = 1;
+//                            calert = 0;
+//                        }
+//                    }
+//                }
+//            }break;
         }
 //         GPIO_ResetBits(GPIOD,GPIO_Pin_12);
 //         TM1650_SET_LED(0x48,0x71);
