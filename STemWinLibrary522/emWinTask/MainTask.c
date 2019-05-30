@@ -102,54 +102,54 @@ void MainTask(void)
 	{
 		TIM_SetCompare1(TIM2,Contr_Current);//稳压电源电流DAC
 		TIM_SetCompare2(TIM2,Contr_Voltage);//稳压电源电压DAC
-		if(usartocflag == 1)
-		{
+//		if(usartocflag == 1)
+//		{
 			DAC8531_Send(Contr_Laod);//加载DAC值
-		}else{
-//			Slow_Start();
-			if(page_sw == face_r)
-			{
-				if(step == 6)
-				{
-					DAC8531_Send(Contr_Laod);
-				}else{
-					
-					if(test_start == 1)
-					{
-						if(step == 3 || (step == 4 && ocf == 0))
-						{
-							DAC8531_Send(0);
-						}else{
-							if(sendload < 250)
-							{
-								sendload = sendload + 10;
-							}else{
-								sendload = Contr_Laod;
-							}
-							DAC8531_Send(sendload);
-						}
-					}else{	
-						sendload = 0;
-						DAC8531_Send(sendload);//加载DAC值
-					}
-				}
-				
-			}else{
-				if(load_sw == load_on || (mode_sw == mode_load && cdc_sw == cdc_on))
-				{
-					if(sendload < 250)
-					{
-						sendload = sendload + 10;
-					}else{
-						sendload = Contr_Laod;
-					}
-					DAC8531_Send(sendload);
-				}else{
-					sendload = 0;
-					DAC8531_Send(sendload);
-				}
-			}
-		}
+//		}else{
+////			Slow_Start();
+//			if(page_sw == face_r)
+//			{
+//				if(step == 6)
+//				{
+//					DAC8531_Send(Contr_Laod);
+//				}else{
+//					
+//					if(test_start == 1)
+//					{
+//						if(step == 3 || (step == 4 && ocf == 0))
+//						{
+//							DAC8531_Send(0);
+//						}else{
+//							if(sendload < 250)
+//							{
+//								sendload = sendload + 10;
+//							}else{
+//								sendload = Contr_Laod;
+//							}
+//							DAC8531_Send(sendload);
+//						}
+//					}else{	
+//						sendload = 0;
+//						DAC8531_Send(sendload);//加载DAC值
+//					}
+//				}
+//				
+//			}else{
+//				if(load_sw == load_on || (mode_sw == mode_load && cdc_sw == cdc_on))
+//				{
+//					if(sendload < 250)
+//					{
+//						sendload = sendload + 10;
+//					}else{
+//						sendload = Contr_Laod;
+//					}
+//					DAC8531_Send(sendload);
+//				}else{
+//					sendload = 0;
+//					DAC8531_Send(sendload);
+//				}
+//			}
+//		}
 		
         
 //        RCC_GetClocksFreq(&rcc);

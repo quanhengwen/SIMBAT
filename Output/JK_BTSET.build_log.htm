@@ -27,69 +27,21 @@ Project File Date:  04/08/2019
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'D:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'JK_BTSET'
-compiling TIM6.c...
-..\drive\TIM6.c(132): warning:  #223-D: function "ResetPow" declared implicitly
-                           ResetPow();
-..\drive\TIM6.c(134): warning:  #223-D: function "ResetCDC" declared implicitly
-                           ResetCDC();
-..\drive\TIM6.c(136): warning:  #223-D: function "ResetR" declared implicitly
-                           ResetR();
-..\drive\TIM6.c(138): warning:  #223-D: function "ResetLoad" declared implicitly
-                           ResetLoad();
-..\drive\TIM6.c(140): warning:  #223-D: function "ResetG" declared implicitly
-                           ResetG();
-..\drive\TIM6.c(142): warning:  #223-D: function "ResetSET" declared implicitly
-                           ResetSET();
-..\drive\TIM6.c(167): warning:  #223-D: function "IO_OFF" declared implicitly
-                                        IO_OFF();
-..\drive\TIM6.c(182): warning:  #223-D: function "Delay_ms" declared implicitly
-                                        Delay_ms(500);
-..\drive\TIM6.c(220): warning:  #223-D: function "Delay_ms" declared implicitly
-                                        Delay_ms(500);
-..\drive\TIM6.c(239): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-                                if(((v - DISS_Voltage) > v*0.6)/* || (DISS_Current < 0.05)*/)
-..\drive\TIM6.c(241): warning:  #223-D: function "IO_OFF" declared implicitly
-                                        IO_OFF();
-..\drive\TIM6.c(257): warning:  #223-D: function "Delay_ms" declared implicitly
-                                        Delay_ms(500);
-..\drive\TIM6.c(266): warning:  #223-D: function "IO_OFF" declared implicitly
-                                 IO_OFF();
-..\drive\TIM6.c(288): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-              if(crec1 < crec2 && crec2 > 0.3)
-..\drive\TIM6.c(350): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-              if(((shortv - DISS_Voltage) > shortv*0.6) || (DISS_Current < 0.05))
-..\drive\TIM6.c(350): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-              if(((shortv - DISS_Voltage) > shortv*0.6) || (DISS_Current < 0.05))
-..\drive\TIM6.c(352): warning:  #223-D: function "IO_OFF" declared implicitly
-                  IO_OFF();
-..\drive\TIM6.c(377): warning:  #223-D: function "IO_OFF" declared implicitly
-                  IO_OFF();                
-..\drive\TIM6.c(106): warning:  #177-D: variable "crec"  was declared but never referenced
-      u8 crec[6];
-..\drive\TIM6.c(107): warning:  #177-D: variable "csend"  was declared but never referenced
-      u8 *csend;
-..\drive\TIM6.c(108): warning:  #177-D: variable "sendbuf"  was declared but never referenced
-      static u8 *sendbuf;
-..\drive\TIM6.c(109): warning:  #177-D: variable "sendlen"  was declared but never referenced
-      u8 sendlen;
-..\drive\TIM6.c(110): warning:  #177-D: variable "recrc"  was declared but never referenced
-      static u16 recrc;
-..\drive\TIM6.c(111): warning:  #177-D: variable "scrc"  was declared but never referenced
-      static u16 scrc;
-..\drive\TIM6.c(113): warning:  #177-D: variable "i"  was declared but never referenced
-      u8 i;
-..\drive\TIM6.c(734): warning:  #223-D: function "UART_Action" declared implicitly
-          UART_Action();
-..\drive\TIM6.c(669): warning:  #177-D: variable "addr"  was declared but never referenced
-        uint16_t addr;
-..\drive\TIM6.c(670): warning:  #177-D: variable "crc1"  was declared but never referenced
-        static uint16_t crc1;
-..\drive\TIM6.c: 28 warnings, 0 errors
+compiling menu.c...
+..\Include\internalflash.h(55): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\APP\menu.c(230): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+                        sprintf(buf,"%.3f",((float)pow_v/100.0));       
+..\APP\menu.c(600): warning:  #223-D: function "Delay_ms" declared implicitly
+          Delay_ms(500);
+..\APP\menu.c(904): warning:  #177-D: variable "i"  was declared but never referenced
+        u8 i;
+..\APP\menu.c: 4 warnings, 0 errors
 linking...
-Program Size: Code=170456 RO-data=121996 RW-data=2292 ZI-data=34612  
+Program Size: Code=170040 RO-data=122288 RW-data=2288 ZI-data=34616  
 FromELF: creating hex file...
-"..\Output\JK_BTSET.axf" - 0 Error(s), 28 Warning(s).
-Build Time Elapsed:  00:00:09
+"..\Output\JK_BTSET.axf" - 0 Error(s), 4 Warning(s).
+Build Time Elapsed:  00:00:03
 </pre>
 </body>
 </html>

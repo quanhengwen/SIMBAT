@@ -1555,7 +1555,8 @@ void Key_Funtion(void)
                             {
 								Flag_Swtich_ON=1;
                                 GPIO_ResetBits(GPIOA,GPIO_Pin_15);//电子负载On
-								GPIO_SetBits(GPIOC,GPIO_Pin_1);//打开电源输出                                 
+								GPIO_SetBits(GPIOC,GPIO_Pin_1);//打开电源输出 
+                                
                                 if(flag_Load_CC == 0)
                                 {
                                     c_rec = 1;

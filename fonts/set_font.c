@@ -2113,10 +2113,48 @@ GUI_CONST_STORAGE unsigned char acGUI_Fontset_font_952E[ 54] = { /* code 952E */
   ________,X______X,________,
   ______XX,___XXXXX,________,
   ____XX__,______X_,________};
+GUI_CONST_STORAGE unsigned char acGUI_Fontset_font_4FDD[ 54] = { /* code 4FDD */
+  ____XX__,________,________,
+  ____X__X,XXXXXXXX,________,
+  ____X__X,_______X,________,
+  ___X___X,_______X,________,
+  ___X___X,_______X,________,
+  __XX___X,_______X,________,
+  __XX___X,XXXXXXXX,________,
+  _X_X___X,___X____,________,
+  X__X____,___X____,________,
+  ___X_XXX,XXXXXXXX,XX______,
+  ___X____,__XXX___,________,
+  ___X____,_X_X_X__,________,
+  ___X____,_X_X_X__,________,
+  ___X____,X__X__X_,________,
+  ___X___X,___X___X,________,
+  ___X__X_,___X____,XX______,
+  ___X_X__,___X____,________,
+  ___XX___,___X____,________};
+
+GUI_CONST_STORAGE unsigned char acGUI_Fontset_font_62A4[ 54] = { /* code 62A4 */
+  ___XX___,___X____,________,
+  ___XX___,___XX___,________,
+  ___XX___,____X___,________,
+  ___XX___,X_______,X_______,
+  XXXXXXX_,XXXXXXXX,X_______,
+  ___XX__X,X_______,X_______,
+  ___XX___,X_______,X_______,
+  ___XX___,X_______,X_______,
+  ___XXXXX,XXXXXXXX,X_______,
+  _XXXX___,X_______,X_______,
+  XX_XX___,X_______,________,
+  ___XX___,X_______,________,
+  ___XX___,X_______,________,
+  ___XX__X,________,________,
+  ___XX__X,________,________,
+  ___XX_X_,________,________,
+  _XXX_X__,________,________,
+  ___X____,________,________};
 
 
-
-GUI_CONST_STORAGE GUI_CHARINFO_EXT GUI_Fontset_font_CharInfo[104] = {
+GUI_CONST_STORAGE GUI_CHARINFO_EXT GUI_Fontset_font_CharInfo[106] = {
    {  18,  17,   1,   1,  20, acGUI_Fontset_font_4E0A } /* code 4E0A */
   ,{  18,  17,   1,   2,  20, acGUI_Fontset_font_4E0B } /* code 4E0B */
   ,{  18,  18,   1,   1,  20, acGUI_Fontset_font_5173 } /* code 5173 */
@@ -2221,12 +2259,28 @@ GUI_CONST_STORAGE GUI_CHARINFO_EXT GUI_Fontset_font_CharInfo[104] = {
   ,{  18,  18,   1,   1,  20, acGUI_Fontset_font_793A } /* code 793A */
   ,{  18,  18,   1,   1,  20, acGUI_Fontset_font_952E } /* code 952E */
   ,{  18,  18,   1,   1,  20, acGUI_Fontset_font_529F } /* code 529F */
+  ,{  18,  18,   1,   1,  20, acGUI_Fontset_font_4FDD } /* code 4FDD */
+  ,{  18,  18,   1,   1,  20, acGUI_Fontset_font_62A4 } /* code 62A4 */
 };
+GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Fontset_font_Prop105 = {
+   0x62A4 /* first character */
+  ,0x62A4 /* last character  */
+  ,&GUI_Fontset_font_CharInfo[  105] /* address of first character */
+  ,(GUI_CONST_STORAGE GUI_FONT_PROP_EXT *)0 /* pointer to next GUI_FONT_PROP_EXT */
+};
+
+GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Fontset_font_Prop104 = {
+   0x4FDD /* first character */
+  ,0x4FDD /* last character  */
+  ,&GUI_Fontset_font_CharInfo[  104] /* address of first character */
+  ,&GUI_Fontset_font_Prop105 /* pointer to next GUI_FONT_PROP_EXT */
+};
+
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Fontset_font_Prop103 = {
    0x529F /* first character */
   ,0x529F /* last character  */
   ,&GUI_Fontset_font_CharInfo[  103] /* address of first character */
-  ,(GUI_CONST_STORAGE GUI_FONT_PROP_EXT *)0 /* pointer to next GUI_FONT_PROP_EXT */
+  ,&GUI_Fontset_font_Prop104 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Fontset_font_Prop102 = {

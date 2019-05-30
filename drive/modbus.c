@@ -878,9 +878,9 @@ void UART_Action(void)
 		if (g_tModS.RxBuf[1] == 0x2A)			   //CC??ǵ?
 		{
 			Modify_A_READ = Imon1_value;//
-			Modify_C_READ = Contr_Laod;//
+//			Modify_C_READ = Contr_Laod;//
 			Modify_A_ACT = (g_tModS.RxBuf[3] << 8) + g_tModS.RxBuf[4];
-			Flag_DAC_OFF=1;//
+//			Flag_DAC_OFF=1;//
 		}
 
 		if (g_tModS.RxBuf[1] == 0x2B)			   //
@@ -920,40 +920,40 @@ void UART_Action(void)
 				Polar1 &= ~0x01;					
 			}
 //---------------------------------------------------------------------------------//
-			var32c = Modify_B_ACT; 
-			var32c = var32c - Modify_A_ACT;
-			var32c = var32c << 12;
-			var16a=Modify_D_READ-Modify_C_READ;
-			var16a=var16a*2;
-			var32c=var32c/var16a;
-			SET_LoadAH = var32c;
-			var32c = Modify_B_ACT;
-			var32c = var32c << 12;
-			var32d = SET_LoadAH;
-			var32d = var32d * (Modify_D_READ*2);
-			if (var32c < var32d)
-			{
-				var32d = var32d - var32c;
-				SET_LoadA_OffsetH = var32d;
-				Polar1 |= 0x04;
-			}
-			else 
-			{
-				var32c = var32c - var32d;
-				SET_LoadA_OffsetH = var32c;
-				Polar1 &= ~0x04;
-			}
+//			var32c = Modify_B_ACT; 
+//			var32c = var32c - Modify_A_ACT;
+//			var32c = var32c << 12;
+//			var16a=Modify_D_READ-Modify_C_READ;
+//			var16a=var16a*2;
+//			var32c=var32c/var16a;
+//			SET_LoadAH = var32c;
+//			var32c = Modify_B_ACT;
+//			var32c = var32c << 12;
+//			var32d = SET_LoadAH;
+//			var32d = var32d * (Modify_D_READ*2);
+//			if (var32c < var32d)
+//			{
+//				var32d = var32d - var32c;
+//				SET_LoadA_OffsetH = var32d;
+//				Polar1 |= 0x04;
+//			}
+//			else 
+//			{
+//				var32c = var32c - var32d;
+//				SET_LoadA_OffsetH = var32c;
+//				Polar1 &= ~0x04;
+//			}
 			Flash_Write32BitDatas(FLASH_USER_START_ADDR,40, InFlashSave);
 //			Flash_Write_all ();	
-			Flag_DAC_OFF =0;
+//			Flag_DAC_OFF =0;
 		}
 /************************************负载电流低档位高1-3*****************************************************************/
 		if (g_tModS.RxBuf[1] == 0x2C)			   //CC??ǵ?
 		{
 			Modify_A_READ = Imon1_value;//
-			Modify_C_READ = Contr_Laod;//
+//			Modify_C_READ = Contr_Laod;//
 			Modify_A_ACT = (g_tModS.RxBuf[3] << 8) + g_tModS.RxBuf[4];
-			Flag_DAC_OFF=1;//
+//			Flag_DAC_OFF=1;//
 		}
 
 		if (g_tModS.RxBuf[1] == 0x2D)			   //
@@ -993,32 +993,32 @@ void UART_Action(void)
 				Polar1 &= ~0x01;					
 			}
 //---------------------------------------------------------------------------------//
-			var32c = Modify_B_ACT; 
-			var32c = var32c - Modify_A_ACT;
-			var32c = var32c << 12;
-			var16a=Modify_D_READ-Modify_C_READ;
-			var16a=var16a*2;
-			var32c=var32c/var16a;
-			SET_LoadAH1 = var32c;
-			var32c = Modify_B_ACT;
-			var32c = var32c << 12;
-			var32d = SET_LoadAH1;
-			var32d = var32d * (Modify_D_READ*2);
-			if (var32c < var32d)
-			{
-				var32d = var32d - var32c;
-				SET_LoadA_OffsetH1 = var32d;
-				Polar1 |= 0x04;
-			}
-			else 
-			{
-				var32c = var32c - var32d;
-				SET_LoadA_OffsetH1 = var32c;
-				Polar1 &= ~0x04;
-			}
+//			var32c = Modify_B_ACT; 
+//			var32c = var32c - Modify_A_ACT;
+//			var32c = var32c << 12;
+//			var16a=Modify_D_READ-Modify_C_READ;
+//			var16a=var16a*2;
+//			var32c=var32c/var16a;
+//			SET_LoadAH1 = var32c;
+//			var32c = Modify_B_ACT;
+//			var32c = var32c << 12;
+//			var32d = SET_LoadAH1;
+//			var32d = var32d * (Modify_D_READ*2);
+//			if (var32c < var32d)
+//			{
+//				var32d = var32d - var32c;
+//				SET_LoadA_OffsetH1 = var32d;
+//				Polar1 |= 0x04;
+//			}
+//			else 
+//			{
+//				var32c = var32c - var32d;
+//				SET_LoadA_OffsetH1 = var32c;
+//				Polar1 &= ~0x04;
+//			}
 			Flash_Write32BitDatas(FLASH_USER_START_ADDR,40, InFlashSave);
 //			Flash_Write_all ();	
-			Flag_DAC_OFF =0;
+//			Flag_DAC_OFF =0;
 		}
 /*******************************??CC???��????��?******************************************/	
 		if (g_tModS.RxBuf[1] == 0x2E||flag_ADJ_ALCC==1)			   //?��?��?
@@ -1166,14 +1166,14 @@ void Transformation_ADC(void)
 			DISS_Voltage=DISS_Voltage/1000;//݆̣Дʾ֧ѹ
 		}
 	}else{
-		if(Vmon1_value < 4300)
-		{		
-			V_SW(0);//电压低档位
-			DISS_Voltage = 0;
-			i=0;
-		}else{										
-			if(DISS_Voltage > 10)
-			{
+//		if(Vmon1_value < 4300)
+//		{		
+//			V_SW(0);//电压低档位
+//			DISS_Voltage = 0;
+//			i=0;
+//		}else{										
+//			if(DISS_Voltage > 10)
+//			{
 				V_SW(1);//电压高档位
 				if(r_raly == 1)
 				{
@@ -1198,32 +1198,32 @@ void Transformation_ADC(void)
 				DISS_Voltage=Voltage;
 				DISS_Voltage=DISS_Voltage/1000;//݆̣Дʾ֧ѹ
 				
-			}else{
-				V_SW(0);//电压低档位
-				if(r_raly == 1)
-				{
-					var32 = Vmon1_value;
-				}else if(r_raly == 0){
-					var32 = Vmon1_value - 3;
-				}
-//				var32 = Vmon1_value;
-				var32 = var32 * REG_CorrectionV;  
-				if ((Polar & 0x01) == 0x01)		  
-				{
-					if (var32 < REG_ReadV_Offset) 
-					{
-						var32 = 0;
-					}
-					else var32 = var32 - REG_ReadV_Offset;
-				}
-				else var32 = var32 + REG_ReadV_Offset;
-				var32 = var32 >> 12;
-				if (var32 < 30) var32 = 0;				  //40mVӔЂȥ£
-				Voltage = var32;
-				DISS_Voltage=Voltage;
-				DISS_Voltage=DISS_Voltage/1000;//݆̣Дʾ֧ѹ
-			}
-		}
+//			}else{
+//				V_SW(0);//电压低档位
+//				if(r_raly == 1)
+//				{
+//					var32 = Vmon1_value;
+//				}else if(r_raly == 0){
+//					var32 = Vmon1_value - 3;
+//				}
+////				var32 = Vmon1_value;
+//				var32 = var32 * REG_CorrectionV;  
+//				if ((Polar & 0x01) == 0x01)		  
+//				{
+//					if (var32 < REG_ReadV_Offset) 
+//					{
+//						var32 = 0;
+//					}
+//					else var32 = var32 - REG_ReadV_Offset;
+//				}
+//				else var32 = var32 + REG_ReadV_Offset;
+//				var32 = var32 >> 12;
+//				if (var32 < 30) var32 = 0;				  //40mVӔЂȥ£
+//				Voltage = var32;
+//				DISS_Voltage=Voltage;
+//				DISS_Voltage=DISS_Voltage/1000;//݆̣Дʾ֧ѹ
+//			}
+//		}
 	}
 	if(count == 200)
 	{

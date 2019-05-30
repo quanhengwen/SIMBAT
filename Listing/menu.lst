@@ -53281,7 +53281,8 @@ N    { TEXT_CreateIndirect,   "Text",   ID_TEXT_15,  240, 50-10, 32, 30, 0, 0x0,
 X    { TEXT_CreateIndirect,   "Text",   (0x800 + 0x20),  240, 50-10, 32, 30, 0, 0x0, 0 },
 N    { TEXT_CreateIndirect,   "Text",   ID_TEXT_16,  240, 121-15, 32, 30, 0, 0x0, 0 },
 X    { TEXT_CreateIndirect,   "Text",   (0x800 + 0x21),  240, 121-15, 32, 30, 0, 0x0, 0 },
-N//    { TEXT_CreateIndirect,   "Text",   ID_TEXT_33, 290, 75, 80, 20, 0, 0x0, 0 },
+N    { TEXT_CreateIndirect,   "Text",   ID_TEXT_33, 58, 120-20, 64, 32, 0, 0x0, 0 },
+X    { TEXT_CreateIndirect,   "Text",   (0x800 + 0x3D), 58, 120-20, 64, 32, 0, 0x0, 0 },
 N//    { TEXT_CreateIndirect,   "Text",   ID_TEXT_34, 290, 100, 80, 20, 0, 0x0, 0 },
 N    { TEXT_CreateIndirect,   "Text",   ID_TEXT_41, 380, 50-10, 53, 20, 0, 0x0, 0 },
 X    { TEXT_CreateIndirect,   "Text",   (0x800 + 0x66), 380, 50-10, 53, 20, 0, 0x0, 0 },
@@ -53313,7 +53314,7 @@ N  WM_HWIN hItem;
 X  GUI_HWIN hItem;
 N  int     NCode;
 N  int     Id;
-N  static vu8 status_flash;
+N  static vu8 status_flash,start_flag;
 N  char buf[5];    
 N
 N  float dis_output_v = (float)SET_Voltage/100;
@@ -53364,12 +53365,13 @@ N// 		GUI_DispFloatFix(DISS_POW_Current,5,2);//显示电流值
 N        GUI_SetFont(&GUI_Font24_1);
 N        GUI_DispStringAt("V",435,50-10);
 N        GUI_DispStringAt("A",435,100-10);
-N        GUI_DispStringAt("V",435,150-10);
+N        GUI_DispStringAt("A",435,150-10);
 N        GUI_DispStringAt("A",435,200-10);
 N		GUI_SetColor(GUI_LIGHTBLUE);
 X		GUI_SetColor(0x00FF8080);
-N		GUI_DispStringAt("OVP",290,150-10);
-N        GUI_DispStringAt("OCP",290,200-10);
+N		GUI_SetFont(&GUI_FontHZ16);
+N		GUI_DispStringAt("充电保护",290,150-10);
+N        GUI_DispStringAt("放电保护",290,200-10);
 N		
 N		
 N		
@@ -53379,7 +53381,7 @@ N		{
 N			GUI_SetColor(GUI_LIGHTGRAY);
 X			GUI_SetColor(0x00D3D3D3);
 N			GUI_SetFont(&GUI_FontEN40);
-N			GUI_DispStringAt("P:",28,190-20);
+N			GUI_DispStringAt("P",28,190-20);
 N			GUI_DispStringAt("W",240,190-20);
 N		}else{
 N			GUI_SetColor(GUI_LIGHTGRAY);
@@ -53425,8 +53427,7 @@ N//            WM_InvalidateWindow(hWinWind);
 N//        }
 N//         if(clear_flag2 == 1)
 N//         {
-N		DIS_POW = DISS_POW_Voltage * DISS_POW_Current;
-N		DIS_R = DISS_POW_Voltage / DISS_POW_Current;
+N		
 N		if(lock == 1)
 N		{
 N			hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_161);
@@ -53437,19 +53438,16 @@ N			hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_161);
 X			hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x013C));
 N			TEXT_SetText(hItem,"");
 N		}
-W "..\APP\menu.c" 194 16 single-precision operand implicitly converted to double-precision
-N            if(DISS_POW_Voltage < 0.1)
-N            {
-N                hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_86);
-X                hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x93));
-N                sprintf(buf,"%.2f",0.00);       
-N                TEXT_SetText(hItem,buf);
-N            }else{
-N                hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_86);
-X                hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x93));
-N                sprintf(buf,"%.3f",DISS_Voltage);       
-N                TEXT_SetText(hItem,buf);
-N            }
+N//            if(DISS_POW_Voltage < 0.1)
+N//            {
+N//                hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_86);
+N//                sprintf(buf,"%.2f",0.00);       
+N//                TEXT_SetText(hItem,buf);
+N//            }else{
+N//                hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_86);
+N//                sprintf(buf,"%.3f",DISS_Voltage);       
+N//                TEXT_SetText(hItem,buf);
+N//            }
 N//         }else{
 N//             hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_86);
 N//             sprintf(buf,"%.2f",DISS_POW_Voltage);       
@@ -53463,23 +53461,9 @@ N//        test_pow();
 N        if(pow_sw == pow_on)
 X        if(pow_sw == 1)
 N        {
-N			if(DISS_Current > 10 || (DISS_Voltage * DISS_Current > 100))
-N			{
-N				GPIO_ResetBits(GPIOC,GPIO_Pin_1);
-X				GPIO_ResetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0800)),((uint16_t)0x0002));
-N				  GPIO_SetBits(GPIOA,GPIO_Pin_15);//电子负载OFF
-X				  GPIO_SetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0000)),((uint16_t)0x8000));
-N				  //GPIO_SetBits(GPIOC,GPIO_Pin_13);
-N				  mode_sw = 0;
-N				  pow_sw = pow_off;
-X				  pow_sw = 0;
-N				  load_sw=load_off;
-X				  load_sw=0;
-N			}
-N             hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_87);
-X             hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x94));
-N            sprintf(buf,"%.3f",DISS_POW_Current); 
-N			TEXT_SetText(hItem,buf);
+N//			SET_Voltage_Laod = SET_Voltage * 10 + DISS_Current*50;
+N			
+N            
 N			
 N			hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_115);
 X			hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x10B));
@@ -53492,39 +53476,90 @@ N				sprintf(buf,"%.3f",DIS_R);
 N			}
 N			        
 N            TEXT_SetText(hItem,buf);			
-N            
-N            if(status_flash == 0){
+N            hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_86);
+X            hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x93));
+W "..\APP\menu.c" 230 24 single-precision operand implicitly converted to double-precision
+N			sprintf(buf,"%.3f",((float)pow_v/100.0));       
+X			sprintf(buf,"%.3f",((float)Run_Control[38]/100.0));       
+N			TEXT_SetText(hItem,buf);
+N            if(status_flash == 0 && cdelay > 60){
+N				
 N                hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_88);
 X                hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x95));
 N                TEXT_SetTextColor(hItem, GUI_RED);//设置字体颜色
 X                TEXT_SetTextColor(hItem, 0x000000FF);
 N                TEXT_SetFont(hItem,&GUI_FontHZ16);//设定文本字体
-N                GUI_UC_SetEncodeUTF8();        
-N                TEXT_SetText(hItem,"充电中");
-N                status_flash = 1;
+N                GUI_UC_SetEncodeUTF8();
+N				if(DISS_POW_Current == 0)
+N				{
+N					DIS_POW = DISS_Voltage * DISS_Current;
+N					DIS_R = DISS_Voltage / DISS_Current;
+N					TEXT_SetText(hItem,"充电中");
+N					hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_33);
+X					hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x3D));
+N					TEXT_SetText(hItem,"-");
+N					hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_87);
+X					hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x94));
+N					sprintf(buf,"%.3f",DISS_Current); 
+N					TEXT_SetText(hItem,buf);
+N					SET_Voltage = pow_v - 20;
+X					Run_Control[1] = Run_Control[38] - 20;
+N					SET_Voltage_Laod = pow_v*10;
+X					Run_Control[3] = Run_Control[38]*10;
+N					start_flag = 1;
+N				}else{
+N					DIS_POW = DISS_Voltage * DISS_POW_Current;
+N					DIS_R = DISS_Voltage / DISS_POW_Current;
+N					TEXT_SetText(hItem,"放电中");
+N					hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_33);
+X					hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x3D));
+N					TEXT_SetText(hItem,"+");
+N					hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_87);
+X					hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x94));
+N					sprintf(buf,"%.3f",DISS_POW_Current); 
+N					TEXT_SetText(hItem,buf);
+N					SET_Voltage = pow_v;
+X					Run_Control[1] = Run_Control[38];
+N				}
+N				if(((load_cutoffv != 0 && DISS_Current > load_cutoffv) ||(pow_cutoffc != 0 && DISS_POW_Current > pow_cutoffc) || (DIS_POW > 100)))
+N				{
+N					GPIO_ResetBits(GPIOC,GPIO_Pin_1);
+X					GPIO_ResetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0800)),((uint16_t)0x0002));
+N					  GPIO_SetBits(GPIOA,GPIO_Pin_15);//电子负载OFF
+X					  GPIO_SetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0000)),((uint16_t)0x8000));
+N					  //GPIO_SetBits(GPIOC,GPIO_Pin_13);
+N					  mode_sw = 0;
+N					  pow_sw = pow_off;
+X					  pow_sw = 0;
+N					  load_sw=load_off;
+X					  load_sw=0;
+N				}
+N//                status_flash = 1;
 N            }else{
-N                hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_88);
-X                hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x95));
-N                TEXT_SetText(hItem,"");
-N                status_flash = 0;
-N           }
-N           if(((load_cutoffv != 0 && DISS_Voltage > load_cutoffv) ||(pow_cutoffc != 0 && DISS_POW_Current > pow_cutoffc)) && cdelay > 20)
-N           {
-N              GPIO_ResetBits(GPIOC,GPIO_Pin_1);
-X              GPIO_ResetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0800)),((uint16_t)0x0002));
-N			  GPIO_SetBits(GPIOA,GPIO_Pin_15);//电子负载OFF
-X			  GPIO_SetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0000)),((uint16_t)0x8000));
-N              //GPIO_SetBits(GPIOC,GPIO_Pin_13);
-N              mode_sw = 0;
-N              pow_sw = pow_off;
-X              pow_sw = 0;
-N			  load_sw=load_off;
-X			  load_sw=0;
-N              cdelay = 0;
-N           }else{
-N               cdelay++;
-N           }
+N				cdelay++;
+N			}
+N//			else{
+N//                hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_88);
+N//                TEXT_SetText(hItem,"");
+N//                status_flash = 0;
+N//           }
+N//           if(((load_cutoffv != 0 && DISS_Voltage > load_cutoffv) ||(pow_cutoffc != 0 && DISS_POW_Current > pow_cutoffc)) && cdelay > 20)
+N//           {
+N//              GPIO_ResetBits(GPIOC,GPIO_Pin_1);
+N//			  GPIO_SetBits(GPIOA,GPIO_Pin_15);//电子负载OFF
+N//              //GPIO_SetBits(GPIOC,GPIO_Pin_13);
+N//              mode_sw = 0;
+N//              pow_sw = pow_off;
+N//			  load_sw=load_off;
+N//              cdelay = 0;
+N//           }else{
+N//               cdelay++;
+N//           }
 N        }else{
+N			hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_33);
+X			hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x3D));
+N			TEXT_SetText(hItem,"");
+N			
 N            hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_88);
 X            hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x95));
 N            TEXT_SetText(hItem,"");
@@ -53539,7 +53574,16 @@ X			hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x10B));
 N			sprintf(buf,"%.3f",0.000);        
 N            TEXT_SetText(hItem,buf);
 N			
+N			hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_86);
+X			hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x93));
+N			sprintf(buf,"%.3f",0.000); 
+N			TEXT_SetText(hItem,buf);
 N            cdelay = 0;
+N			SET_Voltage = pow_v;
+X			Run_Control[1] = Run_Control[38];
+N			SET_Voltage_Laod = pow_v * 10 +200;
+X			Run_Control[3] = Run_Control[38] * 10 +200;
+N			start_flag = 0;
 N        }
 N//        hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_144);       
 N//        sprintf(buf,"%.3f",overchargev);
@@ -53605,18 +53649,18 @@ N        hItem = WM_GetDialogItem(pMsg->hWin, ID_BUTTON_3);
 X        hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x04));
 N        
 N//        BUTTON_SetTextColor(hItem,0,GUI_BLACK);//设置字体颜色为黑色
-N		BUTTON_SetFont      (hItem,    &GUI_Font24_1);//设定按钮文本字体
+N		BUTTON_SetFont      (hItem,    &GUI_FontHZ16);//设定按钮文本字体
 N		GUI_UC_SetEncodeUTF8();
-N        BUTTON_SetText(hItem, "OVP");
+N        BUTTON_SetText(hItem, "充电保护");
 N    //
 N    // Initialization of 'Button'
 N    //
 N        hItem = WM_GetDialogItem(pMsg->hWin, ID_BUTTON_4);
 X        hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x05));
 N//        BUTTON_SetTextColor(hItem,0,GUI_BLACK);//设置字体颜色为黑色
-N		BUTTON_SetFont      (hItem,    &GUI_Font24_1);//设定按钮文本字体
+N		BUTTON_SetFont      (hItem,    &GUI_FontHZ16);//设定按钮文本字体
 N		GUI_UC_SetEncodeUTF8();
-N        BUTTON_SetText(hItem, "OCP");
+N        BUTTON_SetText(hItem, "放电保护");
 N    //
 N    // Initialization of 'Button'
 N    //
@@ -53634,7 +53678,7 @@ N		TEXT_SetTextColor(hItem, GUI_LIGHTGRAY);//设置字体颜色
 X		TEXT_SetTextColor(hItem, 0x00D3D3D3);
 N        TEXT_SetFont(hItem,&GUI_FontEN40);//设定文本字体
 N		GUI_UC_SetEncodeUTF8();
-N		TEXT_SetText(hItem,"V:");
+N		TEXT_SetText(hItem,"V");
 N		
 N		hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_10);
 X		hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x08));
@@ -53642,7 +53686,7 @@ N		TEXT_SetTextColor(hItem, GUI_LIGHTGRAY);//设置字体颜色
 X		TEXT_SetTextColor(hItem, 0x00D3D3D3);
 N        TEXT_SetFont(hItem,&GUI_FontEN40);//设定文本字体
 N		GUI_UC_SetEncodeUTF8();
-N		TEXT_SetText(hItem,"I:");
+N		TEXT_SetText(hItem,"I");
 N        
 N        hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_15);
 X        hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x20));
@@ -53660,12 +53704,13 @@ N        TEXT_SetFont(hItem,&GUI_FontEN40);//设定文本字体
 N		GUI_UC_SetEncodeUTF8();
 N		TEXT_SetText(hItem,"A");
 N        
-N//        hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_33);
-N//		TEXT_SetTextColor(hItem, GUI_BLACK);//设置字体颜色
-N//        TEXT_SetBkColor(hItem,0x00BFFFFF);
-N//        TEXT_SetFont(hItem,&GUI_Fontset_font);//设定文本字体
-N//		GUI_UC_SetEncodeUTF8();
-N//		TEXT_SetText(hItem,"输出电压");        
+N        hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_33);
+X        hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x3D));
+N		TEXT_SetTextColor(hItem, GUI_GREEN);//设置字体颜色
+X		TEXT_SetTextColor(hItem, 0x0000FF00);
+N        TEXT_SetFont(hItem,&GUI_FontEN40);//设定文本字体
+N		GUI_UC_SetEncodeUTF8();
+N		TEXT_SetText(hItem,"");        
 N//        
 N//        hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_34);
 N//		TEXT_SetTextColor(hItem, GUI_WHITE);//设置字体颜色
@@ -53704,7 +53749,7 @@ N		TEXT_SetText(hItem,buf);
 N        
 N        hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_86);
 X        hItem = WM_GetDialogItem(pMsg->hWin, (0x800 + 0x93));
-N        sprintf(buf,"%.2f",0.00);
+N        sprintf(buf,"%.3f",0.000);
 N		TEXT_SetTextColor(hItem, GUI_YELLOW);//设置字体颜色
 X		TEXT_SetTextColor(hItem, 0x0000FFFF);
 N        TEXT_SetFont(hItem,&GUI_FontD24x32);//设定文本字体
@@ -53888,7 +53933,7 @@ N	  GPIO_SetBits(GPIOA,GPIO_Pin_15);//µç×Ó¸ºÔØOFF
 X	  GPIO_SetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0000)),((uint16_t)0x8000));
 N	  GPIO_ResetBits(GPIOC,GPIO_Pin_1);//¹Ø±ÕµçÔ´Êä³ö
 X	  GPIO_ResetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x00020000) + 0x0800)),((uint16_t)0x0002));
-W "..\APP\menu.c" 563 4 function "Delay_ms" declared implicitly
+W "..\APP\menu.c" 600 4 function "Delay_ms" declared implicitly
 N	  Delay_ms(500);
 N	  //GPIO_SetBits(GPIOC,GPIO_Pin_13);//¹Ø±ÕµçÔ´Êä³ö¼ÌµçÆ
 N//      IO_OFF();
@@ -53902,8 +53947,8 @@ N  set_sw = set_18;
 X  set_sw = 17;
 N  SET_Voltage = pow_v;
 X  Run_Control[1] = Run_Control[38];
-N  SET_Voltage_Laod = pow_v * 10 +100;
-X  Run_Control[3] = Run_Control[38] * 10 +100;
+N  SET_Voltage_Laod = pow_v * 10 +200;
+X  Run_Control[3] = Run_Control[38] * 10 +200;
 N  SET_Current = pow_c;
 X  Run_Control[2] = Run_Control[40];
 N  pow_cutoffc = (float)set_pow_cutoffc/1000;
@@ -54066,8 +54111,8 @@ N				strncpy(buf,set_limit,dot_flag + 2);
 N				pow_v = atof(buf)*100;
 X				Run_Control[38] = atof(buf)*100;
 N			}
-N			if(pow_v > set_max_v)
-X			if(Run_Control[38] > Run_Control[14])
+N			if(pow_v > set_max_v) 
+X			if(Run_Control[38] > Run_Control[14]) 
 N			{
 N				pow_v = set_max_v;
 X				Run_Control[38] = Run_Control[14];
@@ -54080,8 +54125,8 @@ N            {
 N                SET_Voltage = 0;
 X                Run_Control[1] = 0;
 N            }
-N			SET_Voltage_Laod = SET_Voltage * 10 + 100;
-X			Run_Control[3] = Run_Control[1] * 10 + 100;
+N			SET_Voltage_Laod = SET_Voltage * 10 + 200;
+X			Run_Control[3] = Run_Control[1] * 10 + 200;
 N            dis_output_v = (float)SET_Voltage/100;
 X            dis_output_v = (float)Run_Control[1]/100;
 N            
@@ -54159,11 +54204,11 @@ N				strncpy(buf,set_limit,dot_flag + 3);
 N				set_load_cutoffv = atof(buf)*1000;
 X				InFlashSave[4] = atof(buf)*1000;
 N			}
-N            if(set_load_cutoffv > 60000)
-X            if(InFlashSave[4] > 60000)
+N            if(set_load_cutoffv > 10000)
+X            if(InFlashSave[4] > 10000)
 N            {
-N                set_load_cutoffv = 60000;               
-X                InFlashSave[4] = 60000;               
+N                set_load_cutoffv = 10000;               
+X                InFlashSave[4] = 10000;               
 N            }
 N            load_cutoffv = (float)set_load_cutoffv/1000;
 X            load_cutoffv = (float)InFlashSave[4]/1000;
@@ -54680,7 +54725,7 @@ N			}
 N			TEXT_SetText(hItem,set_limit);			
 N		}
 N    }    
-W "..\APP\menu.c" 867 5 variable "i"  was declared but never referenced
+W "..\APP\menu.c" 904 5 variable "i"  was declared but never referenced
 N}
 N
 N//void test_pow(void)

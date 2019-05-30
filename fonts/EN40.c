@@ -50,6 +50,31 @@
 extern GUI_CONST_STORAGE GUI_FONT GUI_FontEN40;
 
 /* Start of unicode area <Basic Latin> */
+GUI_CONST_STORAGE unsigned char acGUI_FontEN40_002D[  9] = { /* code 002D, HYPHEN-MINUS */
+  XXXXXXXX,XXXXXXXX,XX______,
+  XXXXXXXX,XXXXXXXX,XX______,
+  XXXXXXXX,XXXXXXXX,XX______};
+
+GUI_CONST_STORAGE unsigned char acGUI_FontEN40_002B[ 51] = { /* code 002B, PLUS SIGN */
+  _______X,XX______,________,
+  _______X,XX______,________,
+  _______X,XX______,________,
+  _______X,XX______,________,
+  _______X,XX______,________,
+  _______X,XX______,________,
+  _______X,XX______,________,
+  XXXXXXXX,XXXXXXXX,X_______,
+  XXXXXXXX,XXXXXXXX,X_______,
+  XXXXXXXX,XXXXXXXX,X_______,
+  _______X,XX______,________,
+  _______X,XX______,________,
+  _______X,XX______,________,
+  _______X,XX______,________,
+  _______X,XX______,________,
+  _______X,XX______,________,
+  _______X,XX______,________};
+
+  
 GUI_CONST_STORAGE unsigned char acGUI_FontEN40_003A[ 18] = { /* code 003A, COLON */
   XXXX____,
   XXXX____,
@@ -1593,7 +1618,7 @@ GUI_CONST_STORAGE unsigned char acGUI_FontEN40_007A[ 34] = { /* code 007A, LATIN
   XXXXXXXX,XXXXXXXX,
   XXXXXXXX,XXXXXXXX};
 
-GUI_CONST_STORAGE GUI_CHARINFO_EXT GUI_FontEN40_CharInfo[59] = {
+GUI_CONST_STORAGE GUI_CHARINFO_EXT GUI_FontEN40_CharInfo[61] = {
    {  20,  27,   0,   0,  21, acGUI_FontEN40_0041 } /* code 0041, LATIN CAPITAL LETTER A */
   ,{  17,  27,   2,   0,  21, acGUI_FontEN40_0042 } /* code 0042, LATIN CAPITAL LETTER B */
   ,{  19,  28,   1,   0,  21, acGUI_FontEN40_0043 } /* code 0043, LATIN CAPITAL LETTER C */
@@ -1653,12 +1678,28 @@ GUI_CONST_STORAGE GUI_CHARINFO_EXT GUI_FontEN40_CharInfo[59] = {
   ,{  18,  23,   1,  0,  21, acGUI_FontEN40_0079 } /* code 0079, LATIN SMALL LETTER Y */
   ,{  16,  17,   2,  0,  21, acGUI_FontEN40_007A } /* code 007A, LATIN SMALL LETTER Z */
   ,{   4,  18,   8,   9,  21, acGUI_FontEN40_003A } /* code 003A, COLON */
+  , {  18,  17,   1,  11,  20, acGUI_FontEN40_002B } /* code 002B, PLUS SIGN */
+  ,{  18,   3,   1,  18,  20, acGUI_FontEN40_002D } /* code 002D, HYPHEN-MINUS */
 };
+GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_FontEN40_Prop4 = {
+   0x002D /* first character */
+  ,0x002D /* last character  */
+  ,&GUI_FontEN40_CharInfo[  60] /* address of first character */
+  ,(GUI_CONST_STORAGE GUI_FONT_PROP_EXT *)0 /* pointer to next GUI_FONT_PROP_EXT */
+};
+
+GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_FontEN40_Prop3 = {
+   0x002B /* first character */
+  ,0x002B /* last character  */
+  ,&GUI_FontEN40_CharInfo[  59] /* address of first character */
+  ,&GUI_FontEN40_Prop4 /* pointer to next GUI_FONT_PROP */
+};
+
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_FontEN40_Prop2 = {
    0x003A /* first character */
   ,0x003A /* last character  */
   ,&GUI_FontEN40_CharInfo[ 58 ] /* address of first character */
-  ,(GUI_CONST_STORAGE GUI_FONT_PROP_EXT *)0 /* pointer to next GUI_FONT_PROP_EXT */
+ ,&GUI_FontEN40_Prop3 /* pointer to next GUI_FONT_PROP */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_FontEN40_Prop1 = {

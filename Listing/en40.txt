@@ -4,6 +4,32 @@
 
                           AREA ||.constdata||, DATA, READONLY, ALIGN=0
 
+                  acGUI_FontEN40_002D
+000000  ffffc0ff          DCB      0xff,0xff,0xc0,0xff
+000004  ffc0ffff          DCB      0xff,0xc0,0xff,0xff
+000008  c0                DCB      0xc0
+
+                          AREA ||area_number.4||, DATA, READONLY, ALIGN=0
+
+                          EXPORTAS ||area_number.4||, ||.constdata||
+                  acGUI_FontEN40_002B
+000000  01c00001          DCB      0x01,0xc0,0x00,0x01
+000004  c00001c0          DCB      0xc0,0x00,0x01,0xc0
+000008  0001c000          DCB      0x00,0x01,0xc0,0x00
+00000c  01c00001          DCB      0x01,0xc0,0x00,0x01
+000010  c00001c0          DCB      0xc0,0x00,0x01,0xc0
+000014  00ffff80          DCB      0x00,0xff,0xff,0x80
+000018  ffff80ff          DCB      0xff,0xff,0x80,0xff
+00001c  ff8001c0          DCB      0xff,0x80,0x01,0xc0
+000020  0001c000          DCB      0x00,0x01,0xc0,0x00
+000024  01c00001          DCB      0x01,0xc0,0x00,0x01
+000028  c00001c0          DCB      0xc0,0x00,0x01,0xc0
+00002c  0001c000          DCB      0x00,0x01,0xc0,0x00
+000030  01c000            DCB      0x01,0xc0,0x00
+
+                          AREA ||area_number.5||, DATA, READONLY, ALIGN=0
+
+                          EXPORTAS ||area_number.5||, ||.constdata||
                   acGUI_FontEN40_003A
 000000  f0f0f0f0          DCB      0xf0,0xf0,0xf0,0xf0
 000004  00000000          DCB      0x00,0x00,0x00,0x00
@@ -11,9 +37,9 @@
 00000c  0000f0f0          DCB      0x00,0x00,0xf0,0xf0
 000010  f0f0              DCB      0xf0,0xf0
 
-                          AREA ||area_number.4||, DATA, READONLY, ALIGN=0
+                          AREA ||area_number.6||, DATA, READONLY, ALIGN=0
 
-                          EXPORTAS ||area_number.4||, ||.constdata||
+                          EXPORTAS ||area_number.6||, ||.constdata||
                   acGUI_FontEN40_0041
 000000  00f00000          DCB      0x00,0xf0,0x00,0x00
 000004  f80000f8          DCB      0xf8,0x00,0x00,0xf8
@@ -37,9 +63,9 @@
 00004c  01f07801          DCB      0x01,0xf0,0x78,0x01
 000050  f0                DCB      0xf0
 
-                          AREA ||area_number.5||, DATA, READONLY, ALIGN=0
+                          AREA ||area_number.7||, DATA, READONLY, ALIGN=0
 
-                          EXPORTAS ||area_number.5||, ||.constdata||
+                          EXPORTAS ||area_number.7||, ||.constdata||
                   acGUI_FontEN40_0042
 000000  ff8000ff          DCB      0xff,0x80,0x00,0xff
 000004  f800fffe          DCB      0xf8,0x00,0xff,0xfe
@@ -63,9 +89,9 @@
 00004c  fe00fff8          DCB      0xfe,0x00,0xff,0xf8
 000050  00                DCB      0x00
 
-                          AREA ||area_number.6||, DATA, READONLY, ALIGN=0
+                          AREA ||area_number.8||, DATA, READONLY, ALIGN=0
 
-                          EXPORTAS ||area_number.6||, ||.constdata||
+                          EXPORTAS ||area_number.8||, ||.constdata||
                   acGUI_FontEN40_0043
 000000  01f80007          DCB      0x01,0xf8,0x00,0x07
 000004  fe000fff          DCB      0xfe,0x00,0x0f,0xff
@@ -89,9 +115,9 @@
 00004c  ff0007fc          DCB      0xff,0x00,0x07,0xfc
 000050  00006000          DCB      0x00,0x00,0x60,0x00
 
-                          AREA ||area_number.7||, DATA, READONLY, ALIGN=0
+                          AREA ||area_number.9||, DATA, READONLY, ALIGN=0
 
-                          EXPORTAS ||area_number.7||, ||.constdata||
+                          EXPORTAS ||area_number.9||, ||.constdata||
                   acGUI_FontEN40_0044
 000000  fc0000ff          DCB      0xfc,0x00,0x00,0xff
 000004  f000fff8          DCB      0xf0,0x00,0xff,0xf8
@@ -115,9 +141,9 @@
 00004c  f800ffe0          DCB      0xf8,0x00,0xff,0xe0
 000050  00                DCB      0x00
 
-                          AREA ||area_number.8||, DATA, READONLY, ALIGN=0
+                          AREA ||area_number.10||, DATA, READONLY, ALIGN=0
 
-                          EXPORTAS ||area_number.8||, ||.constdata||
+                          EXPORTAS ||area_number.10||, ||.constdata||
                   acGUI_FontEN40_0045
 000000  ffff00ff          DCB      0xff,0xff,0x00,0xff
 000004  ff00ffff          DCB      0xff,0x00,0xff,0xff
@@ -141,9 +167,9 @@
 00004c  ff80ffff          DCB      0xff,0x80,0xff,0xff
 000050  80                DCB      0x80
 
-                          AREA ||area_number.9||, DATA, READONLY, ALIGN=0
+                          AREA ||area_number.11||, DATA, READONLY, ALIGN=0
 
-                          EXPORTAS ||area_number.9||, ||.constdata||
+                          EXPORTAS ||area_number.11||, ||.constdata||
                   acGUI_FontEN40_0046
 000000  ffff80ff          DCB      0xff,0xff,0x80,0xff
 000004  ff80ffff          DCB      0xff,0x80,0xff,0xff
@@ -167,9 +193,9 @@
 00004c  0000f000          DCB      0x00,0x00,0xf0,0x00
 000050  00                DCB      0x00
 
-                          AREA ||area_number.10||, DATA, READONLY, ALIGN=0
+                          AREA ||area_number.12||, DATA, READONLY, ALIGN=0
 
-                          EXPORTAS ||area_number.10||, ||.constdata||
+                          EXPORTAS ||area_number.12||, ||.constdata||
                   acGUI_FontEN40_0047
 000000  01f00007          DCB      0x01,0xf0,0x00,0x07
 000004  fc000fff          DCB      0xfc,0x00,0x0f,0xff
@@ -193,9 +219,9 @@
 00004c  ffc007fb          DCB      0xff,0xc0,0x07,0xfb
 000050  c000e3c0          DCB      0xc0,0x00,0xe3,0xc0
 
-                          AREA ||area_number.11||, DATA, READONLY, ALIGN=0
+                          AREA ||area_number.13||, DATA, READONLY, ALIGN=0
 
-                          EXPORTAS ||area_number.11||, ||.constdata||
+                          EXPORTAS ||area_number.13||, ||.constdata||
                   acGUI_FontEN40_0048
 000000  f00f80f0          DCB      0xf0,0x0f,0x80,0xf0
 000004  0f80f00f          DCB      0x0f,0x80,0xf0,0x0f
@@ -219,9 +245,9 @@
 00004c  0f80f00f          DCB      0x0f,0x80,0xf0,0x0f
 000050  80                DCB      0x80
 
-                          AREA ||area_number.12||, DATA, READONLY, ALIGN=0
+                          AREA ||area_number.14||, DATA, READONLY, ALIGN=0
 
-                          EXPORTAS ||area_number.12||, ||.constdata||
+                          EXPORTAS ||area_number.14||, ||.constdata||
                   acGUI_FontEN40_0049
 000000  f8f8f8f8          DCB      0xf8,0xf8,0xf8,0xf8
 000004  f8f8f8f8          DCB      0xf8,0xf8,0xf8,0xf8
@@ -231,9 +257,9 @@
 000014  f8f8f8f8          DCB      0xf8,0xf8,0xf8,0xf8
 000018  f8f8f8            DCB      0xf8,0xf8,0xf8
 
-                          AREA ||area_number.13||, DATA, READONLY, ALIGN=0
+                          AREA ||area_number.15||, DATA, READONLY, ALIGN=0
 
-                          EXPORTAS ||area_number.13||, ||.constdata||
+                          EXPORTAS ||area_number.15||, ||.constdata||
                   acGUI_FontEN40_004A
 000000  000f8000          DCB      0x00,0x0f,0x80,0x00
 000004  0f80000f          DCB      0x0f,0x80,0x00,0x0f
@@ -257,9 +283,9 @@
 00004c  fc000ff8          DCB      0xfc,0x00,0x0f,0xf8
 000050  0001c000          DCB      0x00,0x01,0xc0,0x00
 
-                          AREA ||area_number.14||, DATA, READONLY, ALIGN=0
+                          AREA ||area_number.16||, DATA, READONLY, ALIGN=0
 
-                          EXPORTAS ||area_number.14||, ||.constdata||
+                          EXPORTAS ||area_number.16||, ||.constdata||
                   acGUI_FontEN40_004B
 000000  f00f80f0          DCB      0xf0,0x0f,0x80,0xf0
 000004  1f80f01f          DCB      0x1f,0x80,0xf0,0x1f
@@ -283,9 +309,9 @@
 00004c  0f80f007          DCB      0x0f,0x80,0xf0,0x07
 000050  c0                DCB      0xc0
 
-                          AREA ||area_number.15||, DATA, READONLY, ALIGN=0
+                          AREA ||area_number.17||, DATA, READONLY, ALIGN=0
 
-                          EXPORTAS ||area_number.15||, ||.constdata||
+                          EXPORTAS ||area_number.17||, ||.constdata||
                   acGUI_FontEN40_004C
 000000  f00000f0          DCB      0xf0,0x00,0x00,0xf0
 000004  0000f000          DCB      0x00,0x00,0xf0,0x00
@@ -309,9 +335,9 @@
 00004c  ff80ffff          DCB      0xff,0x80,0xff,0xff
 000050  80                DCB      0x80
 
-                          AREA ||area_number.16||, DATA, READONLY, ALIGN=0
+                          AREA ||area_number.18||, DATA, READONLY, ALIGN=0
 
-                          EXPORTAS ||area_number.16||, ||.constdata||
+                          EXPORTAS ||area_number.18||, ||.constdata||
                   acGUI_FontEN40_004D
 000000  fc0fc0fc          DCB      0xfc,0x0f,0xc0,0xfc
 000004  0fc0fe0f          DCB      0x0f,0xc0,0xfe,0x0f
@@ -335,9 +361,9 @@
 00004c  e3c0f9e3          DCB      0xe3,0xc0,0xf9,0xe3
 000050  c0                DCB      0xc0
 
-                          AREA ||area_number.17||, DATA, READONLY, ALIGN=0
+                          AREA ||area_number.19||, DATA, READONLY, ALIGN=0
 
-                          EXPORTAS ||area_number.17||, ||.constdata||
+                          EXPORTAS ||area_number.19||, ||.constdata||
                   acGUI_FontEN40_004E
 000000  f00f80f8          DCB      0xf0,0x0f,0x80,0xf8
 000004  0f80f80f          DCB      0x0f,0x80,0xf8,0x0f
@@ -361,9 +387,9 @@
 00004c  1f80f00f          DCB      0x1f,0x80,0xf0,0x0f
 000050  80                DCB      0x80
 
-                          AREA ||area_number.18||, DATA, READONLY, ALIGN=0
+                          AREA ||area_number.20||, DATA, READONLY, ALIGN=0
 
-                          EXPORTAS ||area_number.18||, ||.constdata||
+                          EXPORTAS ||area_number.20||, ||.constdata||
                   acGUI_FontEN40_004F
 000000  03f0000f          DCB      0x03,0xf0,0x00,0x0f
 000004  fc001fff          DCB      0xfc,0x00,0x1f,0xff
@@ -387,9 +413,9 @@
 00004c  fe0007fc          DCB      0xfe,0x00,0x07,0xfc
 000050  0000e000          DCB      0x00,0x00,0xe0,0x00
 
-                          AREA ||area_number.19||, DATA, READONLY, ALIGN=0
+                          AREA ||area_number.21||, DATA, READONLY, ALIGN=0
 
-                          EXPORTAS ||area_number.19||, ||.constdata||
+                          EXPORTAS ||area_number.21||, ||.constdata||
                   acGUI_FontEN40_0050
 000000  ff8000ff          DCB      0xff,0x80,0x00,0xff
 000004  fc00fffe          DCB      0xfc,0x00,0xff,0xfe
@@ -413,9 +439,9 @@
 00004c  0000f800          DCB      0x00,0x00,0xf8,0x00
 000050  00                DCB      0x00
 
-                          AREA ||area_number.20||, DATA, READONLY, ALIGN=0
+                          AREA ||area_number.22||, DATA, READONLY, ALIGN=0
 
-                          EXPORTAS ||area_number.20||, ||.constdata||
+                          EXPORTAS ||area_number.22||, ||.constdata||
                   acGUI_FontEN40_0051
 000000  03f0000f          DCB      0x03,0xf0,0x00,0x0f
 000004  fc001fff          DCB      0xfc,0x00,0x1f,0xff
@@ -440,9 +466,9 @@
 000050  8000e700          DCB      0x80,0x00,0xe7,0x00
 000054  000700            DCB      0x00,0x07,0x00
 
-                          AREA ||area_number.21||, DATA, READONLY, ALIGN=0
+                          AREA ||area_number.23||, DATA, READONLY, ALIGN=0
 
-                          EXPORTAS ||area_number.21||, ||.constdata||
+                          EXPORTAS ||area_number.23||, ||.constdata||
                   acGUI_FontEN40_0052
 000000  ff8000ff          DCB      0xff,0x80,0x00,0xff
 000004  f800fffe          DCB      0xf8,0x00,0xff,0xfe
@@ -466,9 +492,9 @@
 00004c  0f80f007          DCB      0x0f,0x80,0xf0,0x07
 000050  80                DCB      0x80
 
-                          AREA ||area_number.22||, DATA, READONLY, ALIGN=0
+                          AREA ||area_number.24||, DATA, READONLY, ALIGN=0
 
-                          EXPORTAS ||area_number.22||, ||.constdata||
+                          EXPORTAS ||area_number.24||, ||.constdata||
                   acGUI_FontEN40_0053
 000000  03f0000f          DCB      0x03,0xf0,0x00,0x0f
 000004  fc001ffe          DCB      0xfc,0x00,0x1f,0xfe
@@ -492,9 +518,9 @@
 00004c  ff000ffc          DCB      0xff,0x00,0x0f,0xfc
 000050  0000e000          DCB      0x00,0x00,0xe0,0x00
 
-                          AREA ||area_number.23||, DATA, READONLY, ALIGN=0
+                          AREA ||area_number.25||, DATA, READONLY, ALIGN=0
 
-                          EXPORTAS ||area_number.23||, ||.constdata||
+                          EXPORTAS ||area_number.25||, ||.constdata||
                   acGUI_FontEN40_0054
 000000  ffff80ff          DCB      0xff,0xff,0x80,0xff
 000004  ff80ffff          DCB      0xff,0x80,0xff,0xff
@@ -518,9 +544,9 @@
 00004c  e00003e0          DCB      0xe0,0x00,0x03,0xe0
 000050  00                DCB      0x00
 
-                          AREA ||area_number.24||, DATA, READONLY, ALIGN=0
+                          AREA ||area_number.26||, DATA, READONLY, ALIGN=0
 
-                          EXPORTAS ||area_number.24||, ||.constdata||
+                          EXPORTAS ||area_number.26||, ||.constdata||
                   acGUI_FontEN40_0055
 000000  f00f80f0          DCB      0xf0,0x0f,0x80,0xf0
 000004  0f80f00f          DCB      0x0f,0x80,0xf0,0x0f
@@ -544,9 +570,9 @@
 00004c  fe001ffc          DCB      0xfe,0x00,0x1f,0xfc
 000050  0001c000          DCB      0x00,0x01,0xc0,0x00
 
-                          AREA ||area_number.25||, DATA, READONLY, ALIGN=0
+                          AREA ||area_number.27||, DATA, READONLY, ALIGN=0
 
-                          EXPORTAS ||area_number.25||, ||.constdata||
+                          EXPORTAS ||area_number.27||, ||.constdata||
                   acGUI_FontEN40_0056
 000000  f801f078          DCB      0xf8,0x01,0xf0,0x78
 000004  01f07c01          DCB      0x01,0xf0,0x7c,0x01
@@ -570,9 +596,9 @@
 00004c  f80000f8          DCB      0xf8,0x00,0x00,0xf8
 000050  0000f000          DCB      0x00,0x00,0xf0,0x00
 
-                          AREA ||area_number.26||, DATA, READONLY, ALIGN=0
+                          AREA ||area_number.28||, DATA, READONLY, ALIGN=0
 
-                          EXPORTAS ||area_number.26||, ||.constdata||
+                          EXPORTAS ||area_number.28||, ||.constdata||
                   acGUI_FontEN40_0057
 000000  f8f0f0f8          DCB      0xf8,0xf0,0xf0,0xf8
 000004  f8f0f8f8          DCB      0xf8,0xf0,0xf8,0xf8
@@ -596,9 +622,9 @@
 00004c  0f801f07          DCB      0x0f,0x80,0x1f,0x07
 000050  800f0780          DCB      0x80,0x0f,0x07,0x80
 
-                          AREA ||area_number.27||, DATA, READONLY, ALIGN=0
+                          AREA ||area_number.29||, DATA, READONLY, ALIGN=0
 
-                          EXPORTAS ||area_number.27||, ||.constdata||
+                          EXPORTAS ||area_number.29||, ||.constdata||
                   acGUI_FontEN40_0058
 000000  f807c07c          DCB      0xf8,0x07,0xc0,0x7c
 000004  07807c0f          DCB      0x07,0x80,0x7c,0x0f
@@ -622,9 +648,9 @@
 00004c  07c0f803          DCB      0x07,0xc0,0xf8,0x03
 000050  c0                DCB      0xc0
 
-                          AREA ||area_number.28||, DATA, READONLY, ALIGN=0
+                          AREA ||area_number.30||, DATA, READONLY, ALIGN=0
 
-                          EXPORTAS ||area_number.28||, ||.constdata||
+                          EXPORTAS ||area_number.30||, ||.constdata||
                   acGUI_FontEN40_0059
 000000  f003e0f8          DCB      0xf0,0x03,0xe0,0xf8
 000004  03c07807          DCB      0x03,0xc0,0x78,0x07
@@ -648,9 +674,9 @@
 00004c  f00001f0          DCB      0xf0,0x00,0x01,0xf0
 000050  00                DCB      0x00
 
-                          AREA ||area_number.29||, DATA, READONLY, ALIGN=0
+                          AREA ||area_number.31||, DATA, READONLY, ALIGN=0
 
-                          EXPORTAS ||area_number.29||, ||.constdata||
+                          EXPORTAS ||area_number.31||, ||.constdata||
                   acGUI_FontEN40_005A
 000000  7fffc07f          DCB      0x7f,0xff,0xc0,0x7f
 000004  ffc07fff          DCB      0xff,0xc0,0x7f,0xff
@@ -674,9 +700,9 @@
 00004c  ffc0ffff          DCB      0xff,0xc0,0xff,0xff
 000050  c0                DCB      0xc0
 
-                          AREA ||area_number.30||, DATA, READONLY, ALIGN=0
+                          AREA ||area_number.32||, DATA, READONLY, ALIGN=0
 
-                          EXPORTAS ||area_number.30||, ||.constdata||
+                          EXPORTAS ||area_number.32||, ||.constdata||
                   acGUI_FontEN40_005B
 000000  ffe0ffe0          DCB      0xff,0xe0,0xff,0xe0
 000004  ffe0e000          DCB      0xff,0xe0,0xe0,0x00
@@ -697,9 +723,9 @@
 000040  e000ffe0          DCB      0xe0,0x00,0xff,0xe0
 000044  ffe0              DCB      0xff,0xe0
 
-                          AREA ||area_number.31||, DATA, READONLY, ALIGN=0
+                          AREA ||area_number.33||, DATA, READONLY, ALIGN=0
 
-                          EXPORTAS ||area_number.31||, ||.constdata||
+                          EXPORTAS ||area_number.33||, ||.constdata||
                   acGUI_FontEN40_005C
 000000  f0000070          DCB      0xf0,0x00,0x00,0x70
 000004  00007800          DCB      0x00,0x00,0x78,0x00
@@ -726,9 +752,9 @@
 000058  0f000007          DCB      0x0f,0x00,0x00,0x07
 00005c  00000700          DCB      0x00,0x00,0x07,0x00
 
-                          AREA ||area_number.32||, DATA, READONLY, ALIGN=0
+                          AREA ||area_number.34||, DATA, READONLY, ALIGN=0
 
-                          EXPORTAS ||area_number.32||, ||.constdata||
+                          EXPORTAS ||area_number.34||, ||.constdata||
                   acGUI_FontEN40_005D
 000000  ffe0ffe0          DCB      0xff,0xe0,0xff,0xe0
 000004  ffe001e0          DCB      0xff,0xe0,0x01,0xe0
@@ -749,33 +775,33 @@
 000040  01e0ffe0          DCB      0x01,0xe0,0xff,0xe0
 000044  ffe0              DCB      0xff,0xe0
 
-                          AREA ||area_number.33||, DATA, READONLY, ALIGN=0
+                          AREA ||area_number.35||, DATA, READONLY, ALIGN=0
 
-                          EXPORTAS ||area_number.33||, ||.constdata||
+                          EXPORTAS ||area_number.35||, ||.constdata||
                   acGUI_FontEN40_005E
 000000  07e00ff0          DCB      0x07,0xe0,0x0f,0xf0
 000004  1ff81e7c          DCB      0x1f,0xf8,0x1e,0x7c
 000008  3c3e780f          DCB      0x3c,0x3e,0x78,0x0f
 
-                          AREA ||area_number.34||, DATA, READONLY, ALIGN=0
+                          AREA ||area_number.36||, DATA, READONLY, ALIGN=0
 
-                          EXPORTAS ||area_number.34||, ||.constdata||
+                          EXPORTAS ||area_number.36||, ||.constdata||
                   acGUI_FontEN40_005F
 000000  fffff8ff          DCB      0xff,0xff,0xf8,0xff
 000004  fff8              DCB      0xff,0xf8
 
-                          AREA ||area_number.35||, DATA, READONLY, ALIGN=0
+                          AREA ||area_number.37||, DATA, READONLY, ALIGN=0
 
-                          EXPORTAS ||area_number.35||, ||.constdata||
+                          EXPORTAS ||area_number.37||, ||.constdata||
                   acGUI_FontEN40_0060
 000000  7c003e00          DCB      0x7c,0x00,0x3e,0x00
 000004  3e001f00          DCB      0x3e,0x00,0x1f,0x00
 000008  0f800780          DCB      0x0f,0x80,0x07,0x80
 00000c  03c0              DCB      0x03,0xc0
 
-                          AREA ||area_number.36||, DATA, READONLY, ALIGN=0
+                          AREA ||area_number.38||, DATA, READONLY, ALIGN=0
 
-                          EXPORTAS ||area_number.36||, ||.constdata||
+                          EXPORTAS ||area_number.38||, ||.constdata||
                   acGUI_FontEN40_0061
 000000  03c0001f          DCB      0x03,0xc0,0x00,0x1f
 000004  f8003ffe          DCB      0xf8,0x00,0x3f,0xfe
@@ -793,9 +819,9 @@
 000034  ef000600          DCB      0xef,0x00,0x06,0x00
 000038  00                DCB      0x00
 
-                          AREA ||area_number.37||, DATA, READONLY, ALIGN=0
+                          AREA ||area_number.39||, DATA, READONLY, ALIGN=0
 
-                          EXPORTAS ||area_number.37||, ||.constdata||
+                          EXPORTAS ||area_number.39||, ||.constdata||
                   acGUI_FontEN40_0062
 000000  f00000f0          DCB      0xf0,0x00,0x00,0xf0
 000004  0000f000          DCB      0x00,0x00,0xf0,0x00
@@ -819,9 +845,9 @@
 00004c  fc00f7f8          DCB      0xfc,0x00,0xf7,0xf8
 000050  0001c000          DCB      0x00,0x01,0xc0,0x00
 
-                          AREA ||area_number.38||, DATA, READONLY, ALIGN=0
+                          AREA ||area_number.40||, DATA, READONLY, ALIGN=0
 
-                          EXPORTAS ||area_number.38||, ||.constdata||
+                          EXPORTAS ||area_number.40||, ||.constdata||
                   acGUI_FontEN40_0063
 000000  00e00007          DCB      0x00,0xe0,0x00,0x07
 000004  fc001fff          DCB      0xfc,0x00,0x1f,0xff
@@ -839,9 +865,9 @@
 000034  fc0000e0          DCB      0xfc,0x00,0x00,0xe0
 000038  00                DCB      0x00
 
-                          AREA ||area_number.39||, DATA, READONLY, ALIGN=0
+                          AREA ||area_number.41||, DATA, READONLY, ALIGN=0
 
-                          EXPORTAS ||area_number.39||, ||.constdata||
+                          EXPORTAS ||area_number.41||, ||.constdata||
                   acGUI_FontEN40_0064
 000000  00078000          DCB      0x00,0x07,0x80,0x00
 000004  07800007          DCB      0x07,0x80,0x00,0x07
@@ -865,9 +891,9 @@
 00004c  ff800fff          DCB      0xff,0x80,0x0f,0xff
 000050  8001c000          DCB      0x80,0x01,0xc0,0x00
 
-                          AREA ||area_number.40||, DATA, READONLY, ALIGN=0
+                          AREA ||area_number.42||, DATA, READONLY, ALIGN=0
 
-                          EXPORTAS ||area_number.40||, ||.constdata||
+                          EXPORTAS ||area_number.42||, ||.constdata||
                   acGUI_FontEN40_0065
 000000  01c0000f          DCB      0x01,0xc0,0x00,0x0f
 000004  f8003ffe          DCB      0xf8,0x00,0x3f,0xfe
@@ -885,9 +911,9 @@
 000034  f80001c0          DCB      0xf8,0x00,0x01,0xc0
 000038  00                DCB      0x00
 
-                          AREA ||area_number.41||, DATA, READONLY, ALIGN=0
+                          AREA ||area_number.43||, DATA, READONLY, ALIGN=0
 
-                          EXPORTAS ||area_number.41||, ||.constdata||
+                          EXPORTAS ||area_number.43||, ||.constdata||
                   acGUI_FontEN40_0066
 000000  007e0001          DCB      0x00,0x7e,0x00,0x01
 000004  ff8003ff          DCB      0xff,0x80,0x03,0xff
@@ -911,9 +937,9 @@
 00004c  80000780          DCB      0x80,0x00,0x07,0x80
 000050  00                DCB      0x00
 
-                          AREA ||area_number.42||, DATA, READONLY, ALIGN=0
+                          AREA ||area_number.44||, DATA, READONLY, ALIGN=0
 
-                          EXPORTAS ||area_number.42||, ||.constdata||
+                          EXPORTAS ||area_number.44||, ||.constdata||
                   acGUI_FontEN40_0067
 000000  03c3c00f          DCB      0x03,0xc3,0xc0,0x0f
 000004  ffc03fff          DCB      0xff,0xc0,0x3f,0xff
@@ -934,9 +960,9 @@
 000040  1f007ffe          DCB      0x1f,0x00,0x7f,0xfe
 000044  001ff800          DCB      0x00,0x1f,0xf8,0x00
 
-                          AREA ||area_number.43||, DATA, READONLY, ALIGN=0
+                          AREA ||area_number.45||, DATA, READONLY, ALIGN=0
 
-                          EXPORTAS ||area_number.43||, ||.constdata||
+                          EXPORTAS ||area_number.45||, ||.constdata||
                   acGUI_FontEN40_0068
 000000  f00000f0          DCB      0xf0,0x00,0x00,0xf0
 000004  0000f000          DCB      0x00,0x00,0xf0,0x00
@@ -960,9 +986,9 @@
 00004c  0f80f00f          DCB      0x0f,0x80,0xf0,0x0f
 000050  80                DCB      0x80
 
-                          AREA ||area_number.44||, DATA, READONLY, ALIGN=0
+                          AREA ||area_number.46||, DATA, READONLY, ALIGN=0
 
-                          EXPORTAS ||area_number.44||, ||.constdata||
+                          EXPORTAS ||area_number.46||, ||.constdata||
                   acGUI_FontEN40_0069
 000000  f0f0f0f0          DCB      0xf0,0xf0,0xf0,0xf0
 000004  00000000          DCB      0x00,0x00,0x00,0x00
@@ -972,9 +998,9 @@
 000014  f0f0f0f0          DCB      0xf0,0xf0,0xf0,0xf0
 000018  f0f0              DCB      0xf0,0xf0
 
-                          AREA ||area_number.45||, DATA, READONLY, ALIGN=0
+                          AREA ||area_number.47||, DATA, READONLY, ALIGN=0
 
-                          EXPORTAS ||area_number.45||, ||.constdata||
+                          EXPORTAS ||area_number.47||, ||.constdata||
                   acGUI_FontEN40_006A
 000000  01e001e0          DCB      0x01,0xe0,0x01,0xe0
 000004  01e001e0          DCB      0x01,0xe0,0x01,0xe0
@@ -993,9 +1019,9 @@
 000038  03e0ffc0          DCB      0x03,0xe0,0xff,0xc0
 00003c  ffc0ff00          DCB      0xff,0xc0,0xff,0x00
 
-                          AREA ||area_number.46||, DATA, READONLY, ALIGN=0
+                          AREA ||area_number.48||, DATA, READONLY, ALIGN=0
 
-                          EXPORTAS ||area_number.46||, ||.constdata||
+                          EXPORTAS ||area_number.48||, ||.constdata||
                   acGUI_FontEN40_006B
 000000  f00000f0          DCB      0xf0,0x00,0x00,0xf0
 000004  0000f000          DCB      0x00,0x00,0xf0,0x00
@@ -1019,9 +1045,9 @@
 00004c  0f00f00f          DCB      0x0f,0x00,0xf0,0x0f
 000050  80                DCB      0x80
 
-                          AREA ||area_number.47||, DATA, READONLY, ALIGN=0
+                          AREA ||area_number.49||, DATA, READONLY, ALIGN=0
 
-                          EXPORTAS ||area_number.47||, ||.constdata||
+                          EXPORTAS ||area_number.49||, ||.constdata||
                   acGUI_FontEN40_006C
 000000  f0f0f0f0          DCB      0xf0,0xf0,0xf0,0xf0
 000004  f0f0f0f0          DCB      0xf0,0xf0,0xf0,0xf0
@@ -1031,9 +1057,9 @@
 000014  f0f0f0f0          DCB      0xf0,0xf0,0xf0,0xf0
 000018  f0f0f0            DCB      0xf0,0xf0,0xf0
 
-                          AREA ||area_number.48||, DATA, READONLY, ALIGN=0
+                          AREA ||area_number.50||, DATA, READONLY, ALIGN=0
 
-                          EXPORTAS ||area_number.48||, ||.constdata||
+                          EXPORTAS ||area_number.50||, ||.constdata||
                   acGUI_FontEN40_006D
 000000  038700ff          DCB      0x03,0x87,0x00,0xff
 000004  cfc0ffff          DCB      0xcf,0xc0,0xff,0xff
@@ -1050,9 +1076,9 @@
 000030  f0e1e0f0          DCB      0xf0,0xe1,0xe0,0xf0
 000034  e1e0              DCB      0xe1,0xe0
 
-                          AREA ||area_number.49||, DATA, READONLY, ALIGN=0
+                          AREA ||area_number.51||, DATA, READONLY, ALIGN=0
 
-                          EXPORTAS ||area_number.49||, ||.constdata||
+                          EXPORTAS ||area_number.51||, ||.constdata||
                   acGUI_FontEN40_006E
 000000  00f000f3          DCB      0x00,0xf0,0x00,0xf3
 000004  fe00f7ff          DCB      0xfe,0x00,0xf7,0xff
@@ -1069,9 +1095,9 @@
 000030  f00f80f0          DCB      0xf0,0x0f,0x80,0xf0
 000034  0f80              DCB      0x0f,0x80
 
-                          AREA ||area_number.50||, DATA, READONLY, ALIGN=0
+                          AREA ||area_number.52||, DATA, READONLY, ALIGN=0
 
-                          EXPORTAS ||area_number.50||, ||.constdata||
+                          EXPORTAS ||area_number.52||, ||.constdata||
                   acGUI_FontEN40_006F
 000000  00e00007          DCB      0x00,0xe0,0x00,0x07
 000004  fc001ffe          DCB      0xfc,0x00,0x1f,0xfe
@@ -1089,9 +1115,9 @@
 000034  fc0000e0          DCB      0xfc,0x00,0x00,0xe0
 000038  00                DCB      0x00
 
-                          AREA ||area_number.51||, DATA, READONLY, ALIGN=0
+                          AREA ||area_number.53||, DATA, READONLY, ALIGN=0
 
-                          EXPORTAS ||area_number.51||, ||.constdata||
+                          EXPORTAS ||area_number.53||, ||.constdata||
                   acGUI_FontEN40_0070
 000000  01c000ff          DCB      0x01,0xc0,0x00,0xff
 000004  f800fffc          DCB      0xf8,0x00,0xff,0xfc
@@ -1112,9 +1138,9 @@
 000040  0000f000          DCB      0x00,0x00,0xf0,0x00
 000044  00f00000          DCB      0x00,0xf0,0x00,0x00
 
-                          AREA ||area_number.52||, DATA, READONLY, ALIGN=0
+                          AREA ||area_number.54||, DATA, READONLY, ALIGN=0
 
-                          EXPORTAS ||area_number.52||, ||.constdata||
+                          EXPORTAS ||area_number.54||, ||.constdata||
                   acGUI_FontEN40_0071
 000000  01c0000f          DCB      0x01,0xc0,0x00,0x0f
 000004  ff801fff          DCB      0xff,0x80,0x1f,0xff
@@ -1135,9 +1161,9 @@
 000040  07800007          DCB      0x07,0x80,0x00,0x07
 000044  80000780          DCB      0x80,0x00,0x07,0x80
 
-                          AREA ||area_number.53||, DATA, READONLY, ALIGN=0
+                          AREA ||area_number.55||, DATA, READONLY, ALIGN=0
 
-                          EXPORTAS ||area_number.53||, ||.constdata||
+                          EXPORTAS ||area_number.55||, ||.constdata||
                   acGUI_FontEN40_0072
 000000  0038f1f8          DCB      0x00,0x38,0xf1,0xf8
 000004  f7f8fff8          DCB      0xf7,0xf8,0xff,0xf8
@@ -1149,9 +1175,9 @@
 00001c  f000f000          DCB      0xf0,0x00,0xf0,0x00
 000020  f000f000          DCB      0xf0,0x00,0xf0,0x00
 
-                          AREA ||area_number.54||, DATA, READONLY, ALIGN=0
+                          AREA ||area_number.56||, DATA, READONLY, ALIGN=0
 
-                          EXPORTAS ||area_number.54||, ||.constdata||
+                          EXPORTAS ||area_number.56||, ||.constdata||
                   acGUI_FontEN40_0073
 000000  03e01ff8          DCB      0x03,0xe0,0x1f,0xf8
 000004  3ffe7e3e          DCB      0x3f,0xfe,0x7e,0x3e
@@ -1164,9 +1190,9 @@
 000020  3ffe1ffc          DCB      0x3f,0xfe,0x1f,0xfc
 000024  01c0              DCB      0x01,0xc0
 
-                          AREA ||area_number.55||, DATA, READONLY, ALIGN=0
+                          AREA ||area_number.57||, DATA, READONLY, ALIGN=0
 
-                          EXPORTAS ||area_number.55||, ||.constdata||
+                          EXPORTAS ||area_number.57||, ||.constdata||
                   acGUI_FontEN40_0074
 000000  07c00007          DCB      0x07,0xc0,0x00,0x07
 000004  c00007c0          DCB      0xc0,0x00,0x07,0xc0
@@ -1187,9 +1213,9 @@
 000040  ff8000ff          DCB      0xff,0x80,0x00,0xff
 000044  80001c00          DCB      0x80,0x00,0x1c,0x00
 
-                          AREA ||area_number.56||, DATA, READONLY, ALIGN=0
+                          AREA ||area_number.58||, DATA, READONLY, ALIGN=0
 
-                          EXPORTAS ||area_number.56||, ||.constdata||
+                          EXPORTAS ||area_number.58||, ||.constdata||
                   acGUI_FontEN40_0075
 000000  f00f80f0          DCB      0xf0,0x0f,0x80,0xf0
 000004  0f80f00f          DCB      0x0f,0x80,0xf0,0x0f
@@ -1206,9 +1232,9 @@
 000030  3fef8007          DCB      0x3f,0xef,0x80,0x07
 000034  0000              DCB      0x00,0x00
 
-                          AREA ||area_number.57||, DATA, READONLY, ALIGN=0
+                          AREA ||area_number.59||, DATA, READONLY, ALIGN=0
 
-                          EXPORTAS ||area_number.57||, ||.constdata||
+                          EXPORTAS ||area_number.59||, ||.constdata||
                   acGUI_FontEN40_0076
 000000  7807c078          DCB      0x78,0x07,0xc0,0x78
 000004  07807c07          DCB      0x07,0x80,0x7c,0x07
@@ -1225,9 +1251,9 @@
 000030  01f00001          DCB      0x01,0xf0,0x00,0x01
 000034  e000              DCB      0xe0,0x00
 
-                          AREA ||area_number.58||, DATA, READONLY, ALIGN=0
+                          AREA ||area_number.60||, DATA, READONLY, ALIGN=0
 
-                          EXPORTAS ||area_number.58||, ||.constdata||
+                          EXPORTAS ||area_number.60||, ||.constdata||
                   acGUI_FontEN40_0077
 000000  f8f8f078          DCB      0xf8,0xf8,0xf0,0x78
 000004  f8f079f9          DCB      0xf8,0xf0,0x79,0xf9
@@ -1244,9 +1270,9 @@
 000030  0f0f800f          DCB      0x0f,0x0f,0x80,0x0f
 000034  0f00              DCB      0x0f,0x00
 
-                          AREA ||area_number.59||, DATA, READONLY, ALIGN=0
+                          AREA ||area_number.61||, DATA, READONLY, ALIGN=0
 
-                          EXPORTAS ||area_number.59||, ||.constdata||
+                          EXPORTAS ||area_number.61||, ||.constdata||
                   acGUI_FontEN40_0078
 000000  7c0f803e          DCB      0x7c,0x0f,0x80,0x3e
 000004  0f001e1f          DCB      0x0f,0x00,0x1e,0x1f
@@ -1262,9 +1288,9 @@
 00002c  003c0f80          DCB      0x00,0x3c,0x0f,0x80
 000030  7c0780            DCB      0x7c,0x07,0x80
 
-                          AREA ||area_number.60||, DATA, READONLY, ALIGN=0
+                          AREA ||area_number.62||, DATA, READONLY, ALIGN=0
 
-                          EXPORTAS ||area_number.60||, ||.constdata||
+                          EXPORTAS ||area_number.62||, ||.constdata||
                   acGUI_FontEN40_0079
 000000  7807c078          DCB      0x78,0x07,0xc0,0x78
 000004  07807c07          DCB      0x07,0x80,0x7c,0x07
@@ -1285,9 +1311,9 @@
 000040  80003f00          DCB      0x80,0x00,0x3f,0x00
 000044  00                DCB      0x00
 
-                          AREA ||area_number.61||, DATA, READONLY, ALIGN=0
+                          AREA ||area_number.63||, DATA, READONLY, ALIGN=0
 
-                          EXPORTAS ||area_number.61||, ||.constdata||
+                          EXPORTAS ||area_number.63||, ||.constdata||
                   acGUI_FontEN40_007A
 000000  7fff7fff          DCB      0x7f,0xff,0x7f,0xff
 000004  001e003c          DCB      0x00,0x1e,0x00,0x3c
@@ -1299,9 +1325,9 @@
 00001c  f800ffff          DCB      0xf8,0x00,0xff,0xff
 000020  ffff              DCB      0xff,0xff
 
-                          AREA ||area_number.62||, DATA, READONLY, ALIGN=2
+                          AREA ||area_number.64||, DATA, READONLY, ALIGN=2
 
-                          EXPORTAS ||area_number.62||, ||.constdata||
+                          EXPORTAS ||area_number.64||, ||.constdata||
                   GUI_FontEN40_CharInfo
 000000  141b0000          DCB      0x14,0x1b,0x00,0x00
 000004  15000000          DCB      0x15,0x00,0x00,0x00
@@ -1480,26 +1506,48 @@
 0002b8  04120809          DCB      0x04,0x12,0x08,0x09
 0002bc  15000000          DCB      0x15,0x00,0x00,0x00
                           DCD      acGUI_FontEN40_003A
+0002c4  1211010b          DCB      0x12,0x11,0x01,0x0b
+0002c8  14000000          DCB      0x14,0x00,0x00,0x00
+                          DCD      acGUI_FontEN40_002B
+0002d0  12030112          DCB      0x12,0x03,0x01,0x12
+0002d4  14000000          DCB      0x14,0x00,0x00,0x00
+                          DCD      acGUI_FontEN40_002D
 
-                          AREA ||area_number.63||, DATA, READONLY, ALIGN=2
+                          AREA ||area_number.65||, DATA, READONLY, ALIGN=2
 
-                          EXPORTAS ||area_number.63||, ||.constdata||
+                          EXPORTAS ||area_number.65||, ||.constdata||
+                  GUI_FontEN40_Prop4
+000000  002d002d          DCW      0x002d,0x002d
+                          DCD      GUI_FontEN40_CharInfo+0x2d0
+                          DCD      0x00000000
+
+                          AREA ||area_number.66||, DATA, READONLY, ALIGN=2
+
+                          EXPORTAS ||area_number.66||, ||.constdata||
+                  GUI_FontEN40_Prop3
+000000  002b002b          DCW      0x002b,0x002b
+                          DCD      GUI_FontEN40_CharInfo+0x2c4
+                          DCD      GUI_FontEN40_Prop4
+
+                          AREA ||area_number.67||, DATA, READONLY, ALIGN=2
+
+                          EXPORTAS ||area_number.67||, ||.constdata||
                   GUI_FontEN40_Prop2
 000000  003a003a          DCW      0x003a,0x003a
                           DCD      GUI_FontEN40_CharInfo+0x2b8
-                          DCD      0x00000000
+                          DCD      GUI_FontEN40_Prop3
 
-                          AREA ||area_number.64||, DATA, READONLY, ALIGN=2
+                          AREA ||area_number.68||, DATA, READONLY, ALIGN=2
 
-                          EXPORTAS ||area_number.64||, ||.constdata||
+                          EXPORTAS ||area_number.68||, ||.constdata||
                   GUI_FontEN40_Prop1
 000000  0041007a          DCW      0x0041,0x007a
                           DCD      GUI_FontEN40_CharInfo
                           DCD      GUI_FontEN40_Prop2
 
-                          AREA ||area_number.65||, DATA, READONLY, ALIGN=2
+                          AREA ||area_number.69||, DATA, READONLY, ALIGN=2
 
-                          EXPORTAS ||area_number.65||, ||.constdata||
+                          EXPORTAS ||area_number.69||, ||.constdata||
                   GUI_FontEN40
                           DCD      GUIPROP_EXT_DispChar
                           DCD      GUIPROP_EXT_GetCharDistX

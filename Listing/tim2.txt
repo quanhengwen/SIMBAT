@@ -174,10 +174,10 @@
 ;;;194    void Temp_Comapre(void)	  //温度来控制风扇
 000000  b510              PUSH     {r4,lr}
 ;;;195    {
-;;;196    	if(NTC_value<=1500 || NTC_value>3200)
+;;;196    	if(NTC_value<=2300 || NTC_value>5200)
 000002  4912              LDR      r1,|L3.76|
 000004  880a              LDRH     r2,[r1,#0]  ; NTC_value
-000006  f24053dc          MOV      r3,#0x5dc
+000006  f64003fc          MOV      r3,#0x8fc
 ;;;197    	{
 ;;;198    		GPIO_SetBits(GPIOE,GPIO_Pin_6);//开启风扇
 00000a  4811              LDR      r0,|L3.80|
@@ -185,9 +185,9 @@
 00000c  4c11              LDR      r4,|L3.84|
 00000e  429a              CMP      r2,r3                 ;196
 000010  d904              BLS      |L3.28|
-000012  880a              LDRH     r2,[r1,#0]            ;196  ; NTC_value
-000014  f44f6348          MOV      r3,#0xc80             ;196
-000018  429a              CMP      r2,r3                 ;196
+000012  880b              LDRH     r3,[r1,#0]            ;196  ; NTC_value
+000014  f2414250          MOV      r2,#0x1450            ;196
+000018  4293              CMP      r3,r2                 ;196
 00001a  d907              BLS      |L3.44|
                   |L3.28|
 00001c  2140              MOVS     r1,#0x40              ;198
@@ -197,7 +197,7 @@
 000028  6020              STR      r0,[r4,#0]  ; flagG
                   |L3.42|
 ;;;200    	}
-;;;201    	else if(NTC_value>=1600 && NTC_value<=3200)
+;;;201    	else if(NTC_value>=2400 && NTC_value<=5200)
 ;;;202    	{
 ;;;203    		GPIO_ResetBits(GPIOE,GPIO_Pin_6);//关闭风扇
 ;;;204    		flag_FAN_ON=0;
@@ -205,11 +205,11 @@
 ;;;206    }
 00002a  bd10              POP      {r4,pc}
                   |L3.44|
-00002c  880a              LDRH     r2,[r1,#0]            ;201  ; NTC_value
-00002e  f5b26fc8          CMP      r2,#0x640             ;201
+00002c  880b              LDRH     r3,[r1,#0]            ;201  ; NTC_value
+00002e  f5b36f16          CMP      r3,#0x960             ;201
 000032  d3fa              BCC      |L3.42|
 000034  8809              LDRH     r1,[r1,#0]            ;201  ; NTC_value
-000036  4299              CMP      r1,r3                 ;201
+000036  4291              CMP      r1,r2                 ;201
 000038  d8f7              BHI      |L3.42|
 00003a  2140              MOVS     r1,#0x40              ;203
 00003c  f7fffffe          BL       GPIO_ResetBits

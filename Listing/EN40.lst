@@ -4522,6 +4522,53 @@ Nextern GUI_CONST_STORAGE GUI_FONT GUI_FontEN40;
 Xextern const GUI_FONT GUI_FontEN40;
 N
 N/* Start of unicode area <Basic Latin> */
+NGUI_CONST_STORAGE unsigned char acGUI_FontEN40_002D[  9] = { /* code 002D, HYPHEN-MINUS */
+Xconst unsigned char acGUI_FontEN40_002D[  9] = {  
+N  XXXXXXXX,XXXXXXXX,XX______,
+X  0xff,0xff,0xc0,
+N  XXXXXXXX,XXXXXXXX,XX______,
+X  0xff,0xff,0xc0,
+N  XXXXXXXX,XXXXXXXX,XX______};
+X  0xff,0xff,0xc0};
+N
+NGUI_CONST_STORAGE unsigned char acGUI_FontEN40_002B[ 51] = { /* code 002B, PLUS SIGN */
+Xconst unsigned char acGUI_FontEN40_002B[ 51] = {  
+N  _______X,XX______,________,
+X  0x1,0xc0,0x0,
+N  _______X,XX______,________,
+X  0x1,0xc0,0x0,
+N  _______X,XX______,________,
+X  0x1,0xc0,0x0,
+N  _______X,XX______,________,
+X  0x1,0xc0,0x0,
+N  _______X,XX______,________,
+X  0x1,0xc0,0x0,
+N  _______X,XX______,________,
+X  0x1,0xc0,0x0,
+N  _______X,XX______,________,
+X  0x1,0xc0,0x0,
+N  XXXXXXXX,XXXXXXXX,X_______,
+X  0xff,0xff,0x80,
+N  XXXXXXXX,XXXXXXXX,X_______,
+X  0xff,0xff,0x80,
+N  XXXXXXXX,XXXXXXXX,X_______,
+X  0xff,0xff,0x80,
+N  _______X,XX______,________,
+X  0x1,0xc0,0x0,
+N  _______X,XX______,________,
+X  0x1,0xc0,0x0,
+N  _______X,XX______,________,
+X  0x1,0xc0,0x0,
+N  _______X,XX______,________,
+X  0x1,0xc0,0x0,
+N  _______X,XX______,________,
+X  0x1,0xc0,0x0,
+N  _______X,XX______,________,
+X  0x1,0xc0,0x0,
+N  _______X,XX______,________};
+X  0x1,0xc0,0x0};
+N
+N  
 NGUI_CONST_STORAGE unsigned char acGUI_FontEN40_003A[ 18] = { /* code 003A, COLON */
 Xconst unsigned char acGUI_FontEN40_003A[ 18] = {  
 N  XXXX____,
@@ -7549,8 +7596,8 @@ X  0xff,0xff,
 N  XXXXXXXX,XXXXXXXX};
 X  0xff,0xff};
 N
-NGUI_CONST_STORAGE GUI_CHARINFO_EXT GUI_FontEN40_CharInfo[59] = {
-Xconst GUI_CHARINFO_EXT GUI_FontEN40_CharInfo[59] = {
+NGUI_CONST_STORAGE GUI_CHARINFO_EXT GUI_FontEN40_CharInfo[61] = {
+Xconst GUI_CHARINFO_EXT GUI_FontEN40_CharInfo[61] = {
 N   {  20,  27,   0,   0,  21, acGUI_FontEN40_0041 } /* code 0041, LATIN CAPITAL LETTER A */
 N  ,{  17,  27,   2,   0,  21, acGUI_FontEN40_0042 } /* code 0042, LATIN CAPITAL LETTER B */
 N  ,{  19,  28,   1,   0,  21, acGUI_FontEN40_0043 } /* code 0043, LATIN CAPITAL LETTER C */
@@ -7610,14 +7657,32 @@ N  ,{  18,  17,   1,  0,  21, acGUI_FontEN40_0078 } /* code 0078, LATIN SMALL LE
 N  ,{  18,  23,   1,  0,  21, acGUI_FontEN40_0079 } /* code 0079, LATIN SMALL LETTER Y */
 N  ,{  16,  17,   2,  0,  21, acGUI_FontEN40_007A } /* code 007A, LATIN SMALL LETTER Z */
 N  ,{   4,  18,   8,   9,  21, acGUI_FontEN40_003A } /* code 003A, COLON */
+N  , {  18,  17,   1,  11,  20, acGUI_FontEN40_002B } /* code 002B, PLUS SIGN */
+N  ,{  18,   3,   1,  18,  20, acGUI_FontEN40_002D } /* code 002D, HYPHEN-MINUS */
 N};
+NGUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_FontEN40_Prop4 = {
+Xconst GUI_FONT_PROP_EXT GUI_FontEN40_Prop4 = {
+N   0x002D /* first character */
+N  ,0x002D /* last character  */
+N  ,&GUI_FontEN40_CharInfo[  60] /* address of first character */
+N  ,(GUI_CONST_STORAGE GUI_FONT_PROP_EXT *)0 /* pointer to next GUI_FONT_PROP_EXT */
+X  ,(const GUI_FONT_PROP_EXT *)0  
+N};
+N
+NGUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_FontEN40_Prop3 = {
+Xconst GUI_FONT_PROP_EXT GUI_FontEN40_Prop3 = {
+N   0x002B /* first character */
+N  ,0x002B /* last character  */
+N  ,&GUI_FontEN40_CharInfo[  59] /* address of first character */
+N  ,&GUI_FontEN40_Prop4 /* pointer to next GUI_FONT_PROP */
+N};
+N
 NGUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_FontEN40_Prop2 = {
 Xconst GUI_FONT_PROP_EXT GUI_FontEN40_Prop2 = {
 N   0x003A /* first character */
 N  ,0x003A /* last character  */
 N  ,&GUI_FontEN40_CharInfo[ 58 ] /* address of first character */
-N  ,(GUI_CONST_STORAGE GUI_FONT_PROP_EXT *)0 /* pointer to next GUI_FONT_PROP_EXT */
-X  ,(const GUI_FONT_PROP_EXT *)0  
+N ,&GUI_FontEN40_Prop3 /* pointer to next GUI_FONT_PROP */
 N};
 N
 NGUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_FontEN40_Prop1 = {

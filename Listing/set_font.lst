@@ -8527,11 +8527,87 @@ N  ______XX,___XXXXX,________,
 X  0x3,0x1f,0x0,
 N  ____XX__,______X_,________};
 X  0xc,0x2,0x0};
+NGUI_CONST_STORAGE unsigned char acGUI_Fontset_font_4FDD[ 54] = { /* code 4FDD */
+Xconst unsigned char acGUI_Fontset_font_4FDD[ 54] = {  
+N  ____XX__,________,________,
+X  0xc,0x0,0x0,
+N  ____X__X,XXXXXXXX,________,
+X  0x9,0xff,0x0,
+N  ____X__X,_______X,________,
+X  0x9,0x1,0x0,
+N  ___X___X,_______X,________,
+X  0x11,0x1,0x0,
+N  ___X___X,_______X,________,
+X  0x11,0x1,0x0,
+N  __XX___X,_______X,________,
+X  0x31,0x1,0x0,
+N  __XX___X,XXXXXXXX,________,
+X  0x31,0xff,0x0,
+N  _X_X___X,___X____,________,
+X  0x51,0x10,0x0,
+N  X__X____,___X____,________,
+X  0x90,0x10,0x0,
+N  ___X_XXX,XXXXXXXX,XX______,
+X  0x17,0xff,0xc0,
+N  ___X____,__XXX___,________,
+X  0x10,0x38,0x0,
+N  ___X____,_X_X_X__,________,
+X  0x10,0x54,0x0,
+N  ___X____,_X_X_X__,________,
+X  0x10,0x54,0x0,
+N  ___X____,X__X__X_,________,
+X  0x10,0x92,0x0,
+N  ___X___X,___X___X,________,
+X  0x11,0x11,0x0,
+N  ___X__X_,___X____,XX______,
+X  0x12,0x10,0xc0,
+N  ___X_X__,___X____,________,
+X  0x14,0x10,0x0,
+N  ___XX___,___X____,________};
+X  0x18,0x10,0x0};
+N
+NGUI_CONST_STORAGE unsigned char acGUI_Fontset_font_62A4[ 54] = { /* code 62A4 */
+Xconst unsigned char acGUI_Fontset_font_62A4[ 54] = {  
+N  ___XX___,___X____,________,
+X  0x18,0x10,0x0,
+N  ___XX___,___XX___,________,
+X  0x18,0x18,0x0,
+N  ___XX___,____X___,________,
+X  0x18,0x8,0x0,
+N  ___XX___,X_______,X_______,
+X  0x18,0x80,0x80,
+N  XXXXXXX_,XXXXXXXX,X_______,
+X  0xfe,0xff,0x80,
+N  ___XX__X,X_______,X_______,
+X  0x19,0x80,0x80,
+N  ___XX___,X_______,X_______,
+X  0x18,0x80,0x80,
+N  ___XX___,X_______,X_______,
+X  0x18,0x80,0x80,
+N  ___XXXXX,XXXXXXXX,X_______,
+X  0x1f,0xff,0x80,
+N  _XXXX___,X_______,X_______,
+X  0x78,0x80,0x80,
+N  XX_XX___,X_______,________,
+X  0xd8,0x80,0x0,
+N  ___XX___,X_______,________,
+X  0x18,0x80,0x0,
+N  ___XX___,X_______,________,
+X  0x18,0x80,0x0,
+N  ___XX__X,________,________,
+X  0x19,0x0,0x0,
+N  ___XX__X,________,________,
+X  0x19,0x0,0x0,
+N  ___XX_X_,________,________,
+X  0x1a,0x0,0x0,
+N  _XXX_X__,________,________,
+X  0x74,0x0,0x0,
+N  ___X____,________,________};
+X  0x10,0x0,0x0};
 N
 N
-N
-NGUI_CONST_STORAGE GUI_CHARINFO_EXT GUI_Fontset_font_CharInfo[104] = {
-Xconst GUI_CHARINFO_EXT GUI_Fontset_font_CharInfo[104] = {
+NGUI_CONST_STORAGE GUI_CHARINFO_EXT GUI_Fontset_font_CharInfo[106] = {
+Xconst GUI_CHARINFO_EXT GUI_Fontset_font_CharInfo[106] = {
 N   {  18,  17,   1,   1,  20, acGUI_Fontset_font_4E0A } /* code 4E0A */
 N  ,{  18,  17,   1,   2,  20, acGUI_Fontset_font_4E0B } /* code 4E0B */
 N  ,{  18,  18,   1,   1,  20, acGUI_Fontset_font_5173 } /* code 5173 */
@@ -8636,14 +8712,32 @@ N  ,{  18,  18,   1,   1,  20, acGUI_Fontset_font_6E90 } /* code 6E90 */
 N  ,{  18,  18,   1,   1,  20, acGUI_Fontset_font_793A } /* code 793A */
 N  ,{  18,  18,   1,   1,  20, acGUI_Fontset_font_952E } /* code 952E */
 N  ,{  18,  18,   1,   1,  20, acGUI_Fontset_font_529F } /* code 529F */
+N  ,{  18,  18,   1,   1,  20, acGUI_Fontset_font_4FDD } /* code 4FDD */
+N  ,{  18,  18,   1,   1,  20, acGUI_Fontset_font_62A4 } /* code 62A4 */
 N};
+NGUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Fontset_font_Prop105 = {
+Xconst GUI_FONT_PROP_EXT GUI_Fontset_font_Prop105 = {
+N   0x62A4 /* first character */
+N  ,0x62A4 /* last character  */
+N  ,&GUI_Fontset_font_CharInfo[  105] /* address of first character */
+N  ,(GUI_CONST_STORAGE GUI_FONT_PROP_EXT *)0 /* pointer to next GUI_FONT_PROP_EXT */
+X  ,(const GUI_FONT_PROP_EXT *)0  
+N};
+N
+NGUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Fontset_font_Prop104 = {
+Xconst GUI_FONT_PROP_EXT GUI_Fontset_font_Prop104 = {
+N   0x4FDD /* first character */
+N  ,0x4FDD /* last character  */
+N  ,&GUI_Fontset_font_CharInfo[  104] /* address of first character */
+N  ,&GUI_Fontset_font_Prop105 /* pointer to next GUI_FONT_PROP_EXT */
+N};
+N
 NGUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Fontset_font_Prop103 = {
 Xconst GUI_FONT_PROP_EXT GUI_Fontset_font_Prop103 = {
 N   0x529F /* first character */
 N  ,0x529F /* last character  */
 N  ,&GUI_Fontset_font_CharInfo[  103] /* address of first character */
-N  ,(GUI_CONST_STORAGE GUI_FONT_PROP_EXT *)0 /* pointer to next GUI_FONT_PROP_EXT */
-X  ,(const GUI_FONT_PROP_EXT *)0  
+N  ,&GUI_Fontset_font_Prop104 /* pointer to next GUI_FONT_PROP_EXT */
 N};
 N
 NGUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Fontset_font_Prop102 = {
